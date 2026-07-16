@@ -72,6 +72,16 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
+<link href="site_libs/htmltools-fill-0.5.9/fill.css" rel="stylesheet">
+
+<script src="site_libs/htmlwidgets-1.6.4/htmlwidgets.js"></script>
+
+<script src="site_libs/viz-1.8.2/viz.js"></script>
+
+<link href="site_libs/DiagrammeR-styles-0.2/styles.css" rel="stylesheet">
+
+<script src="site_libs/grViz-binding-1.0.12/grViz.js"></script>
+
 <link rel="icon" type="image/x-icon" href="favincon-32x32.png">    
 
   <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
@@ -217,7 +227,13 @@ window.Quarto = {
   <li><a href="#prior-likelihood-and-posterior-probabilities" id="toc-prior-likelihood-and-posterior-probabilities" class="nav-link" data-scroll-target="#prior-likelihood-and-posterior-probabilities">Prior, likelihood, and posterior probabilities</a></li>
   <li><a href="#summary-of-key-probability-rules" id="toc-summary-of-key-probability-rules" class="nav-link" data-scroll-target="#summary-of-key-probability-rules">Summary of key probability rules</a></li>
   </ul></li>
-  <li><a href="#supplementary-exercises" id="toc-supplementary-exercises" class="nav-link" data-scroll-target="#supplementary-exercises"><span class="header-section-number">1.2</span> Supplementary Exercises</a></li>
+  <li><a href="#solved-exercises" id="toc-solved-exercises" class="nav-link" data-scroll-target="#solved-exercises"><span class="header-section-number">1.2</span> Solved Exercises</a>
+  <ul>
+  <li><a href="#finite-probability-spaces" id="toc-finite-probability-spaces" class="nav-link" data-scroll-target="#finite-probability-spaces">Finite probability spaces</a></li>
+  <li><a href="#finite-equiprobable-spaces" id="toc-finite-equiprobable-spaces" class="nav-link" data-scroll-target="#finite-equiprobable-spaces">Finite equiprobable spaces</a></li>
+  <li><a href="#conditional-probability-1" id="toc-conditional-probability-1" class="nav-link" data-scroll-target="#conditional-probability-1">Conditional probability</a></li>
+  </ul></li>
+  <li><a href="#supplementary-exercises" id="toc-supplementary-exercises" class="nav-link" data-scroll-target="#supplementary-exercises"><span class="header-section-number">1.3</span> Supplementary Exercises</a></li>
   </ul>
 </nav>
     </div>
@@ -331,38 +347,182 @@ Conditioning on <span class="math inline">\(B\)</span> restricts the sample spac
 <li><p>Bayes’ theorem is <span class="math inline">\(\displaystyle \Pr[B_j\mid A]=\dfrac{\Pr[A\mid B_j]\Pr[B_j]}{\sum_{i=1}^{n}\Pr[A\mid B_i]\Pr[B_i]}\)</span></p></li>
 </ul>
 <hr id="thick">
-<!-- ## Solved Exercises -->
-<!-- <blockquote>Before opening the solutions, take a moment to work through each problem—-your mastery grows most when you engage actively with the mathematics.</blockquote> -->
-<!-- ### Basic probabilities {.unnumbered} -->
-<!-- Let $S(x)$ be defined as follows: -->
-<!-- $$s(x) = \left\{ -->
-<!--   \begin{array}{ll} -->
-<!--     1-\dfrac{x}{250} &  0 \leq x < 40 \\ -->
-<!--     1-{\left( \dfrac{x}{100} \right)}^2 & 40 \leq x \leq 100 \\ -->
-<!--   \end{array} -->
-<!-- \right. -->
-<!-- $$ -->
-<!-- 1. Calculate the probability that $(25)$ dies within the next $30$ years.   -->
-<!-- 2. Calculate the probability that $(25)$ dies in her fortieth year of live.   -->
-<!-- 3. Calculate the probability that $(25)$ does not die between ages $35$ and $45$   -->
-<!-- 4. Calculate the probability that $(25)$ celebrates her eightieth birthday.   -->
-<!-- ::: {.callout-note .solution collapse=true title="Solution"} -->
-<!-- 1. The probability that $(25)$ dies within the next $30$ years is given by -->
-<!-- <p id="ind50">${_{30}}q_{25}=\dfrac{s(25)-s(55)}{s(25)}=0.225$</p> -->
-<!-- 2. The probability $(25)$ dies in her fortieth year of live is given by -->
-<!-- <p id="ind50">${_{14|}}q_{25}={_{14}}p_{25}\;q_{39}=\dfrac{\cancel{s(39)}}{s(25)}\cdot\dfrac{s(39)-s(40)}{\cancel{s(39)}}=0.00\bar{4}$</p> -->
-<!-- 3. The probability that $(25)$ does not die between ages $35$ and $45$ is given by -->
-<!-- <p id="ind50">$1-{_{10|10}}q_{25}=1-{_{10}}p_{25}\;{_{10}}q_{35}=1-\dfrac{\cancel{s35}}{s(25)}\cdot\dfrac{s(35)-s(45)}{\cancel{s(35}}=0.930556$</p> -->
-<!-- 4. The probability that $(25)$ celebrates her eightieth birthday is given by -->
-<!-- <p id="ind50">$\dfrac{s(80)}{s(25)}=0.4$</p> -->
-<!-- $\\$ -->
-<!-- ::: -->
-<!-- <hr id="thick"> --->
+</section>
+</section>
+<section id="solved-exercises" class="level2" data-number="1.2">
+<h2 data-number="1.2" class="anchored" data-anchor-id="solved-exercises"><span class="header-section-number">1.2</span> Solved Exercises</h2>
+<blockquote class="blockquote">
+Before opening the solutions, take a moment to work through each problem—-your mastery grows most when you engage actively with the mathematics.
+</blockquote>
+<section id="finite-probability-spaces" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="finite-probability-spaces">Finite probability spaces</h4>
+<p>Suppose that <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> are events with <span class="math inline">\(\Pr[A]=0.6\)</span>, <span class="math inline">\(\Pr[B]=0.3\)</span>, and <span class="math inline">\(\Pr[A \cap B]=0.2\)</span>.</p>
+<p>Calculate the probability that neither <span class="math inline">\(A\)</span> nor <span class="math inline">\(B\)</span> occurs.</p>
+<div class="solution callout callout-style-default callout-note callout-titled" title="Solution">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-1" class="callout-1-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>“Neither <span class="math inline">\(A\)</span> nor <span class="math inline">\(B\)</span>” is the complement of <span class="math inline">\(\Pr[A \cup B]\)</span>.</p>
+<p><span class="math display">\[
+\begin{array}{rl}
+      \Pr[A \cup B] &amp;=\Pr[A]+\Pr[B]-\Pr[A \cap B] \\
+      &amp;= 0.6 + 0.3 - 0.2 \\
+      &amp;= 0.7 \\
+      &amp;\therefore \\
+      \Pr[(A \cup B)^c] &amp;=1-\Pr[A \cup B] \\
+      &amp;=0.3
+\end{array}
+\]</span></p>
+</div>
+</div>
+</div>
+<hr id="thin">
+</section>
+<section id="finite-equiprobable-spaces" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="finite-equiprobable-spaces">Finite equiprobable spaces</h4>
+<p>Suppose five letters are placed in five mailboxes at random.</p>
+<p>Find the probability <span class="math inline">\(p\)</span> that exactly one of the mailboxes is empty.</p>
+<div class="solution callout callout-style-default callout-note callout-titled" title="Solution">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-2" class="callout-2-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>If exactly one mailbox is empty, then one mailbox contains two letters and each of the remaining mailboxes contains one letter.</p>
+<p>There are five ways to select an empty mailbox, then four ways to select the mailbox containing two letters, and <span class="math inline">\(\dbinom{5}{2}=10\)</span> ways to select two letters to go into this mailbox.</p>
+<p>Finally, there are <span class="math inline">\(3!\)</span> ways to distribute the remaining three letters among the remaining three mailboxes.</p>
+<p>Given that it is possible to place more than one letter in a mailbox, there are <span class="math inline">\(5^3\)</span> ways to place five letters in five mailboxes.</p>
+<p>Thus,</p>
+<p><span class="math display">\[p=\dfrac{5 \cdot 4 \cdot 10 \cdot 3!}{5^3}=0.384\]</span></p>
+</div>
+</div>
+</div>
+<hr id="thin">
+</section>
+<section id="conditional-probability-1" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="conditional-probability-1">Conditional probability</h4>
+<p>Suppose that <span class="math inline">\(240\)</span> carbon nanotubes from an experimental batch are placed into three containers as follows:</p>
+<table>
+<tbody><tr>
+<th>
+Container
+</th>
+<th>
+nondefective
+</th>
+<th>
+defective
+</th>
+</tr>
+<tr>
+<td>
+<span class="math inline">\(A\)</span>
+</td>
+<td>
+<span class="math inline">\(60\)</span>
+</td>
+<td>
+<span class="math inline">\(40\)</span>
+</td>
+</tr>
+<tr>
+<td>
+<span class="math inline">\(B\)</span>
+</td>
+<td>
+<span class="math inline">\(50\)</span>
+</td>
+<td>
+<span class="math inline">\(10\)</span>
+</td>
+</tr>
+<tr>
+<td>
+<span class="math inline">\(C\)</span>
+</td>
+<td>
+<span class="math inline">\(50\)</span>
+</td>
+<td>
+<span class="math inline">\(30\)</span>
+</td>
+</tr>
+</tbody></table>
+<p>A container is chosen at random, and then a carbon nanotube is randomly selected from the chosen container.</p>
+<p>Assume that selecting container <span class="math inline">\(C\)</span> is twice as likely as selecting <span class="math inline">\(A\)</span> or <span class="math inline">\(B\)</span>.</p>
+<ol type="1">
+<li>Find the probability <span class="math inline">\(p\)</span> that the carbon nanotube is nondefective.</li>
+<li>If the carbon nanotube is nondefective, find the probability <span class="math inline">\(q\)</span> that it came from container <span class="math inline">\(C\)</span>.</li>
+</ol>
+<div class="solution callout callout-style-default callout-note callout-titled" title="Solution">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-3" class="callout-3-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Let <span class="math inline">\(\Pr[A]=\Pr[B]=k\)</span>. Then <span class="math inline">\(\Pr[C]=2k\)</span>, and since the probabilities must add up to <span class="math inline">\(1\)</span>, we have <span class="math inline">\(k=1/4\)</span>.</p>
+<ol type="1">
+<li><p>In the tree diagram, <span class="math inline">\(D\)</span> stands for defective and <span class="math inline">\(ND\)</span> for nondefective. For example, the probability of selecting container <span class="math inline">\(A\)</span> and then a nondefective carbon nanotube from that container is:</p>
+<p><span class="math display">\[
+\dfrac{1}{4}\cdot\dfrac{3}{5}=\dfrac{3}{20}
+\]</span></p>
+<div class="cell">
+<div class="cell-output-display">
+<div class="grViz html-widget html-fill-item" id="htmlwidget-f5631dd2339c6387a72d" style="width:100%;height:464px;"></div>
+<script type="application/json" data-for="htmlwidget-f5631dd2339c6387a72d">{"x":{"diagram":"\ndigraph probability_tree {\n\n  graph [\n    layout = dot,\n    rankdir = LR,\n    bgcolor = white,\n    nodesep = 0.55,\n    ranksep = 1.20\n  ]\n\n  node [\n    shape = circle,\n    style = filled,\n    fillcolor = white,\n    color = \"#444444\",\n    fontname = Helvetica,\n    fontsize = 12,\n    width = 0.65,\n    fixedsize = true\n  ]\n\n  edge [\n    color = \"#555555\",\n    penwidth = 1.5,\n    arrowsize = 0.7,\n    fontname = Helvetica,\n    fontsize = 11\n  ]\n\n  # Starting point\n  start [\n    label = \"Start\",\n    fillcolor = \"#eeeeee\",\n    width = 0.85\n  ]\n\n  # First-stage nodes\n  A [label = \"A\"]\n  B [label = \"B\"]\n  C [label = \"C\"]\n\n  # Terminal outcome nodes\n  node [\n    shape = box,\n    fixedsize = false,\n    style = \"rounded,filled\",\n    fillcolor = \"#f8f8f8\",\n    margin = 0.12\n  ]\n\n  AD  [label = \"D\\nJoint probability: 2/20\"]\n  AND [label = \"ND\\nJoint probability: 3/20\"]\n\n  BD  [label = \"D\\nJoint probability: 1/24\"]\n  BND [label = \"ND\\nJoint probability: 5/24\"]\n\n  CD  [label = \"D\\nJoint probability: 6/32\"]\n  CND [label = \"ND\\nJoint probability: 10/32\"]\n\n  # Three initial branches\n  start -> A [label = \"Container A: 1/4\"]\n  start -> B [label = \"Container B: 1/4\"]\n  start -> C [label = \"Container C: 2/4\"]\n\n  # Two branches from Container A\n  A -> AD  [label = \"D: 2/5\"]\n  A -> AND [label = \"ND: 3/5\"]\n\n  # Two branches from Container B\n  B -> BD  [label = \"D: 1/6\"]\n  B -> BND [label = \"ND: 5/6\"]\n\n  # Two branches from Container C\n  C -> CD  [label = \"D: 3/8\"]\n  C -> CND [label = \"ND: 5/8\"]\n}\n","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+</div>
+</div>
+<p>Thus, since the paths are disjoint, <span class="math inline">\(p\)</span> is calculated as follows:</p>
+<p><span class="math display">\[
+\begin{aligned}
+p=\Pr[ND]
+&amp;=\dfrac{1}{4}\cdot\dfrac{3}{5}
+  +\dfrac{1}{4}\cdot\dfrac{5}{6}
+  +\dfrac{2}{4}\cdot\dfrac{5}{8} \\[4pt]
+&amp;=\dfrac{161}{240} \\
+&amp;\approx 0.67083.
+\end{aligned}
+\]</span></p></li>
+<li><p>In this case, <span class="math inline">\(q=\Pr[C\mid ND]\)</span>. The event <span class="math inline">\(C\cap ND\)</span> can occur only along the bottom path. Thus,</p>
+<p><span class="math display">\[
+\begin{aligned}
+\Pr[C\mid ND]
+&amp;=\dfrac{\Pr[C\cap ND]}{\Pr[ND]} \\[4pt]
+&amp;=\dfrac{10/32}{161/240} \\
+&amp;=\dfrac{75}{161} \\
+&amp;\approx 0.46584.
+\end{aligned}
+\]</span></p></li>
+</ol>
+</div>
+</div>
+</div>
+<hr id="thick">
 <!-------------------------------------------------------------->
 </section>
 </section>
-<section id="supplementary-exercises" class="level2" data-number="1.2">
-<h2 data-number="1.2" class="anchored" data-anchor-id="supplementary-exercises"><span class="header-section-number">1.2</span> Supplementary Exercises</h2>
+<section id="supplementary-exercises" class="level2" data-number="1.3">
+<h2 data-number="1.3" class="anchored" data-anchor-id="supplementary-exercises"><span class="header-section-number">1.3</span> Supplementary Exercises</h2>
 <!----------------------------------------------------------------------------->
 <p><span id="no">1</span></p>
 <p>If four actuaries, three accountants, and three economists are to be seated in a row, how many seating arrangements are possible when people of the same profession must sit next to one another?</p>
