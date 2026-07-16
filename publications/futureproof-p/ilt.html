@@ -1,0 +1,3684 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.4.554">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>FutureProof MLC - Illustrative Life Table</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./biblio.html" rel="next">
+<link href="./answers.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<link rel="icon" type="image/x-icon" href="favincon-32x32.png">    
+
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="nav-sidebar floating">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./ilt.html">Illustrative Life Table</a></li></ol></nav>
+        <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">FutureProof MLC</a> 
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Preface</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./chapter_1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Survival Models</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./chapter_2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Life Insurance Models</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./chapter_3.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Life Annuities</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./chapter_4.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Premiums/Reserves</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./answers.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Answers to Supplementary Exercises</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./ilt.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Illustrative Life Table</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./biblio.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Bibliography</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./about.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">About the author</span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Illustrative Life Table</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<p>The following mortality table follows the Makeham law (i.e., <span class="math inline">\(\mu_x=A+Bc^x\)</span>, where <span class="math inline">\(A=0.0007\)</span>, <span class="math inline">\(B=0.00005\)</span>, and <span class="math inline">\(c=10^{0.04}\)</span>). The commutation functions <span class="math inline">\(D_x\)</span>, <span class="math inline">\(N_x\)</span>, <span class="math inline">\(C_x\)</span>, and <span class="math inline">\(M_x\)</span> are constructed using a <span class="math inline">\(6\%\)</span> annual effective interest rate assumption as follows:</p>
+<p><span class="math display">\[
+\boxed{
+  \begin{aligned}
+    \\ \quad D_x &amp;= v^xl_x \quad \\
+    \\ N_x &amp;= \displaystyle \sum_{k=0}^\infty D_{x+k} \quad \\
+    \\ \quad C_x &amp;= v^{x+1}d_x \quad \\
+    \\ M_x &amp;= \displaystyle \sum_{k=0}^\infty C_{x+k} \quad \\
+    \\
+  \end{aligned}
+}
+\]</span></p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<div id="phtdybicej" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#phtdybicej table {
+  font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#phtdybicej thead, #phtdybicej tbody, #phtdybicej tfoot, #phtdybicej tr, #phtdybicej td, #phtdybicej th {
+  border-style: none;
+}
+
+#phtdybicej p {
+  margin: 0;
+  padding: 0;
+}
+
+#phtdybicej .gt_table {
+  display: table;
+  border-collapse: collapse;
+  line-height: normal;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: 100%;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#phtdybicej .gt_caption {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+#phtdybicej .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#phtdybicej .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 3px;
+  padding-bottom: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#phtdybicej .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#phtdybicej .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#phtdybicej .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#phtdybicej .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#phtdybicej .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#phtdybicej .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#phtdybicej .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#phtdybicej .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#phtdybicej .gt_spanner_row {
+  border-bottom-style: hidden;
+}
+
+#phtdybicej .gt_group_heading {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  text-align: left;
+}
+
+#phtdybicej .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#phtdybicej .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#phtdybicej .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#phtdybicej .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#phtdybicej .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#phtdybicej .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+  vertical-align: top;
+}
+
+#phtdybicej .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+#phtdybicej .gt_row_group_first th {
+  border-top-width: 2px;
+}
+
+#phtdybicej .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#phtdybicej .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-color: #D3D3D3;
+}
+
+#phtdybicej .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+#phtdybicej .gt_last_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#phtdybicej .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#phtdybicej .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#phtdybicej .gt_last_grand_summary_row_top {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: double;
+  border-bottom-width: 6px;
+  border-bottom-color: #D3D3D3;
+}
+
+#phtdybicej .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#phtdybicej .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#phtdybicej .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#phtdybicej .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#phtdybicej .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#phtdybicej .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#phtdybicej .gt_left {
+  text-align: left;
+}
+
+#phtdybicej .gt_center {
+  text-align: center;
+}
+
+#phtdybicej .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#phtdybicej .gt_font_normal {
+  font-weight: normal;
+}
+
+#phtdybicej .gt_font_bold {
+  font-weight: bold;
+}
+
+#phtdybicej .gt_font_italic {
+  font-style: italic;
+}
+
+#phtdybicej .gt_super {
+  font-size: 65%;
+}
+
+#phtdybicej .gt_footnote_marks {
+  font-size: 75%;
+  vertical-align: 0.4em;
+  position: initial;
+}
+
+#phtdybicej .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+#phtdybicej .gt_indent_1 {
+  text-indent: 5px;
+}
+
+#phtdybicej .gt_indent_2 {
+  text-indent: 10px;
+}
+
+#phtdybicej .gt_indent_3 {
+  text-indent: 15px;
+}
+
+#phtdybicej .gt_indent_4 {
+  text-indent: 20px;
+}
+
+#phtdybicej .gt_indent_5 {
+  text-indent: 25px;
+}
+
+#phtdybicej .katex-display {
+  display: inline-flex !important;
+  margin-bottom: 0.75em !important;
+}
+
+#phtdybicej div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+  height: 0px !important;
+}
+</style>
+
+<table class="gt_table table table-sm table-striped small" data-quarto-postprocess="true" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
+<thead>
+<tr class="header gt_heading">
+<th colspan="9" class="gt_heading gt_title gt_font_normal"><span class="math inline">\(\text{Illustrative Life Table}\)</span></th>
+</tr>
+<tr class="odd gt_heading">
+<th colspan="9" class="gt_heading gt_subtitle gt_font_normal gt_bottom_border"><span class="math inline">\(\mu_x=A+Bc^x\)</span></th>
+</tr>
+<tr class="header gt_col_headings">
+<th id="x" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col"><span class="math inline">\(x\)</span></th>
+<th id="lx" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col"><span class="math inline">\(l_x\)</span></th>
+<th id="dx" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col"><span class="math inline">\(d_x\)</span></th>
+<th id="qx" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col"><span class="math inline">\(q_x\)</span></th>
+<th id="mux" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col"><span class="math inline">\(\mu_x\)</span></th>
+<th id="Dx" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col"><span class="math inline">\(D_x\)</span></th>
+<th id="Cx" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col"><span class="math inline">\(C_x\)</span></th>
+<th id="Nx" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col"><span class="math inline">\(N_x\)</span></th>
+<th id="Mx" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col"><span class="math inline">\(M_x\)</span></th>
+</tr>
+</thead>
+<tbody class="gt_table_body">
+<tr class="odd">
+<td class="gt_row gt_right" headers="x">0</td>
+<td class="gt_row gt_right" headers="lx">100,000</td>
+<td class="gt_row gt_right" headers="dx">75</td>
+<td class="gt_row gt_right" headers="qx">0.00075</td>
+<td class="gt_row gt_right" headers="mux">0.00075</td>
+<td class="gt_row gt_right" headers="Dx">100,000</td>
+<td class="gt_row gt_right" headers="Cx">71</td>
+<td class="gt_row gt_right" headers="Nx">1,714,781</td>
+<td class="gt_row gt_right" headers="Mx">2,937</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_right" headers="x">1</td>
+<td class="gt_row gt_right" headers="lx">99,925</td>
+<td class="gt_row gt_right" headers="dx">76</td>
+<td class="gt_row gt_right" headers="qx">0.00076</td>
+<td class="gt_row gt_right" headers="mux">0.00075</td>
+<td class="gt_row gt_right" headers="Dx">94,269</td>
+<td class="gt_row gt_right" headers="Cx">67</td>
+<td class="gt_row gt_right" headers="Nx">1,614,781</td>
+<td class="gt_row gt_right" headers="Mx">2,866</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_right" headers="x">2</td>
+<td class="gt_row gt_right" headers="lx">99,849</td>
+<td class="gt_row gt_right" headers="dx">76</td>
+<td class="gt_row gt_right" headers="qx">0.00076</td>
+<td class="gt_row gt_right" headers="mux">0.00076</td>
+<td class="gt_row gt_right" headers="Dx">88,865</td>
+<td class="gt_row gt_right" headers="Cx">64</td>
+<td class="gt_row gt_right" headers="Nx">1,520,512</td>
+<td class="gt_row gt_right" headers="Mx">2,799</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_right" headers="x">3</td>
+<td class="gt_row gt_right" headers="lx">99,773</td>
+<td class="gt_row gt_right" headers="dx">77</td>
+<td class="gt_row gt_right" headers="qx">0.00077</td>
+<td class="gt_row gt_right" headers="mux">0.00077</td>
+<td class="gt_row gt_right" headers="Dx">83,771</td>
+<td class="gt_row gt_right" headers="Cx">61</td>
+<td class="gt_row gt_right" headers="Nx">1,431,647</td>
+<td class="gt_row gt_right" headers="Mx">2,735</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_right" headers="x">4</td>
+<td class="gt_row gt_right" headers="lx">99,696</td>
+<td class="gt_row gt_right" headers="dx">77</td>
+<td class="gt_row gt_right" headers="qx">0.00078</td>
+<td class="gt_row gt_right" headers="mux">0.00077</td>
+<td class="gt_row gt_right" headers="Dx">78,969</td>
+<td class="gt_row gt_right" headers="Cx">58</td>
+<td class="gt_row gt_right" headers="Nx">1,347,875</td>
+<td class="gt_row gt_right" headers="Mx">2,674</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_right" headers="x">5</td>
+<td class="gt_row gt_right" headers="lx">99,619</td>
+<td class="gt_row gt_right" headers="dx">78</td>
+<td class="gt_row gt_right" headers="qx">0.00078</td>
+<td class="gt_row gt_right" headers="mux">0.00078</td>
+<td class="gt_row gt_right" headers="Dx">74,441</td>
+<td class="gt_row gt_right" headers="Cx">55</td>
+<td class="gt_row gt_right" headers="Nx">1,268,907</td>
+<td class="gt_row gt_right" headers="Mx">2,616</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_right" headers="x">6</td>
+<td class="gt_row gt_right" headers="lx">99,541</td>
+<td class="gt_row gt_right" headers="dx">79</td>
+<td class="gt_row gt_right" headers="qx">0.00079</td>
+<td class="gt_row gt_right" headers="mux">0.00079</td>
+<td class="gt_row gt_right" headers="Dx">70,172</td>
+<td class="gt_row gt_right" headers="Cx">52</td>
+<td class="gt_row gt_right" headers="Nx">1,194,466</td>
+<td class="gt_row gt_right" headers="Mx">2,561</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_right" headers="x">7</td>
+<td class="gt_row gt_right" headers="lx">99,462</td>
+<td class="gt_row gt_right" headers="dx">80</td>
+<td class="gt_row gt_right" headers="qx">0.00080</td>
+<td class="gt_row gt_right" headers="mux">0.00080</td>
+<td class="gt_row gt_right" headers="Dx">66,148</td>
+<td class="gt_row gt_right" headers="Cx">50</td>
+<td class="gt_row gt_right" headers="Nx">1,124,293</td>
+<td class="gt_row gt_right" headers="Mx">2,509</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_right" headers="x">8</td>
+<td class="gt_row gt_right" headers="lx">99,383</td>
+<td class="gt_row gt_right" headers="dx">80</td>
+<td class="gt_row gt_right" headers="qx">0.00081</td>
+<td class="gt_row gt_right" headers="mux">0.00080</td>
+<td class="gt_row gt_right" headers="Dx">62,354</td>
+<td class="gt_row gt_right" headers="Cx">48</td>
+<td class="gt_row gt_right" headers="Nx">1,058,145</td>
+<td class="gt_row gt_right" headers="Mx">2,459</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_right" headers="x">9</td>
+<td class="gt_row gt_right" headers="lx">99,302</td>
+<td class="gt_row gt_right" headers="dx">81</td>
+<td class="gt_row gt_right" headers="qx">0.00082</td>
+<td class="gt_row gt_right" headers="mux">0.00081</td>
+<td class="gt_row gt_right" headers="Dx">58,777</td>
+<td class="gt_row gt_right" headers="Cx">45</td>
+<td class="gt_row gt_right" headers="Nx">995,791</td>
+<td class="gt_row gt_right" headers="Mx">2,411</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_right" headers="x">10</td>
+<td class="gt_row gt_right" headers="lx">99,221</td>
+<td class="gt_row gt_right" headers="dx">82</td>
+<td class="gt_row gt_right" headers="qx">0.00083</td>
+<td class="gt_row gt_right" headers="mux">0.00083</td>
+<td class="gt_row gt_right" headers="Dx">55,404</td>
+<td class="gt_row gt_right" headers="Cx">43</td>
+<td class="gt_row gt_right" headers="Nx">937,014</td>
+<td class="gt_row gt_right" headers="Mx">2,366</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_right" headers="x">11</td>
+<td class="gt_row gt_right" headers="lx">99,139</td>
+<td class="gt_row gt_right" headers="dx">84</td>
+<td class="gt_row gt_right" headers="qx">0.00084</td>
+<td class="gt_row gt_right" headers="mux">0.00084</td>
+<td class="gt_row gt_right" headers="Dx">52,225</td>
+<td class="gt_row gt_right" headers="Cx">42</td>
+<td class="gt_row gt_right" headers="Nx">881,610</td>
+<td class="gt_row gt_right" headers="Mx">2,322</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_right" headers="x">12</td>
+<td class="gt_row gt_right" headers="lx">99,055</td>
+<td class="gt_row gt_right" headers="dx">85</td>
+<td class="gt_row gt_right" headers="qx">0.00086</td>
+<td class="gt_row gt_right" headers="mux">0.00085</td>
+<td class="gt_row gt_right" headers="Dx">49,227</td>
+<td class="gt_row gt_right" headers="Cx">40</td>
+<td class="gt_row gt_right" headers="Nx">829,385</td>
+<td class="gt_row gt_right" headers="Mx">2,281</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_right" headers="x">13</td>
+<td class="gt_row gt_right" headers="lx">98,970</td>
+<td class="gt_row gt_right" headers="dx">86</td>
+<td class="gt_row gt_right" headers="qx">0.00087</td>
+<td class="gt_row gt_right" headers="mux">0.00087</td>
+<td class="gt_row gt_right" headers="Dx">46,401</td>
+<td class="gt_row gt_right" headers="Cx">38</td>
+<td class="gt_row gt_right" headers="Nx">780,158</td>
+<td class="gt_row gt_right" headers="Mx">2,241</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_right" headers="x">14</td>
+<td class="gt_row gt_right" headers="lx">98,883</td>
+<td class="gt_row gt_right" headers="dx">88</td>
+<td class="gt_row gt_right" headers="qx">0.00089</td>
+<td class="gt_row gt_right" headers="mux">0.00088</td>
+<td class="gt_row gt_right" headers="Dx">43,736</td>
+<td class="gt_row gt_right" headers="Cx">37</td>
+<td class="gt_row gt_right" headers="Nx">733,757</td>
+<td class="gt_row gt_right" headers="Mx">2,203</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_right" headers="x">15</td>
+<td class="gt_row gt_right" headers="lx">98,795</td>
+<td class="gt_row gt_right" headers="dx">90</td>
+<td class="gt_row gt_right" headers="qx">0.00091</td>
+<td class="gt_row gt_right" headers="mux">0.00090</td>
+<td class="gt_row gt_right" headers="Dx">41,224</td>
+<td class="gt_row gt_right" headers="Cx">35</td>
+<td class="gt_row gt_right" headers="Nx">690,020</td>
+<td class="gt_row gt_right" headers="Mx">2,166</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_right" headers="x">16</td>
+<td class="gt_row gt_right" headers="lx">98,706</td>
+<td class="gt_row gt_right" headers="dx">92</td>
+<td class="gt_row gt_right" headers="qx">0.00093</td>
+<td class="gt_row gt_right" headers="mux">0.00092</td>
+<td class="gt_row gt_right" headers="Dx">38,855</td>
+<td class="gt_row gt_right" headers="Cx">34</td>
+<td class="gt_row gt_right" headers="Nx">648,796</td>
+<td class="gt_row gt_right" headers="Mx">2,131</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_right" headers="x">17</td>
+<td class="gt_row gt_right" headers="lx">98,614</td>
+<td class="gt_row gt_right" headers="dx">94</td>
+<td class="gt_row gt_right" headers="qx">0.00095</td>
+<td class="gt_row gt_right" headers="mux">0.00094</td>
+<td class="gt_row gt_right" headers="Dx">36,622</td>
+<td class="gt_row gt_right" headers="Cx">33</td>
+<td class="gt_row gt_right" headers="Nx">609,941</td>
+<td class="gt_row gt_right" headers="Mx">2,097</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_right" headers="x">18</td>
+<td class="gt_row gt_right" headers="lx">98,520</td>
+<td class="gt_row gt_right" headers="dx">96</td>
+<td class="gt_row gt_right" headers="qx">0.00097</td>
+<td class="gt_row gt_right" headers="mux">0.00096</td>
+<td class="gt_row gt_right" headers="Dx">34,516</td>
+<td class="gt_row gt_right" headers="Cx">32</td>
+<td class="gt_row gt_right" headers="Nx">573,319</td>
+<td class="gt_row gt_right" headers="Mx">2,064</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_right" headers="x">19</td>
+<td class="gt_row gt_right" headers="lx">98,424</td>
+<td class="gt_row gt_right" headers="dx">99</td>
+<td class="gt_row gt_right" headers="qx">0.00100</td>
+<td class="gt_row gt_right" headers="mux">0.00099</td>
+<td class="gt_row gt_right" headers="Dx">32,531</td>
+<td class="gt_row gt_right" headers="Cx">31</td>
+<td class="gt_row gt_right" headers="Nx">538,803</td>
+<td class="gt_row gt_right" headers="Mx">2,032</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_right" headers="x">20</td>
+<td class="gt_row gt_right" headers="lx">98,326</td>
+<td class="gt_row gt_right" headers="dx">101</td>
+<td class="gt_row gt_right" headers="qx">0.00103</td>
+<td class="gt_row gt_right" headers="mux">0.00102</td>
+<td class="gt_row gt_right" headers="Dx">30,658</td>
+<td class="gt_row gt_right" headers="Cx">30</td>
+<td class="gt_row gt_right" headers="Nx">506,273</td>
+<td class="gt_row gt_right" headers="Mx">2,002</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_right" headers="x">21</td>
+<td class="gt_row gt_right" headers="lx">98,225</td>
+<td class="gt_row gt_right" headers="dx">104</td>
+<td class="gt_row gt_right" headers="qx">0.00106</td>
+<td class="gt_row gt_right" headers="mux">0.00105</td>
+<td class="gt_row gt_right" headers="Dx">28,893</td>
+<td class="gt_row gt_right" headers="Cx">29</td>
+<td class="gt_row gt_right" headers="Nx">475,614</td>
+<td class="gt_row gt_right" headers="Mx">1,972</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_right" headers="x">22</td>
+<td class="gt_row gt_right" headers="lx">98,120</td>
+<td class="gt_row gt_right" headers="dx">108</td>
+<td class="gt_row gt_right" headers="qx">0.00110</td>
+<td class="gt_row gt_right" headers="mux">0.00108</td>
+<td class="gt_row gt_right" headers="Dx">27,229</td>
+<td class="gt_row gt_right" headers="Cx">28</td>
+<td class="gt_row gt_right" headers="Nx">446,721</td>
+<td class="gt_row gt_right" headers="Mx">1,943</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_right" headers="x">23</td>
+<td class="gt_row gt_right" headers="lx">98,013</td>
+<td class="gt_row gt_right" headers="dx">111</td>
+<td class="gt_row gt_right" headers="qx">0.00113</td>
+<td class="gt_row gt_right" headers="mux">0.00112</td>
+<td class="gt_row gt_right" headers="Dx">25,659</td>
+<td class="gt_row gt_right" headers="Cx">27</td>
+<td class="gt_row gt_right" headers="Nx">419,492</td>
+<td class="gt_row gt_right" headers="Mx">1,915</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_right" headers="x">24</td>
+<td class="gt_row gt_right" headers="lx">97,902</td>
+<td class="gt_row gt_right" headers="dx">115</td>
+<td class="gt_row gt_right" headers="qx">0.00118</td>
+<td class="gt_row gt_right" headers="mux">0.00116</td>
+<td class="gt_row gt_right" headers="Dx">24,180</td>
+<td class="gt_row gt_right" headers="Cx">27</td>
+<td class="gt_row gt_right" headers="Nx">393,833</td>
+<td class="gt_row gt_right" headers="Mx">1,887</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<div class="cell-output-display">
+<div>
+<div id="cbpjkartpg" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#cbpjkartpg table {
+  font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#cbpjkartpg thead, #cbpjkartpg tbody, #cbpjkartpg tfoot, #cbpjkartpg tr, #cbpjkartpg td, #cbpjkartpg th {
+  border-style: none;
+}
+
+#cbpjkartpg p {
+  margin: 0;
+  padding: 0;
+}
+
+#cbpjkartpg .gt_table {
+  display: table;
+  border-collapse: collapse;
+  line-height: normal;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: 100%;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#cbpjkartpg .gt_caption {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+#cbpjkartpg .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#cbpjkartpg .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 3px;
+  padding-bottom: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#cbpjkartpg .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#cbpjkartpg .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#cbpjkartpg .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#cbpjkartpg .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#cbpjkartpg .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#cbpjkartpg .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#cbpjkartpg .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#cbpjkartpg .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#cbpjkartpg .gt_spanner_row {
+  border-bottom-style: hidden;
+}
+
+#cbpjkartpg .gt_group_heading {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  text-align: left;
+}
+
+#cbpjkartpg .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#cbpjkartpg .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#cbpjkartpg .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#cbpjkartpg .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#cbpjkartpg .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#cbpjkartpg .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+  vertical-align: top;
+}
+
+#cbpjkartpg .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+#cbpjkartpg .gt_row_group_first th {
+  border-top-width: 2px;
+}
+
+#cbpjkartpg .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#cbpjkartpg .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-color: #D3D3D3;
+}
+
+#cbpjkartpg .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+#cbpjkartpg .gt_last_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#cbpjkartpg .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#cbpjkartpg .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#cbpjkartpg .gt_last_grand_summary_row_top {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: double;
+  border-bottom-width: 6px;
+  border-bottom-color: #D3D3D3;
+}
+
+#cbpjkartpg .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#cbpjkartpg .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#cbpjkartpg .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#cbpjkartpg .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#cbpjkartpg .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#cbpjkartpg .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#cbpjkartpg .gt_left {
+  text-align: left;
+}
+
+#cbpjkartpg .gt_center {
+  text-align: center;
+}
+
+#cbpjkartpg .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#cbpjkartpg .gt_font_normal {
+  font-weight: normal;
+}
+
+#cbpjkartpg .gt_font_bold {
+  font-weight: bold;
+}
+
+#cbpjkartpg .gt_font_italic {
+  font-style: italic;
+}
+
+#cbpjkartpg .gt_super {
+  font-size: 65%;
+}
+
+#cbpjkartpg .gt_footnote_marks {
+  font-size: 75%;
+  vertical-align: 0.4em;
+  position: initial;
+}
+
+#cbpjkartpg .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+#cbpjkartpg .gt_indent_1 {
+  text-indent: 5px;
+}
+
+#cbpjkartpg .gt_indent_2 {
+  text-indent: 10px;
+}
+
+#cbpjkartpg .gt_indent_3 {
+  text-indent: 15px;
+}
+
+#cbpjkartpg .gt_indent_4 {
+  text-indent: 20px;
+}
+
+#cbpjkartpg .gt_indent_5 {
+  text-indent: 25px;
+}
+
+#cbpjkartpg .katex-display {
+  display: inline-flex !important;
+  margin-bottom: 0.75em !important;
+}
+
+#cbpjkartpg div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+  height: 0px !important;
+}
+</style>
+
+<table class="gt_table table table-sm table-striped small" data-quarto-postprocess="true" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
+<thead>
+<tr class="header gt_heading">
+<th colspan="9" class="gt_heading gt_title gt_font_normal"><span class="math inline">\(\text{Illustrative Life Table}\)</span></th>
+</tr>
+<tr class="odd gt_heading">
+<th colspan="9" class="gt_heading gt_subtitle gt_font_normal gt_bottom_border"><span class="math inline">\(\mu_x=A+Bc^x\)</span></th>
+</tr>
+<tr class="header gt_col_headings">
+<th id="x" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col"><span class="math inline">\(x\)</span></th>
+<th id="lx" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col"><span class="math inline">\(l_x\)</span></th>
+<th id="dx" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col"><span class="math inline">\(d_x\)</span></th>
+<th id="qx" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col"><span class="math inline">\(q_x\)</span></th>
+<th id="mux" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col"><span class="math inline">\(\mu_x\)</span></th>
+<th id="Dx" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col"><span class="math inline">\(D_x\)</span></th>
+<th id="Cx" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col"><span class="math inline">\(C_x\)</span></th>
+<th id="Nx" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col"><span class="math inline">\(N_x\)</span></th>
+<th id="Mx" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col"><span class="math inline">\(M_x\)</span></th>
+</tr>
+</thead>
+<tbody class="gt_table_body">
+<tr class="odd">
+<td class="gt_row gt_right" headers="x">24</td>
+<td class="gt_row gt_right" headers="lx">97,902</td>
+<td class="gt_row gt_right" headers="dx">115</td>
+<td class="gt_row gt_right" headers="qx">0.00118</td>
+<td class="gt_row gt_right" headers="mux">0.00116</td>
+<td class="gt_row gt_right" headers="Dx">24,180</td>
+<td class="gt_row gt_right" headers="Cx">27</td>
+<td class="gt_row gt_right" headers="Nx">393,833</td>
+<td class="gt_row gt_right" headers="Mx">1,887</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_right" headers="x">25</td>
+<td class="gt_row gt_right" headers="lx">97,786</td>
+<td class="gt_row gt_right" headers="dx">120</td>
+<td class="gt_row gt_right" headers="qx">0.00122</td>
+<td class="gt_row gt_right" headers="mux">0.00120</td>
+<td class="gt_row gt_right" headers="Dx">22,784</td>
+<td class="gt_row gt_right" headers="Cx">26</td>
+<td class="gt_row gt_right" headers="Nx">369,653</td>
+<td class="gt_row gt_right" headers="Mx">1,860</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_right" headers="x">26</td>
+<td class="gt_row gt_right" headers="lx">97,667</td>
+<td class="gt_row gt_right" headers="dx">124</td>
+<td class="gt_row gt_right" headers="qx">0.00127</td>
+<td class="gt_row gt_right" headers="mux">0.00125</td>
+<td class="gt_row gt_right" headers="Dx">21,468</td>
+<td class="gt_row gt_right" headers="Cx">26</td>
+<td class="gt_row gt_right" headers="Nx">346,869</td>
+<td class="gt_row gt_right" headers="Mx">1,834</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_right" headers="x">27</td>
+<td class="gt_row gt_right" headers="lx">97,542</td>
+<td class="gt_row gt_right" headers="dx">130</td>
+<td class="gt_row gt_right" headers="qx">0.00133</td>
+<td class="gt_row gt_right" headers="mux">0.00130</td>
+<td class="gt_row gt_right" headers="Dx">20,227</td>
+<td class="gt_row gt_right" headers="Cx">25</td>
+<td class="gt_row gt_right" headers="Nx">325,401</td>
+<td class="gt_row gt_right" headers="Mx">1,808</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_right" headers="x">28</td>
+<td class="gt_row gt_right" headers="lx">97,413</td>
+<td class="gt_row gt_right" headers="dx">135</td>
+<td class="gt_row gt_right" headers="qx">0.00139</td>
+<td class="gt_row gt_right" headers="mux">0.00136</td>
+<td class="gt_row gt_right" headers="Dx">19,057</td>
+<td class="gt_row gt_right" headers="Cx">25</td>
+<td class="gt_row gt_right" headers="Nx">305,174</td>
+<td class="gt_row gt_right" headers="Mx">1,783</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_right" headers="x">29</td>
+<td class="gt_row gt_right" headers="lx">97,277</td>
+<td class="gt_row gt_right" headers="dx">142</td>
+<td class="gt_row gt_right" headers="qx">0.00146</td>
+<td class="gt_row gt_right" headers="mux">0.00142</td>
+<td class="gt_row gt_right" headers="Dx">17,953</td>
+<td class="gt_row gt_right" headers="Cx">25</td>
+<td class="gt_row gt_right" headers="Nx">286,117</td>
+<td class="gt_row gt_right" headers="Mx">1,758</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_right" headers="x">30</td>
+<td class="gt_row gt_right" headers="lx">97,136</td>
+<td class="gt_row gt_right" headers="dx">149</td>
+<td class="gt_row gt_right" headers="qx">0.00153</td>
+<td class="gt_row gt_right" headers="mux">0.00149</td>
+<td class="gt_row gt_right" headers="Dx">16,912</td>
+<td class="gt_row gt_right" headers="Cx">24</td>
+<td class="gt_row gt_right" headers="Nx">268,164</td>
+<td class="gt_row gt_right" headers="Mx">1,733</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_right" headers="x">31</td>
+<td class="gt_row gt_right" headers="lx">96,987</td>
+<td class="gt_row gt_right" headers="dx">156</td>
+<td class="gt_row gt_right" headers="qx">0.00161</td>
+<td class="gt_row gt_right" headers="mux">0.00157</td>
+<td class="gt_row gt_right" headers="Dx">15,931</td>
+<td class="gt_row gt_right" headers="Cx">24</td>
+<td class="gt_row gt_right" headers="Nx">251,251</td>
+<td class="gt_row gt_right" headers="Mx">1,709</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_right" headers="x">32</td>
+<td class="gt_row gt_right" headers="lx">96,831</td>
+<td class="gt_row gt_right" headers="dx">164</td>
+<td class="gt_row gt_right" headers="qx">0.00170</td>
+<td class="gt_row gt_right" headers="mux">0.00165</td>
+<td class="gt_row gt_right" headers="Dx">15,005</td>
+<td class="gt_row gt_right" headers="Cx">24</td>
+<td class="gt_row gt_right" headers="Nx">235,321</td>
+<td class="gt_row gt_right" headers="Mx">1,685</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_right" headers="x">33</td>
+<td class="gt_row gt_right" headers="lx">96,667</td>
+<td class="gt_row gt_right" headers="dx">173</td>
+<td class="gt_row gt_right" headers="qx">0.00179</td>
+<td class="gt_row gt_right" headers="mux">0.00174</td>
+<td class="gt_row gt_right" headers="Dx">14,131</td>
+<td class="gt_row gt_right" headers="Cx">24</td>
+<td class="gt_row gt_right" headers="Nx">220,316</td>
+<td class="gt_row gt_right" headers="Mx">1,661</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_right" headers="x">34</td>
+<td class="gt_row gt_right" headers="lx">96,494</td>
+<td class="gt_row gt_right" headers="dx">183</td>
+<td class="gt_row gt_right" headers="qx">0.00190</td>
+<td class="gt_row gt_right" headers="mux">0.00185</td>
+<td class="gt_row gt_right" headers="Dx">13,308</td>
+<td class="gt_row gt_right" headers="Cx">24</td>
+<td class="gt_row gt_right" headers="Nx">206,185</td>
+<td class="gt_row gt_right" headers="Mx">1,637</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_right" headers="x">35</td>
+<td class="gt_row gt_right" headers="lx">96,310</td>
+<td class="gt_row gt_right" headers="dx">194</td>
+<td class="gt_row gt_right" headers="qx">0.00201</td>
+<td class="gt_row gt_right" headers="mux">0.00196</td>
+<td class="gt_row gt_right" headers="Dx">12,530</td>
+<td class="gt_row gt_right" headers="Cx">24</td>
+<td class="gt_row gt_right" headers="Nx">192,877</td>
+<td class="gt_row gt_right" headers="Mx">1,613</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_right" headers="x">36</td>
+<td class="gt_row gt_right" headers="lx">96,117</td>
+<td class="gt_row gt_right" headers="dx">206</td>
+<td class="gt_row gt_right" headers="qx">0.00214</td>
+<td class="gt_row gt_right" headers="mux">0.00208</td>
+<td class="gt_row gt_right" headers="Dx">11,797</td>
+<td class="gt_row gt_right" headers="Cx">24</td>
+<td class="gt_row gt_right" headers="Nx">180,347</td>
+<td class="gt_row gt_right" headers="Mx">1,589</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_right" headers="x">37</td>
+<td class="gt_row gt_right" headers="lx">95,911</td>
+<td class="gt_row gt_right" headers="dx">219</td>
+<td class="gt_row gt_right" headers="qx">0.00228</td>
+<td class="gt_row gt_right" headers="mux">0.00221</td>
+<td class="gt_row gt_right" headers="Dx">11,106</td>
+<td class="gt_row gt_right" headers="Cx">24</td>
+<td class="gt_row gt_right" headers="Nx">168,549</td>
+<td class="gt_row gt_right" headers="Mx">1,565</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_right" headers="x">38</td>
+<td class="gt_row gt_right" headers="lx">95,692</td>
+<td class="gt_row gt_right" headers="dx">233</td>
+<td class="gt_row gt_right" headers="qx">0.00243</td>
+<td class="gt_row gt_right" headers="mux">0.00236</td>
+<td class="gt_row gt_right" headers="Dx">10,453</td>
+<td class="gt_row gt_right" headers="Cx">24</td>
+<td class="gt_row gt_right" headers="Nx">157,443</td>
+<td class="gt_row gt_right" headers="Mx">1,541</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_right" headers="x">39</td>
+<td class="gt_row gt_right" headers="lx">95,460</td>
+<td class="gt_row gt_right" headers="dx">248</td>
+<td class="gt_row gt_right" headers="qx">0.00260</td>
+<td class="gt_row gt_right" headers="mux">0.00252</td>
+<td class="gt_row gt_right" headers="Dx">9,838</td>
+<td class="gt_row gt_right" headers="Cx">24</td>
+<td class="gt_row gt_right" headers="Nx">146,990</td>
+<td class="gt_row gt_right" headers="Mx">1,517</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_right" headers="x">40</td>
+<td class="gt_row gt_right" headers="lx">95,212</td>
+<td class="gt_row gt_right" headers="dx">265</td>
+<td class="gt_row gt_right" headers="qx">0.00278</td>
+<td class="gt_row gt_right" headers="mux">0.00269</td>
+<td class="gt_row gt_right" headers="Dx">9,257</td>
+<td class="gt_row gt_right" headers="Cx">24</td>
+<td class="gt_row gt_right" headers="Nx">137,152</td>
+<td class="gt_row gt_right" headers="Mx">1,493</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_right" headers="x">41</td>
+<td class="gt_row gt_right" headers="lx">94,947</td>
+<td class="gt_row gt_right" headers="dx">283</td>
+<td class="gt_row gt_right" headers="qx">0.00298</td>
+<td class="gt_row gt_right" headers="mux">0.00288</td>
+<td class="gt_row gt_right" headers="Dx">8,708</td>
+<td class="gt_row gt_right" headers="Cx">24</td>
+<td class="gt_row gt_right" headers="Nx">127,896</td>
+<td class="gt_row gt_right" headers="Mx">1,469</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_right" headers="x">42</td>
+<td class="gt_row gt_right" headers="lx">94,664</td>
+<td class="gt_row gt_right" headers="dx">303</td>
+<td class="gt_row gt_right" headers="qx">0.00320</td>
+<td class="gt_row gt_right" headers="mux">0.00309</td>
+<td class="gt_row gt_right" headers="Dx">8,191</td>
+<td class="gt_row gt_right" headers="Cx">25</td>
+<td class="gt_row gt_right" headers="Nx">119,187</td>
+<td class="gt_row gt_right" headers="Mx">1,445</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_right" headers="x">43</td>
+<td class="gt_row gt_right" headers="lx">94,361</td>
+<td class="gt_row gt_right" headers="dx">325</td>
+<td class="gt_row gt_right" headers="qx">0.00344</td>
+<td class="gt_row gt_right" headers="mux">0.00332</td>
+<td class="gt_row gt_right" headers="Dx">7,703</td>
+<td class="gt_row gt_right" headers="Cx">25</td>
+<td class="gt_row gt_right" headers="Nx">110,996</td>
+<td class="gt_row gt_right" headers="Mx">1,420</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_right" headers="x">44</td>
+<td class="gt_row gt_right" headers="lx">94,036</td>
+<td class="gt_row gt_right" headers="dx">349</td>
+<td class="gt_row gt_right" headers="qx">0.00371</td>
+<td class="gt_row gt_right" headers="mux">0.00358</td>
+<td class="gt_row gt_right" headers="Dx">7,242</td>
+<td class="gt_row gt_right" headers="Cx">25</td>
+<td class="gt_row gt_right" headers="Nx">103,294</td>
+<td class="gt_row gt_right" headers="Mx">1,395</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_right" headers="x">45</td>
+<td class="gt_row gt_right" headers="lx">93,687</td>
+<td class="gt_row gt_right" headers="dx">374</td>
+<td class="gt_row gt_right" headers="qx">0.00400</td>
+<td class="gt_row gt_right" headers="mux">0.00385</td>
+<td class="gt_row gt_right" headers="Dx">6,806</td>
+<td class="gt_row gt_right" headers="Cx">26</td>
+<td class="gt_row gt_right" headers="Nx">96,052</td>
+<td class="gt_row gt_right" headers="Mx">1,369</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_right" headers="x">46</td>
+<td class="gt_row gt_right" headers="lx">93,313</td>
+<td class="gt_row gt_right" headers="dx">403</td>
+<td class="gt_row gt_right" headers="qx">0.00431</td>
+<td class="gt_row gt_right" headers="mux">0.00416</td>
+<td class="gt_row gt_right" headers="Dx">6,395</td>
+<td class="gt_row gt_right" headers="Cx">26</td>
+<td class="gt_row gt_right" headers="Nx">89,246</td>
+<td class="gt_row gt_right" headers="Mx">1,344</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_right" headers="x">47</td>
+<td class="gt_row gt_right" headers="lx">92,910</td>
+<td class="gt_row gt_right" headers="dx">433</td>
+<td class="gt_row gt_right" headers="qx">0.00466</td>
+<td class="gt_row gt_right" headers="mux">0.00449</td>
+<td class="gt_row gt_right" headers="Dx">6,007</td>
+<td class="gt_row gt_right" headers="Cx">26</td>
+<td class="gt_row gt_right" headers="Nx">82,850</td>
+<td class="gt_row gt_right" headers="Mx">1,318</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_right" headers="x">48</td>
+<td class="gt_row gt_right" headers="lx">92,477</td>
+<td class="gt_row gt_right" headers="dx">466</td>
+<td class="gt_row gt_right" headers="qx">0.00504</td>
+<td class="gt_row gt_right" headers="mux">0.00486</td>
+<td class="gt_row gt_right" headers="Dx">5,641</td>
+<td class="gt_row gt_right" headers="Cx">27</td>
+<td class="gt_row gt_right" headers="Nx">76,843</td>
+<td class="gt_row gt_right" headers="Mx">1,291</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<div class="cell-output-display">
+<div>
+<div id="mrdwznweio" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#mrdwznweio table {
+  font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#mrdwznweio thead, #mrdwznweio tbody, #mrdwznweio tfoot, #mrdwznweio tr, #mrdwznweio td, #mrdwznweio th {
+  border-style: none;
+}
+
+#mrdwznweio p {
+  margin: 0;
+  padding: 0;
+}
+
+#mrdwznweio .gt_table {
+  display: table;
+  border-collapse: collapse;
+  line-height: normal;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: 100%;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#mrdwznweio .gt_caption {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+#mrdwznweio .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#mrdwznweio .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 3px;
+  padding-bottom: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#mrdwznweio .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#mrdwznweio .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#mrdwznweio .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#mrdwznweio .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#mrdwznweio .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#mrdwznweio .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#mrdwznweio .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#mrdwznweio .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#mrdwznweio .gt_spanner_row {
+  border-bottom-style: hidden;
+}
+
+#mrdwznweio .gt_group_heading {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  text-align: left;
+}
+
+#mrdwznweio .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#mrdwznweio .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#mrdwznweio .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#mrdwznweio .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#mrdwznweio .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#mrdwznweio .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+  vertical-align: top;
+}
+
+#mrdwznweio .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+#mrdwznweio .gt_row_group_first th {
+  border-top-width: 2px;
+}
+
+#mrdwznweio .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#mrdwznweio .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-color: #D3D3D3;
+}
+
+#mrdwznweio .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+#mrdwznweio .gt_last_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#mrdwznweio .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#mrdwznweio .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#mrdwznweio .gt_last_grand_summary_row_top {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: double;
+  border-bottom-width: 6px;
+  border-bottom-color: #D3D3D3;
+}
+
+#mrdwznweio .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#mrdwznweio .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#mrdwznweio .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#mrdwznweio .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#mrdwznweio .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#mrdwznweio .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#mrdwznweio .gt_left {
+  text-align: left;
+}
+
+#mrdwznweio .gt_center {
+  text-align: center;
+}
+
+#mrdwznweio .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#mrdwznweio .gt_font_normal {
+  font-weight: normal;
+}
+
+#mrdwznweio .gt_font_bold {
+  font-weight: bold;
+}
+
+#mrdwznweio .gt_font_italic {
+  font-style: italic;
+}
+
+#mrdwznweio .gt_super {
+  font-size: 65%;
+}
+
+#mrdwznweio .gt_footnote_marks {
+  font-size: 75%;
+  vertical-align: 0.4em;
+  position: initial;
+}
+
+#mrdwznweio .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+#mrdwznweio .gt_indent_1 {
+  text-indent: 5px;
+}
+
+#mrdwznweio .gt_indent_2 {
+  text-indent: 10px;
+}
+
+#mrdwznweio .gt_indent_3 {
+  text-indent: 15px;
+}
+
+#mrdwznweio .gt_indent_4 {
+  text-indent: 20px;
+}
+
+#mrdwznweio .gt_indent_5 {
+  text-indent: 25px;
+}
+
+#mrdwznweio .katex-display {
+  display: inline-flex !important;
+  margin-bottom: 0.75em !important;
+}
+
+#mrdwznweio div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+  height: 0px !important;
+}
+</style>
+
+<table class="gt_table table table-sm table-striped small" data-quarto-postprocess="true" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
+<thead>
+<tr class="header gt_heading">
+<th colspan="9" class="gt_heading gt_title gt_font_normal"><span class="math inline">\(\text{Illustrative Life Table}\)</span></th>
+</tr>
+<tr class="odd gt_heading">
+<th colspan="9" class="gt_heading gt_subtitle gt_font_normal gt_bottom_border"><span class="math inline">\(\mu_x=A+Bc^x\)</span></th>
+</tr>
+<tr class="header gt_col_headings">
+<th id="x" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col"><span class="math inline">\(x\)</span></th>
+<th id="lx" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col"><span class="math inline">\(l_x\)</span></th>
+<th id="dx" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col"><span class="math inline">\(d_x\)</span></th>
+<th id="qx" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col"><span class="math inline">\(q_x\)</span></th>
+<th id="mux" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col"><span class="math inline">\(\mu_x\)</span></th>
+<th id="Dx" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col"><span class="math inline">\(D_x\)</span></th>
+<th id="Cx" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col"><span class="math inline">\(C_x\)</span></th>
+<th id="Nx" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col"><span class="math inline">\(N_x\)</span></th>
+<th id="Mx" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col"><span class="math inline">\(M_x\)</span></th>
+</tr>
+</thead>
+<tbody class="gt_table_body">
+<tr class="odd">
+<td class="gt_row gt_right" headers="x">48</td>
+<td class="gt_row gt_right" headers="lx">92,477</td>
+<td class="gt_row gt_right" headers="dx">466</td>
+<td class="gt_row gt_right" headers="qx">0.00504</td>
+<td class="gt_row gt_right" headers="mux">0.00486</td>
+<td class="gt_row gt_right" headers="Dx">5,641</td>
+<td class="gt_row gt_right" headers="Cx">27</td>
+<td class="gt_row gt_right" headers="Nx">76,843</td>
+<td class="gt_row gt_right" headers="Mx">1,291</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_right" headers="x">49</td>
+<td class="gt_row gt_right" headers="lx">92,011</td>
+<td class="gt_row gt_right" headers="dx">503</td>
+<td class="gt_row gt_right" headers="qx">0.00546</td>
+<td class="gt_row gt_right" headers="mux">0.00526</td>
+<td class="gt_row gt_right" headers="Dx">5,295</td>
+<td class="gt_row gt_right" headers="Cx">27</td>
+<td class="gt_row gt_right" headers="Nx">71,202</td>
+<td class="gt_row gt_right" headers="Mx">1,265</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_right" headers="x">50</td>
+<td class="gt_row gt_right" headers="lx">91,508</td>
+<td class="gt_row gt_right" headers="dx">542</td>
+<td class="gt_row gt_right" headers="qx">0.00592</td>
+<td class="gt_row gt_right" headers="mux">0.00570</td>
+<td class="gt_row gt_right" headers="Dx">4,968</td>
+<td class="gt_row gt_right" headers="Cx">28</td>
+<td class="gt_row gt_right" headers="Nx">65,907</td>
+<td class="gt_row gt_right" headers="Mx">1,237</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_right" headers="x">51</td>
+<td class="gt_row gt_right" headers="lx">90,966</td>
+<td class="gt_row gt_right" headers="dx">584</td>
+<td class="gt_row gt_right" headers="qx">0.00642</td>
+<td class="gt_row gt_right" headers="mux">0.00618</td>
+<td class="gt_row gt_right" headers="Dx">4,659</td>
+<td class="gt_row gt_right" headers="Cx">28</td>
+<td class="gt_row gt_right" headers="Nx">60,939</td>
+<td class="gt_row gt_right" headers="Mx">1,209</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_right" headers="x">52</td>
+<td class="gt_row gt_right" headers="lx">90,382</td>
+<td class="gt_row gt_right" headers="dx">630</td>
+<td class="gt_row gt_right" headers="qx">0.00697</td>
+<td class="gt_row gt_right" headers="mux">0.00671</td>
+<td class="gt_row gt_right" headers="Dx">4,367</td>
+<td class="gt_row gt_right" headers="Cx">29</td>
+<td class="gt_row gt_right" headers="Nx">56,280</td>
+<td class="gt_row gt_right" headers="Mx">1,181</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_right" headers="x">53</td>
+<td class="gt_row gt_right" headers="lx">89,752</td>
+<td class="gt_row gt_right" headers="dx">680</td>
+<td class="gt_row gt_right" headers="qx">0.00758</td>
+<td class="gt_row gt_right" headers="mux">0.00729</td>
+<td class="gt_row gt_right" headers="Dx">4,091</td>
+<td class="gt_row gt_right" headers="Cx">29</td>
+<td class="gt_row gt_right" headers="Nx">51,914</td>
+<td class="gt_row gt_right" headers="Mx">1,153</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_right" headers="x">54</td>
+<td class="gt_row gt_right" headers="lx">89,072</td>
+<td class="gt_row gt_right" headers="dx">734</td>
+<td class="gt_row gt_right" headers="qx">0.00824</td>
+<td class="gt_row gt_right" headers="mux">0.00793</td>
+<td class="gt_row gt_right" headers="Dx">3,830</td>
+<td class="gt_row gt_right" headers="Cx">30</td>
+<td class="gt_row gt_right" headers="Nx">47,823</td>
+<td class="gt_row gt_right" headers="Mx">1,123</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_right" headers="x">55</td>
+<td class="gt_row gt_right" headers="lx">88,338</td>
+<td class="gt_row gt_right" headers="dx">792</td>
+<td class="gt_row gt_right" headers="qx">0.00896</td>
+<td class="gt_row gt_right" headers="mux">0.00862</td>
+<td class="gt_row gt_right" headers="Dx">3,584</td>
+<td class="gt_row gt_right" headers="Cx">30</td>
+<td class="gt_row gt_right" headers="Nx">43,992</td>
+<td class="gt_row gt_right" headers="Mx">1,094</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_right" headers="x">56</td>
+<td class="gt_row gt_right" headers="lx">87,547</td>
+<td class="gt_row gt_right" headers="dx">854</td>
+<td class="gt_row gt_right" headers="qx">0.00975</td>
+<td class="gt_row gt_right" headers="mux">0.00939</td>
+<td class="gt_row gt_right" headers="Dx">3,351</td>
+<td class="gt_row gt_right" headers="Cx">31</td>
+<td class="gt_row gt_right" headers="Nx">40,409</td>
+<td class="gt_row gt_right" headers="Mx">1,063</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_right" headers="x">57</td>
+<td class="gt_row gt_right" headers="lx">86,693</td>
+<td class="gt_row gt_right" headers="dx">921</td>
+<td class="gt_row gt_right" headers="qx">0.01062</td>
+<td class="gt_row gt_right" headers="mux">0.01023</td>
+<td class="gt_row gt_right" headers="Dx">3,130</td>
+<td class="gt_row gt_right" headers="Cx">31</td>
+<td class="gt_row gt_right" headers="Nx">37,058</td>
+<td class="gt_row gt_right" headers="Mx">1,032</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_right" headers="x">58</td>
+<td class="gt_row gt_right" headers="lx">85,772</td>
+<td class="gt_row gt_right" headers="dx">993</td>
+<td class="gt_row gt_right" headers="qx">0.01158</td>
+<td class="gt_row gt_right" headers="mux">0.01115</td>
+<td class="gt_row gt_right" headers="Dx">2,921</td>
+<td class="gt_row gt_right" headers="Cx">32</td>
+<td class="gt_row gt_right" headers="Nx">33,928</td>
+<td class="gt_row gt_right" headers="Mx">1,001</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_right" headers="x">59</td>
+<td class="gt_row gt_right" headers="lx">84,779</td>
+<td class="gt_row gt_right" headers="dx">1,070</td>
+<td class="gt_row gt_right" headers="qx">0.01262</td>
+<td class="gt_row gt_right" headers="mux">0.01215</td>
+<td class="gt_row gt_right" headers="Dx">2,724</td>
+<td class="gt_row gt_right" headers="Cx">32</td>
+<td class="gt_row gt_right" headers="Nx">31,007</td>
+<td class="gt_row gt_right" headers="Mx">969</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_right" headers="x">60</td>
+<td class="gt_row gt_right" headers="lx">83,709</td>
+<td class="gt_row gt_right" headers="dx">1,152</td>
+<td class="gt_row gt_right" headers="qx">0.01376</td>
+<td class="gt_row gt_right" headers="mux">0.01326</td>
+<td class="gt_row gt_right" headers="Dx">2,538</td>
+<td class="gt_row gt_right" headers="Cx">33</td>
+<td class="gt_row gt_right" headers="Nx">28,282</td>
+<td class="gt_row gt_right" headers="Mx">937</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_right" headers="x">61</td>
+<td class="gt_row gt_right" headers="lx">82,557</td>
+<td class="gt_row gt_right" headers="dx">1,239</td>
+<td class="gt_row gt_right" headers="qx">0.01501</td>
+<td class="gt_row gt_right" headers="mux">0.01447</td>
+<td class="gt_row gt_right" headers="Dx">2,361</td>
+<td class="gt_row gt_right" headers="Cx">33</td>
+<td class="gt_row gt_right" headers="Nx">25,745</td>
+<td class="gt_row gt_right" headers="Mx">904</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_right" headers="x">62</td>
+<td class="gt_row gt_right" headers="lx">81,318</td>
+<td class="gt_row gt_right" headers="dx">1,332</td>
+<td class="gt_row gt_right" headers="qx">0.01638</td>
+<td class="gt_row gt_right" headers="mux">0.01580</td>
+<td class="gt_row gt_right" headers="Dx">2,194</td>
+<td class="gt_row gt_right" headers="Cx">34</td>
+<td class="gt_row gt_right" headers="Nx">23,384</td>
+<td class="gt_row gt_right" headers="Mx">870</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_right" headers="x">63</td>
+<td class="gt_row gt_right" headers="lx">79,986</td>
+<td class="gt_row gt_right" headers="dx">1,430</td>
+<td class="gt_row gt_right" headers="qx">0.01788</td>
+<td class="gt_row gt_right" headers="mux">0.01726</td>
+<td class="gt_row gt_right" headers="Dx">2,036</td>
+<td class="gt_row gt_right" headers="Cx">34</td>
+<td class="gt_row gt_right" headers="Nx">21,190</td>
+<td class="gt_row gt_right" headers="Mx">836</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_right" headers="x">64</td>
+<td class="gt_row gt_right" headers="lx">78,556</td>
+<td class="gt_row gt_right" headers="dx">1,534</td>
+<td class="gt_row gt_right" headers="qx">0.01952</td>
+<td class="gt_row gt_right" headers="mux">0.01885</td>
+<td class="gt_row gt_right" headers="Dx">1,886</td>
+<td class="gt_row gt_right" headers="Cx">35</td>
+<td class="gt_row gt_right" headers="Nx">19,154</td>
+<td class="gt_row gt_right" headers="Mx">802</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_right" headers="x">65</td>
+<td class="gt_row gt_right" headers="lx">77,022</td>
+<td class="gt_row gt_right" headers="dx">1,642</td>
+<td class="gt_row gt_right" headers="qx">0.02132</td>
+<td class="gt_row gt_right" headers="mux">0.02061</td>
+<td class="gt_row gt_right" headers="Dx">1,745</td>
+<td class="gt_row gt_right" headers="Cx">35</td>
+<td class="gt_row gt_right" headers="Nx">17,268</td>
+<td class="gt_row gt_right" headers="Mx">767</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_right" headers="x">66</td>
+<td class="gt_row gt_right" headers="lx">75,380</td>
+<td class="gt_row gt_right" headers="dx">1,755</td>
+<td class="gt_row gt_right" headers="qx">0.02329</td>
+<td class="gt_row gt_right" headers="mux">0.02253</td>
+<td class="gt_row gt_right" headers="Dx">1,611</td>
+<td class="gt_row gt_right" headers="Cx">35</td>
+<td class="gt_row gt_right" headers="Nx">15,523</td>
+<td class="gt_row gt_right" headers="Mx">732</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_right" headers="x">67</td>
+<td class="gt_row gt_right" headers="lx">73,625</td>
+<td class="gt_row gt_right" headers="dx">1,873</td>
+<td class="gt_row gt_right" headers="qx">0.02544</td>
+<td class="gt_row gt_right" headers="mux">0.02463</td>
+<td class="gt_row gt_right" headers="Dx">1,484</td>
+<td class="gt_row gt_right" headers="Cx">36</td>
+<td class="gt_row gt_right" headers="Nx">13,912</td>
+<td class="gt_row gt_right" headers="Mx">697</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_right" headers="x">68</td>
+<td class="gt_row gt_right" headers="lx">71,752</td>
+<td class="gt_row gt_right" headers="dx">1,994</td>
+<td class="gt_row gt_right" headers="qx">0.02779</td>
+<td class="gt_row gt_right" headers="mux">0.02694</td>
+<td class="gt_row gt_right" headers="Dx">1,365</td>
+<td class="gt_row gt_right" headers="Cx">36</td>
+<td class="gt_row gt_right" headers="Nx">12,428</td>
+<td class="gt_row gt_right" headers="Mx">661</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_right" headers="x">69</td>
+<td class="gt_row gt_right" headers="lx">69,758</td>
+<td class="gt_row gt_right" headers="dx">2,118</td>
+<td class="gt_row gt_right" headers="qx">0.03037</td>
+<td class="gt_row gt_right" headers="mux">0.02947</td>
+<td class="gt_row gt_right" headers="Dx">1,252</td>
+<td class="gt_row gt_right" headers="Cx">36</td>
+<td class="gt_row gt_right" headers="Nx">11,063</td>
+<td class="gt_row gt_right" headers="Mx">625</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_right" headers="x">70</td>
+<td class="gt_row gt_right" headers="lx">67,639</td>
+<td class="gt_row gt_right" headers="dx">2,244</td>
+<td class="gt_row gt_right" headers="qx">0.03318</td>
+<td class="gt_row gt_right" headers="mux">0.03225</td>
+<td class="gt_row gt_right" headers="Dx">1,145</td>
+<td class="gt_row gt_right" headers="Cx">36</td>
+<td class="gt_row gt_right" headers="Nx">9,811</td>
+<td class="gt_row gt_right" headers="Mx">590</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_right" headers="x">71</td>
+<td class="gt_row gt_right" headers="lx">65,395</td>
+<td class="gt_row gt_right" headers="dx">2,371</td>
+<td class="gt_row gt_right" headers="qx">0.03626</td>
+<td class="gt_row gt_right" headers="mux">0.03529</td>
+<td class="gt_row gt_right" headers="Dx">1,044</td>
+<td class="gt_row gt_right" headers="Cx">36</td>
+<td class="gt_row gt_right" headers="Nx">8,666</td>
+<td class="gt_row gt_right" headers="Mx">554</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_right" headers="x">72</td>
+<td class="gt_row gt_right" headers="lx">63,023</td>
+<td class="gt_row gt_right" headers="dx">2,497</td>
+<td class="gt_row gt_right" headers="qx">0.03962</td>
+<td class="gt_row gt_right" headers="mux">0.03863</td>
+<td class="gt_row gt_right" headers="Dx">949</td>
+<td class="gt_row gt_right" headers="Cx">35</td>
+<td class="gt_row gt_right" headers="Nx">7,622</td>
+<td class="gt_row gt_right" headers="Mx">518</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<div class="cell-output-display">
+<div>
+<div id="kqtssprqav" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#kqtssprqav table {
+  font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#kqtssprqav thead, #kqtssprqav tbody, #kqtssprqav tfoot, #kqtssprqav tr, #kqtssprqav td, #kqtssprqav th {
+  border-style: none;
+}
+
+#kqtssprqav p {
+  margin: 0;
+  padding: 0;
+}
+
+#kqtssprqav .gt_table {
+  display: table;
+  border-collapse: collapse;
+  line-height: normal;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: 100%;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#kqtssprqav .gt_caption {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+#kqtssprqav .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#kqtssprqav .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 3px;
+  padding-bottom: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#kqtssprqav .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#kqtssprqav .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#kqtssprqav .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#kqtssprqav .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#kqtssprqav .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#kqtssprqav .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#kqtssprqav .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#kqtssprqav .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#kqtssprqav .gt_spanner_row {
+  border-bottom-style: hidden;
+}
+
+#kqtssprqav .gt_group_heading {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  text-align: left;
+}
+
+#kqtssprqav .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#kqtssprqav .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#kqtssprqav .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#kqtssprqav .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#kqtssprqav .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#kqtssprqav .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+  vertical-align: top;
+}
+
+#kqtssprqav .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+#kqtssprqav .gt_row_group_first th {
+  border-top-width: 2px;
+}
+
+#kqtssprqav .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#kqtssprqav .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-color: #D3D3D3;
+}
+
+#kqtssprqav .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+#kqtssprqav .gt_last_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#kqtssprqav .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#kqtssprqav .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#kqtssprqav .gt_last_grand_summary_row_top {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: double;
+  border-bottom-width: 6px;
+  border-bottom-color: #D3D3D3;
+}
+
+#kqtssprqav .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#kqtssprqav .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#kqtssprqav .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#kqtssprqav .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#kqtssprqav .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#kqtssprqav .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#kqtssprqav .gt_left {
+  text-align: left;
+}
+
+#kqtssprqav .gt_center {
+  text-align: center;
+}
+
+#kqtssprqav .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#kqtssprqav .gt_font_normal {
+  font-weight: normal;
+}
+
+#kqtssprqav .gt_font_bold {
+  font-weight: bold;
+}
+
+#kqtssprqav .gt_font_italic {
+  font-style: italic;
+}
+
+#kqtssprqav .gt_super {
+  font-size: 65%;
+}
+
+#kqtssprqav .gt_footnote_marks {
+  font-size: 75%;
+  vertical-align: 0.4em;
+  position: initial;
+}
+
+#kqtssprqav .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+#kqtssprqav .gt_indent_1 {
+  text-indent: 5px;
+}
+
+#kqtssprqav .gt_indent_2 {
+  text-indent: 10px;
+}
+
+#kqtssprqav .gt_indent_3 {
+  text-indent: 15px;
+}
+
+#kqtssprqav .gt_indent_4 {
+  text-indent: 20px;
+}
+
+#kqtssprqav .gt_indent_5 {
+  text-indent: 25px;
+}
+
+#kqtssprqav .katex-display {
+  display: inline-flex !important;
+  margin-bottom: 0.75em !important;
+}
+
+#kqtssprqav div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+  height: 0px !important;
+}
+</style>
+
+<table class="gt_table table table-sm table-striped small" data-quarto-postprocess="true" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
+<thead>
+<tr class="header gt_heading">
+<th colspan="9" class="gt_heading gt_title gt_font_normal"><span class="math inline">\(\text{Illustrative Life Table}\)</span></th>
+</tr>
+<tr class="odd gt_heading">
+<th colspan="9" class="gt_heading gt_subtitle gt_font_normal gt_bottom_border"><span class="math inline">\(\mu_x=A+Bc^x\)</span></th>
+</tr>
+<tr class="header gt_col_headings">
+<th id="x" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col"><span class="math inline">\(x\)</span></th>
+<th id="lx" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col"><span class="math inline">\(l_x\)</span></th>
+<th id="dx" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col"><span class="math inline">\(d_x\)</span></th>
+<th id="qx" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col"><span class="math inline">\(q_x\)</span></th>
+<th id="mux" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col"><span class="math inline">\(\mu_x\)</span></th>
+<th id="Dx" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col"><span class="math inline">\(D_x\)</span></th>
+<th id="Cx" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col"><span class="math inline">\(C_x\)</span></th>
+<th id="Nx" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col"><span class="math inline">\(N_x\)</span></th>
+<th id="Mx" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col"><span class="math inline">\(M_x\)</span></th>
+</tr>
+</thead>
+<tbody class="gt_table_body">
+<tr class="odd">
+<td class="gt_row gt_right" headers="x">73</td>
+<td class="gt_row gt_right" headers="lx">60,526</td>
+<td class="gt_row gt_right" headers="dx">2,621</td>
+<td class="gt_row gt_right" headers="qx">0.04330</td>
+<td class="gt_row gt_right" headers="mux">0.04229</td>
+<td class="gt_row gt_right" headers="Dx">860</td>
+<td class="gt_row gt_right" headers="Cx">35</td>
+<td class="gt_row gt_right" headers="Nx">6,673</td>
+<td class="gt_row gt_right" headers="Mx">483</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_right" headers="x">74</td>
+<td class="gt_row gt_right" headers="lx">57,905</td>
+<td class="gt_row gt_right" headers="dx">2,740</td>
+<td class="gt_row gt_right" headers="qx">0.04731</td>
+<td class="gt_row gt_right" headers="mux">0.04630</td>
+<td class="gt_row gt_right" headers="Dx">776</td>
+<td class="gt_row gt_right" headers="Cx">35</td>
+<td class="gt_row gt_right" headers="Nx">5,812</td>
+<td class="gt_row gt_right" headers="Mx">447</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_right" headers="x">75</td>
+<td class="gt_row gt_right" headers="lx">55,166</td>
+<td class="gt_row gt_right" headers="dx">2,852</td>
+<td class="gt_row gt_right" headers="qx">0.05169</td>
+<td class="gt_row gt_right" headers="mux">0.05070</td>
+<td class="gt_row gt_right" headers="Dx">698</td>
+<td class="gt_row gt_right" headers="Cx">34</td>
+<td class="gt_row gt_right" headers="Nx">5,036</td>
+<td class="gt_row gt_right" headers="Mx">413</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_right" headers="x">76</td>
+<td class="gt_row gt_right" headers="lx">52,314</td>
+<td class="gt_row gt_right" headers="dx">2,954</td>
+<td class="gt_row gt_right" headers="qx">0.05647</td>
+<td class="gt_row gt_right" headers="mux">0.05552</td>
+<td class="gt_row gt_right" headers="Dx">624</td>
+<td class="gt_row gt_right" headers="Cx">33</td>
+<td class="gt_row gt_right" headers="Nx">4,338</td>
+<td class="gt_row gt_right" headers="Mx">379</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_right" headers="x">77</td>
+<td class="gt_row gt_right" headers="lx">49,360</td>
+<td class="gt_row gt_right" headers="dx">3,045</td>
+<td class="gt_row gt_right" headers="qx">0.06168</td>
+<td class="gt_row gt_right" headers="mux">0.06081</td>
+<td class="gt_row gt_right" headers="Dx">556</td>
+<td class="gt_row gt_right" headers="Cx">32</td>
+<td class="gt_row gt_right" headers="Nx">3,714</td>
+<td class="gt_row gt_right" headers="Mx">345</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_right" headers="x">78</td>
+<td class="gt_row gt_right" headers="lx">46,315</td>
+<td class="gt_row gt_right" headers="dx">3,120</td>
+<td class="gt_row gt_right" headers="qx">0.06737</td>
+<td class="gt_row gt_right" headers="mux">0.06661</td>
+<td class="gt_row gt_right" headers="Dx">492</td>
+<td class="gt_row gt_right" headers="Cx">31</td>
+<td class="gt_row gt_right" headers="Nx">3,158</td>
+<td class="gt_row gt_right" headers="Mx">313</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_right" headers="x">79</td>
+<td class="gt_row gt_right" headers="lx">43,195</td>
+<td class="gt_row gt_right" headers="dx">3,177</td>
+<td class="gt_row gt_right" headers="qx">0.07356</td>
+<td class="gt_row gt_right" headers="mux">0.07297</td>
+<td class="gt_row gt_right" headers="Dx">433</td>
+<td class="gt_row gt_right" headers="Cx">30</td>
+<td class="gt_row gt_right" headers="Nx">2,666</td>
+<td class="gt_row gt_right" headers="Mx">282</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_right" headers="x">80</td>
+<td class="gt_row gt_right" headers="lx">40,018</td>
+<td class="gt_row gt_right" headers="dx">3,213</td>
+<td class="gt_row gt_right" headers="qx">0.08030</td>
+<td class="gt_row gt_right" headers="mux">0.07994</td>
+<td class="gt_row gt_right" headers="Dx">378</td>
+<td class="gt_row gt_right" headers="Cx">29</td>
+<td class="gt_row gt_right" headers="Nx">2,234</td>
+<td class="gt_row gt_right" headers="Mx">252</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_right" headers="x">81</td>
+<td class="gt_row gt_right" headers="lx">36,804</td>
+<td class="gt_row gt_right" headers="dx">3,225</td>
+<td class="gt_row gt_right" headers="qx">0.08764</td>
+<td class="gt_row gt_right" headers="mux">0.08759</td>
+<td class="gt_row gt_right" headers="Dx">328</td>
+<td class="gt_row gt_right" headers="Cx">27</td>
+<td class="gt_row gt_right" headers="Nx">1,855</td>
+<td class="gt_row gt_right" headers="Mx">223</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_right" headers="x">82</td>
+<td class="gt_row gt_right" headers="lx">33,579</td>
+<td class="gt_row gt_right" headers="dx">3,211</td>
+<td class="gt_row gt_right" headers="qx">0.09561</td>
+<td class="gt_row gt_right" headers="mux">0.09597</td>
+<td class="gt_row gt_right" headers="Dx">282</td>
+<td class="gt_row gt_right" headers="Cx">25</td>
+<td class="gt_row gt_right" headers="Nx">1,527</td>
+<td class="gt_row gt_right" headers="Mx">196</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_right" headers="x">83</td>
+<td class="gt_row gt_right" headers="lx">30,368</td>
+<td class="gt_row gt_right" headers="dx">3,167</td>
+<td class="gt_row gt_right" headers="qx">0.10428</td>
+<td class="gt_row gt_right" headers="mux">0.10516</td>
+<td class="gt_row gt_right" headers="Dx">241</td>
+<td class="gt_row gt_right" headers="Cx">24</td>
+<td class="gt_row gt_right" headers="Nx">1,245</td>
+<td class="gt_row gt_right" headers="Mx">171</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_right" headers="x">84</td>
+<td class="gt_row gt_right" headers="lx">27,202</td>
+<td class="gt_row gt_right" headers="dx">3,092</td>
+<td class="gt_row gt_right" headers="qx">0.11369</td>
+<td class="gt_row gt_right" headers="mux">0.11524</td>
+<td class="gt_row gt_right" headers="Dx">204</td>
+<td class="gt_row gt_right" headers="Cx">22</td>
+<td class="gt_row gt_right" headers="Nx">1,004</td>
+<td class="gt_row gt_right" headers="Mx">147</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_right" headers="x">85</td>
+<td class="gt_row gt_right" headers="lx">24,109</td>
+<td class="gt_row gt_right" headers="dx">2,987</td>
+<td class="gt_row gt_right" headers="qx">0.12389</td>
+<td class="gt_row gt_right" headers="mux">0.12629</td>
+<td class="gt_row gt_right" headers="Dx">170</td>
+<td class="gt_row gt_right" headers="Cx">20</td>
+<td class="gt_row gt_right" headers="Nx">800</td>
+<td class="gt_row gt_right" headers="Mx">125</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_right" headers="x">86</td>
+<td class="gt_row gt_right" headers="lx">21,122</td>
+<td class="gt_row gt_right" headers="dx">2,850</td>
+<td class="gt_row gt_right" headers="qx">0.13494</td>
+<td class="gt_row gt_right" headers="mux">0.13841</td>
+<td class="gt_row gt_right" headers="Dx">141</td>
+<td class="gt_row gt_right" headers="Cx">18</td>
+<td class="gt_row gt_right" headers="Nx">630</td>
+<td class="gt_row gt_right" headers="Mx">105</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_right" headers="x">87</td>
+<td class="gt_row gt_right" headers="lx">18,272</td>
+<td class="gt_row gt_right" headers="dx">2,684</td>
+<td class="gt_row gt_right" headers="qx">0.14689</td>
+<td class="gt_row gt_right" headers="mux">0.15170</td>
+<td class="gt_row gt_right" headers="Dx">115</td>
+<td class="gt_row gt_right" headers="Cx">16</td>
+<td class="gt_row gt_right" headers="Nx">489</td>
+<td class="gt_row gt_right" headers="Mx">87</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_right" headers="x">88</td>
+<td class="gt_row gt_right" headers="lx">15,588</td>
+<td class="gt_row gt_right" headers="dx">2,491</td>
+<td class="gt_row gt_right" headers="qx">0.15981</td>
+<td class="gt_row gt_right" headers="mux">0.16627</td>
+<td class="gt_row gt_right" headers="Dx">92</td>
+<td class="gt_row gt_right" headers="Cx">14</td>
+<td class="gt_row gt_right" headers="Nx">374</td>
+<td class="gt_row gt_right" headers="Mx">71</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_right" headers="x">89</td>
+<td class="gt_row gt_right" headers="lx">13,097</td>
+<td class="gt_row gt_right" headers="dx">2,276</td>
+<td class="gt_row gt_right" headers="qx">0.17375</td>
+<td class="gt_row gt_right" headers="mux">0.18224</td>
+<td class="gt_row gt_right" headers="Dx">73</td>
+<td class="gt_row gt_right" headers="Cx">12</td>
+<td class="gt_row gt_right" headers="Nx">282</td>
+<td class="gt_row gt_right" headers="Mx">57</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_right" headers="x">90</td>
+<td class="gt_row gt_right" headers="lx">10,821</td>
+<td class="gt_row gt_right" headers="dx">2,043</td>
+<td class="gt_row gt_right" headers="qx">0.18877</td>
+<td class="gt_row gt_right" headers="mux">0.19975</td>
+<td class="gt_row gt_right" headers="Dx">57</td>
+<td class="gt_row gt_right" headers="Cx">10</td>
+<td class="gt_row gt_right" headers="Nx">208</td>
+<td class="gt_row gt_right" headers="Mx">45</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_right" headers="x">91</td>
+<td class="gt_row gt_right" headers="lx">8,779</td>
+<td class="gt_row gt_right" headers="dx">1,799</td>
+<td class="gt_row gt_right" headers="qx">0.20493</td>
+<td class="gt_row gt_right" headers="mux">0.21896</td>
+<td class="gt_row gt_right" headers="Dx">44</td>
+<td class="gt_row gt_right" headers="Cx">8</td>
+<td class="gt_row gt_right" headers="Nx">151</td>
+<td class="gt_row gt_right" headers="Mx">35</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_right" headers="x">92</td>
+<td class="gt_row gt_right" headers="lx">6,980</td>
+<td class="gt_row gt_right" headers="dx">1,551</td>
+<td class="gt_row gt_right" headers="qx">0.22227</td>
+<td class="gt_row gt_right" headers="mux">0.24002</td>
+<td class="gt_row gt_right" headers="Dx">33</td>
+<td class="gt_row gt_right" headers="Cx">7</td>
+<td class="gt_row gt_right" headers="Nx">108</td>
+<td class="gt_row gt_right" headers="Mx">27</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_right" headers="x">93</td>
+<td class="gt_row gt_right" headers="lx">5,428</td>
+<td class="gt_row gt_right" headers="dx">1,307</td>
+<td class="gt_row gt_right" headers="qx">0.24086</td>
+<td class="gt_row gt_right" headers="mux">0.26310</td>
+<td class="gt_row gt_right" headers="Dx">24</td>
+<td class="gt_row gt_right" headers="Cx">5</td>
+<td class="gt_row gt_right" headers="Nx">75</td>
+<td class="gt_row gt_right" headers="Mx">20</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_right" headers="x">94</td>
+<td class="gt_row gt_right" headers="lx">4,121</td>
+<td class="gt_row gt_right" headers="dx">1,074</td>
+<td class="gt_row gt_right" headers="qx">0.26073</td>
+<td class="gt_row gt_right" headers="mux">0.28842</td>
+<td class="gt_row gt_right" headers="Dx">17</td>
+<td class="gt_row gt_right" headers="Cx">4</td>
+<td class="gt_row gt_right" headers="Nx">51</td>
+<td class="gt_row gt_right" headers="Mx">14</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_right" headers="x">95</td>
+<td class="gt_row gt_right" headers="lx">3,046</td>
+<td class="gt_row gt_right" headers="dx">859</td>
+<td class="gt_row gt_right" headers="qx">0.28191</td>
+<td class="gt_row gt_right" headers="mux">0.31618</td>
+<td class="gt_row gt_right" headers="Dx">12</td>
+<td class="gt_row gt_right" headers="Cx">3</td>
+<td class="gt_row gt_right" headers="Nx">34</td>
+<td class="gt_row gt_right" headers="Mx">10</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_right" headers="x">96</td>
+<td class="gt_row gt_right" headers="lx">2,188</td>
+<td class="gt_row gt_right" headers="dx">666</td>
+<td class="gt_row gt_right" headers="qx">0.30445</td>
+<td class="gt_row gt_right" headers="mux">0.34662</td>
+<td class="gt_row gt_right" headers="Dx">8</td>
+<td class="gt_row gt_right" headers="Cx">2</td>
+<td class="gt_row gt_right" headers="Nx">21</td>
+<td class="gt_row gt_right" headers="Mx">7</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_right" headers="x">97</td>
+<td class="gt_row gt_right" headers="lx">1,522</td>
+<td class="gt_row gt_right" headers="dx">500</td>
+<td class="gt_row gt_right" headers="qx">0.32834</td>
+<td class="gt_row gt_right" headers="mux">0.37999</td>
+<td class="gt_row gt_right" headers="Dx">5</td>
+<td class="gt_row gt_right" headers="Cx">2</td>
+<td class="gt_row gt_right" headers="Nx">13</td>
+<td class="gt_row gt_right" headers="Mx">5</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+</div>
+
+
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./answers.html" class="pagination-link" aria-label="Answers to Supplementary Exercises">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Answers to Supplementary Exercises</span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./biblio.html" class="pagination-link" aria-label="Bibliography">
+        <span class="nav-page-text">Bibliography</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

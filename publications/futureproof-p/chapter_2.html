@@ -1,0 +1,1520 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.9.38">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>2&nbsp; Univariate Distributions – FutureProof P</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./chapter_3.html" rel="next">
+<link href="./chapter_1.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-12eeb4b20e9f5a2b0bfc604bfaf942bb.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<link rel="icon" type="image/x-icon" href="favincon-32x32.png">    
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="nav-sidebar floating quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./chapter_2.html"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Univariate Distributions</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">FutureProof P</a> 
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Preface</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./chapter_1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">General Probability</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./chapter_2.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Univariate Distributions</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./chapter_3.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Multivariate Distributions</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./answers.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Answers to Supplementary Exercises</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./biblio.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Bibliography</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./copyright.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Copyright notice</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./about.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">About the author</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./report.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Report Content Errors</span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#supplementary-concepts" id="toc-supplementary-concepts" class="nav-link active" data-scroll-target="#supplementary-concepts"><span class="header-section-number">2.1</span> Supplementary Concepts</a>
+  <ul>
+  <li><a href="#random-variables" id="toc-random-variables" class="nav-link" data-scroll-target="#random-variables">Random variables</a></li>
+  <li><a href="#probability-mass-functions-and-probability-density-functions" id="toc-probability-mass-functions-and-probability-density-functions" class="nav-link" data-scroll-target="#probability-mass-functions-and-probability-density-functions">Probability mass functions and probability density functions</a></li>
+  <li><a href="#cumulative-distribution-functions" id="toc-cumulative-distribution-functions" class="nav-link" data-scroll-target="#cumulative-distribution-functions">Cumulative distribution functions</a></li>
+  <li><a href="#calculating-probabilities-from-a-distribution" id="toc-calculating-probabilities-from-a-distribution" class="nav-link" data-scroll-target="#calculating-probabilities-from-a-distribution">Calculating probabilities from a distribution</a></li>
+  <li><a href="#conditional-probabilities-and-conditional-distributions" id="toc-conditional-probabilities-and-conditional-distributions" class="nav-link" data-scroll-target="#conditional-probabilities-and-conditional-distributions">Conditional probabilities and conditional distributions</a></li>
+  <li><a href="#expected-values-and-functions-of-random-variables" id="toc-expected-values-and-functions-of-random-variables" class="nav-link" data-scroll-target="#expected-values-and-functions-of-random-variables">Expected values and functions of random variables</a></li>
+  <li><a href="#moments" id="toc-moments" class="nav-link" data-scroll-target="#moments">Moments</a></li>
+  <li><a href="#mode-median-and-percentiles" id="toc-mode-median-and-percentiles" class="nav-link" data-scroll-target="#mode-median-and-percentiles">Mode, median, and percentiles</a></li>
+  <li><a href="#variance-standard-deviation-and-coefficient-of-variation" id="toc-variance-standard-deviation-and-coefficient-of-variation" class="nav-link" data-scroll-target="#variance-standard-deviation-and-coefficient-of-variation">Variance, standard deviation, and coefficient of variation</a></li>
+  <li><a href="#inflation-and-other-linear-adjustments" id="toc-inflation-and-other-linear-adjustments" class="nav-link" data-scroll-target="#inflation-and-other-linear-adjustments">Inflation and other linear adjustments</a></li>
+  <li><a href="#ordinary-deductibles" id="toc-ordinary-deductibles" class="nav-link" data-scroll-target="#ordinary-deductibles">Ordinary deductibles</a></li>
+  <li><a href="#franchise-deductibles" id="toc-franchise-deductibles" class="nav-link" data-scroll-target="#franchise-deductibles">Franchise deductibles</a></li>
+  <li><a href="#policy-limits-and-limited-losses" id="toc-policy-limits-and-limited-losses" class="nav-link" data-scroll-target="#policy-limits-and-limited-losses">Policy limits and limited losses</a></li>
+  <li><a href="#deductibles-coinsurance-and-benefit-limits" id="toc-deductibles-coinsurance-and-benefit-limits" class="nav-link" data-scroll-target="#deductibles-coinsurance-and-benefit-limits">Deductibles, coinsurance, and benefit limits</a></li>
+  <li><a href="#distribution-of-an-insurance-payment" id="toc-distribution-of-an-insurance-payment" class="nav-link" data-scroll-target="#distribution-of-an-insurance-payment">Distribution of an insurance payment</a></li>
+  <li><a href="#expected-value-and-variance-of-insurance-payments" id="toc-expected-value-and-variance-of-insurance-payments" class="nav-link" data-scroll-target="#expected-value-and-variance-of-insurance-payments">Expected value and variance of insurance payments</a></li>
+  </ul></li>
+  <li><a href="#solved-exercises" id="toc-solved-exercises" class="nav-link" data-scroll-target="#solved-exercises"><span class="header-section-number">2.2</span> Solved Exercises</a>
+  <ul>
+  <li><a href="#basic-probabilities" id="toc-basic-probabilities" class="nav-link" data-scroll-target="#basic-probabilities">Basic probabilities</a></li>
+  </ul></li>
+  <li><a href="#supplementary-exercises" id="toc-supplementary-exercises" class="nav-link" data-scroll-target="#supplementary-exercises"><span class="header-section-number">2.3</span> Supplementary Exercises</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Univariate Distributions</span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="supplementary-concepts" class="level2" data-number="2.1">
+<h2 data-number="2.1" class="anchored" data-anchor-id="supplementary-concepts"><span class="header-section-number">2.1</span> Supplementary Concepts</h2>
+<section id="random-variables" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="random-variables">Random variables</h4>
+<p>A random variable is a function that assigns a real number to each outcome in a sample space. If <span class="math inline">\(\Omega\)</span> is the sample space, then a random variable <span class="math inline">\(X\)</span> is a function</p>
+<p><span class="math inline">\(\displaystyle X:\Omega\longrightarrow\mathbb{R}\)</span></p>
+<p>A random variable is discrete if it takes values in a finite or countable set. It is continuous if its possible values form an interval or collection of intervals.</p>
+<hr id="thin">
+</section>
+<section id="probability-mass-functions-and-probability-density-functions" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="probability-mass-functions-and-probability-density-functions">Probability mass functions and probability density functions</h4>
+<p>For a discrete random variable <span class="math inline">\(X\)</span>, the probability mass function, or pmf, is</p>
+<p><span class="math display">\[p_X(x)=\Pr[X=x].\]</span></p>
+<p>It satisfies</p>
+<p><span class="math display">\[p_X(x)\geq 0\]</span></p>
+<p>and</p>
+<p><span class="math display">\[\sum_x p_X(x)=1.\]</span></p>
+<p>For a continuous random variable <span class="math inline">\(X\)</span>, the probability density function, or pdf, is denoted by <span class="math inline">\(f_X(x)\)</span> and satisfies</p>
+<p><span class="math inline">\(\displaystyle f_X(x)\geq 0\)</span></p>
+<p>and</p>
+<p><span class="math inline">\(\displaystyle \int_{-\infty}^{\infty}f_X(x)\,dx=1\)</span></p>
+<p>For a continuous random variable,</p>
+<p><span class="math inline">\(\displaystyle \boxed{\Pr[a&lt;X\leq b]=\int_a^b f_X(x),dx}.\)</span></p>
+<p>The value <span class="math inline">\(f_X(x)\)</span> is a density, not a probability. In particular,</p>
+<p><span class="math inline">\(\displaystyle \Pr[X=x]=0\)</span></p>
+<p>for every individual value <span class="math inline">\(x\)</span> when <span class="math inline">\(X\)</span> is continuous.</p>
+<hr id="thin">
+</section>
+<section id="cumulative-distribution-functions" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="cumulative-distribution-functions">Cumulative distribution functions</h4>
+<p>The <strong>cumulative distribution function</strong>, or cdf, of a random variable <span class="math inline">\(X\)</span> is</p>
+<p><span class="math inline">\(\displaystyle F_X(x)=\Pr[X\leq x]\)</span></p>
+<p>Every cumulative distribution function satisfies</p>
+<p><span class="math inline">\(\displaystyle 0\leq F_X(x)\leq 1,\)</span></p>
+<p><span class="math inline">\(\displaystyle \lim_{x\to-\infty}F_X(x)=0,\)</span></p>
+<p>and</p>
+<p><span class="math inline">\(\displaystyle \lim_{x\to\infty}F_X(x)=1.\)</span></p>
+<p>It is also nondecreasing and right-continuous.</p>
+<p>For a continuous random variable,</p>
+<p><span class="math inline">\(\displaystyle F_X(x)=\int_{-\infty}^{x}f_X(t),dt.\)</span></p>
+<p>When <span class="math inline">\(F_X\)</span> is differentiable,</p>
+<p><span class="math inline">\(\displaystyle f_X(x)=F_X'(x)\)</span></p>
+<hr id="thin">
+</section>
+<section id="calculating-probabilities-from-a-distribution" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="calculating-probabilities-from-a-distribution">Calculating probabilities from a distribution</h4>
+<p>For any random variable,</p>
+<p><span class="math inline">\(\displaystyle \Pr[a&lt;X\leq b]=F_X(b)-F_X(a)\)</span></p>
+<p>For a discrete random variable,</p>
+<p><span class="math inline">\(\displaystyle \Pr[a\leq X\leq b]=\sum_{x=a}^{b}p_X(x),\)</span></p>
+<p>where the sum is taken over possible values of <span class="math inline">\(X\)</span>.</p>
+<p>For a continuous random variable, the inclusion or exclusion of endpoints does not affect the probability:</p>
+<p><span class="math inline">\(\displaystyle \Pr[a&lt;X&lt;b]=\Pr[a\leq X\leq b].\)</span></p>
+<p>The survival function associated with <span class="math inline">\(X\)</span> is</p>
+<p><span class="math inline">\(\displaystyle S_X(x)=\Pr[X&gt;x]=1-F_X(x)\)</span></p>
+<p>Thus,</p>
+<p><span class="math inline">\(\displaystyle \Pr[X&gt;x]=1-F_X(x)\)</span></p>
+<hr id="thin">
+</section>
+<section id="conditional-probabilities-and-conditional-distributions" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="conditional-probabilities-and-conditional-distributions">Conditional probabilities and conditional distributions</h4>
+<p>For events involving a random variable, conditional probability is calculated using</p>
+<p><span class="math inline">\(\displaystyle \Pr[A\mid B]=\frac{\Pr[A\cap B]}{\Pr[B]}\)</span></p>
+<p>provided that <span class="math inline">\(\Pr[B]&gt;0\)</span>.</p>
+<p>For example, when <span class="math inline">\(a&lt;b&lt;c\)</span>,</p>
+<p><span class="math inline">\(\displaystyle \Pr[X&gt;b\mid X&gt;a]=\frac{\Pr[X&gt;b]}{\Pr[X&gt;a]}\)</span></p>
+<p>because <span class="math inline">\({X&gt;b}\subseteq{X&gt;a}\)</span>.</p>
+<p>Therefore,</p>
+<p><span class="math inline">\(\displaystyle \Pr[X&gt;b\mid X&gt;a]=\frac{1-F_X(b)}{1-F_X(a)}\)</span></p>
+<p>More generally,</p>
+<p><span class="math inline">\(\displaystyle \boxed{\Pr[b&lt;X\leq c\mid X&gt;a]
+=\frac{F_X(c)-F_X(b)}{1-F_X(a)}}\)</span></p>
+<p>when <span class="math inline">\(a\leq b&lt;c\)</span> and <span class="math inline">\(F_X(a)&lt;1\)</span>.</p>
+<p>For a continuous random variable conditioned on an event <span class="math inline">\(B\)</span>, the conditional density is</p>
+<p><span class="math inline">\(\displaystyle f_{X\mid B}(x)=\frac{f_X(x)}{\Pr[B]}\)</span></p>
+<p>for values of <span class="math inline">\(x\)</span> satisfying the event <span class="math inline">\(B\)</span>, and is zero otherwise.</p>
+<hr id="thin">
+</section>
+<section id="expected-values-and-functions-of-random-variables" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="expected-values-and-functions-of-random-variables">Expected values and functions of random variables</h4>
+<p>The <strong>expected value</strong> of a discrete random variable is</p>
+<p><span class="math inline">\(\displaystyle \boxed{\operatorname{E}[X]=\sum_x x,p_X(x)}.\)</span></p>
+<p>For a continuous random variable,</p>
+<p><span class="math inline">\(\displaystyle \boxed{\operatorname{E}[X]=\int_{-\infty}^{\infty}x f_X(x),dx}.\)</span></p>
+<p>More generally, if <span class="math inline">\(g\)</span> is a function of <span class="math inline">\(X\)</span>, then</p>
+<p><span class="math inline">\(\displaystyle \operatorname{E}[g(X)]=\sum_x g(x)p_X(x)\)</span></p>
+<p>in the discrete case, and</p>
+<p><span class="math inline">\(\displaystyle \operatorname{E}[g(X)]=\int_{-\infty}^{\infty}g(x)f_X(x)\,dx\)</span></p>
+<p>in the continuous case.</p>
+<p>This result allows the expected value of an insurance payment to be calculated directly from the loss distribution without first deriving the complete distribution of the payment.</p>
+<p>Linearity of expectation gives</p>
+<p><span class="math inline">\(\displaystyle \operatorname{E}[aX+b]=a\operatorname{E}[X]+b}\)</span></p>
+<hr id="thin">
+</section>
+<section id="moments" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="moments">Moments</h4>
+<p>The <span class="math inline">\(k\)</span>th <strong>raw moment</strong> of <span class="math inline">\(X\)</span> is</p>
+<p><span class="math inline">\(\displaystyle \operatorname{E}[X^k]\)</span></p>
+<p>The first raw moment is the mean:</p>
+<p><span class="math inline">\(\displaystyle \operatorname{E}[X].\)</span></p>
+<p>The <span class="math inline">\(k\)</span>th <strong>central moment</strong> is</p>
+<p><span class="math inline">\(\displaystyle \operatorname{E}\left[(X-\operatorname{E}[X])^k\right]\)</span></p>
+<p>The second central moment is the variance.</p>
+<p>For a nonnegative continuous random variable,</p>
+<p><span class="math inline">\(\displaystyle \operatorname{E}[X]=\int_0^\infty \Pr[X&gt;x]\,dx\)</span></p>
+<p>More generally,</p>
+<p><span class="math inline">\(\displaystyle \boxed{\operatorname{E}[X^k]
+=k\int_0^\infty x^{k-1}\Pr[X&gt;x],dx}\)</span></p>
+<p>provided that the moment exists.</p>
+<p>These survival-function formulas are particularly useful for loss and payment random variables.</p>
+<hr id="thin">
+</section>
+<section id="mode-median-and-percentiles" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="mode-median-and-percentiles">Mode, median, and percentiles</h4>
+<p>The <strong>mode</strong> is a value at which the probability mass function or probability density function is maximized.</p>
+<p>For a discrete random variable, a mode <span class="math inline">\(m\)</span> satisfies</p>
+<p><span class="math inline">\(\displaystyle p_X(m)\geq p_X(x)\)</span></p>
+<p>for every possible value <span class="math inline">\(x\)</span>.</p>
+<p>For a continuous random variable, a mode <span class="math inline">\(m\)</span> satisfies</p>
+<p><span class="math inline">\(\displaystyle f_X(m)\geq f_X(x)\)</span></p>
+<p>for all relevant values of <span class="math inline">\(x\)</span>.</p>
+<p>A <strong>median</strong> is a value <span class="math inline">\(m\)</span> satisfying</p>
+<p><span class="math inline">\(\displaystyle \Pr[X\leq m]\geq 0.5\)</span></p>
+<p>and</p>
+<p><span class="math inline">\(\displaystyle \Pr[X\geq m]\geq 0.5.\)</span></p>
+<p>For a continuous distribution with a strictly increasing cdf, the median satisfies</p>
+<p><span class="math inline">\(\displaystyle F_X(m)=0.5\)</span></p>
+<p>The <span class="math inline">\(p\)</span>th percentile, or quantile, is</p>
+<p><span class="math inline">\(\displaystyle x_p=F_X^{-1}(p)\)</span></p>
+<p>and satisfies</p>
+<p><span class="math inline">\(\displaystyle F_X(x_p)=p.\)</span></p>
+<p>For example, the <span class="math inline">\(95\)</span>th percentile is the loss amount that is not exceeded with probability <span class="math inline">\(0.95\)</span>.</p>
+<hr id="thin">
+</section>
+<section id="variance-standard-deviation-and-coefficient-of-variation" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="variance-standard-deviation-and-coefficient-of-variation">Variance, standard deviation, and coefficient of variation</h4>
+<p>The <strong>variance</strong> of <span class="math inline">\(X\)</span> measures dispersion around its expected value:</p>
+<p><span class="math inline">\(\displaystyle \operatorname{Var}(X)=\operatorname{E}\left[(X-\operatorname{E}[X])^2\right]\)</span></p>
+<p>The computational form is</p>
+<p><span class="math inline">\(\displaystyle \boxed{\operatorname{Var}(X)
+=\operatorname{E}[X^2]-\left(\operatorname{E}[X]\right)^2}.\)</span></p>
+<p>The <strong>standard deviation</strong> is</p>
+<p><span class="math inline">\(\displaystyle \operatorname{SD}(X)=\sqrt{\operatorname{Var}(X)}\)</span></p>
+<p>For constants <span class="math inline">\(a\)</span> and <span class="math inline">\(b\)</span>,</p>
+<p><span class="math inline">\(\displaystyle \operatorname{Var}(aX+b)=a^2\operatorname{Var}(X)\)</span></p>
+<p>and</p>
+<p><span class="math inline">\(\displaystyle \operatorname{SD}(aX+b)=|a|\operatorname{SD}(X)\)</span></p>
+<p>When <span class="math inline">\(\operatorname{E}[X]&gt;0\)</span>, the <strong>coefficient of variation</strong> is</p>
+<p><span class="math inline">\(\displaystyle \boxed{\operatorname{CV}(X)
+=\frac{\operatorname{SD}(X)}{\operatorname{E}[X]}}.\)</span></p>
+<p>The coefficient of variation measures variability relative to the mean and is dimensionless.</p>
+<hr id="thin">
+</section>
+<section id="inflation-and-other-linear-adjustments" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="inflation-and-other-linear-adjustments">Inflation and other linear adjustments</h4>
+<p>Suppose <span class="math inline">\(X\)</span> is a loss measured at a base cost level and losses increase by an inflation rate <span class="math inline">\(i\)</span>.</p>
+<p>The inflated loss is</p>
+<p><span class="math inline">\(\displaystyle X_I=(1+i)X\)</span></p>
+<p>Its expected value is</p>
+<p><span class="math inline">\(\displaystyle \operatorname{E}[X_I]=(1+i)\operatorname{E}[X]\)</span></p>
+<p>Its variance is</p>
+<p><span class="math inline">\(\displaystyle \operatorname{Var}(X_I)=(1+i)^2\operatorname{Var}(X)\)</span></p>
+<p>Its standard deviation is</p>
+<p><span class="math inline">\(\displaystyle \operatorname{SD}(X_I)=(1+i)\operatorname{SD}(X)\)</span></p>
+<p>when <span class="math inline">\(i&gt;-1\)</span>.</p>
+<p>The coefficient of variation is unchanged by positive multiplicative inflation:</p>
+<p><span class="math inline">\(\displaystyle \operatorname{CV}(X_I)=\operatorname{CV}(X)\)</span></p>
+<p>Inflation should generally be applied to the loss before current policy deductibles and limits are applied, unless the contract states otherwise.</p>
+<hr id="thin">
+</section>
+<section id="ordinary-deductibles" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="ordinary-deductibles">Ordinary deductibles</h4>
+<p>Let <span class="math inline">\(X\)</span> be the loss amount and let <span class="math inline">\(d\)</span> be an ordinary deductible. The insurer pays only the portion of the loss exceeding the deductible.</p>
+<p>The payment random variable is</p>
+<p><span class="math inline">\(\displaystyle Y=(X-d)_+=\max(X-d,0)\)</span></p>
+<p>Thus,</p>
+<p><span class="math display">\[\displaystyle Y=\begin{cases}
+0,&amp; X \leq d,\ X-d, &amp; X&gt;d
+\end{cases}\]</span></p>
+<p>The policyholder retains</p>
+<p><span class="math inline">\(\displaystyle \min(X,d).\)</span></p>
+<p>The probability that the insurer makes a positive payment is</p>
+<p><span class="math inline">\(\displaystyle \Pr[Y&gt;0]=\Pr[X&gt;d]=1-F_X(d)\)</span></p>
+<p>For <span class="math inline">\(y\geq 0\)</span>, the cdf of the payment is</p>
+<p><span class="math inline">\(\displaystyle F_Y(y)=F_X(d+y)\)</span></p>
+<p>The expected payment is</p>
+<p><span class="math inline">\(\displaystyle \boxed{\operatorname{E}[Y]
+=\operatorname{E}[(X-d)_+]
+=\int_d^\infty \Pr[X&gt;x],dx}.\)</span></p>
+<hr id="thin">
+</section>
+<section id="franchise-deductibles" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="franchise-deductibles">Franchise deductibles</h4>
+<p>Under a franchise deductible, no payment is made when the loss does not exceed <span class="math inline">\(d\)</span>, but the full loss is paid when the loss exceeds <span class="math inline">\(d\)</span>.</p>
+<p>The payment random variable is</p>
+<p><span class="math inline">\(\displaystyle Y=X\mathbf{1}_{{X&gt;d}}\)</span></p>
+<p>Equivalently,</p>
+<p><span class="math inline">\(\displaystyle
+Y=
+\begin{cases}
+0, &amp; X\leq d,\
+X, &amp; X&gt;d.
+\end{cases}\)</span></p>
+<p>The probability of a positive payment is</p>
+<p><span class="math inline">\(\displaystyle \Pr[Y&gt;0]=\Pr[X&gt;d].\)</span></p>
+<p>The expected payment is</p>
+<p><span class="math inline">\(\displaystyle \operatorname{E}[Y]=\operatorname{E}\left[X\mathbf{1}_{{X&gt;d}}\right]\)</span></p>
+<p>For a continuous loss distribution,</p>
+<p><span class="math inline">\(\displaystyle \operatorname{E}[Y]=\int_d^\infty x f_X(x),dx.\)</span></p>
+<p>A franchise deductible generally produces a larger insurer payment than an ordinary deductible with the same value of <span class="math inline">\(d\)</span>.</p>
+<hr id="thin">
+</section>
+<section id="policy-limits-and-limited-losses" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="policy-limits-and-limited-losses">Policy limits and limited losses</h4>
+<p>Suppose the insurer will pay no more than a policy limit <span class="math inline">\(u\)</span>.</p>
+<p>With no deductible, the payment is</p>
+<p><span class="math inline">\(\displaystyle Y=\min(X,u)\)</span></p>
+<p>Equivalently,</p>
+<p><span class="math inline">\(\displaystyle
+Y=
+\begin{cases}
+X, &amp; X&lt;u,\
+u, &amp; X\geq u.
+\end{cases}\)</span></p>
+<p>The expected limited loss is</p>
+<p><span class="math inline">\(\displaystyle \boxed{\operatorname{E}[\min(X,u)]
+=\int_0^u \Pr[X&gt;x],dx}.\)</span></p>
+<p>For <span class="math inline">\(0\leq y&lt;u\)</span>,</p>
+<p><span class="math inline">\(\displaystyle \Pr[Y\leq y]=F_X(y).\)</span></p>
+<p>There is generally a probability mass at the policy limit:</p>
+<p><span class="math inline">\(\displaystyle \Pr[Y=u]=\Pr[X\geq u]\)</span></p>
+<p>Thus, even when <span class="math inline">\(X\)</span> is continuous, the payment random variable may be a mixed random variable with both continuous and discrete components.</p>
+<hr id="thin">
+</section>
+<section id="deductibles-coinsurance-and-benefit-limits" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="deductibles-coinsurance-and-benefit-limits">Deductibles, coinsurance, and benefit limits</h4>
+<p>Suppose the loss is first adjusted for inflation, then reduced by an ordinary deductible <span class="math inline">\(d\)</span>. The insurer pays a coinsurance proportion <span class="math inline">\(\alpha\)</span>, subject to a maximum benefit <span class="math inline">\(u\)</span>.</p>
+<p>Under this convention, the payment is</p>
+<p><span class="math inline">\(\displaystyle Y=\min\left{\alpha\left[(1+i)X-d\right]_+,u\right}\)</span></p>
+<p>The payment may be evaluated in stages:</p>
+<p><span class="math inline">\(\displaystyle X_I=(1+i)X,\)</span></p>
+<p><span class="math inline">\(\displaystyle Z=(X_I-d)_+,\)</span></p>
+<p><span class="math inline">\(\displaystyle W=\alpha Z,\)</span></p>
+<p>and</p>
+<p><span class="math inline">\(\displaystyle Y=\min(W,u).\)</span></p>
+<p>Thus,</p>
+<p><span class="math inline">\(\displaystyle
+Y=
+\begin{cases}
+0, &amp; (1+i)X\leq d,\
+\alpha\left[(1+i)X-d\right],
+&amp; d&lt;(1+i)X&lt;d+\dfrac{u}{\alpha},\
+u, &amp; (1+i)X\geq d+\dfrac{u}{\alpha}.
+\end{cases}\)</span></p>
+<p>The order in which deductibles, coinsurance, inflation adjustments, and limits are applied must be determined from the policy language. Different contractual conventions can produce different payment amounts.</p>
+<hr id="thin">
+</section>
+<section id="distribution-of-an-insurance-payment" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="distribution-of-an-insurance-payment">Distribution of an insurance payment</h4>
+<p>Let</p>
+<p><span class="math inline">\(\displaystyle Y=\min\left((X-d)_+,u\right),\)</span></p>
+<p>where <span class="math inline">\(d\)</span> is an ordinary deductible and <span class="math inline">\(u\)</span> is the maximum payment above the deductible.</p>
+<p>The payment is zero when <span class="math inline">\(X\leq d\)</span>:</p>
+<p><span class="math inline">\(\displaystyle \Pr[Y=0]=F_X(d)\)</span></p>
+<p>For <span class="math inline">\(0\leq y&lt;u\)</span>,</p>
+<p><span class="math inline">\(\displaystyle F_Y(y)=F_X(d+y)\)</span></p>
+<p>The probability that the maximum benefit is paid is</p>
+<p><span class="math inline">\(\displaystyle \Pr[Y=u]=\Pr[X\geq d+u]=1-F_X(d+u^-)\)</span></p>
+<p>For a continuous loss distribution, this becomes</p>
+<p><span class="math inline">\(\displaystyle \Pr[Y=u]=1-F_X(d+u).\)</span></p>
+<p>The expected payment is</p>
+<p><span class="math inline">\(\displaystyle \boxed{\operatorname{E}[Y]
+=\int_d^{d+u}\Pr[X&gt;x],dx}.\)</span></p>
+<p>This payment distribution generally has a probability mass at zero, a continuous component between <span class="math inline">\(0\)</span> and <span class="math inline">\(u\)</span>, and a probability mass at <span class="math inline">\(u\)</span>.</p>
+<hr id="thin">
+</section>
+<section id="expected-value-and-variance-of-insurance-payments" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="expected-value-and-variance-of-insurance-payments">Expected value and variance of insurance payments</h4>
+<p>Let</p>
+<p><span class="math inline">\(\displaystyle Y=\min\left((X-d)_+,u\right).\)</span></p>
+<p>The first moment is</p>
+<p><span class="math inline">\(\displaystyle \boxed{\operatorname{E}[Y]
+=\int_d^{d+u}S_X(x),dx},\)</span></p>
+<p>where <span class="math inline">\(S_X(x)=\Pr[X&gt;x]\)</span>.</p>
+<p>The second moment is</p>
+<p><span class="math inline">\(\displaystyle \boxed{\operatorname{E}[Y^2]
+=2\int_0^u y\Pr[Y&gt;y],dy}.\)</span></p>
+<p>Since</p>
+<p><span class="math inline">\(\displaystyle \Pr[Y&gt;y]=\Pr[X&gt;d+y]\)</span></p>
+<p>for <span class="math inline">\(0\leq y&lt;u\)</span>,</p>
+<p><span class="math inline">\(\displaystyle \boxed{\operatorname{E}[Y^2]
+=2\int_d^{d+u}(x-d)S_X(x),dx}.\)</span></p>
+<p>The variance is then</p>
+<p><span class="math inline">\(\displaystyle \boxed{\operatorname{Var}(Y)
+=\operatorname{E}[Y^2]-\left(\operatorname{E}[Y]\right)^2}.\)</span></p>
+<p>The standard deviation is</p>
+<p><span class="math inline">\(\displaystyle \operatorname{SD}(Y)=\sqrt{\operatorname{Var}(Y)}\)</span></p>
+<p>For the original loss random variable,</p>
+<p><span class="math inline">\(\displaystyle \operatorname{Var}(X)
+=\operatorname{E}[X^2]-\left(\operatorname{E}[X]\right)^2.\)</span></p>
+<p>Comparing <span class="math inline">\(\operatorname{E}[X]\)</span> with <span class="math inline">\(\operatorname{E}[Y]\)</span> measures the expected portion of the loss transferred to the insurer. Comparing <span class="math inline">\(\operatorname{Var}(X)\)</span> with <span class="math inline">\(\operatorname{Var}(Y)\)</span> shows how the policy provisions alter the variability of the insurer’s payment.</p>
+<hr id="thick">
+</section>
+</section>
+<section id="solved-exercises" class="level2" data-number="2.2">
+<h2 data-number="2.2" class="anchored" data-anchor-id="solved-exercises"><span class="header-section-number">2.2</span> Solved Exercises</h2>
+<blockquote class="blockquote">
+Before opening the solutions, take a moment to work through each problem—-your mastery grows most when you engage actively with the mathematics.
+</blockquote>
+<section id="basic-probabilities" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="basic-probabilities">Basic probabilities</h3>
+<p>Let <span class="math inline">\(S(x)\)</span> be defined as follows:</p>
+<p><span class="math display">\[s(x) = \left\{
+  \begin{array}{ll}
+    1-\dfrac{x}{250} &amp;  0 \leq x &lt; 40 \\
+    1-{\left( \dfrac{x}{100} \right)}^2 &amp; 40 \leq x \leq 100 \\
+  \end{array}
+\right.
+\]</span> 1. Calculate the probability that <span class="math inline">\((25)\)</span> dies within the next <span class="math inline">\(30\)</span> years.<br>
+2. Calculate the probability that <span class="math inline">\((25)\)</span> dies in her fortieth year of live.<br>
+3. Calculate the probability that <span class="math inline">\((25)\)</span> does not die between ages <span class="math inline">\(35\)</span> and <span class="math inline">\(45\)</span><br>
+4. Calculate the probability that <span class="math inline">\((25)\)</span> celebrates her eightieth birthday.</p>
+<div class="solution callout callout-style-default callout-note callout-titled" title="Solution">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-1" class="callout-1-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<ol type="1">
+<li>The probability that <span class="math inline">\((25)\)</span> dies within the next <span class="math inline">\(30\)</span> years is given by</li>
+</ol>
+<p id="ind50">
+<span class="math inline">\({_{30}}q_{25}=\dfrac{s(25)-s(55)}{s(25)}=0.225\)</span>
+</p>
+<ol start="2" type="1">
+<li>The probability <span class="math inline">\((25)\)</span> dies in her fortieth year of live is given by</li>
+</ol>
+<p id="ind50">
+<span class="math inline">\({_{14|}}q_{25}={_{14}}p_{25}\;q_{39}=\dfrac{\cancel{s(39)}}{s(25)}\cdot\dfrac{s(39)-s(40)}{\cancel{s(39)}}=0.00\bar{4}\)</span>
+</p>
+<ol start="3" type="1">
+<li>The probability that <span class="math inline">\((25)\)</span> does not die between ages <span class="math inline">\(35\)</span> and <span class="math inline">\(45\)</span> is given by</li>
+</ol>
+<p id="ind50">
+<span class="math inline">\(1-{_{10|10}}q_{25}=1-{_{10}}p_{25}\;{_{10}}q_{35}=1-\dfrac{\cancel{s35}}{s(25)}\cdot\dfrac{s(35)-s(45)}{\cancel{s(35}}=0.930556\)</span>
+</p>
+<ol start="4" type="1">
+<li>The probability that <span class="math inline">\((25)\)</span> celebrates her eightieth birthday is given by</li>
+</ol>
+<p id="ind50">
+<span class="math inline">\(\dfrac{s(80)}{s(25)}=0.4\)</span>
+</p>
+<p><span class="math inline">\(\\\)</span></p>
+</div>
+</div>
+</div>
+<hr id="thick">
+<!-------------------------------------------------------------->
+</section>
+</section>
+<section id="supplementary-exercises" class="level2" data-number="2.3">
+<h2 data-number="2.3" class="anchored" data-anchor-id="supplementary-exercises"><span class="header-section-number">2.3</span> Supplementary Exercises</h2>
+<!----------------------------------------------------------------------------->
+<p><span id="no">1</span></p>
+<p>Let <span class="math inline">\(X\)</span> be a discrete random variable with the following probability mass function:</p>
+<p><span class="math display">\[
+\mathrm{Pr}[X=x] = \left\{
+    \begin{array}{ll}
+        0.500 &amp; x=0 \\
+        0.3\overline{33} &amp; x=1 \\
+        0.1\overline{66} &amp; x=2 \\
+    \end{array}
+\right.
+\]</span></p>
+<ol type="a">
+<li><p>Find the range of <span class="math inline">\(X\)</span></p></li>
+<li><p>Find <span class="math inline">\(\mathrm{Pr}[X \leq 1.5\,]\)</span></p></li>
+<li><p>Find <span class="math inline">\(\mathrm{Pr}[0 &lt; X &lt; 2\,]\)</span></p></li>
+<li><p>Find <span class="math inline">\(\mathrm{Pr}[X = 0\,|\, X &lt; 2\,]\)</span></p></li>
+</ol>
+<hr id="thin">
+<!----------------------------------------------------------------------------->
+<p><span id="no">2</span></p>
+<p>Two dice are tossed, and the observed numbers are <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span>.</p>
+<ol type="a">
+<li><p>Find <span class="math inline">\(\mathrm{Pr}[X = 2\, \cap \, Y = 6\,]\)</span></p></li>
+<li><p>Find <span class="math inline">\(\mathrm{Pr}[X &gt; 3\, | \, Y = 2\,]\)</span></p></li>
+<li><p>Find <span class="math inline">\(\mathrm{Pr}[X &gt; 4\, | \, X+Y=8\,]\)</span></p></li>
+</ol>
+<hr id="thin">
+<!----------------------------------------------------------------------------->
+<p><span id="no">3</span></p>
+<p>An actuarial student takes an exam that contains <span class="math inline">\(20\)</span> multiple-choice questions.</p>
+<p>Each question has four possible options.</p>
+<p>She knows the answer to <span class="math inline">\(10\)</span> questions, but have no idea about the other <span class="math inline">\(10\)</span> questions, so she chooses answers randomly. Her score <span class="math inline">\(X\)</span> on the exam is the total number of correct answers.</p>
+<p>Find <span class="math inline">\(\mathrm{Pr}[X&gt;17]\)</span>.</p>
+<hr id="thin">
+<!----------------------------------------------------------------------------->
+<p><span id="no">4</span></p>
+<p>The number of customers arriving to a bank is a Poisson random variable.</p>
+<p>On average, <span class="math inline">\(20\)</span> customers arrive per hour.</p>
+<p>Let <span class="math inline">\(X\)</span> be the number arriving from 10:00 to 11:30 am.</p>
+<p>Find <span class="math inline">\(\mathrm{Pr}[20&lt;X\leq30].\)</span></p>
+<hr id="thin">
+<!----------------------------------------------------------------------------->
+<p><span id="no">5</span></p>
+<p>An actuary has discovered that policyholders are three times as likely to file two claims as to file four claims.</p>
+<p>If the number of claims filed has a Poisson distribution, what is the expected number of claims filed?</p>
+<hr id="thin">
+<!----------------------------------------------------------------------------->
+<p><span id="no">6</span></p>
+<p>A company establishes a fund of <span class="math inline">\(120\,000\)</span> from which it will pay an amount, <span class="math inline">\(C\)</span>, to any of its <span class="math inline">\(20\)</span> employees who achieve a high-performance level during the coming year.</p>
+<p>Each employee has a <span class="math inline">\(2\%\)</span> chance of achieving a high-performance level during the coming year, independent of any other employee.</p>
+<p>Determine the maximum value of <span class="math inline">\(C\)</span> for which the probability is less than <span class="math inline">\(1\%\)</span> that the fund will be insufficient to cover all payments for high performance.</p>
+<hr id="thin">
+<!----------------------------------------------------------------------------->
+<p><span id="no">7</span></p>
+<p>An insurance company prices hurricane insurance using the following assumptions:</p>
+<ol type="a">
+<li>In any calendar year, there can be at most one hurricane</li>
+<li>In any calendar year, the probability of a hurricane is <span class="math inline">\(0.05\)</span></li>
+<li>The number of hurricanes in any calendar year is independent of the number of hurricanes in any other calendar year.</li>
+</ol>
+<p>Find the probability that there are fewer than three hurricanes in a <span class="math inline">\(20\)</span>-year period.</p>
+<hr id="thin">
+<!----------------------------------------------------------------------------->
+<p><span id="no">8</span></p>
+<p><span class="math inline">\(X\)</span> is the random variable of the number of large insurance losses in one year.</p>
+<p>If <span class="math inline">\(\mathrm{Pr}[X=1]=0.3\)</span>, <span class="math inline">\(\mathrm{Pr}[X=2]=0.2\)</span>, and <span class="math inline">\(\mathrm{Pr}[X=0]=0.3 \, \cdot \mathrm{Pr}[X=3]\)</span>, find <span class="math inline">\(E[X]\)</span>.</p>
+<hr id="thin">
+<!----------------------------------------------------------------------------->
+<p><span id="no">9</span></p>
+<p>Let <span class="math inline">\(\mathrm{Pr}[X=0]=1−\mathrm{Pr}[X=1]\)</span>.</p>
+<p>If <span class="math inline">\(E[X]=3 \cdot Var[X]\)</span>, find <span class="math inline">\(\mathrm{Pr}[X=0]\)</span>.</p>
+<hr id="thin">
+<!----------------------------------------------------------------------------->
+<p><span id="no">10</span></p>
+<p>If <span class="math inline">\(X\)</span> is a binomial random variable with expected value <span class="math inline">\(6\)</span> and variance <span class="math inline">\(2.4\)</span>, find <span class="math inline">\(\mathrm{Pr}[X=5]\)</span>.</p>
+<hr id="thin">
+<!----------------------------------------------------------------------------->
+<p><span id="no">11</span></p>
+<p>On average, <span class="math inline">\(5.2\)</span> hurricanes hit a certain region in a year.</p>
+<p>What is the probability that there will <span class="math inline">\(3\)</span> or fewer hurricanes hitting this year?.</p>
+<hr id="thin">
+<!----------------------------------------------------------------------------->
+<p><span id="no">12</span></p>
+<p>An insurance policy pays <span class="math inline">\(100\)</span> per day for up to three days of hospitalization and <span class="math inline">\(50\)</span> per day for each day of hospitalization thereafter.</p>
+<p>The number of days of hospitalization, <span class="math inline">\(X\)</span>, is a discrete random variable with probability function <span class="math inline">\(\mathrm{Pr}[X=k]=\frac{6-k}{15}\)</span>, <span class="math inline">\(k=1, 2, 3, 4, 5\)</span>, and <span class="math inline">\(0\)</span> otherwise.</p>
+<p>Determine the expected payment for hospitalization under this policy.</p>
+<hr id="thin">
+<!----------------------------------------------------------------------------->
+<p><span id="no">13</span></p>
+<p>Suppose that <span class="math inline">\(X\)</span> takes on one of the values <span class="math inline">\(0\)</span>, <span class="math inline">\(1\)</span>, and <span class="math inline">\(2\)</span>.</p>
+<p>If <span class="math inline">\(\mathrm{Pr}[X=i]=2 \cdot \mathrm{Pr}[X=i-1]\)</span>, <span class="math inline">\(i=1, 2\)</span>, find <span class="math inline">\(E[X]\)</span></p>
+<hr id="thin">
+<!----------------------------------------------------------------------------->
+<p><span id="no">14</span></p>
+<p>In modeling the number of claims filed by an individual under a car policy during a three-year period, an actuary makes the simplifying assumption that for all integers <span class="math inline">\(n \geq 0\)</span>, <span class="math inline">\(p(n+1)=0.2 \cdot p(n)\)</span>, where <span class="math inline">\(p(n)\)</span> represents the probability that the policyholder files <span class="math inline">\(n\)</span> claims during the period.</p>
+<p>Calculate the probability that a policyholder files more than one claim during the period.</p>
+<hr id="thin">
+<!----------------------------------------------------------------------------->
+<p><span id="no">15</span></p>
+<p>When three friends go for coffee, they decide who will pay the check by each flipping a coin and then letting the “odd person” pay.</p>
+<p>If all three flips produce the same result, then they make a second round of flips, and they continue to do so until there is an odd person.</p>
+<p>What is the probability that</p>
+<ol type="a">
+<li>exactly <span class="math inline">\(3\)</span> rounds of flips are made?</li>
+<li>more than <span class="math inline">\(4\)</span> rounds are needed?</li>
+</ol>
+<hr id="thin">
+<!----------------------------------------------------------------------------->
+<p><span id="no">16</span></p>
+<p>Find the coefficient of variation of the following distribution:</p>
+<table style="font-size: 12px; width: 75%;">
+<tbody><tr>
+<td>
+<span class="math inline">\(x_{i}\)</span>
+</td>
+<td style="text-align:right">
+<span class="math inline">\(-5\)</span>
+</td>
+<td style="text-align:right">
+<span class="math inline">\(-4\)</span>
+</td>
+<td style="text-align:right">
+<span class="math inline">\(1\)</span>
+</td>
+<td style="text-align:right">
+<span class="math inline">\(2\)</span>
+</td>
+</tr>
+<tr>
+<td>
+<span class="math inline">\(\mathrm{Pr}[X=x_{i}]\)</span>
+</td>
+<td style="text-align:right">
+<span class="math inline">\(\frac{1}{4}\)</span>
+</td>
+<td style="text-align:right">
+<span class="math inline">\(\frac{1}{8}\)</span>
+</td>
+<td style="text-align:right">
+<span class="math inline">\(\frac{1}{2}\)</span>
+</td>
+<td style="text-align:right">
+<span class="math inline">\(\frac{1}{8}\)</span>
+</td>
+</tr>
+</tbody></table>
+<p><br></p>
+<hr id="thin">
+<!----------------------------------------------------------------------------->
+<p><span id="no">17</span></p>
+<p>Let <span class="math inline">\(X\)</span> be a random variable with the following probability distribution function:</p>
+<p><span class="math display">\[
+f(x) = \left\{
+    \begin{array}{ll}
+        cx^{2} &amp; |x|\leq1 \\
+        0 &amp; otherwise \\
+    \end{array}
+\right.
+\]</span></p>
+<ol type="a">
+<li>Find <span class="math inline">\(c\)</span>.</li>
+<li>Find <span class="math inline">\(Var[X]\)</span>.</li>
+<li>Find <span class="math inline">\(\mathrm{Pr}[X&lt;\frac{1}{2}]\)</span></li>
+</ol>
+<hr id="thin">
+<!----------------------------------------------------------------------------->
+<p><span id="no">18</span></p>
+<p>Let <span class="math inline">\(X\)</span> be a random variable with the following probability distribution function:</p>
+<p><span class="math display">\[
+f(x) = \left\{
+    \begin{array}{ll}
+        x^{2}(2x+\frac{3}{2}) &amp; 0 &lt; x \leq1 \\
+        0 &amp; otherwise \\
+    \end{array}
+\right.
+\]</span></p>
+<hr id="thin">
+<!----------------------------------------------------------------------------->
+<p><span id="no">19</span></p>
+<p>Let <span class="math inline">\(X\)</span> be a random variable with the following probability distribution function:</p>
+<p><span class="math display">\[
+f(x) = \left\{
+    \begin{array}{ll}
+        ax+bx^{2} &amp; 0 &lt; x \leq1 \\
+        0 &amp; otherwise \\
+    \end{array}
+\right.
+\]</span></p>
+<p>If <span class="math inline">\(E[X]=0.6\)</span>, find <span class="math inline">\(\mathrm{Pr}[X&lt;\frac{1}{2}]\)</span>.</p>
+<hr id="thin">
+<!----------------------------------------------------------------------------->
+<p><span id="no">20</span></p>
+<p>Travel time from your home to your classroom is normally distributed with mean <span class="math inline">\(40\)</span> minutes and standard deviation <span class="math inline">\(7\)</span> minutes.</p>
+<p>If you want to be 95 percent certain that you will not be late for a 7:00 am probability class, what is the latest time that you should leave home?</p>
+<hr id="thin">
+<!----------------------------------------------------------------------------->
+<p><span id="no">21</span></p>
+<p>At a certain insurance agency, the time that a customer spends being served by an agent is an exponential random variable with mean <span class="math inline">\(15\)</span> minutes.</p>
+<p>If there is a customer in service when you enter the agency, what is the probability that he or she will still be with the agent after an additional <span class="math inline">\(10\)</span> minutes?</p>
+<hr id="thin">
+<!----------------------------------------------------------------------------->
+<p><span id="no">22</span></p>
+<p>The number of days that elapse between the beginning of a calendar year and the moment a high-risk driver is involved in an accident is exponentially distributed.</p>
+<p>An insurance company expects that <span class="math inline">\(30\%\)</span> of high-risk drivers will be involved in an accident during the first <span class="math inline">\(50\)</span> days of a calendar year.</p>
+<p>What proportion of high-risk drivers are expected to be involved in an accident during the first <span class="math inline">\(80\)</span> days of a calendar year?</p>
+<hr id="thin">
+<!----------------------------------------------------------------------------->
+<p><span id="no">23</span></p>
+<p>The loss due to fire in a building is modelled by a random variable <span class="math inline">\(X\)</span> with density function <span class="math inline">\(f(x)=0.005(20−x)\)</span>, <span class="math inline">\(0&lt;x&lt;20\)</span>, and <span class="math inline">\(0\)</span> otherwise.</p>
+<p>Given that a fire loss exceeds <span class="math inline">\(8\)</span>, what is the probability that it exceeds <span class="math inline">\(16\)</span>?</p>
+<hr id="thin">
+<!----------------------------------------------------------------------------->
+<p><span id="no">24</span></p>
+<p>An insurer’s annual weather-related loss, <span class="math inline">\(X\)</span>, is a random variable with density function</p>
+<p><span class="math display">\[
+f(x) = \left\{
+    \begin{array}{ll}
+        \frac{2.5(200)^{2.5}}{x^{3.5}}, &amp; x&gt;200              \\
+        0,                              &amp; \mathrm{otherwise} \\
+    \end{array}
+\right.
+\]</span></p>
+<p>Calculate the difference between the <span class="math inline">\(30^{th}\)</span> and the <span class="math inline">\(70^{th}\)</span> percentiles of <span class="math inline">\(X\)</span>.</p>
+<hr id="thin">
+<!----------------------------------------------------------------------------->
+<p><span id="no">25</span></p>
+<p>Suppose that the cumulative distribution function of the random variable <span class="math inline">\(X\)</span> is given by <span class="math inline">\(F(x)=1-exp(-x^{2})\)</span>.</p>
+<p>Let <span class="math inline">\(\lambda\)</span> be the hazard function.</p>
+<p>Evaluate <span class="math inline">\(\lambda(5)\)</span>.</p>
+<hr id="thin">
+<!----------------------------------------------------------------------------->
+<p><span id="no">26</span></p>
+<p>The time <span class="math inline">\(T\)</span> that a machine is out of operation has a cumulative distribution function</p>
+<p><span class="math display">\[
+F(t) = \left\{
+    \begin{array}{ll}
+        1-(\frac{2}{t})^{2} &amp; t&gt;2 \\
+        0 &amp; \mathrm{otherwise} \\
+    \end{array}
+\right.
+\]</span></p>
+<p>The resulting cost to the company is <span class="math inline">\(Y=T^{2}\)</span>.</p>
+<p>Determine <span class="math inline">\(Pr[Y&gt;16]\)</span>.</p>
+<hr id="thin">
+<!----------------------------------------------------------------------------->
+<p><span id="no">27</span></p>
+<p>The number of years that a computer is operational is a random variable whose hazard rate function is given by</p>
+<p><span class="math display">\[
+\lambda(t) = \left\{
+    \begin{array}{ll}
+        0.2 &amp; 0&lt;t&lt;2 \\
+        0.2+0.3(t-2) &amp; 2\leq t&lt;5 \\
+        1.1 &amp; t&gt;5 \\
+    \end{array}
+\right.
+\]</span></p>
+<p>What is the probability that the computer will still be working <span class="math inline">\(6\)</span>?</p>
+<hr id="thin">
+<!----------------------------------------------------------------------------->
+<p><span id="no">28</span></p>
+<p>The annual rainfall in a region is approximately a normal random variable with mean <span class="math inline">\(40.2\)</span> inches and standard deviation <span class="math inline">\(8.4\)</span> inches.</p>
+<p>What is the probability that the yearly rainfall in exactly <span class="math inline">\(3\)</span> of the next <span class="math inline">\(7\)</span> years will exceed <span class="math inline">\(44\)</span> inches?</p>
+<hr id="thin">
+<!----------------------------------------------------------------------------->
+<p><span id="no">29</span></p>
+<p>The lifetime of a machine has a continuous distribution on the interval <span class="math inline">\((0, 40)\)</span> with probability density function <span class="math inline">\(f\)</span>, where <span class="math inline">\(f(x)\)</span> is proportional to <span class="math inline">\((10+x)^{−2}\)</span>.</p>
+<p>What is the probability that the lifetime of the machine is less than <span class="math inline">\(5\)</span>?</p>
+<hr id="thin">
+<!----------------------------------------------------------------------------->
+<p><span id="no">30</span></p>
+<p>An actuary purchases a life insurance policy on her <span class="math inline">\(40^{th}\)</span> birthday.</p>
+<p>The policy will pay <span class="math inline">\(50\,000\)</span> only if she dies before her <span class="math inline">\(50^{th}\)</span> birthday and will pay <span class="math inline">\(0\)</span> otherwise.</p>
+<p>The length of lifetime in years of a female born the same year as the insured has the cumulative distribution function</p>
+<p><span class="math display">\[
+F(t) = \left\{
+    \begin{array}{ll}
+        0 &amp; t\leq 0 \\
+        1-exp(\frac{1-1.1^t}{1000}) &amp; t &gt; 0 \\
+    \end{array}
+\right.
+\]</span> Let <span class="math inline">\(\Pi\)</span> be the policy premium, which is set as <span class="math inline">\(1.2\)</span> times the expected payment under the policy.</p>
+<p>Calculate <span class="math inline">\(\Pi\)</span>.</p>
+<hr id="thin">
+<!----------------------------------------------------------------------------->
+<p><span id="no">31</span></p>
+<p>The life of a certain type of airplane is normally distributed with mean of <span class="math inline">\(34m\)</span> miles and standard deviation of <span class="math inline">\(4m\)</span> miles.</p>
+<p>Given that the airplane has survived <span class="math inline">\(30m\)</span>, what is the conditional probability that it survives for another <span class="math inline">\(10m\)</span> miles?</p>
+<hr id="thin">
+<!----------------------------------------------------------------------------->
+<p><span id="no">32</span></p>
+<p>A group insurance policy covers the medical claims of the employees of a small company.</p>
+<p>The value, <span class="math inline">\(V\)</span>, of the claims made in one year is described by <span class="math inline">\(V=100\,000\cdot Y\)</span>, where <span class="math inline">\(Y\)</span> is a random variable with density function</p>
+<p><span class="math display">\[
+f(y) = \left\{
+    \begin{array}{ll}
+        k \cdot (1-y)^{4} &amp; 0&lt;y&lt;1 \\
+        0 &amp; otherwise \\
+    \end{array}
+\right.
+\]</span> where <span class="math inline">\(k\)</span> is a constant.</p>
+<p>Calculate the conditional probability that <span class="math inline">\(V\)</span> exceeds <span class="math inline">\(40\,000\)</span> given that <span class="math inline">\(V\)</span> exceeds <span class="math inline">\(10\,000\)</span>.</p>
+<hr id="thin">
+<!----------------------------------------------------------------------------->
+<p><span id="no">33</span></p>
+<p>Fifty-two percent of the residents of CDMX are in favor of outlawing cigarette smoking on university campuses.</p>
+<p>The approximate probability that more than <span class="math inline">\(50\%\)</span> of the people in a random sample of <span class="math inline">\(n\)</span> decides to outlaw cigarette smoking greater than <span class="math inline">\(95\%\)</span>.</p>
+<p>Find the minimum value of <span class="math inline">\(n\)</span> that satisfies such probability.</p>
+<hr id="thin">
+<!----------------------------------------------------------------------------->
+<p><span id="no">34</span></p>
+<p>Let <span class="math inline">\(X\)</span> be a continuous random variable with density function</p>
+<p><span class="math display">\[
+f(x) = \left\{
+    \begin{array}{ll}
+        (p-1) \cdot x^{-p} &amp; x&gt;1 \\
+        0 &amp; otherwise \\
+    \end{array}
+\right.
+\]</span> Calculate the value of <span class="math inline">\(p\)</span> such that <span class="math inline">\(E[X]=2.\)</span></p>
+<hr id="thin">
+<!----------------------------------------------------------------------------->
+<p><span id="no">35</span></p>
+<p>Your company must make a bid for an actuarial project.</p>
+<p>If you win the contract (by having the lowest bid), you will pay another firm <span class="math inline">\(100\,000\)</span> to do the work.</p>
+<p>If you believe the minimum bid of other companies can be modelled as the value of a uniformly distributed random variable on <span class="math inline">\((70\,000, 140\,000)\)</span>, how much should you bid to maximize your expected profit?</p>
+<hr id="thin">
+<!----------------------------------------------------------------------------->
+<p><span id="no">36</span></p>
+<p>An insurance company sells a car insurance policy that covers losses incurred by a policyholder, subject to a deductible of <span class="math inline">\(100\)</span>. Losses incurred follow an exponential distribution with mean <span class="math inline">\(300\)</span>.</p>
+<p>What is the <span class="math inline">\(95^{th}\)</span> percentile of actual losses that exceed the deductible?</p>
+<hr id="thin">
+<!----------------------------------------------------------------------------->
+<p><span id="no">37</span></p>
+<p>An insurance policy is written to cover a loss, <span class="math inline">\(X\)</span>, that has a uniform distribution on <span class="math inline">\((0, 1\,000)\)</span>.</p>
+<p>At what level must a deductible be set in order for the expected payment to be <span class="math inline">\(25\%\)</span> of what if would be with no deductible?</p>
+<hr id="thin">
+<!----------------------------------------------------------------------------->
+<p><span id="no">38</span></p>
+<p>A company’s annual losses follows a distribution with density function <span class="math inline">\(f(x)= \large \frac {2.5(0.6)^{2.5}}{x^{3.5}}\)</span>, for <span class="math inline">\(x&gt;0.6\)</span> and <span class="math inline">\(0\)</span> otherwise.</p>
+<p>To cover its losses, the company purchases an insurance policy with an annual deductible of <span class="math inline">\(2\)</span>.</p>
+<p>What is the mean of the company’s annual losses not paid by the insurance policy?</p>
+<hr id="thin">
+<!----------------------------------------------------------------------------->
+<p><span id="no">39</span></p>
+<p>An insurance policy reimburses a loss up to a benefit limit of <span class="math inline">\(10\)</span>.</p>
+<p>The policyholder’s loss, <span class="math inline">\(Y\)</span>, follows a distribution with density function <span class="math inline">\(f(y)=2y^{-3}\)</span> for <span class="math inline">\(y&gt;1\)</span> and <span class="math inline">\(0\)</span> otherwise.</p>
+<p>What is the expected value of the benefit paid under this policy?</p>
+<hr id="thin">
+<!----------------------------------------------------------------------------->
+<p><span id="no">40</span></p>
+<p>An insurance company insures a <span class="math inline">\(15\,000\)</span> car for one year with a <span class="math inline">\(1\,000\)</span> deductible.</p>
+<p>During the year, there is a <span class="math inline">\(0.04\)</span> chance of partial damage to the car, and <span class="math inline">\(0.02\)</span> chance of total loss of the car.</p>
+<p>If there is a partial damage, the annual amount <span class="math inline">\(X\)</span> of damage (in thousands) follows a distribution with probability density function <span class="math inline">\(f(x)=0.5003e^{−0.5x}\)</span>, for <span class="math inline">\(0&lt;x&lt;15\)</span>, and <span class="math inline">\(0\)</span> otherwise.</p>
+<p>What is the expected claim payment?</p>
+<hr id="thin">
+<!----------------------------------------------------------------------------->
+<p><span id="no">41</span></p>
+<p>The cumulative density function for health care costs experienced by a policyholder is modelled by</p>
+<p><span class="math display">\[
+F(x) = \left\{
+    \begin{array}{ll}
+        1-exp(-0.01x) &amp; x&gt;0 \\
+        0 &amp; otherwise \\
+    \end{array}
+\right.
+\]</span> The policy has a deductible of <span class="math inline">\(20\)</span>.</p>
+<p>An insurer reimburses the policyholder for <span class="math inline">\(100\%\)</span> of health care costs between <span class="math inline">\(20\)</span> and <span class="math inline">\(120\)</span> less the deductible.</p>
+<p>Health care costs above <span class="math inline">\(120\)</span> are reimbursed at <span class="math inline">\(50\%\)</span>.</p>
+<p>Let <span class="math inline">\(G\)</span> be the cumulative distribution function of the reimbursements, given that the reimbursement is positive.</p>
+<p>Calculate <span class="math inline">\(G(115)\)</span>.</p>
+<hr id="thin">
+<!----------------------------------------------------------------------------->
+<p><span id="no">42</span></p>
+<p>Let <span class="math inline">\(X_{1}\)</span> be a normal random variable with mean <span class="math inline">\(2\)</span> and variance <span class="math inline">\(3\)</span>, and let <span class="math inline">\(X_{2}\)</span> be a normal random variable with mean <span class="math inline">\(1\)</span> and variance <span class="math inline">\(4\)</span>.</p>
+<p>Assume that <span class="math inline">\(X_{1}\)</span> and <span class="math inline">\(X_{2}\)</span> are mutually independent.</p>
+<p>Find <span class="math inline">\(\mathrm{Pr}[\,2X_{1}+3X_{2}&gt;15\,]\)</span></p>
+<!----------------------------------------------------------------------------->
+<p><span id="no">43</span></p>
+<p>An man purchases a life insurance policy on her <span class="math inline">\(40^{th}\)</span> birthday.</p>
+<p>The policy will pay <span class="math inline">\(50\,000\)</span> only if he dies before his <span class="math inline">\(50^{th}\)</span> birthday and will pay <span class="math inline">\(0\)</span> otherwise.</p>
+<p>The length of lifetime in years of a male born the same year as the insured has the cumulative distribution function</p>
+<p><span class="math display">\[
+F(t) = \left\{
+    \begin{array}{ll}
+        0 &amp; t\leq 0 \\
+        1-exp(\frac{1-1.1^t}{1000}) &amp; t &gt; 0 \\
+    \end{array}
+\right.
+\]</span> Let <span class="math inline">\(\Pi\)</span> be the policy premium, which is set as <span class="math inline">\(1.2\)</span> times the expected payment under the policy.</p>
+<p>Calculate <span class="math inline">\(\Pi\)</span>.</p>
+<hr id="thin">
+<!----------------------------------------------------------------------------->
+<p><span id="no">44</span></p>
+<p>A probability distribution of the claim sizes for an auto insurance policy is</p>
+<table id="ind30">
+<tbody><tr>
+<td>
+Claim size
+</td>
+<td>
+<span class="math inline">\(20\)</span>
+</td>
+<td>
+<span class="math inline">\(30\)</span>
+</td>
+<td>
+<span class="math inline">\(40\)</span>
+</td>
+<td>
+<span class="math inline">\(50\)</span>
+</td>
+<td>
+<span class="math inline">\(60\)</span>
+</td>
+<td>
+<span class="math inline">\(70\)</span>
+</td>
+<td>
+<span class="math inline">\(82\)</span>
+</td>
+</tr>
+<tr>
+<td>
+Probability
+</td>
+<td>
+<span class="math inline">\(0.15\)</span>
+</td>
+<td>
+<span class="math inline">\(0.10\)</span>
+</td>
+<td>
+<span class="math inline">\(0.05\)</span>
+</td>
+<td>
+<span class="math inline">\(0.20\)</span>
+</td>
+<td>
+<span class="math inline">\(0.10\)</span>
+</td>
+<td>
+<span class="math inline">\(0.10\)</span>
+</td>
+<td>
+<span class="math inline">\(0.30\)</span>
+</td>
+</tr>
+</tbody></table>
+<p><br></p>
+<p>Calculate the percentage of claims that are within one standard deviation of the mean claim size.</p>
+<hr id="thin">
+<!----------------------------------------------------------------------------->
+<p><span id="no">45</span></p>
+<p>An insurance company sells an auto insurance policy that covers losses incurred by a policyholder, subject to a deductible of <span class="math inline">\(100\)</span>.</p>
+<p>Losses incurred follow an exponential distribution with mean <span class="math inline">\(300\)</span>.</p>
+<p>Calculate the <span class="math inline">\(95^{th}\)</span> percentile of the losses that exceed the deductible.</p>
+<hr id="thin">
+<!----------------------------------------------------------------------------->
+<p><span id="no">46</span></p>
+<p>The total claim amount for a commercial property insurance policy follows a distribution with density function <span class="math inline">\(f(x)=0.0001 \cdot exp(−0.0001x)\)</span>, <span class="math inline">\(x&gt;0\)</span>.</p>
+<p>The premium for the policy is set at the expected total claims amount plus <span class="math inline">\(1\,000\)</span>.</p>
+<p>If <span class="math inline">\(100\)</span> policies are sold, calculate the approximate probability that the insurance company will have claims exceeding the premium collected.</p>
+<hr id="thin">
+<!----------------------------------------------------------------------------->
+<p><span id="no">47</span></p>
+<p>A tour operator has a bus that can accommodate <span class="math inline">\(20\)</span> tourists.</p>
+<p>The operator know that tourists may not show up, so he sells <span class="math inline">\(21\)</span> tickets.</p>
+<p>The probability that an individual tourist will not show up is <span class="math inline">\(0.02\)</span>, independent of all other tourists.</p>
+<p>Each ticket costs <span class="math inline">\(50\)</span>, and is non-refundable if a tourist fails to show up.</p>
+<p>If a tourist shows up and a seat is not available, the tour operator has to pay <span class="math inline">\(100\)</span> (ticket cost <span class="math inline">\(+\)</span> <span class="math inline">\(50\)</span> penalty) to the tourist.</p>
+<p>What is the expected revenue of the tour operator?</p>
+<!----------------------------------------------------------------------------->
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./chapter_1.html" class="pagination-link" aria-label="General Probability">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">General Probability</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./chapter_3.html" class="pagination-link" aria-label="Multivariate Distributions">
+        <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Multivariate Distributions</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+
+</body></html>
