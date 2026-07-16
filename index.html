@@ -2,140 +2,69 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Carlos Arocha — Consulting Actuary and Educator.">
+  <meta name="theme-color" content="#ffffff">
+  <link rel="canonical" href="https://carlosarocha.me/">
 
-  <meta
-    name="viewport"
-    content="width=device-width, initial-scale=1"
-  >
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Carlos Arocha | Consulting Actuary and Educator">
+  <meta property="og:description" content="Personal website of Carlos Arocha, consulting actuary and educator.">
+  <meta property="og:url" content="https://carlosarocha.me/">
+  <meta property="og:image" content="https://carlosarocha.me/assets/carlos-arocha-portrait.jpg">
 
   <title>Carlos Arocha | Consulting Actuary and Educator</title>
-
-  <meta
-    name="description"
-    content="Carlos Arocha is a consulting actuary and educator with interests in actuarial science, Python, data science, machine learning, and climate-risk modeling."
-  >
-
-  <link rel="canonical" href="https://carlosarocha.me/">
-  <link rel="stylesheet" href="styles.css">
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
 
-  <meta property="og:title" content="Carlos A. Rocha">
-  <meta
-    property="og:description"
-    content="Consulting actuary, educator, and data science practitioner."
-  >
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://carlosarocha.me/">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Carlos Arocha",
+    "url": "https://carlosarocha.me/",
+    "image": "https://carlosarocha.me/assets/carlos-arocha-portrait.jpg",
+    "jobTitle": "Consulting Actuary and Educator",
+    "sameAs": [
+      "https://github.com/woodlander"
+    ]
+  }
+  </script>
 </head>
-
 <body>
-  <header class="site-header">
-    <nav class="navigation" aria-label="Primary navigation">
-      <a class="name" href="/">Carlos Arocha</a>
-
-      <div class="navigation-links">
-        <a href="#about">About</a>
-        <a href="#interests">Interests</a>
-        <a href="assets/cv.pdf">CV</a>
-        <a href="https://github.com/woodlander">
-          GitHub
-        </a>
-      </div>
+  <main class="home" id="main-content">
+    <nav class="home-nav" aria-label="Primary navigation">
+      <a href="cv.html">CV</a>
+      <a href="publications.html">Publications</a>
+      <a href="https://github.com/woodlander" target="_blank" rel="noopener noreferrer">GitHub</a>
     </nav>
-  </header>
 
-  <main>
-    <section class="hero" id="about">
-      <div class="portrait-container">
+    <section class="hero" aria-labelledby="page-title">
+      <picture class="portrait-frame">
+        <source srcset="assets/carlos-arocha-portrait.webp" type="image/webp">
         <img
           class="portrait"
-          src="assets/profile.jpg"
+          src="assets/carlos-arocha-portrait.jpg"
+          width="900"
+          height="900"
           alt="Portrait of Carlos Arocha"
-          width="320"
-          height="320"
-        >
-      </div>
+          fetchpriority="high">
+      </picture>
 
-      <div class="introduction">
-        <p class="eyebrow">Consulting actuary and educator</p>
+      <div class="intro">
+        <h1 id="page-title">Carlos Arocha</h1>
+        <p class="headline">Consulting Actuary and Educator</p>
 
-        <h1>Carlos Arocha</h1>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
 
-        <p class="lead">
-          I am a consulting actuary and educator with a strong interest
-          in applied statistics, data science, machine learning, and
-          climate-risk modeling.
-        </p>
+        <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
 
-        <p>
-          My work focuses on converting quantitative methods into
-          practical insights, clear explanations, and reliable
-          decision-making tools.
-        </p>
-
-        <div class="actions">
-          <a class="primary-button" href="assets/cv.pdf">
-            View my CV
-          </a>
-
-          <a
-            class="secondary-button"
-            href="https://www.linkedin.com/in/carocha/"
-          >
-            LinkedIn
-          </a>
-        </div>
-      </div>
-    </section>
-
-    <section class="interests" id="interests">
-      <h2>Professional interests</h2>
-
-      <div class="interest-grid">
-        <article>
-          <h3>Actuarial consulting</h3>
-          <p>
-            Quantitative analysis, risk assessment, financial modeling,
-            and clear communication of uncertainty.
-          </p>
-        </article>
-
-        <article>
-          <h3>Education</h3>
-          <p>
-            Development of accessible actuarial, statistical, and
-            mathematical learning materials.
-          </p>
-        </article>
-
-        <article>
-          <h3>Data science</h3>
-          <p>
-            Python, statistical computing, predictive modeling, machine
-            learning, and reproducible analysis.
-          </p>
-        </article>
-
-        <article>
-          <h3>Climate risk</h3>
-          <p>
-            Models that connect climate hazards, uncertainty, insurance,
-            finance, and long-term risk management.
-          </p>
-        </article>
+        <p>Explore my <a href="publications.html">publications</a>, review my <a href="cv.html">curriculum vitae</a>, or visit my work on <a href="https://github.com/woodlander" target="_blank" rel="noopener noreferrer">GitHub</a>.</p>
       </div>
     </section>
   </main>
-
-  <footer>
-    <p>
-      &copy; <span id="year"></span> Carlos Arocha.
-    </p>
-  </footer>
-
-  <script>
-    document.getElementById("year").textContent =
-      new Date().getFullYear();
-  </script>
 </body>
 </html>
