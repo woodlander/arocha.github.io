@@ -44,7 +44,7 @@ ul.task-list li input[type="checkbox"] {
 <link href="site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-12eeb4b20e9f5a2b0bfc604bfaf942bb.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-9e3e5b9121e68b3f077afb32f2c64d95.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -191,6 +191,12 @@ window.Quarto = {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./support.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Support the Project</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./report.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Report Content Errors</span></a>
   </div>
@@ -200,15 +206,8 @@ window.Quarto = {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">Table of contents</h2>
-   
-  <ul>
-  <li><a href="#chapter-1---survival-models" id="toc-chapter-1---survival-models" class="nav-link active" data-scroll-target="#chapter-1---survival-models">Chapter 1 - Survival Models</a></li>
-  <li><a href="#chapter-2---life-insurance-models" id="toc-chapter-2---life-insurance-models" class="nav-link" data-scroll-target="#chapter-2---life-insurance-models">Chapter 2 - Life Insurance Models</a></li>
-  </ul>
-</nav>
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+        
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -234,192 +233,216 @@ window.Quarto = {
 
 <!----------------------------------------------------------------------------------->
 <!----------------------------------------------------------------------------------->
-<section id="chapter-1---survival-models" class="level2 unnumbered">
-<h2 class="unnumbered anchored" data-anchor-id="chapter-1---survival-models">Chapter 1 - Survival Models</h2>
-<ol type="1">
-<li><p><span class="math inline">\(\quad\)</span> (a) This function does satisfy the conditions for a survival function: it can be demonstrated that it is non-increasing (by proving that <span class="math inline">\(f(b) \leq f(a)\)</span>, <span class="math inline">\(\forall b&gt;a\)</span>); <span class="math inline">\(s(0)=1\)</span> and <span class="math inline">\(s(100)=0\)</span>; and continuous (by proving that <span class="math inline">\(\lim_{x\to c} s(x)=s(c)\)</span>; (b) <span class="math inline">\(\omega = 100\)</span>); (c) <span class="math inline">\(0.76375\)</span>; (d) <span class="math inline">\(0.23196\)</span></p></li>
-<li><p><span class="math inline">\(\quad\)</span> (a) <span class="math inline">\(0.75\)</span>; (b) <span class="math inline">\(0.27\)</span>; (c) <span class="math inline">\(0.68235\)</span>; (d) <span class="math inline">\(0.5625\)</span></p></li>
-<li><p><span class="math inline">\(\quad\)</span> (d) <span class="math inline">\(\omega = 125\)</span></p></li>
-<li><p><span class="math inline">\(\quad\)</span> (a) This function does satisfy the conditions for a survival function: it can be demonstrated that it is non-increasing (by proving that <span class="math inline">\(f(b) \leq f(a)\)</span>, <span class="math inline">\(\forall b&gt;a\)</span>); <span class="math inline">\(s(0)=1\)</span> and <span class="math inline">\(\lim_{x\to \infty} s(x)=0\)</span>; and continuous (by proving that <span class="math inline">\(\lim_{x\to c} s(x)=s(c)\)</span>)</p></li>
-<li><p><span class="math inline">\(\quad\)</span> (a) <span class="math inline">\(0.5\)</span>; (b) <span class="math inline">\(0.3466\)</span>; (c) <span class="math inline">\(0\)</span>; (d) <span class="math inline">\(0.5\)</span></p></li>
-<li><p><span class="math inline">\(\quad 14\)</span></p></li>
-<li><p><span class="math inline">\(\quad 16.36\)</span></p></li>
-<li><p><span class="math inline">\(\quad 0.18182\)</span></p></li>
-<li><p><span class="math inline">\(\quad \dfrac{4}{9}\)</span></p></li>
-<li><div class="narrow-table">
-<table class="caption-top table">
-<colgroup>
-<col style="width: 24%">
-<col style="width: 24%">
-<col style="width: 24%">
-<col style="width: 27%">
-</colgroup>
-<thead>
-<tr class="header">
-<th style="text-align: center;"><span class="math inline">\(s(x)\)</span></th>
-<th style="text-align: center;"><span class="math inline">\(F(x)\)</span></th>
-<th style="text-align: center;"><span class="math inline">\(f(x)\)</span></th>
-<th style="text-align: center;"><span class="math inline">\(\mu_x\)</span></th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: center;"><span class="math inline">\(1-\dfrac{x}{100}\)</span></td>
-<td style="text-align: center;"><span class="math inline">\(\dfrac{x}{100}\)</span></td>
-<td style="text-align: center;"><span class="math inline">\(\dfrac{1}{100}\)</span></td>
-<td style="text-align: center;"><span class="math inline">\((100-x)^{-1}{,}\)</span><br><span class="math inline">\(0 \leq x \leq 100\)</span></td>
-</tr>
-<tr class="even">
-<td style="text-align: center;"><span class="math inline">\(e^{-x}{,}\)</span><br><span class="math inline">\(x \geq 0\)</span></td>
-<td style="text-align: center;"><span class="math inline">\(1-e^{-x}\)</span></td>
-<td style="text-align: center;"><span class="math inline">\(e^{-x}\)</span></td>
-<td style="text-align: center;"><span class="math inline">\(1\)</span></td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;"><span class="math inline">\(\dfrac{1}{1+x}\)</span></td>
-<td style="text-align: center;"><span class="math inline">\(1-(1+x)^{-1}{,}\)</span><br><span class="math inline">\(x \geq 0\)</span></td>
-<td style="text-align: center;"><span class="math inline">\(\dfrac{1}{(1+x)^2}\)</span></td>
-<td style="text-align: center;"><span class="math inline">\(\dfrac{1}{1+x}\)</span></td>
-</tr>
-<tr class="even">
-<td style="text-align: center;"><span class="math inline">\(\dfrac{(100-x)^2}{10{,}000}\)</span></td>
-<td style="text-align: center;"><span class="math inline">\(\dfrac{x(200-x)}{10{,}000}\)</span></td>
-<td style="text-align: center;"><span class="math inline">\(\dfrac{100-x}{5\,000}{,}\)</span><br><span class="math inline">\(0 \leq x \leq 100\)</span></td>
-<td style="text-align: center;"><span class="math inline">\(\dfrac{2}{100-x}\)</span></td>
-</tr>
-</tbody>
-</table>
+<div class="solution callout callout-style-default callout-note callout-titled" title="Chapter 1 - General Probability">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
 </div>
-<p><span class="math inline">\(\\\)</span></p></li>
-<li><p><span class="math inline">\(\quad 2.773\)</span></p></li>
-<li><p><span class="math inline">\(\quad 0.00675\)</span></p></li>
-<li><p><span class="math inline">\(\quad z(n-x)-z(m-x)\)</span></p></li>
-<li><p><span class="math inline">\(\quad 27.55\)</span></p></li>
-<li><p><span class="math inline">\(\quad\)</span> (a) <span class="math inline">\(50\)</span>; (b) <span class="math inline">\(208.3\overline{3}\)</span>; (c) <span class="math inline">\(50\)</span></p></li>
-<li><p><span class="math inline">\(\quad 0.41803\)</span></p></li>
-<li><div class="narrow-table">
-<table class="caption-top table">
-<thead>
-<tr class="header">
-<th style="text-align: right;"><span class="math inline">\(x\)</span></th>
-<th style="text-align: right;"><span class="math inline">\(l_x\)</span></th>
-<th style="text-align: right;"><span class="math inline">\(p_x\)</span></th>
-<th style="text-align: right;"><span class="math inline">\(q_x\)</span></th>
-<th style="text-align: right;"><span class="math inline">\(d_x\)</span></th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: right;"><span class="math inline">\(0\)</span></td>
-<td style="text-align: right;"><span class="math inline">\(100\,000\)</span></td>
-<td style="text-align: right;"><span class="math inline">\(0.99450\)</span></td>
-<td style="text-align: right;"><span class="math inline">\(0.00550\)</span></td>
-<td style="text-align: right;"><span class="math inline">\(550\)</span></td>
-</tr>
-<tr class="even">
-<td style="text-align: right;"><span class="math inline">\(1\)</span></td>
-<td style="text-align: right;"><span class="math inline">\(99\,450\)</span></td>
-<td style="text-align: right;"><span class="math inline">\(0.99346\)</span></td>
-<td style="text-align: right;"><span class="math inline">\(0.00654\)</span></td>
-<td style="text-align: right;"><span class="math inline">\(650\)</span></td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;"><span class="math inline">\(2\)</span></td>
-<td style="text-align: right;"><span class="math inline">\(98\,800\)</span></td>
-<td style="text-align: right;"><span class="math inline">\(0.99241\)</span></td>
-<td style="text-align: right;"><span class="math inline">\(0.00760\)</span></td>
-<td style="text-align: right;"><span class="math inline">\(750\)</span></td>
-</tr>
-</tbody>
-</table>
-</div></li>
-</ol>
-<p><span class="math inline">\(\\\)</span></p>
-<ol start="18" type="1">
-<li><div class="narrow-table">
-<table class="caption-top table">
-<thead>
-<tr class="header">
-<th style="text-align: right;"><span class="math inline">\(x\)</span></th>
-<th style="text-align: right;"><span class="math inline">\(q_x\)</span></th>
-<th style="text-align: right;"><span class="math inline">\(l_x\)</span></th>
-<th style="text-align: right;"><span class="math inline">\(d_x\)</span></th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: right;"><span class="math inline">\(0\)</span></td>
-<td style="text-align: right;"><span class="math inline">\(0.011\)</span></td>
-<td style="text-align: right;"><span class="math inline">\(1\,000\,000\)</span></td>
-<td style="text-align: right;"><span class="math inline">\(11\,000\)</span></td>
-</tr>
-<tr class="even">
-<td style="text-align: right;"><span class="math inline">\(1\)</span></td>
-<td style="text-align: right;"><span class="math inline">\(0.005\)</span></td>
-<td style="text-align: right;"><span class="math inline">\(980\,000\)</span></td>
-<td style="text-align: right;"><span class="math inline">\(4\,945\)</span></td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;"><span class="math inline">\(2\)</span></td>
-<td style="text-align: right;"><span class="math inline">\(0.003\)</span></td>
-<td style="text-align: right;"><span class="math inline">\(984\,055\)</span></td>
-<td style="text-align: right;"><span class="math inline">\(2\,952\)</span></td>
-</tr>
-</tbody>
-</table>
-</div></li>
-</ol>
-<p><span class="math inline">\(\\\)</span></p>
-<ol start="19" type="1">
-<li><p><span class="math inline">\(\quad\)</span> (a) <span class="math inline">\(0.70355\)</span>; (b) <span class="math inline">\(0.29656\)</span>; (c) <span class="math inline">\(0.02282\)</span>; (d) <span class="math inline">\(0.17768\)</span></p></li>
-<li><p><span class="math inline">\(\quad 1\)</span></p></li>
-<li><p><span class="math inline">\(\quad 0.75\)</span></p></li>
-<li><p><span class="math inline">\(\quad 10\log{2}\)</span></p></li>
-<li><p><span class="math inline">\(\quad 1.5\)</span></p></li>
-<li><p><span class="math inline">\(\quad 26{,}750\)</span></p></li>
-<li><p><span class="math inline">\(\quad 0.992\)</span></p></li>
-<li><p><span class="math inline">\(\quad 0.4\)</span></p></li>
-<li><p><span class="math inline">\(\quad\)</span> (a) <span class="math inline">\(0.01176\)</span>; (b) <span class="math inline">\(42.5\)</span></p></li>
-<li><p><span class="math inline">\(\quad 15\,000\)</span></p></li>
-<li><p><span class="math inline">\(\quad 0.17324\)</span></p></li>
-<li><p><span class="math inline">\(\quad 126.28\)</span></p></li>
-</ol>
-<!----------------------------------------------------------------------------------->
-</section>
-<section id="chapter-2---life-insurance-models" class="level2 unnumbered">
-<h2 class="unnumbered anchored" data-anchor-id="chapter-2---life-insurance-models">Chapter 2 - Life Insurance Models</h2>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Chapter 1 - General Probability
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-1" class="callout-1-contents callout-collapse collapse">
+<section id="answers-to-general-probability-exercises" class="level4 unnumbered callout-body-container callout-body">
+<h4 class="unnumbered anchored" data-anchor-id="answers-to-general-probability-exercises">Answers to General Probability exercises</h4>
 <ol type="1">
-<li><p><span class="math inline">\(\quad 5\)</span></p></li>
-<li><p><span class="math inline">\(\quad 0.62073\)</span></p></li>
-<li><p><span class="math inline">\(\quad 0\)</span></p></li>
-<li><p><span class="math inline">\(\quad 0.04879\)</span></p></li>
+<li><p><span class="math inline">\(\quad 5{,}184\)</span></p></li>
+<li><p><span class="math inline">\(\quad\)</span> (a) <span class="math inline">\(120\)</span><br>
+<span class="math inline">\(\quad\)</span> (b) <span class="math inline">\(110\)</span></p></li>
+<li><p><span class="math inline">\(\quad 6{,}151{,}600{,}000\)</span></p></li>
+<li><p><span class="math inline">\(\quad\)</span> (a) <span class="math inline">\(4{,}060\)</span><br>
+<span class="math inline">\(\quad\)</span> (b) <span class="math inline">\(360\)</span><br>
+<span class="math inline">\(\quad\)</span> (c) <span class="math inline">\(2{,}700\)</span><br>
+<span class="math inline">\(\quad\)</span> (d) <span class="math inline">\(1{,}000\)</span></p></li>
+<li><p><span class="math inline">\(\quad 3\,430\)</span></p></li>
+<li><p><span class="math inline">\(\quad 3\,480\)</span></p></li>
+<li><p><span class="math inline">\(\quad\)</span> (a) <span class="math inline">\(720\)</span><br>
+<span class="math inline">\(\quad\)</span> (b) <span class="math inline">\(72\)</span><br>
+<span class="math inline">\(\quad\)</span> (c) <span class="math inline">\(144\)</span></p></li>
+<li><p><span class="math inline">\(\quad 88{,}200\)</span></p></li>
+<li><p><span class="math inline">\(\quad\)</span> (a) <span class="math inline">\(36\)</span><br>
+<span class="math inline">\(\quad\)</span> (b) <span class="math inline">\(26\)</span></p></li>
+<li><p><span class="math inline">\(\quad 240\)</span></p></li>
+<li><p><span class="math inline">\(\quad\)</span> (a) <span class="math inline">\(6\)</span><br>
+<span class="math inline">\(\quad\)</span> (b) <span class="math inline">\(6\)</span><br>
+<span class="math inline">\(\quad\)</span>(c) <span class="math inline">\(6\)</span><br>
+<span class="math inline">\(\quad\)</span>(d) <span class="math inline">\(11\)</span></p></li>
+<li><p><span class="math inline">\(\quad\)</span> (a) <span class="math inline">\(\dfrac {7}{15}\)</span><br>
+<span class="math inline">\(\quad\)</span> (b) <span class="math inline">\(\dfrac {4}{15}\)</span><br>
+<span class="math inline">\(\quad\)</span> (c) <span class="math inline">\(\dfrac {2}{15}\)</span><br>
+<span class="math inline">\(\quad\)</span> (d) <span class="math inline">\(\dfrac {9}{15}\)</span></p></li>
+<li><p><span class="math inline">\(\quad\)</span> (a) <span class="math inline">\(\dfrac {1}{11}\)</span> <span class="math inline">\(\quad\)</span> (b) <span class="math inline">\(\dfrac {6}{11}\)</span></p></li>
+<li><p><span class="math inline">\(\quad\)</span> (a) <span class="math inline">\(18\)</span><br>
+<span class="math inline">\(\quad\)</span> (b) <span class="math inline">\(6\)</span><br>
+<span class="math inline">\(\quad\)</span> (c) <span class="math inline">\(9\)</span> <span class="math inline">\(\quad\)</span> (d) <span class="math inline">\(A\cap B=\{(\)</span>taco, burrito, arroz c/ leche), (taco, enchilada, arroz c/ leche<span class="math inline">\()\)</span>, <span class="math inline">\((\)</span>taco, chilaquiles, arroz c/ leche<span class="math inline">\()\}\)</span> <span class="math inline">\(\quad\)</span> (e) <span class="math inline">\(6\)</span> <span class="math inline">\(\quad\)</span> (f) <span class="math inline">\(A\cap B\cap C=\{(\)</span>arroz c/ leche, taco, enchilada<span class="math inline">\()\}\)</span></p></li>
+<li><p><span class="math inline">\(\quad \dfrac{1}{2}\)</span></p></li>
+<li><p><span class="math inline">\(\quad 0.3\overline 3\)</span></p></li>
+<li><p><span class="math inline">\(\quad 0.53\)</span></p></li>
+<li><p><span class="math inline">\(\quad 0.6\)</span></p></li>
+<li><p><span class="math inline">\(\quad 0.205\)</span></p></li>
+<li><p><span class="math inline">\(\quad 52\%\)</span></p></li>
+<li><p><span class="math inline">\(\quad 0.35\)</span></p></li>
+<li><p><span class="math inline">\(\quad 0.26\)</span></p></li>
+<li><p><span class="math inline">\(\quad \dfrac{1}{3}\)</span></p></li>
+<li><p><span class="math inline">\(\quad\)</span> (a) <span class="math inline">\(\dfrac {1}{8}\)</span><br>
+<span class="math inline">\(\quad\)</span> (b) <span class="math inline">\(\dfrac {11}{48}\)</span><br>
+<span class="math inline">\(\quad\)</span> (c) <span class="math inline">\(\dfrac {6}{11}\)</span></p></li>
+<li><p><span class="math inline">\(\quad 0.6\)</span></p></li>
+<li><p><span class="math inline">\(\quad 0.004926\)</span></p></li>
+<li><p><span class="math inline">\(\quad 0.25\)</span></p></li>
+<li><p><span class="math inline">\(\quad 0.04\overline {33}\)</span></p></li>
+<li><p><span class="math inline">\(\quad 0.0893\)</span></p></li>
+<li><p><span class="math inline">\(\quad 0.1728\)</span></p></li>
+<li><p><span class="math inline">\(\quad 0.2922\)</span></p></li>
+<li><p><span class="math inline">\(\quad\)</span> (a) <span class="math inline">\(\dfrac{1}{2}\)</span><br>
+<span class="math inline">\(\quad\)</span> (b) <span class="math inline">\(\dfrac{1}{8}\)</span></p></li>
+</ol>
+</section>
+</div>
+</div>
+<div class="solution callout callout-style-default callout-note callout-titled" title="Chapter 2 - Univariate Distributions">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Chapter 2 - Univariate Distributions
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-2" class="callout-2-contents callout-collapse collapse">
+<section id="answers-to-univariate-distributions-exercises" class="level4 callout-body-container callout-body">
+<h4 class="anchored" data-anchor-id="answers-to-univariate-distributions-exercises">Answers to Univariate Distributions exercises</h4>
+<ol type="1">
+<li><p><span class="math inline">\(\quad\)</span> (a) <span class="math inline">\(\{0, 1, 2\}\)</span><br>
+<span class="math inline">\(\quad\)</span> (b) <span class="math inline">\(0.8\overline{33}\)</span> <span class="math inline">\(\quad\)</span> (c) <span class="math inline">\(0.3\overline{33}\)</span> <span class="math inline">\(\quad\)</span> (d) <span class="math inline">\(0.6\)</span></p></li>
+<li><p><span class="math inline">\(\quad\)</span> (a) <span class="math inline">\(\dfrac {1}{36}\)</span><br>
+<span class="math inline">\(\quad\)</span> (b) <span class="math inline">\(\dfrac {1}{3}\)</span><br>
+<span class="math inline">\(\quad\)</span> (c) <span class="math inline">\(\dfrac {1}{5}\)</span></p></li>
+<li><p><span class="math inline">\(\quad 0.0004\)</span></p></li>
+<li><p><span class="math inline">\(\quad 0.5131\)</span></p></li>
+<li><p><span class="math inline">\(\quad 2\)</span></p></li>
+<li><p><span class="math inline">\(\quad 60{,}000\)</span></p></li>
+<li><p><span class="math inline">\(\quad 0.9245\)</span></p></li>
+<li><p><span class="math inline">\(\quad 1.0750\)</span></p></li>
+<li><p><span class="math inline">\(\quad \dfrac{1}{3}\)</span></p></li>
+<li><p><span class="math inline">\(\quad 0.2007\)</span></p></li>
+<li><p><span class="math inline">\(\quad 0.2380\)</span></p></li>
+<li><p><span class="math inline">\(\quad 220\)</span></p></li>
+<li><p><span class="math inline">\(\quad 1.4285\)</span></p></li>
+<li><p><span class="math inline">\(\quad 0.04\)</span></p></li>
+<li><p><span class="math inline">\(\quad\)</span> (a) <span class="math inline">\(\dfrac {3}{64}\)</span><br>
+<span class="math inline">\(\quad\)</span> (b) <span class="math inline">\(\dfrac {1}{256}\)</span></p></li>
+<li><p><span class="math inline">\(\quad -2.872\)</span></p></li>
+<li><p><span class="math inline">\(\quad\)</span> (a) <span class="math inline">\(\dfrac {3}{2}\)</span><br>
+<span class="math inline">\(\quad\)</span> (b) <span class="math inline">\(\dfrac {3}{5}\)</span> <span class="math inline">\(\quad\)</span> (c) <span class="math inline">\(\dfrac {7}{16}\)</span></p></li>
+<li><p><span class="math inline">\(\quad \dfrac {71}{36}\)</span></p></li>
+<li><p><span class="math inline">\(\quad 0.35\)</span></p></li>
+<li><p><span class="math inline">\(\quad\)</span> 6:08:29 am</p></li>
+<li><p><span class="math inline">\(\quad 0.5134\)</span></p></li>
+<li><p><span class="math inline">\(\quad 0.4348\)</span></p></li>
+<li><p><span class="math inline">\(\quad \dfrac{1}{9}\)</span></p></li>
+<li><p><span class="math inline">\(\quad 93.06\)</span></p></li>
 <li><p><span class="math inline">\(\quad 10\)</span></p></li>
-<li><p><span class="math inline">\(\quad 0.43047\)</span></p></li>
-<li><p><span class="math inline">\(\quad 85\)</span></p></li>
-<li><p><span class="math inline">\(\quad 0.25170\)</span></p></li>
-<li><p><span class="math inline">\(\quad 17{,}442\)</span></p></li>
-<li><p><span class="math inline">\(\quad 416.6\bar{6}\)</span></p></li>
-<li><p><span class="math inline">\(\quad 26{,}600\)</span></p></li>
-<li><p><span class="math inline">\(\quad\)</span> (a) <span class="math inline">\(1{,}419\)</span>; (b) <span class="math inline">\(10{,}514\)</span></p></li>
-<li><p><span class="math inline">\(\quad 49{,}122\)</span></p></li>
-<li><p><span class="math inline">\(\quad 0.05\)</span></p></li>
-<li><p><span class="math inline">\(\quad 0.76204\)</span></p></li>
-<li><p><span class="math inline">\(\quad 6\)</span></p></li>
-<li><p><span class="math inline">\(\quad 3{,}241.38\)</span></p></li>
-<li><p><span class="math inline">\(\quad 5{,}597\)</span></p></li>
-<li><p><span class="math inline">\(\quad 58{,}739\)</span></p></li>
-<li><p><span class="math inline">\(\quad 111{,}612.50\)</span></p></li>
-<li><p><span class="math inline">\(\quad 353.45\)</span></p></li>
-<li><p><span class="math inline">\(\quad 0.96129\)</span></p></li>
-<li><p><span class="math inline">\(\quad 6{,}952.38\)</span></p></li>
-<li><p><span class="math inline">\(\quad 20{,}876.49\)</span></p></li>
-<li><p><span class="math inline">\(\quad\)</span> –</p></li>
-<li><p><span class="math inline">\(\quad 0.27733\)</span></p></li>
-<li><p><span class="math inline">\(\quad 0.00542\)</span></p></li>
+<li><p><span class="math inline">\(\quad \dfrac{1}{4}\)</span></p></li>
+<li><p><span class="math inline">\(\quad 0.0317\)</span></p></li>
+<li><p><span class="math inline">\(\quad 0.2498\)</span></p></li>
+<li><p><span class="math inline">\(\quad 0.4167\)</span></p></li>
+<li><p><span class="math inline">\(\quad 4{,}176\)</span></p></li>
+<li><p><span class="math inline">\(\quad 0.0794\)</span></p></li>
+<li><p><span class="math inline">\(&lt;quad 0.2498\)</span></p></li>
+<li><p><span class="math inline">\(\quad 1{,}692\)</span></p></li>
+<li><p><span class="math inline">\(\quad 3\)</span></p></li>
+<li><p><span class="math inline">\(\quad 120{,}000\)</span></p></li>
+<li><p><span class="math inline">\(\quad\)</span></p></li>
+<li><p><span class="math inline">\(\quad 999\)</span></p></li>
+<li><p><span class="math inline">\(\quad 500\)</span></p></li>
+<li><p><span class="math inline">\(\quad 0.9343\)</span></p></li>
+<li><p><span class="math inline">\(\quad 1.90\)</span></p></li>
+<li><p><span class="math inline">\(\quad 328\)</span></p></li>
+<li><p><span class="math inline">\(\quad 0.7275\)</span>$</p></li>
+<li><p><span class="math inline">\(\quad 0.1241\)</span></p></li>
+<li><p><span class="math inline">\(\quad 4{,}176\)</span></p></li>
+<li><p><span class="math inline">\(\quad 0.45\)</span></p></li>
+<li><p><span class="math inline">\(\quad 998.72\)</span></p></li>
+<li><p><span class="math inline">\(\quad\)</span></p></li>
+<li><p><span class="math inline">\(\quad 985\)</span></p></li>
+</ol>
+</section>
+</div>
+</div>
+<div class="solution callout callout-style-default callout-note callout-titled" title="Chapter 3 - Multivariate Distributions">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Chapter 3 - Multivariate Distributions
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-3" class="callout-3-contents callout-collapse collapse">
+<section id="answers-to-multivariate-distributions-exercises" class="level4 unnumbered callout-body-container callout-body">
+<h4 class="unnumbered anchored" data-anchor-id="answers-to-multivariate-distributions-exercises">Answers to Multivariate Distributions exercises</h4>
+<ol type="1">
+<li><p><span class="math inline">\(\quad\)</span> (a) <span class="math inline">\(\dfrac{5}{12}\)</span></p>
+<p><span class="math inline">\(\quad\)</span> (b) The PMFs are defined as follows:</p>
+<p><span class="math inline">\(\quad \Pr[X=x]=
+\begin{cases}
+\dfrac{13}{24}, &amp; x=0,\\
+\dfrac{11}{24}, &amp; x=1,\
+0, &amp; \text{otherwise}
+\end{cases}\)</span></p>
+<p><span class="math inline">\(\quad \Pr[Y=y]=
+\begin{cases}
+\dfrac{7}{24}, &amp; y=0,\\
+\dfrac{5}{12}, &amp; y=1,\\
+0, &amp; \text{otherwise}
+\end{cases}\)</span></p>
+<p><span class="math inline">\(\quad\)</span> (c) <span class="math inline">\(\dfrac{6}{13}\)</span></p>
+<p><span class="math inline">\(\quad\)</span> (d) No.&nbsp;For example, <span class="math inline">\(\Pr[Y=1\mid X=0]\neq \Pr[Y=1]\)</span>.</p></li>
+<li><p><span class="math inline">\(\quad\)</span> (a) <span class="math inline">\(0\)</span><br>
+<span class="math inline">\(\quad\)</span> (b) <span class="math inline">\(0\)</span></p></li>
+<li><p><span class="math inline">\(\quad 100\)</span></p></li>
+<li><p><span class="math inline">\(\quad\)</span> (a) <span class="math inline">\(6\)</span><br>
+<span class="math inline">\(\quad\)</span> (b) <span class="math inline">\(10\)</span></p></li>
+<li><p><span class="math inline">\(\quad 0.7333\)</span></p></li>
+<li><p><span class="math inline">\(\quad 0.4888\)</span></p></li>
+<li><p><span class="math inline">\(\quad\)</span> (a) <span class="math inline">\(0.25\)</span></p>
+<p><span class="math inline">\(\quad\)</span> (b) <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> are not independent. For example, <span class="math inline">\(\mathrm{Pr}[X=0, Y=0\,]\neq \mathrm{Pr}[X=0\,]\cdot \mathrm{Pr}[Y=0\,]\)</span></p>
+<p><span class="math inline">\(\quad\)</span> (c) <span class="math inline">\(-0.25\)</span></p></li>
+<li><p><span class="math inline">\(\quad\)</span> (a) <span class="math inline">\(0.5\)</span></p>
+<p><span class="math inline">\(\quad\)</span> (b) No</p></li>
+<li><p><span class="math inline">\(\quad 0.24\)</span></p></li>
+<li><p><span class="math inline">\(\quad 0.576\)</span></p></li>
+<li><p><span class="math inline">\(\quad 0\)</span></p></li>
+<li><p><span class="math inline">\(\quad 11\)</span></p></li>
+<li><p><span class="math inline">\(\quad 0.9545\)</span></p></li>
+<li><p><span class="math inline">\(\quad 0.1875\)</span></p></li>
+<li><p><span class="math inline">\(\quad 0.416\overline{6}\)</span></p></li>
+<li><p><span class="math inline">\(\quad\)</span></p></li>
+<li><p><span class="math inline">\(\quad\)</span></p></li>
+<li><p><span class="math inline">\(\quad\)</span></p></li>
+<li><p><span class="math inline">\(\quad 103.025\)</span></p></li>
+<li><p><span class="math inline">\(\quad 0.4138\)</span></p></li>
+<li><p><span class="math inline">\(\quad\)</span></p></li>
+<li><p><span class="math inline">\(\quad 0.25\)</span></p></li>
+<li><p><span class="math inline">\(\quad 0.8\overline{8}\)</span></p></li>
+<li><p><span class="math inline">\(\quad 0.820\)</span></p></li>
+<li><p><span class="math inline">\(\quad 5\)</span></p></li>
+<li><p><span class="math inline">\(\quad 0.414\)</span></p></li>
+<li><p><span class="math inline">\(\quad 0.07639\)</span></p></li>
+<li><p><span class="math inline">\(\quad 0.275\)</span></p></li>
+<li><p><span class="math inline">\(\quad 0.8186\)</span></p></li>
+<li><p><span class="math inline">\(\quad 12\)</span></p></li>
+<li><p><span class="math inline">\(\quad 0.8413\)</span></p></li>
 </ol>
 
 
 </section>
+</div>
+</div>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">

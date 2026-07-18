@@ -44,7 +44,7 @@ ul.task-list li input[type="checkbox"] {
 <link href="site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-12eeb4b20e9f5a2b0bfc604bfaf942bb.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-9e3e5b9121e68b3f077afb32f2c64d95.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -156,7 +156,7 @@ window.Quarto = {
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./chapter_2.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Univariate Random Variables</span></span></a>
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Univariate Distributions</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -187,6 +187,12 @@ window.Quarto = {
   <div class="sidebar-item-container"> 
   <a href="./about.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">About the author</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./support.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Support the Project</span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -225,7 +231,7 @@ window.Quarto = {
   </ul></li>
   <li><a href="#solved-exercises" id="toc-solved-exercises" class="nav-link" data-scroll-target="#solved-exercises"><span class="header-section-number">3.2</span> Solved Exercises</a>
   <ul>
-  <li><a href="#basic-probabilities" id="toc-basic-probabilities" class="nav-link" data-scroll-target="#basic-probabilities">Basic probabilities</a></li>
+  <li><a href="#joint-distribution-and-independent-random-variables" id="toc-joint-distribution-and-independent-random-variables" class="nav-link" data-scroll-target="#joint-distribution-and-independent-random-variables">Joint distribution and independent random variables</a></li>
   </ul></li>
   <li><a href="#supplementary-exercises" id="toc-supplementary-exercises" class="nav-link" data-scroll-target="#supplementary-exercises"><span class="header-section-number">3.3</span> Supplementary Exercises</a></li>
   </ul>
@@ -566,19 +572,51 @@ window.Quarto = {
 <blockquote class="blockquote">
 Before opening the solutions, take a moment to work through each problem—-your mastery grows most when you engage actively with the mathematics.
 </blockquote>
-<section id="basic-probabilities" class="level3 unnumbered">
-<h3 class="unnumbered anchored" data-anchor-id="basic-probabilities">Basic probabilities</h3>
-<p>Let <span class="math inline">\(S(x)\)</span> be defined as follows:</p>
-<p><span class="math display">\[s(x) = \left\{
-  \begin{array}{ll}
-    1-\dfrac{x}{250} &amp;  0 \leq x &lt; 40 \\
-    1-{\left( \dfrac{x}{100} \right)}^2 &amp; 40 \leq x \leq 100 \\
-  \end{array}
-\right.
-\]</span> 1. Calculate the probability that <span class="math inline">\((25)\)</span> dies within the next <span class="math inline">\(30\)</span> years.<br>
-2. Calculate the probability that <span class="math inline">\((25)\)</span> dies in her fortieth year of live.<br>
-3. Calculate the probability that <span class="math inline">\((25)\)</span> does not die between ages <span class="math inline">\(35\)</span> and <span class="math inline">\(45\)</span><br>
-4. Calculate the probability that <span class="math inline">\((25)\)</span> celebrates her eightieth birthday.</p>
+<section id="joint-distribution-and-independent-random-variables" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="joint-distribution-and-independent-random-variables">Joint distribution and independent random variables</h4>
+<p>Let <span class="math inline">\(X\)</span> be the random variable with the follwoing distribution, and let <span class="math inline">\(Y=X^2\)</span>:</p>
+<table>
+<tbody><tr>
+<td>
+<span class="math inline">\(x\)</span>
+</td>
+<td>
+<span class="math inline">\(-2\)</span>
+</td>
+<td>
+<span class="math inline">\(-1\)</span>
+</td>
+<td>
+<span class="math inline">\(1\)</span>
+</td>
+<td>
+<span class="math inline">\(2\)</span>
+</td>
+</tr><tr>
+</tr><tr>
+<td>
+<span class="math inline">\(f(x)\)</span>
+</td>
+<td>
+<span class="math inline">\(\dfrac{1}{4}\)</span>
+</td>
+<td>
+<span class="math inline">\(\dfrac{1}{4}\)</span>
+</td>
+<td>
+<span class="math inline">\(\dfrac{1}{4}\)</span>
+</td>
+<td>
+<span class="math inline">\(\dfrac{1}{4}\)</span>
+</td>
+</tr><tr>
+</tr></tbody></table>
+<ol type="1">
+<li><p>Find the distribution <span class="math inline">\(g\)</span> of <span class="math inline">\(Y\)</span>.</p></li>
+<li><p>Find the joint distribution <span class="math inline">\(h\)</span> of <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span>.</p></li>
+<li><p>Find <span class="math inline">\(\text{cov}[X,Y]\)</span> and <span class="math inline">\(\rho [X, Y]\)</span>.</p></li>
+<li><p>Determine wheter or not <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> are independent.</p></li>
+</ol>
 <div class="solution callout callout-style-default callout-note callout-titled" title="Solution">
 <div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
@@ -592,30 +630,122 @@ Before opening the solutions, take a moment to work through each problem—-your
 <div id="callout-1" class="callout-1-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <ol type="1">
-<li>The probability that <span class="math inline">\((25)\)</span> dies within the next <span class="math inline">\(30\)</span> years is given by</li>
+<li><p>Since <span class="math inline">\(Y=X^2\)</span>, <span class="math inline">\(Y\)</span> only has the values <span class="math inline">\(4\)</span> and <span class="math inline">\(1\)</span>, with the following distribution:</p>
+<table>
+<tbody><tr>
+<td>
+<p><span class="math inline">\(y\)</span></p>
+</td>
+<td>
+<p><span class="math inline">\(1\)</span></p>
+</td>
+<td>
+<p><span class="math inline">\(4\)</span></p>
+</td>
+</tr><tr>
+</tr><tr>
+<td>
+<p><span class="math inline">\(g(y)\)</span></p>
+</td>
+<td>
+<p><span class="math inline">\(\dfrac{1}{2}\)</span></p>
+</td>
+<td>
+<p><span class="math inline">\(\dfrac{1}{2}\)</span></p>
+</td>
+</tr><tr>
+</tr></tbody></table></li>
+<li><p>The joint distribution is found by noting the relationship <span class="math inline">\(Y=X^2\)</span>.</p>
+<p>For example,</p>
+<p><span class="math inline">\(h(-2, 1)=0\)</span>, <span class="math inline">\(h(-2,4)=\dfrac{1}{4}\)</span></p>
+<p>and so on.</p>
+<table>
+<tbody><tr>
+<td>
+</td>
+<td>
+<p><span class="math inline">\(Y=1\)</span></p>
+</td>
+<td>
+<p><span class="math inline">\(Y=4\)</span></p>
+</td>
+<td>
+<p><span class="math inline">\(\sum\)</span></p>
+</td>
+</tr><tr>
+</tr><tr>
+<td>
+<p><span class="math inline">\(X=-2\)</span></p>
+</td>
+<td>
+<p><span class="math inline">\(0\)</span></p>
+</td>
+<td>
+<p><span class="math inline">\(\dfrac{1}{4}\)</span></p>
+</td>
+<td>
+<p><span class="math inline">\(\dfrac{1}{4}\)</span></p>
+</td>
+</tr><tr>
+</tr><tr>
+<td>
+<p><span class="math inline">\(X=-1\)</span></p>
+</td>
+<td>
+<p><span class="math inline">\(\dfrac{1}{4}\)</span></p>
+</td>
+<td>
+<p><span class="math inline">\(0\)</span></p>
+</td>
+<td>
+<p><span class="math inline">\(\dfrac{1}{4}\)</span></p>
+</td>
+</tr><tr>
+</tr><tr>
+<td>
+<p><span class="math inline">\(X=1\)</span></p>
+</td>
+<td>
+<p><span class="math inline">\(\dfrac{1}{4}\)</span></p>
+</td>
+<td>
+<p><span class="math inline">\(0\)</span></p>
+</td>
+<td>
+<p><span class="math inline">\(\dfrac{1}{4}\)</span></p>
+</td>
+</tr><tr>
+</tr><tr>
+<td>
+<p><span class="math inline">\(X=2\)</span></p>
+</td>
+<td>
+<p><span class="math inline">\(0\)</span></p>
+</td>
+<td>
+<p><span class="math inline">\(\dfrac{1}{4}\)</span></p>
+</td>
+<td>
+<p><span class="math inline">\(\dfrac{1}{4}\)</span></p>
+</td>
+</tr><tr>
+</tr><tr>
+<td>
+<p><span class="math inline">\(\sum\)</span></p>
+</td>
+<td>
+<p><span class="math inline">\(\dfrac{1}{2}\)</span></p>
+</td>
+<td>
+<p><span class="math inline">\(\dfrac{1}{2}\)</span></p>
+</td>
+<td>
+</td>
+</tr><tr>
+</tr></tbody></table></li>
+<li><p><span class="math inline">\(\operatorname{E}[X]=-2 \left(\dfrac{1}{4}-1 \left(\dfrac{1}{4}+1 \left(\dfrac{1}{4}+2 \left(\dfrac{1}{4} \right)=0\)</span></p>
+<p><span class="math inline">\(\operatorname{E}[Y]&amp;=1 \left(\dfrac{1}{2}+4 \left(\dfrac{1}{2} \right)&amp;=\dfrac{5}{2}\)</span></p></li>
 </ol>
-<p id="ind50">
-<span class="math inline">\({_{30}}q_{25}=\dfrac{s(25)-s(55)}{s(25)}=0.225\)</span>
-</p>
-<ol start="2" type="1">
-<li>The probability <span class="math inline">\((25)\)</span> dies in her fortieth year of live is given by</li>
-</ol>
-<p id="ind50">
-<span class="math inline">\({_{14|}}q_{25}={_{14}}p_{25}\;q_{39}=\dfrac{\cancel{s(39)}}{s(25)}\cdot\dfrac{s(39)-s(40)}{\cancel{s(39)}}=0.00\bar{4}\)</span>
-</p>
-<ol start="3" type="1">
-<li>The probability that <span class="math inline">\((25)\)</span> does not die between ages <span class="math inline">\(35\)</span> and <span class="math inline">\(45\)</span> is given by</li>
-</ol>
-<p id="ind50">
-<span class="math inline">\(1-{_{10|10}}q_{25}=1-{_{10}}p_{25}\;{_{10}}q_{35}=1-\dfrac{\cancel{s35}}{s(25)}\cdot\dfrac{s(35)-s(45)}{\cancel{s(35}}=0.930556\)</span>
-</p>
-<ol start="4" type="1">
-<li>The probability that <span class="math inline">\((25)\)</span> celebrates her eightieth birthday is given by</li>
-</ol>
-<p id="ind50">
-<span class="math inline">\(\dfrac{s(80)}{s(25)}=0.4\)</span>
-</p>
-<p><span class="math inline">\(\\\)</span></p>
 </div>
 </div>
 </div>
@@ -1399,8 +1529,8 @@ f(x,y) = \left\{
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./chapter_2.html" class="pagination-link" aria-label="Univariate Random Variables">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Univariate Random Variables</span></span>
+      <a href="./chapter_2.html" class="pagination-link" aria-label="Univariate Distributions">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Univariate Distributions</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">

@@ -44,7 +44,7 @@ ul.task-list li input[type="checkbox"] {
 <link href="site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-12eeb4b20e9f5a2b0bfc604bfaf942bb.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-9e3e5b9121e68b3f077afb32f2c64d95.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -191,6 +191,12 @@ window.Quarto = {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./support.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Support the Project</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./report.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Report Content Errors</span></a>
   </div>
@@ -226,7 +232,7 @@ window.Quarto = {
   </ul></li>
   <li><a href="#solved-exercises" id="toc-solved-exercises" class="nav-link" data-scroll-target="#solved-exercises"><span class="header-section-number">2.2</span> Solved Exercises</a>
   <ul>
-  <li><a href="#basic-probabilities" id="toc-basic-probabilities" class="nav-link" data-scroll-target="#basic-probabilities">Basic probabilities</a></li>
+  <li><a href="#expected-value" id="toc-expected-value" class="nav-link" data-scroll-target="#expected-value">Expected value</a></li>
   </ul></li>
   <li><a href="#supplementary-exercises" id="toc-supplementary-exercises" class="nav-link" data-scroll-target="#supplementary-exercises"><span class="header-section-number">2.3</span> Supplementary Exercises</a></li>
   </ul>
@@ -563,19 +569,11 @@ u, &amp; (1+i)X\geq d+\dfrac{u}{\alpha}.
 <blockquote class="blockquote">
 Before opening the solutions, take a moment to work through each problem—-your mastery grows most when you engage actively with the mathematics.
 </blockquote>
-<section id="basic-probabilities" class="level3 unnumbered">
-<h3 class="unnumbered anchored" data-anchor-id="basic-probabilities">Basic probabilities</h3>
-<p>Let <span class="math inline">\(S(x)\)</span> be defined as follows:</p>
-<p><span class="math display">\[s(x) = \left\{
-  \begin{array}{ll}
-    1-\dfrac{x}{250} &amp;  0 \leq x &lt; 40 \\
-    1-{\left( \dfrac{x}{100} \right)}^2 &amp; 40 \leq x \leq 100 \\
-  \end{array}
-\right.
-\]</span> 1. Calculate the probability that <span class="math inline">\((25)\)</span> dies within the next <span class="math inline">\(30\)</span> years.<br>
-2. Calculate the probability that <span class="math inline">\((25)\)</span> dies in her fortieth year of live.<br>
-3. Calculate the probability that <span class="math inline">\((25)\)</span> does not die between ages <span class="math inline">\(35\)</span> and <span class="math inline">\(45\)</span><br>
-4. Calculate the probability that <span class="math inline">\((25)\)</span> celebrates her eightieth birthday.</p>
+<section id="expected-value" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="expected-value">Expected value</h3>
+<p>A box contains <span class="math inline">\(7\)</span> white balls and <span class="math inline">\(5\)</span> orange balls.</p>
+<p>A ball is randomly selected. If the ball is white, another one is selected, until a white ball is chosen.</p>
+<p>Find the expected number of balls chosen.</p>
 <div class="solution callout callout-style-default callout-note callout-titled" title="Solution">
 <div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
@@ -588,31 +586,19 @@ Before opening the solutions, take a moment to work through each problem—-your
 </div>
 <div id="callout-1" class="callout-1-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<ol type="1">
-<li>The probability that <span class="math inline">\((25)\)</span> dies within the next <span class="math inline">\(30\)</span> years is given by</li>
-</ol>
-<p id="ind50">
-<span class="math inline">\({_{30}}q_{25}=\dfrac{s(25)-s(55)}{s(25)}=0.225\)</span>
-</p>
-<ol start="2" type="1">
-<li>The probability <span class="math inline">\((25)\)</span> dies in her fortieth year of live is given by</li>
-</ol>
-<p id="ind50">
-<span class="math inline">\({_{14|}}q_{25}={_{14}}p_{25}\;q_{39}=\dfrac{\cancel{s(39)}}{s(25)}\cdot\dfrac{s(39)-s(40)}{\cancel{s(39)}}=0.00\bar{4}\)</span>
-</p>
-<ol start="3" type="1">
-<li>The probability that <span class="math inline">\((25)\)</span> does not die between ages <span class="math inline">\(35\)</span> and <span class="math inline">\(45\)</span> is given by</li>
-</ol>
-<p id="ind50">
-<span class="math inline">\(1-{_{10|10}}q_{25}=1-{_{10}}p_{25}\;{_{10}}q_{35}=1-\dfrac{\cancel{s35}}{s(25)}\cdot\dfrac{s(35)-s(45)}{\cancel{s(35}}=0.930556\)</span>
-</p>
-<ol start="4" type="1">
-<li>The probability that <span class="math inline">\((25)\)</span> celebrates her eightieth birthday is given by</li>
-</ol>
-<p id="ind50">
-<span class="math inline">\(\dfrac{s(80)}{s(25)}=0.4\)</span>
-</p>
-<p><span class="math inline">\(\\\)</span></p>
+<p>Denoting <span class="math inline">\(W\)</span> for white and <span class="math inline">\(O\)</span> for orange, the sample space <span class="math inline">\(S\)</span> has the following elements:</p>
+<p><span class="math display">\[S=\{W, OW, OOW, OOOW, OOOOW, OOOOOW\}\]</span> with respective probabilities</p>
+<p><span class="math inline">\(\Pr[W]=\dfrac{7}{12}\)</span></p>
+<p><span class="math inline">\(\Pr[OW]=\dfrac{5}{12} \cdot \dfrac{7}{11}=\dfrac{35}{132}\)</span></p>
+<p><span class="math inline">\(\Pr[OOW]=\dfrac{5}{12} \cdot \dfrac{4}{11} \cdot \dfrac{7}{10}=\dfrac{140}{1320}=\dfrac{7}{66}\quad\)</span><sup>*</sup></p>
+<p><span class="math inline">\(\Pr[OOOW]=\dfrac{5}{12} \cdot \dfrac{4}{11} \cdot \dfrac{3}{10} \cdot \dfrac{7}{9}=\dfrac{140}{1320}=\dfrac{7}{198}\quad\)</span><sup>*</sup></p>
+<p><span class="math inline">\(\Pr[OOOOW]=\dfrac{5}{12} \cdot \dfrac{4}{11} \cdot \dfrac{3}{10} \cdot \dfrac{2}{9} \cdot \dfrac{7}{8}=\dfrac{420}{11880}=\dfrac{7}{792}\quad\)</span><sup>*</sup></p>
+<p><span class="math inline">\(\Pr[OOOOOW]=\dfrac{5}{12} \cdot \dfrac{4}{11} \cdot \dfrac{3}{10} \cdot \dfrac{2}{9} \cdot \dfrac{7}{8}=\dfrac{840}{95040}=\dfrac{1}{792}\quad\)</span><sup>*</sup></p>
+<p><sup>*</sup>&nbsp; Check out Euclid’s algorithm to find the greatest common divisors above.</p>
+<p>As a check, the above probabilities must add up to <span class="math inline">\(1\)</span>:</p>
+<p><span class="math inline">\(\dfrac{7}{12} + \dfrac{35}{132} + \dfrac{7}{66} + \dfrac{7}{198} + \dfrac{7}{792} + \dfrac{1}{792} = 1\)</span>✔</p>
+<p>The expected value is found by multiplying the above probabilities by the number of balls drawn for each element of <span class="math inline">\(S\)</span>:</p>
+<p><span class="math inline">\(\mathbb{E}[B]=1\cdot\left(\dfrac{7}{12} \right)+2\cdot\left(\dfrac{35}{132} \right)+3\cdot\left(\dfrac{7}{198} \right)+4\cdot\left(\dfrac{7}{198} \right)+5\cdot\left(\dfrac{7}{792} \right)+6\cdot\left(\dfrac{1}{792} \right)=1.625\)</span></p>
 </div>
 </div>
 </div>
