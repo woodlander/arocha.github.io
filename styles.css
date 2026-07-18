@@ -1,15 +1,42 @@
+/* ==========================================================================
+   1. Design tokens
+   Central values used throughout the site. Adjust these to change the overall
+   colour palette, page width, borders, and focus treatment.
+   ========================================================================== */
+
 :root {
-  --ink: #4b4b4b;
-  --heading: #333333;
-  --muted: #777777;
-  --accent: #a5523a;
-  --accent-hover: #d26b4f;
-  --line: #ece7e3;
-  --surface: #faf8f6;
-  --max-width: 760px;
+  --color-background: #ffffff;
+  --color-ink: #4b4b4b;
+  --color-heading: #333333;
+  --color-muted: #777777;
+  --color-footer: #8a8a8a;
+  --color-accent: #168c9e;
+--color-accent-hover: #20aec2;
+  --color-line: #ece7e3;
+  --color-surface: #faf8f6;
+  --color-portrait-placeholder: #e8e8e8;
+
+  --color-focus-ring: rgba(22, 140, 158, 0.45);
+  --color-card-border: rgba(127, 127, 127, 0.28);
+  --color-card-background: rgba(255, 255, 255, 0.025);
+  --color-portrait-shadow: rgba(42, 35, 31, 0.10);
+
+  --content-width: 760px;
+  --page-gutter: 40px;
+  --page-gutter-tablet: 36px;
+  --page-gutter-mobile: 28px;
+
+  --transition-fast: 180ms ease;
 }
 
-* {
+/* ==========================================================================
+   2. Base and global styles
+   ========================================================================== */
+
+/* Use predictable element sizing, including padding and borders. */
+*,
+*::before,
+*::after {
   box-sizing: border-box;
 }
 
@@ -18,42 +45,58 @@ html {
 }
 
 body {
-  margin: 0;
   min-width: 320px;
-  background: #ffffff;
-  color: var(--ink);
+  margin: 0;
+  background: var(--color-background);
+  color: var(--color-ink);
   font-family: "Lato", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   font-weight: 300;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
 }
 
+/* Global link treatment. Component-specific rules may override the colour. */
 a {
-  color: var(--accent);
+  color: var(--color-accent);
   text-decoration: none;
-  transition: color 180ms ease;
+  transition: color var(--transition-fast);
 }
 
 a:visited {
-  color: var(--accent);
+  color: var(--color-accent);
 }
 
 a:hover,
 a:focus-visible {
-  color: var(--accent-hover);
+  color: var(--color-accent-hover);
 }
 
+/* Visible keyboard focus for links and other interactive elements. */
+:focus-visible {
+  outline: 2px solid var(--color-focus-ring);
+  outline-offset: 4px;
+}
+
+/* ==========================================================================
+   3. Home page
+   ========================================================================== */
+
+/* Main home-page container. */
 .home {
-  width: min(calc(100% - 40px), var(--max-width));
+  width: min(calc(100% - var(--page-gutter)), var(--content-width));
   margin: 0 auto;
   padding: clamp(42px, 8vh, 88px) 0 56px;
 }
 
+
+/* Home navigation
+   -------------------------------------------------------------------------- */
+
 .home-nav {
   display: flex;
-  justify-content: center;
-  align-items: center;
   flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
   gap: 12px;
   margin-bottom: 46px;
 }
@@ -63,22 +106,25 @@ a:focus-visible {
   display: inline-block;
   margin: 0 7px;
   padding: 9px 8px;
-  color: var(--muted);
+  color: var(--color-muted);
   font-size: 1.08rem;
   font-weight: 300;
   letter-spacing: 0.01em;
 }
 
+/* Animated lines above and below each home navigation link. */
 .home-nav a::before,
 .home-nav a::after {
   position: absolute;
   left: 8px;
   width: calc(100% - 16px);
   height: 1px;
-  background: var(--accent-hover);
+  background: var(--color-accent-hover);
   content: "";
   opacity: 0;
-  transition: opacity 180ms ease, transform 180ms ease;
+  transition:
+    opacity var(--transition-fast),
+    transform var(--transition-fast);
 }
 
 .home-nav a::before {
@@ -93,7 +139,7 @@ a:focus-visible {
 
 .home-nav a:hover,
 .home-nav a:focus-visible {
-  color: var(--accent-hover);
+  color: var(--color-accent-hover);
 }
 
 .home-nav a:hover::before,
@@ -104,21 +150,25 @@ a:focus-visible {
   transform: translateY(0);
 }
 
+
+/* Home hero
+   -------------------------------------------------------------------------- */
+
 .hero {
   display: grid;
   grid-template-columns: 285px minmax(0, 1fr);
-  gap: 30px;
   align-items: start;
+  gap: 30px;
 }
 
 .portrait-frame {
   display: block;
   width: 285px;
-  aspect-ratio: 4 / 5;
   overflow: hidden;
+  aspect-ratio: 4 / 5;
   border-radius: 10px;
-  background: #e8e8e8;
-  box-shadow: 0 14px 38px rgba(42, 35, 31, 0.10);
+  background: var(--color-portrait-placeholder);
+  box-shadow: 0 14px 38px var(--color-portrait-shadow);
   animation: fade-in 700ms ease both;
 }
 
@@ -130,7 +180,9 @@ a:focus-visible {
   object-position: 50% 35%;
   filter: saturate(0.94) contrast(0.98);
   opacity: 0.94;
-  transition: opacity 500ms ease, transform 700ms ease;
+  transition:
+    opacity 500ms ease,
+    transform 700ms ease;
 }
 
 .portrait-frame:hover .portrait {
@@ -139,7 +191,7 @@ a:focus-visible {
 }
 
 .intro {
-  color: var(--muted);
+  color: var(--color-muted);
   font-size: 1.18rem;
   line-height: 1.58;
   animation: fade-in 900ms 120ms ease both;
@@ -147,7 +199,7 @@ a:focus-visible {
 
 .intro h1 {
   margin: 2px 0 8px;
-  color: var(--heading);
+  color: var(--color-heading);
   font-size: clamp(2.2rem, 5vw, 3.15rem);
   font-weight: 400;
   letter-spacing: -0.035em;
@@ -156,7 +208,7 @@ a:focus-visible {
 
 .headline {
   margin: 0 0 26px !important;
-  color: var(--accent);
+  color: var(--color-accent);
   font-size: 0.98rem;
   font-weight: 700;
   letter-spacing: 0.06em;
@@ -176,17 +228,349 @@ a:focus-visible {
   font-weight: 400;
 }
 
+
+/* ==========================================================================
+   4. Shared secondary-page layout
+   Used by the CV and Work pages.
+   ========================================================================== */
+
+/* Retained for markup compatibility; the glow is currently disabled. */
+.page-glow {
+  display: none;
+}
+
+.site-shell {
+  display: flex;
+  flex-direction: column;
+  width: min(calc(100% - var(--page-gutter)), var(--content-width));
+  min-height: 100vh;
+  margin: 0 auto;
+}
+
+
+/* Site header and navigation
+   -------------------------------------------------------------------------- */
+
+.site-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  padding: 28px 0 18px;
+}
+
+.wordmark {
+  display: inline-grid;
+  place-items: center;
+  width: 42px;
+  height: 42px;
+  border: 1px solid var(--color-line);
+  border-radius: 50%;
+  color: var(--color-heading);
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+}
+
+.nav-links {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 8px;
+}
+
+.nav-links a {
+  padding: 8px 10px;
+  color: var(--color-muted);
+  font-weight: 400;
+}
+
+.nav-links a:hover,
+.nav-links a:focus-visible {
+  color: var(--color-accent-hover);
+}
+
+.external-mark {
+  margin-left: 3px;
+  font-size: 0.75em;
+}
+
+
+/* Main content
+   -------------------------------------------------------------------------- */
+
+.secondary-main {
+  flex: 1;
+  padding: 70px 0 88px;
+}
+
+.kicker {
+  margin: 0 0 10px;
+  color: var(--color-accent);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.secondary-main h1 {
+  margin: 0;
+  color: var(--color-heading);
+  font-size: clamp(2.4rem, 7vw, 4rem);
+  font-weight: 400;
+  letter-spacing: -0.035em;
+}
+
+.work-intro h1 {
+  font-size: clamp(1.6rem, 3.5vw, 2.3rem);
+}
+
+.content-card {
+  margin-top: 30px;
+  padding: clamp(25px, 5vw, 40px);
+  border: 1px solid var(--color-line);
+  border-radius: 14px;
+  background: var(--color-surface);
+  color: var(--color-muted);
+  font-size: 1.05rem;
+  line-height: 1.72;
+}
+
+.content-card p:first-child {
+  margin-top: 0;
+}
+
+.content-card p:last-child {
+  margin-bottom: 0;
+}
+
+.back-link {
+  display: inline-flex;
+  gap: 7px;
+  margin-top: 26px;
+  color: var(--color-muted);
+  font-weight: 400;
+}
+
+
+/* Site footer
+   -------------------------------------------------------------------------- */
+
+.site-footer {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  padding: 20px 0 28px;
+  border-top: 1px solid var(--color-line);
+  color: var(--color-footer);
+  font-size: 0.86rem;
+}
+
+
+/* ==========================================================================
+   5. Work portfolio page
+   ========================================================================== */
+
+/* Introductory copy above the portfolio categories. */
+.work-intro {
+  max-width: var(--content-width);
+  margin-bottom: 2rem;
+}
+
+.work-intro p {
+  font-size: 1.08rem;
+  line-height: 1.75;
+}
+
+
+/* Portfolio category navigation and tags
+   -------------------------------------------------------------------------- */
+
+.work-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+  margin: 1.5rem 0 2.5rem;
+}
+
+.work-nav a,
+.work-tag {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.38rem 0.75rem;
+  border: 1px solid currentColor;
+  border-radius: 999px;
+  font-size: 0.82rem;
+  line-height: 1;
+  text-decoration: none;
+}
+
+
+/* Portfolio sections
+   -------------------------------------------------------------------------- */
+
+.work-section {
+  margin: 3.5rem 0;
+  scroll-margin-top: 2rem;
+}
+
+.section-heading {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.section-heading h2,
+.section-heading p {
+  margin: 0;
+}
+
+.section-heading p {
+  max-width: 520px;
+  font-size: 0.95rem;
+  opacity: 0.78;
+}
+
+
+/* Work cards
+   -------------------------------------------------------------------------- */
+
+.work-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+/* The three FutureProof books receive equal width and visual prominence. */
+.books-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.work-card {
+  display: flex;
+  flex-direction: column;
+  min-height: 240px;
+  padding: 1.35rem;
+  border: 1px solid var(--color-card-border);
+  border-radius: 18px;
+  background: var(--color-card-background);
+}
+
+.work-card__meta {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+}
+
+.work-card h3 {
+  margin: 0 0 0.75rem;
+  font-size: 1.35rem;
+  line-height: 1.2;
+}
+
+.work-card p {
+  line-height: 1.65;
+}
+
+.work-card__details {
+  font-size: 0.9rem;
+  opacity: 0.76;
+}
+
+.work-card__links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-top: auto;
+  padding-top: 1.25rem;
+}
+
+.work-card__links a {
+  font-weight: 650;
+}
+
+
+/* Compact entries for articles, research, presentations, and teaching items
+   -------------------------------------------------------------------------- */
+
+.compact-list {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.compact-entry {
+  display: grid;
+  grid-template-columns: minmax(130px, 0.34fr) 1fr auto;
+  align-items: start;
+  gap: 1rem;
+  padding: 1rem 0;
+  border-top: 1px solid var(--color-card-border);
+}
+
+.compact-entry:last-child {
+  border-bottom: 1px solid var(--color-card-border);
+}
+
+.compact-entry h3,
+.compact-entry p {
+  margin: 0;
+}
+
+.compact-entry h3 {
+  font-size: 1.05rem;
+}
+
+.compact-entry__type {
+  font-size: 0.82rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  opacity: 0.70;
+}
+
+.compact-entry__description {
+  margin-top: 0.35rem !important;
+  line-height: 1.55;
+  opacity: 0.82;
+}
+
+
+/* Collaboration call to action
+   -------------------------------------------------------------------------- */
+
+.work-cta {
+  margin-top: 4rem;
+  padding: 1.5rem;
+  border: 1px solid var(--color-card-border);
+  border-radius: 18px;
+}
+
+.work-cta h2 {
+  margin-top: 0;
+}
+
+
+/* ==========================================================================
+   6. Motion
+   ========================================================================== */
+
 @keyframes fade-in {
   from {
     opacity: 0;
     transform: translateY(8px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
   }
 }
 
+/* Respect visitors who prefer reduced motion. */
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
@@ -198,9 +582,23 @@ a:focus-visible {
   }
 }
 
+
+/* ==========================================================================
+   7. Responsive adjustments
+   Breakpoints are ordered from widest to narrowest.
+   ========================================================================== */
+
+/* Stack the three book cards when the page cannot support equal columns. */
+@media (max-width: 980px) {
+  .books-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Home page and portfolio tablet layout. */
 @media (max-width: 780px) {
   .home {
-    width: min(calc(100% - 36px), 600px);
+    width: min(calc(100% - var(--page-gutter-tablet)), 600px);
     padding-top: 34px;
   }
 
@@ -226,9 +624,9 @@ a:focus-visible {
 
   .intro {
     max-width: 560px;
-    text-align: center;
     font-size: 1.08rem;
     line-height: 1.62;
+    text-align: center;
   }
 
   .intro h1 {
@@ -236,9 +634,47 @@ a:focus-visible {
   }
 }
 
+@media (max-width: 760px) {
+  .work-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .section-heading,
+  .compact-entry {
+    display: block;
+  }
+
+  .section-heading p,
+  .compact-entry > * + * {
+    margin-top: 0.55rem;
+  }
+}
+
+/* Secondary-page navigation on narrow screens. */
+@media (max-width: 560px) {
+  .site-shell {
+    width: min(calc(100% - var(--page-gutter-mobile)), var(--content-width));
+  }
+
+  .site-header {
+    align-items: flex-start;
+    padding-top: 20px;
+  }
+
+  .nav-links {
+    gap: 0;
+  }
+
+  .nav-links a {
+    padding-inline: 7px;
+    font-size: 0.9rem;
+  }
+}
+
+/* Small-phone home-page refinements. */
 @media (max-width: 480px) {
   .home {
-    width: min(calc(100% - 28px), 600px);
+    width: min(calc(100% - var(--page-gutter-mobile)), 600px);
     padding-top: 22px;
   }
 
@@ -259,142 +695,5 @@ a:focus-visible {
 
   .intro {
     font-size: 1.02rem;
-  }
-}
-
-:focus-visible {
-  outline: 2px solid rgba(165, 82, 58, 0.45);
-  outline-offset: 4px;
-}
-
-/* Supporting styles for CV and Publications pages included in the package. */
-.page-glow {
-  display: none;
-}
-
-.site-shell {
-  width: min(calc(100% - 40px), var(--max-width));
-  min-height: 100vh;
-  margin: 0 auto;
-  display: flex;
-  flex-direction: column;
-}
-
-.site-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 24px;
-  padding: 28px 0 18px;
-}
-
-.wordmark {
-  display: inline-grid;
-  place-items: center;
-  width: 42px;
-  height: 42px;
-  border: 1px solid var(--line);
-  border-radius: 50%;
-  color: var(--heading);
-  font-size: 0.8rem;
-  font-weight: 700;
-  letter-spacing: 0.08em;
-}
-
-.nav-links {
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-  flex-wrap: wrap;
-  gap: 8px;
-}
-
-.nav-links a {
-  padding: 8px 10px;
-  color: var(--muted);
-  font-weight: 400;
-}
-
-.external-mark {
-  margin-left: 3px;
-  font-size: 0.75em;
-}
-
-.secondary-main {
-  flex: 1;
-  padding: 70px 0 88px;
-}
-
-.kicker {
-  margin: 0 0 10px;
-  color: var(--accent);
-  font-size: 0.78rem;
-  font-weight: 700;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-}
-
-.secondary-main h1 {
-  margin: 0;
-  color: var(--heading);
-  font-size: clamp(2.4rem, 7vw, 4rem);
-  font-weight: 400;
-  letter-spacing: -0.035em;
-}
-
-.content-card {
-  margin-top: 30px;
-  padding: clamp(25px, 5vw, 40px);
-  border: 1px solid var(--line);
-  border-radius: 14px;
-  background: var(--surface);
-  color: var(--muted);
-  font-size: 1.05rem;
-  line-height: 1.72;
-}
-
-.content-card p:first-child {
-  margin-top: 0;
-}
-
-.content-card p:last-child {
-  margin-bottom: 0;
-}
-
-.back-link {
-  display: inline-flex;
-  gap: 7px;
-  margin-top: 26px;
-  color: var(--muted);
-  font-weight: 400;
-}
-
-.site-footer {
-  display: flex;
-  justify-content: center;
-  gap: 10px;
-  padding: 20px 0 28px;
-  border-top: 1px solid var(--line);
-  color: #8a8a8a;
-  font-size: 0.86rem;
-}
-
-@media (max-width: 560px) {
-  .site-shell {
-    width: min(calc(100% - 28px), var(--max-width));
-  }
-
-  .site-header {
-    align-items: flex-start;
-    padding-top: 20px;
-  }
-
-  .nav-links {
-    gap: 0;
-  }
-
-  .nav-links a {
-    padding-inline: 7px;
-    font-size: 0.9rem;
   }
 }

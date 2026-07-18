@@ -1,0 +1,1319 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.9.38">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>1&nbsp; General Probability – FutureProof P</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./chapter_2.html" rel="next">
+<link href="./index.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-9e3e5b9121e68b3f077afb32f2c64d95.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<link href="site_libs/htmltools-fill-0.5.9/fill.css" rel="stylesheet">
+
+<script src="site_libs/htmlwidgets-1.6.4/htmlwidgets.js"></script>
+
+<script src="site_libs/viz-1.8.2/viz.js"></script>
+
+<link href="site_libs/DiagrammeR-styles-0.2/styles.css" rel="stylesheet">
+
+<script src="site_libs/grViz-binding-1.0.12/grViz.js"></script>
+
+<link rel="icon" type="image/x-icon" href="favincon-32x32.png">    
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="nav-sidebar floating quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./chapter_1.html"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">General Probability</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">FutureProof P</a> 
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Preface</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./chapter_1.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">General Probability</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./chapter_2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Univariate Distributions</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./chapter_3.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Multivariate Distributions</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./answers.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Answers to Supplementary Exercises</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./biblio.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Bibliography</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./copyright.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Copyright notice</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./about.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">About the author</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./support.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Support the Project</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./report.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Report Content Errors</span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#supplementary-concepts" id="toc-supplementary-concepts" class="nav-link active" data-scroll-target="#supplementary-concepts"><span class="header-section-number">1.1</span> Supplementary Concepts</a>
+  <ul>
+  <li><a href="#axioms-of-probability" id="toc-axioms-of-probability" class="nav-link" data-scroll-target="#axioms-of-probability">Axioms of probability</a></li>
+  <li><a href="#permutations-and-combinations" id="toc-permutations-and-combinations" class="nav-link" data-scroll-target="#permutations-and-combinations">Permutations and combinations</a></li>
+  <li><a href="#conditional-probability" id="toc-conditional-probability" class="nav-link" data-scroll-target="#conditional-probability">Conditional probability</a></li>
+  <li><a href="#multiplication-rule" id="toc-multiplication-rule" class="nav-link" data-scroll-target="#multiplication-rule">Multiplication rule</a></li>
+  <li><a href="#independent-events" id="toc-independent-events" class="nav-link" data-scroll-target="#independent-events">Independent events</a></li>
+  <li><a href="#law-of-total-probability" id="toc-law-of-total-probability" class="nav-link" data-scroll-target="#law-of-total-probability">Law of total probability</a></li>
+  <li><a href="#bayes-theorem" id="toc-bayes-theorem" class="nav-link" data-scroll-target="#bayes-theorem">Bayes’ theorem</a></li>
+  <li><a href="#prior-likelihood-and-posterior-probabilities" id="toc-prior-likelihood-and-posterior-probabilities" class="nav-link" data-scroll-target="#prior-likelihood-and-posterior-probabilities">Prior, likelihood, and posterior probabilities</a></li>
+  <li><a href="#summary-of-key-probability-rules" id="toc-summary-of-key-probability-rules" class="nav-link" data-scroll-target="#summary-of-key-probability-rules">Summary of key probability rules</a></li>
+  </ul></li>
+  <li><a href="#solved-exercises" id="toc-solved-exercises" class="nav-link" data-scroll-target="#solved-exercises"><span class="header-section-number">1.2</span> Solved Exercises</a>
+  <ul>
+  <li><a href="#finite-probability-spaces" id="toc-finite-probability-spaces" class="nav-link" data-scroll-target="#finite-probability-spaces">Finite probability spaces</a></li>
+  <li><a href="#finite-equiprobable-spaces" id="toc-finite-equiprobable-spaces" class="nav-link" data-scroll-target="#finite-equiprobable-spaces">Finite equiprobable spaces</a></li>
+  <li><a href="#conditional-probability-1" id="toc-conditional-probability-1" class="nav-link" data-scroll-target="#conditional-probability-1">Conditional probability</a></li>
+  </ul></li>
+  <li><a href="#supplementary-exercises" id="toc-supplementary-exercises" class="nav-link" data-scroll-target="#supplementary-exercises"><span class="header-section-number">1.3</span> Supplementary Exercises</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">General Probability</span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="supplementary-concepts" class="level2" data-number="1.1">
+<h2 data-number="1.1" class="anchored" data-anchor-id="supplementary-concepts"><span class="header-section-number">1.1</span> Supplementary Concepts</h2>
+<section id="axioms-of-probability" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="axioms-of-probability">Axioms of probability</h4>
+<p>A probability function (<span class="math inline">\(\Pr\)</span>) satisfies the following axioms:</p>
+<ul>
+<li><p><em>Non-negativity</em>:<br>
+For every event <span class="math inline">\(A\)</span>, <span class="math inline">\(\Pr[A]\geq 0\)</span></p></li>
+<li><p><em>Normalization</em>:<br>
+The probability of the sample space is <span class="math inline">\(1\)</span>, i.e., <span class="math inline">\(\Pr[\Omega]=1\)</span></p></li>
+<li><p><em>Countable additivity</em>:<br>
+If <span class="math inline">\(A_1,A_2,\ldots\)</span> are mutually exclusive events, then <span class="math inline">\(\sum_{i=1}^{\infty}\Pr[A_i]=1\)</span>.<br>
+Events are mutually exclusive when no two can occur simultaneously, i.e., <span class="math inline">\(A_i\cap A_j=\varnothing\)</span> for <span class="math inline">\(i\neq j\)</span></p></li>
+</ul>
+<hr id="thin">
+</section>
+<section id="permutations-and-combinations" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="permutations-and-combinations">Permutations and combinations</h4>
+<p>A permutation is an ordered arrangement of objects. The number of ways to select and arrange <span class="math inline">\(r\)</span> objects from <span class="math inline">\(n\)</span> distinct objects is</p>
+<p><span class="math inline">\(_nP_r=\dfrac{n!}{(n-r)!}\)</span></p>
+<p>A combination is an unordered selection of objects. The number of ways to select <span class="math inline">\(r\)</span> objects from <span class="math inline">\(n\)</span> distinct objects is</p>
+<p><span class="math inline">\(\dbinom{n}{r}=\dfrac{n!}{r!(n-r)!}\)</span></p>
+<hr id="thin">
+</section>
+<section id="conditional-probability" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="conditional-probability">Conditional probability</h4>
+<p>Let <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> be events with <span class="math inline">\(\Pr[B]&gt;0\)</span>. The conditional probability of <span class="math inline">\(A\)</span>, given that <span class="math inline">\(B\)</span> has occurred, is</p>
+<p><span class="math inline">\(\Pr[A\mid B]=\dfrac{\Pr[A\cap B]}{\Pr[B]}\)</span><br>
+Conditioning on <span class="math inline">\(B\)</span> restricts the sample space to outcomes in <span class="math inline">\(B\)</span>.</p>
+<hr id="thin">
+</section>
+<section id="multiplication-rule" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="multiplication-rule">Multiplication rule</h4>
+<p>For three events, <span class="math inline">\(\Pr[A\cap B\cap C]=\Pr[A]\Pr[B\mid A]\Pr[C\mid A\cap B]\)</span></p>
+<p>More generally, <span class="math inline">\(\Pr\left[\bigcap_{i=1}^{n}A_i\right]=\Pr[A_1]\prod_{i=2}^{n}\Pr[A_i\mid A_1\cap\cdots\cap A_{i-1}]\)</span></p>
+<hr id="thin">
+</section>
+<section id="independent-events" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="independent-events">Independent events</h4>
+<p>Events <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> are independent if the occurrence of one does not change the probability of the other. Formally, <span class="math inline">\(\Pr[A\cap B]=\Pr[A]\Pr[B]\)</span>. When <span class="math inline">\(\Pr[B]&gt;0\)</span>, independence is equivalent to <span class="math inline">\(\Pr[A\mid B]=\Pr[A]\)</span>. Similarly, when (&gt;0), <span class="math inline">\(\Pr[B\mid A]=\Pr[B]\)</span>.</p>
+<p>Events <span class="math inline">\(A_1,\ldots,A_n\)</span> are <strong>mutually independent</strong> if every possible intersection satisfies the corresponding multiplication rule. For three events <span class="math inline">\(A\)</span>, <span class="math inline">\(B\)</span>, and <span class="math inline">\(C\)</span>, mutual independence requires <span class="math inline">\(\Pr[A\cap B]=\Pr[A]\Pr[B]\)</span>, <span class="math inline">\(\Pr[A\cap C]=\Pr[A]\Pr[C]\)</span>, <span class="math inline">\(\Pr[B\cap C]=\Pr[B]\Pr[C]\)</span>, and <span class="math inline">\(\Pr[A\cap B\cap C]=\Pr[A]\Pr[B]\Pr[C]\)</span>. Pairwise independence alone does not necessarily imply mutual independence.</p>
+<p>Independence and mutual exclusivity are different concepts. If <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> are mutually exclusive, then <span class="math inline">\(\Pr[A\cap B]=0\)</span>. If <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> are independent, then <span class="math inline">\(\Pr[A\cap B]=\Pr[A]\Pr[B]\)</span>. If mutually exclusive events <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> both have positive probability, then <span class="math inline">\(\Pr[A\cap B]\neq\Pr[A]\Pr[B]\)</span>. Therefore,</p>
+<p><span class="math inline">\(\boxed{\text{Mutually exclusive events with positive probabilities are not independent}}\)</span></p>
+<p>The occurrence of one mutually exclusive event makes the occurrence of the other impossible.</p>
+<hr id="thin">
+</section>
+<section id="law-of-total-probability" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="law-of-total-probability">Law of total probability</h4>
+<p>Let <span class="math inline">\(B_1,\ldots,B_n\)</span> form a partition of the sample space, with <span class="math inline">\(\Pr[B_i]&gt;0\)</span> for each <span class="math inline">\(i\)</span>. For any event <span class="math inline">\(A\)</span>,</p>
+<p><span class="math inline">\(\displaystyle \boxed{\Pr[A]=\sum_{i=1}^{n}\Pr[A\mid B_i]\Pr[B_i]}.\)</span></p>
+<p>This formula separates the occurrence of <span class="math inline">\(A\)</span> according to the mutually exclusive cases <span class="math inline">\(B_1,\ldots,B_n\)</span>.</p>
+<p>For two complementary events <span class="math inline">\(B\)</span> and <span class="math inline">\(B^c\)</span>,</p>
+<p><span class="math inline">\(\displaystyle \boxed{\Pr[A]=\Pr[A\mid B]\Pr[B]+\Pr[A\mid B^c]\Pr[B^c]}.\)</span></p>
+<hr id="thin">
+</section>
+<section id="bayes-theorem" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="bayes-theorem">Bayes’ theorem</h4>
+<p>Let <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> be events with positive probability. By the multiplication rule,</p>
+<p><span class="math inline">\(\displaystyle \Pr[A\cap B]=\Pr[A\mid B]\Pr[B]\)</span> and <span class="math inline">\(\displaystyle \Pr[A\cap B]=\Pr[B\mid A]\Pr[A]\)</span></p>
+<p>Equating the two expressions gives <span class="math inline">\(\Pr[A\mid B]\Pr[B]=\Pr[B\mid A]\Pr[A].\)</span> Therefore,</p>
+<p><span class="math inline">\(\displaystyle \boxed{\Pr[B\mid A]=\frac{\Pr[A\mid B]\Pr[B]}{\Pr[A]}}\)</span></p>
+<p>If <span class="math inline">\(B_1,\ldots,B_n\)</span> form a partition of the sample space, then</p>
+<p><span class="math inline">\(\displaystyle \boxed{\Pr[B_j\mid A]=\dfrac{\Pr[A\mid B_j]\Pr[B_j]}{\sum_{i=1}^{n}\Pr[A\mid B_i]\Pr[B_i]}}\)</span></p>
+<p>Bayes’ theorem reverses the direction of conditioning.</p>
+<hr id="thin">
+</section>
+<section id="prior-likelihood-and-posterior-probabilities" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="prior-likelihood-and-posterior-probabilities">Prior, likelihood, and posterior probabilities</h4>
+<p>In Bayes’ theorem, <span class="math inline">\(\Pr[B_j]\)</span> is the <strong>prior probability</strong> of <span class="math inline">\(B_j\)</span>. The quantity <span class="math inline">\(\Pr[A\mid B_j]\)</span> is the probability of observing <span class="math inline">\(A\)</span> when <span class="math inline">\(B_j\)</span> is true. It is often referred to as the <strong>likelihood</strong> of <span class="math inline">\(B_j\)</span> given the observed evidence. The quantity <span class="math inline">\(\Pr[B_j\mid A]\)</span> is the <strong>posterior probability</strong> of <span class="math inline">\(B_j\)</span> after observing <span class="math inline">\(A\)</span>. Thus,</p>
+<p><span class="math inline">\(\displaystyle \boxed{\text{Posterior probability}=\frac{\text{Likelihood}\times\text{Prior probability}}{\text{Total probability of the evidence}}}\)</span></p>
+<hr id="thin">
+</section>
+<section id="summary-of-key-probability-rules" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="summary-of-key-probability-rules">Summary of key probability rules</h4>
+<ul>
+<li><p>For any event <span class="math inline">\(A\)</span>, <span class="math inline">\(\Pr[A^c]=1-\Pr[A]\)</span></p></li>
+<li><p>For any events <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span>, <span class="math inline">\(\Pr[A\cup B]=\Pr[A]+\Pr[B]-\Pr[A\cap B]\)</span></p></li>
+<li><p>If <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> are mutually exclusive, <span class="math inline">\(\Pr[A\cup B]=\Pr[A]+\Pr[B]\)</span></p></li>
+<li><p>If <span class="math inline">\(\Pr[B]&gt;0\)</span>,<br>
+<span class="math inline">\(\displaystyle \Pr[A\mid B]=\frac{\Pr[A\cap B]}{\Pr[B]}\)</span><br>
+</p></li>
+<li><p>For any events <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span>, <span class="math inline">\(\Pr[A\cap B]=\Pr[A]\Pr[B\mid A]\)</span></p></li>
+<li><p>If <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> are independent, <span class="math inline">\(\Pr[A\cap B]=\Pr[A]\Pr[B]\)</span></p></li>
+<li><p>If <span class="math inline">\(B_1,\ldots,B_n\)</span> form a partition of the sample space, <span class="math inline">\(\displaystyle \Pr[A]=\sum_{i=1}^{n}\Pr[A\mid B_i]\Pr[B_i]\)</span><br>
+</p></li>
+<li><p>Bayes’ theorem is <span class="math inline">\(\displaystyle \Pr[B_j\mid A]=\dfrac{\Pr[A\mid B_j]\Pr[B_j]}{\sum_{i=1}^{n}\Pr[A\mid B_i]\Pr[B_i]}\)</span></p></li>
+</ul>
+<hr id="thick">
+</section>
+</section>
+<section id="solved-exercises" class="level2" data-number="1.2">
+<h2 data-number="1.2" class="anchored" data-anchor-id="solved-exercises"><span class="header-section-number">1.2</span> Solved Exercises</h2>
+<blockquote class="blockquote">
+Before opening the solutions, take a moment to work through each problem—-your mastery grows most when you engage actively with the mathematics.
+</blockquote>
+<section id="finite-probability-spaces" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="finite-probability-spaces">Finite probability spaces</h4>
+<p>Suppose that <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> are events with <span class="math inline">\(\Pr[A]=0.6\)</span>, <span class="math inline">\(\Pr[B]=0.3\)</span>, and <span class="math inline">\(\Pr[A \cap B]=0.2\)</span>.</p>
+<p>Calculate the probability that neither <span class="math inline">\(A\)</span> nor <span class="math inline">\(B\)</span> occurs.</p>
+<div class="solution callout callout-style-default callout-note callout-titled" title="Solution">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-1" class="callout-1-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>“Neither <span class="math inline">\(A\)</span> nor <span class="math inline">\(B\)</span>” is the complement of <span class="math inline">\(\Pr[A \cup B]\)</span>.</p>
+<p><span class="math display">\[
+\begin{array}{rl}
+      \Pr[A \cup B] &amp;=\Pr[A]+\Pr[B]-\Pr[A \cap B] \\
+      &amp;= 0.6 + 0.3 - 0.2 \\
+      &amp;= 0.7 \\
+      &amp;\therefore \\
+      \Pr[(A \cup B)^c] &amp;=1-\Pr[A \cup B] \\
+      &amp;=0.3
+\end{array}
+\]</span></p>
+</div>
+</div>
+</div>
+<hr id="thin">
+</section>
+<section id="finite-equiprobable-spaces" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="finite-equiprobable-spaces">Finite equiprobable spaces</h4>
+<p>Suppose five letters are placed in five mailboxes at random.</p>
+<p>Find the probability <span class="math inline">\(p\)</span> that exactly one of the mailboxes is empty.</p>
+<div class="solution callout callout-style-default callout-note callout-titled" title="Solution">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-2" class="callout-2-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>If exactly one mailbox is empty, then one mailbox contains two letters and each of the remaining mailboxes contains one letter.</p>
+<p>There are five ways to select an empty mailbox, then four ways to select the mailbox containing two letters, and <span class="math inline">\(\dbinom{5}{2}=10\)</span> ways to select two letters to go into this mailbox.</p>
+<p>Finally, there are <span class="math inline">\(3!\)</span> ways to distribute the remaining three letters among the remaining three mailboxes.</p>
+<p>Given that it is possible to place more than one letter in a mailbox, there are <span class="math inline">\(5^3\)</span> ways to place five letters in five mailboxes.</p>
+<p>Thus,</p>
+<p><span class="math display">\[p=\dfrac{5 \cdot 4 \cdot 10 \cdot 3!}{5^3}=0.384\]</span></p>
+</div>
+</div>
+</div>
+<hr id="thin">
+</section>
+<section id="conditional-probability-1" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="conditional-probability-1">Conditional probability</h4>
+<p>Suppose that <span class="math inline">\(240\)</span> carbon nanotubes from an experimental batch are placed into three containers as follows:</p>
+<table>
+<tbody><tr>
+<th>
+Container
+</th>
+<th>
+nondefective
+</th>
+<th>
+defective
+</th>
+</tr>
+<tr>
+<td>
+<span class="math inline">\(A\)</span>
+</td>
+<td>
+<span class="math inline">\(60\)</span>
+</td>
+<td>
+<span class="math inline">\(40\)</span>
+</td>
+</tr>
+<tr>
+<td>
+<span class="math inline">\(B\)</span>
+</td>
+<td>
+<span class="math inline">\(50\)</span>
+</td>
+<td>
+<span class="math inline">\(10\)</span>
+</td>
+</tr>
+<tr>
+<td>
+<span class="math inline">\(C\)</span>
+</td>
+<td>
+<span class="math inline">\(50\)</span>
+</td>
+<td>
+<span class="math inline">\(30\)</span>
+</td>
+</tr>
+</tbody></table>
+<p>A container is chosen at random, and then a carbon nanotube is randomly selected from the chosen container.</p>
+<p>Assume that selecting container <span class="math inline">\(C\)</span> is twice as likely as selecting <span class="math inline">\(A\)</span> or <span class="math inline">\(B\)</span>.</p>
+<ol type="1">
+<li>Find the probability <span class="math inline">\(p\)</span> that the carbon nanotube is nondefective.</li>
+<li>If the carbon nanotube is nondefective, find the probability <span class="math inline">\(q\)</span> that it came from container <span class="math inline">\(C\)</span>.</li>
+</ol>
+<div class="solution callout callout-style-default callout-note callout-titled" title="Solution">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-3" class="callout-3-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Let <span class="math inline">\(\Pr[A]=\Pr[B]=k\)</span>. Then <span class="math inline">\(\Pr[C]=2k\)</span>, and since the probabilities must add up to <span class="math inline">\(1\)</span>, we have <span class="math inline">\(k=1/4\)</span>.</p>
+<ol type="1">
+<li><p>In the tree diagram, <span class="math inline">\(D\)</span> stands for defective and <span class="math inline">\(ND\)</span> for nondefective. For example, the probability of selecting container <span class="math inline">\(A\)</span> and then a nondefective carbon nanotube from that container is:</p>
+<p><span class="math display">\[
+\dfrac{1}{4}\cdot\dfrac{3}{5}=\dfrac{3}{20}
+\]</span></p>
+<div class="cell">
+<div class="cell-output-display">
+<div class="grViz html-widget html-fill-item" id="htmlwidget-f5631dd2339c6387a72d" style="width:100%;height:464px;"></div>
+<script type="application/json" data-for="htmlwidget-f5631dd2339c6387a72d">{"x":{"diagram":"\ndigraph probability_tree {\n\n  graph [\n    layout = dot,\n    rankdir = LR,\n    bgcolor = white,\n    nodesep = 0.55,\n    ranksep = 1.20\n  ]\n\n  node [\n    shape = circle,\n    style = filled,\n    fillcolor = white,\n    color = \"#444444\",\n    fontname = Helvetica,\n    fontsize = 12,\n    width = 0.65,\n    fixedsize = true\n  ]\n\n  edge [\n    color = \"#555555\",\n    penwidth = 1.5,\n    arrowsize = 0.7,\n    fontname = Helvetica,\n    fontsize = 11\n  ]\n\n  # Starting point\n  start [\n    label = \"Start\",\n    fillcolor = \"#eeeeee\",\n    width = 0.85\n  ]\n\n  # First-stage nodes\n  A [label = \"A\"]\n  B [label = \"B\"]\n  C [label = \"C\"]\n\n  # Terminal outcome nodes\n  node [\n    shape = box,\n    fixedsize = false,\n    style = \"rounded,filled\",\n    fillcolor = \"#f8f8f8\",\n    margin = 0.12\n  ]\n\n  AD  [label = \"D\\nJoint probability: 2/20\"]\n  AND [label = \"ND\\nJoint probability: 3/20\"]\n\n  BD  [label = \"D\\nJoint probability: 1/24\"]\n  BND [label = \"ND\\nJoint probability: 5/24\"]\n\n  CD  [label = \"D\\nJoint probability: 6/32\"]\n  CND [label = \"ND\\nJoint probability: 10/32\"]\n\n  # Three initial branches\n  start -> A [label = \"Container A: 1/4\"]\n  start -> B [label = \"Container B: 1/4\"]\n  start -> C [label = \"Container C: 2/4\"]\n\n  # Two branches from Container A\n  A -> AD  [label = \"D: 2/5\"]\n  A -> AND [label = \"ND: 3/5\"]\n\n  # Two branches from Container B\n  B -> BD  [label = \"D: 1/6\"]\n  B -> BND [label = \"ND: 5/6\"]\n\n  # Two branches from Container C\n  C -> CD  [label = \"D: 3/8\"]\n  C -> CND [label = \"ND: 5/8\"]\n}\n","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+</div>
+</div>
+<p>Thus, since the paths are disjoint, <span class="math inline">\(p\)</span> is calculated as follows:</p>
+<p><span class="math display">\[
+\begin{aligned}
+p=\Pr[ND]
+&amp;=\dfrac{1}{4}\cdot\dfrac{3}{5}
+  +\dfrac{1}{4}\cdot\dfrac{5}{6}
+  +\dfrac{2}{4}\cdot\dfrac{5}{8} \\[4pt]
+&amp;=\dfrac{161}{240} \\
+&amp;\approx 0.67083.
+\end{aligned}
+\]</span></p></li>
+<li><p>In this case, <span class="math inline">\(q=\Pr[C\mid ND]\)</span>. The event <span class="math inline">\(C\cap ND\)</span> can occur only along the bottom path. Thus,</p>
+<p><span class="math display">\[
+\begin{aligned}
+\Pr[C\mid ND]
+&amp;=\dfrac{\Pr[C\cap ND]}{\Pr[ND]} \\[4pt]
+&amp;=\dfrac{10/32}{161/240} \\
+&amp;=\dfrac{75}{161} \\
+&amp;\approx 0.46584.
+\end{aligned}
+\]</span></p></li>
+</ol>
+</div>
+</div>
+</div>
+<hr id="thick">
+<!-------------------------------------------------------------->
+</section>
+</section>
+<section id="supplementary-exercises" class="level2" data-number="1.3">
+<h2 data-number="1.3" class="anchored" data-anchor-id="supplementary-exercises"><span class="header-section-number">1.3</span> Supplementary Exercises</h2>
+<!----------------------------------------------------------------------------->
+<p><span id="no">1</span></p>
+<p>If four actuaries, three accountants, and three economists are to be seated in a row, how many seating arrangements are possible when people of the same profession must sit next to one another?</p>
+<hr id="thin">
+<!----------------------------------------------------------------------------->
+<p><span id="no">2</span></p>
+<p>An actuarial student is to answer seven out of <span class="math inline">\(10\)</span> questions in an examination.</p>
+<ol type="a">
+<li>How many choices has she?</li>
+<li>How many if she must answer at least three of the first five questions?</li>
+</ol>
+<hr id="thin">
+<!----------------------------------------------------------------------------->
+<p><span id="no">3</span></p>
+<p>How many seven-character passwords are possible when three of the characters must be letters (set of <span class="math inline">\(26\)</span>) and four of the characters must be digits?</p>
+<hr id="thin">
+<!----------------------------------------------------------------------------->
+<p><span id="no">4</span></p>
+<p>Consider three classes, each consisting of <span class="math inline">\(10\)</span> students.</p>
+<p>From this group of <span class="math inline">\(30\)</span> students, a group of three students is to be chosen to speak at a conference.</p>
+<ol type="a">
+<li>How many choices are possible?</li>
+<li>How many choices are there in which all three students are from the same class?</li>
+<li>How many choices are there in which two of the three students are in the same class and the other student is in a different class?</li>
+<li>how many choices are there in which all three students are in different classes?</li>
+</ol>
+<hr id="thin">
+<!----------------------------------------------------------------------------->
+<p><span id="no">5</span></p>
+<p>A committee of six people is to be chosen from a group of seven men and eight women.</p>
+<p>If the committee must consist of at least three women and at least two men, how many different committees are possible?</p>
+<hr id="thin">
+<!----------------------------------------------------------------------------->
+<p><span id="no">6</span></p>
+<p>How many subsets of size four of the set <span class="math inline">\(S={1, 2, …, 20}\)</span> contain at least one of the elements <span class="math inline">\(1\)</span>, <span class="math inline">\(2\)</span>, <span class="math inline">\(3\)</span>, <span class="math inline">\(4\)</span>, <span class="math inline">\(5\)</span>?</p>
+<hr id="thin">
+<!----------------------------------------------------------------------------->
+<p><span id="no">7</span></p>
+<p>In how many ways can three calculus books, two algebra books, and one trigonometry book be arranged on a bookshelf if:</p>
+<ol type="a">
+<li>the books can be arranged in any order?</li>
+<li>the calculus books must be together and the algebra books must be together?</li>
+<li>the calculus books must be together, but the other books can be arranged in any order?</li>
+</ol>
+<hr id="thin">
+<!----------------------------------------------------------------------------->
+<p><span id="no">8</span></p>
+<p>A team of nine, consisting of two mathematicians, three statisticians, and four actuaries, is to be selected from a faculty <span class="math inline">\(10\)</span> mathematicians, eight statisticians, and seven actuaries.</p>
+<p>How many teams are possible?</p>
+<hr id="thin">
+<!----------------------------------------------------------------------------->
+<p><span id="no">9</span></p>
+<p>An actuarial student has eight friends, of whom five will be invited to a party.</p>
+<ol type="a">
+<li>How many choices are there if two of the friends are feuding and will not attend together?</li>
+<li>How many choices if two of the friends will only attend together?</li>
+</ol>
+<hr id="thin">
+<!----------------------------------------------------------------------------->
+<p><span id="no">10</span></p>
+<p>Twenty items are arranged in a five-by-four array as shown.</p>
+<table style="font-size: 12px; width: 36%;">
+<tbody><tr>
+<td>
+<span class="math inline">\(A_{1}\)</span>
+</td>
+<td>
+<span class="math inline">\(A_{2}\)</span>
+</td>
+<td>
+<span class="math inline">\(A_{3}\)</span>
+</td>
+<td>
+<span class="math inline">\(A_{4}\)</span>
+</td>
+<td>
+<span class="math inline">\(A_{5}\)</span>
+</td>
+</tr>
+<tr>
+<td>
+<span class="math inline">\(A_{6}\)</span>
+</td>
+<td>
+<span class="math inline">\(A_{7}\)</span>
+</td>
+<td>
+<span class="math inline">\(A_{8}\)</span>
+</td>
+<td>
+<span class="math inline">\(A_{9}\)</span>
+</td>
+<td>
+<span class="math inline">\(A_{10}\)</span>
+</td>
+</tr>
+<tr>
+<td>
+<span class="math inline">\(A_{11}\)</span>
+</td>
+<td>
+<span class="math inline">\(A_{12}\)</span>
+</td>
+<td>
+<span class="math inline">\(A_{13}\)</span>
+</td>
+<td>
+<span class="math inline">\(A_{14}\)</span>
+</td>
+<td>
+<span class="math inline">\(A_{15}\)</span>
+</td>
+</tr>
+<tr>
+<td>
+<span class="math inline">\(A_{16}\)</span>
+</td>
+<td>
+<span class="math inline">\(A_{17}\)</span>
+</td>
+<td>
+<span class="math inline">\(A_{18}\)</span>
+</td>
+<td>
+<span class="math inline">\(A_{19}\)</span>
+</td>
+<td>
+<span class="math inline">\(A_{20}\)</span>
+</td>
+</tr>
+</tbody></table>
+<p><br></p>
+<p>Calculate the number of ways to form a set of three distinct items such that no two of the selected items are in the same row or same column.</p>
+<hr id="thin">
+<!----------------------------------------------------------------------------->
+<p><span id="no">11</span></p>
+<p>A pair of dice is tossed and the two numbers appearing on the top are recorded.</p>
+<p>Find the number of elements in each of the following events:</p>
+<ul>
+<li><span class="math inline">\(A=\{\)</span>two numbers are equal<span class="math inline">\(\}\)</span></li>
+<li><span class="math inline">\(B=\{\)</span>sum is <span class="math inline">\(\geq 10\)</span> <span class="math inline">\(\}\)</span></li>
+<li><span class="math inline">\(C=\{5\)</span> appears on first die<span class="math inline">\(\}\)</span></li>
+<li><span class="math inline">\(D=\{5\)</span> appears on at least one die<span class="math inline">\(\}\)</span></li>
+</ul>
+<hr id="thin">
+<!----------------------------------------------------------------------------->
+<p><span id="no">12</span></p>
+<p>A box contains <span class="math inline">\(15\)</span> billiard balls numbered <span class="math inline">\(1\)</span> to <span class="math inline">\(15\)</span>.</p>
+<p>A ball is drawn at random and the number recorded.</p>
+<p>Find the probability <span class="math inline">\(p\)</span> that the number is:</p>
+<ol type="a">
+<li>even</li>
+<li>less than <span class="math inline">\(5\)</span></li>
+<li>even and less than <span class="math inline">\(5\)</span></li>
+<li>even or less than <span class="math inline">\(5\)</span></li>
+</ol>
+<hr id="thin">
+<!----------------------------------------------------------------------------->
+<p><span id="no">13</span></p>
+<p>Six married couples are standing in a room. Two people are chosen at random.</p>
+<p>Find the probability <span class="math inline">\(p\)</span> that:</p>
+<ol type="a">
+<li>they are married</li>
+<li>one is male and one is female</li>
+</ol>
+<hr id="thin">
+<!----------------------------------------------------------------------------->
+<p><span id="no">14</span></p>
+<p>A university cafeteria offers a three-course meal consisting of an entrée, a main course, and a dessert. The possible choices are:</p>
+<table style="font-size: 12px; width: 48%;">
+<tbody><tr>
+<td>
+<strong>Course</strong>
+</td>
+<td>
+<strong>Choices</strong>
+</td>
+</tr>
+<tr>
+<td>
+Entrée
+</td>
+<td>
+Tacos or quesadillas
+</td>
+</tr>
+<tr>
+<td>
+Main course
+</td>
+<td>
+Burrito or enchiladas or chilaquiles
+</td>
+</tr>
+<tr>
+<td>
+Dessert
+</td>
+<td>
+Arroz con leche or flan or dulce de leche
+</td>
+</tr>
+</tbody></table>
+<p><br></p>
+<p>A person is to choose one course from each category.</p>
+<ol type="a">
+<li>How many outcomes are in the sample space?</li>
+<li>Let <span class="math inline">\(A\)</span> be the event that arroz con leche is chosen. How many outcomes are in <span class="math inline">\(A\)</span>?</li>
+<li>Let <span class="math inline">\(𝐵\)</span> be the event that tacos are chosen. How many outcomes are in <span class="math inline">\(B\)</span>?</li>
+<li>List all the outcomes in the event <span class="math inline">\(A\cap B\)</span></li>
+<li>Let <span class="math inline">\(C\)</span> be the event that enchiladas are chosen. How many outcomes are in <span class="math inline">\(C\)</span>?</li>
+<li>List all the outcomes in the event <span class="math inline">\(A\cap B\cap C\)</span></li>
+</ol>
+<hr id="thin">
+<!----------------------------------------------------------------------------->
+<p><span id="no">15</span></p>
+<p>Urn <span class="math inline">\(A\)</span> contains three red and three white balls, whereas urn <span class="math inline">\(B\)</span> contains four red and six white balls.</p>
+<p>If a ball is randomly selected from each urn, what is the probability that the two balls will be the same color?</p>
+<hr id="thin">
+<!----------------------------------------------------------------------------->
+<p><span id="no">16</span></p>
+<p>Of <span class="math inline">\(12\)</span> actuaries applying for a job, eight have work experience, six have passed at least one SOA exam, and four have work experience but have not passed any SOA exam.</p>
+<p>The hiring company randomly selects a candidate for an interview.</p>
+<p>What is the probability that the selected candidate has work experience and has passed at least one SOA exam?</p>
+<hr id="thin">
+<!----------------------------------------------------------------------------->
+<p><span id="no">17</span></p>
+<p>An insurance company estimates that <span class="math inline">\(40\%\)</span> of policyholders who have only an auto policy will renew next year and <span class="math inline">\(60\%\)</span> of policyholders who have only a homeowners’ policy will renew next year.</p>
+<p>The company estimates that <span class="math inline">\(80\%\)</span> of policyholders who have both an auto policy and a homeowners’ policy will renew at least one of those policies next year.</p>
+<p>Company records show that <span class="math inline">\(65\%\)</span> of policyholders have an auto policy, <span class="math inline">\(50\%\)</span> of policyholders have a homeowners’ policy, and <span class="math inline">\(15\%\)</span> of policyholders have both an auto policy and a homeowners’ policy.</p>
+<p>Using the company’s estimates, calculate the percentage of policyholders that will renew at least one policy next year.</p>
+<hr id="thin">
+<!----------------------------------------------------------------------------->
+<p><span id="no">18</span></p>
+<p>You are given <span class="math inline">\(Pr[A \cup B]=0.7\)</span> and <span class="math inline">\(Pr[A \cup B \,']=0.9\)</span>.</p>
+<p>Calculate <span class="math inline">\(Pr[A]\)</span>.</p>
+<hr id="thin">
+<!----------------------------------------------------------------------------->
+<p><span id="no">19</span></p>
+<p>An insurance company examines its pool of auto insurance customers and gathers the following information:</p>
+<ol type="a">
+<li>All customers insure at least one car</li>
+<li><span class="math inline">\(70\%\)</span> of the customers insure more than one car</li>
+<li><span class="math inline">\(20\%\)</span> of the customers insure a sports car</li>
+<li>Of those customers who insure more than one car, <span class="math inline">\(15\%\)</span> insure a sports car</li>
+</ol>
+<p>Calculate the probability that a randomly selected customer insures exactly one car, and that the car is not a sports car.</p>
+<hr id="thin">
+<!----------------------------------------------------------------------------->
+<p><span id="no">20</span></p>
+<p>A survey of a group’s viewing habits over the last year revealed the following information:</p>
+<ul>
+<li><span class="math inline">\(28\%\)</span> watched gymnastics</li>
+<li><span class="math inline">\(29\%\)</span> watched baseball</li>
+<li><span class="math inline">\(19\%\)</span> watched soccer</li>
+<li><span class="math inline">\(14\%\)</span> watched gymnastics and baseball</li>
+<li><span class="math inline">\(12\%\)</span> watched baseball and soccer</li>
+<li><span class="math inline">\(10\%\)</span> watched gymnastics and soccer</li>
+<li><span class="math inline">\(8\%\)</span> watched all three sports</li>
+</ul>
+<p>Calculate the percentage of the group that watched none of the three sports during the last year.</p>
+<hr id="thin">
+<!----------------------------------------------------------------------------->
+<p><span id="no">21</span></p>
+<p>Charlie is undecided as to whether take exam FM or exam P. He estimates that his probability of passing FM is <span class="math inline">\(0.6\)</span>, and his probability of passing P is <span class="math inline">\(0.7\)</span>.</p>
+<p>If Charlie is to base his decision on the flip of a fair coin, what is the probability that he passes the P exam?</p>
+<hr id="thin">
+<!----------------------------------------------------------------------------->
+<p><span id="no">22</span></p>
+<p>An insurance company believes that people can be divided into two classes: those who are accident-prone and those who are not.</p>
+<p>The company’s statistics show that an accident-prone person will have an accident at some time within a fixed one-year period with probability <span class="math inline">\(0.4\)</span>, whereas this probability decreases to <span class="math inline">\(0.2\)</span> for a person who is not accident prone.</p>
+<p>If is is assumed that <span class="math inline">\(30\%\)</span> of the population is accident-prone, what is the probability that a new policyholder will have an accident within a year of purchasing a policy?</p>
+<hr id="thin">
+<!----------------------------------------------------------------------------->
+<p><span id="no">23</span></p>
+<p>Consider three eveents: <span class="math inline">\(A\)</span>, <span class="math inline">\(B\)</span>, and <span class="math inline">\(C\)</span>. Find <span class="math inline">\(Pr[A]\)</span> given that:</p>
+<ul>
+<li><span class="math inline">\(A\)</span> and <span class="math inline">\(C\)</span> are independent</li>
+<li><span class="math inline">\(B\)</span> and <span class="math inline">\(C\)</span> are independent</li>
+<li><span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> are disjoint</li>
+<li><span class="math inline">\(Pr[A \cup B]=\frac{2}{3}\)</span>, <span class="math inline">\(Pr[B \cup C]=\frac{3}{4}\)</span>, and <span class="math inline">\(Pr[A \cup B \cup C]=\frac{11}{12}\)</span></li>
+</ul>
+<hr id="thin">
+<!----------------------------------------------------------------------------->
+<p><span id="no">24</span></p>
+<p>In a certain city, it rains one-third of the days.</p>
+<p>Given that it is rainy, there will be heavy traffic with probability <span class="math inline">\(0.5\)</span>, and given that it is not rainy, there will be heavy traffic with probability <span class="math inline">\(0.25\)</span>.</p>
+<p>If it is rainy and there is heavy traffic, Charlie arrives late for class with probability <span class="math inline">\(0.5\)</span>.</p>
+<p>But the probability of being late is reduced to <span class="math inline">\(0.125\)</span> if it is not rainy and there is no heavy traffic.</p>
+<p>In other situations (rainy and no traffic, not rainy and traffic) the probability of Charlie being late is <span class="math inline">\(0.25\)</span>.</p>
+<p>Assuming that a random day is picked,</p>
+<ol type="a">
+<li>What is the probability that it is not raining and there is heavy traffic, and Charlie is not late for class?</li>
+<li>What is the probability that Charlie is late for class?</li>
+<li>Given that Charlie arrived late for class, what is the probability that it rained that day?</li>
+</ol>
+<hr id="thin">
+<!----------------------------------------------------------------------------->
+<p><span id="no">25</span></p>
+<p>Consider three bags, each containing <span class="math inline">\(100\)</span> balls:</p>
+<ul>
+<li>Bag <span class="math inline">\(A\)</span> has <span class="math inline">\(75\)</span> orange and <span class="math inline">\(25\)</span> white balls</li>
+<li>Bag <span class="math inline">\(B\)</span> has <span class="math inline">\(60\)</span> orange and <span class="math inline">\(40\)</span> white balls</li>
+<li>Bag <span class="math inline">\(C\)</span> has <span class="math inline">\(45\)</span> orange and <span class="math inline">\(55\)</span> white balls</li>
+</ul>
+<p>One bag is chosen at random, and a ball is picked.</p>
+<p>What is the probability that the picked ball is orange?</p>
+<hr id="thin">
+<!----------------------------------------------------------------------------->
+<p><span id="no">26</span></p>
+<p>A certain disease affects one in <span class="math inline">\(10\,000\)</span> people.</p>
+<p>There is a test to check whether the person has the disease. The test is quite accurate, however,</p>
+<ul>
+<li>The probability that the test result is positive (i.e., the person has the disease) given that the person does not have the disease is <span class="math inline">\(2\%\)</span></li>
+<li>The probability that the test result is negative given that the person has the disease is <span class="math inline">\(1\%\)</span></li>
+</ul>
+<p>A random person is tested, and the result is positive.</p>
+<p>What is the probability that the person has the disease?</p>
+<hr id="thin">
+<!----------------------------------------------------------------------------->
+<p><span id="no">27</span></p>
+<p>An actuarial student will watch two movies in a weekend.</p>
+<p>Suppose that the probability that likes movie <span class="math inline">\(B\)</span> is <span class="math inline">\(0.6\)</span>, the probability that she will like movie <span class="math inline">\(O\)</span> is <span class="math inline">\(0.5\)</span>, and the probability that she will like the two movies is <span class="math inline">\(0.4\)</span>.</p>
+<p>Find the conditional probability that she will like movie <span class="math inline">\(O\)</span> given that she did not like movie <span class="math inline">\(B\)</span>.</p>
+<hr id="thin">
+<!----------------------------------------------------------------------------->
+<p><span id="no">28</span></p>
+<p>Two factories, <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span>, produce smartphones.</p>
+<p>Each smartphone produced at factory <span class="math inline">\(A\)</span> is defective with probability <span class="math inline">\(0.05\)</span>, whereas each one produced by factory <span class="math inline">\(B\)</span> is defective with probability <span class="math inline">\(0.01\)</span>.</p>
+<p>You purchased two smartphones that were produced by the same factory, which is equally likely to have been either factory <span class="math inline">\(A\)</span> or factory <span class="math inline">\(B\)</span>.</p>
+<p>If the first smartphone that you check is defective, what is the conditional probability that the other one is also defective?</p>
+<hr id="thin">
+<!----------------------------------------------------------------------------->
+<p><span id="no">29</span></p>
+<p>If four balls are randomly chosen from an urn containing four red, five white, six blue, and seven green balls, find the conditional probability that they are all white given that all balls are of the same color.</p>
+<hr id="thin">
+<!----------------------------------------------------------------------------->
+<p><span id="no">30</span></p>
+<p>A researcher examines medical records of <span class="math inline">\(937\)</span> men who died in 2022 and discovers that <span class="math inline">\(210\)</span> of the men died from heart disease.</p>
+<p>Moreover, <span class="math inline">\(312\)</span> of the <span class="math inline">\(937\)</span> men had at least one parent who suffered from heart disease, and of the <span class="math inline">\(312\)</span> men, <span class="math inline">\(102\)</span> died from heart disease.</p>
+<p>Determine the probability that a man randomly selected from this group died from heart disease, given that neither of his parents suffered from heart disease.</p>
+<hr id="thin">
+<!----------------------------------------------------------------------------->
+<p><span id="no">31</span></p>
+<p>Upon arrival at a hospital, patients are categorized according to condition: critical, serious, or stable.</p>
+<p>In 2025:</p>
+<ul>
+<li>Ten percent of patients were critical;</li>
+<li>Thirty percent of patients were serious;</li>
+<li>The rest of patients were stable;</li>
+<li>Forty percent of the critical patients died;</li>
+<li>Ten percent of the serious patients died; and</li>
+<li>One percent of the stable patients died.</li>
+</ul>
+<p>Given that a patient survived, what is the probability that the patient was categorized as serious upon arrival?</p>
+<hr id="thin">
+<!----------------------------------------------------------------------------->
+<p><span id="no">32</span></p>
+<p>For a certain population, <span class="math inline">\(0.8\)</span>, <span class="math inline">\(0.4\)</span>, and <span class="math inline">\(0.1\)</span> are the probabilities that a newborn survives to ages <span class="math inline">\(55\)</span>, <span class="math inline">\(75\)</span>, and <span class="math inline">\(85\)</span>, respectively.</p>
+<p>What is the probability that a person aged <span class="math inline">\(55\)</span>:</p>
+<ol type="a">
+<li>survives to age <span class="math inline">\(75\)</span>?</li>
+<li>survives to age <span class="math inline">\(85\)</span>?</li>
+</ol>
+<hr id="thin">
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./index.html" class="pagination-link" aria-label="Preface">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Preface</span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./chapter_2.html" class="pagination-link" aria-label="Univariate Distributions">
+        <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Univariate Distributions</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

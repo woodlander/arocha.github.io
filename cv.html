@@ -3,35 +3,356 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Curriculum vitae of Carlos Arocha.">
+  <meta
+    name="description"
+    content="Curriculum vitae, professional experience, education, qualifications, and teaching record of Carlos Arocha."
+  >
   <title>CV | Carlos Arocha</title>
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="styles.css">
 </head>
+
 <body>
   <div class="page-glow" aria-hidden="true"></div>
+
   <div class="site-shell">
     <header class="site-header" aria-label="Primary navigation">
       <a class="wordmark" href="index.html" aria-label="Carlos Arocha home">CA</a>
+
       <nav class="nav-links">
         <a href="cv.html" aria-current="page">CV</a>
-        <a href="publications.html">Publications</a>
-        <a href="https://github.com/woodlander" target="_blank" rel="noopener noreferrer">GitHub<span class="external-mark" aria-hidden="true">↗</span></a>
+        <a href="work.html">Work</a>
+        <a href="https://github.com/woodlander" target="_blank" rel="noopener noreferrer">
+          GitHub<span class="external-mark" aria-hidden="true">↗</span>
+        </a>
       </nav>
     </header>
 
     <main class="secondary-main">
-      <p class="kicker">Professional record</p>
-      <h1>Curriculum Vitae</h1>
-      <section class="content-card">
-        <p>My curriculum vitae will be available here shortly.</p>
-        <p>When the PDF is ready, place it in the <code>assets</code> folder and update the CV navigation link as described in the included README.</p>
+      <section class="work-intro" aria-labelledby="page-title">
+        <p class="kicker">Curriculum vitae</p>
+        <h1 id="page-title">Experience, education, and professional practice</h1>
+        <p>
+          I am a consulting actuary and educator working across actuarial science,
+          risk, data science, machine learning, and climate-related uncertainty.
+          This page presents a concise professional record, with a downloadable
+          curriculum vitae available below.
+        </p>
       </section>
-      <a class="back-link" href="index.html"><span aria-hidden="true">←</span> Back to home</a>
+
+      <!-- Reuse the pill navigation from the Work page for quick access. -->
+      <nav class="work-nav" aria-label="CV sections">
+        <a href="#profile">Profile</a>
+        <a href="#experience">Experience</a>
+        <a href="#education">Education</a>
+        <a href="#teaching">Teaching</a>
+        <a href="#professional">Professional activity</a>
+        <a href="#skills">Skills</a>
+      </nav>
+
+      <section class="work-section" id="profile" aria-labelledby="profile-title">
+        <div class="section-heading">
+          <div>
+            <p class="kicker">Professional profile</p>
+            <h2 id="profile-title">Overview</h2>
+          </div>
+          <p>
+            A concise introduction helps visitors understand your professional
+            identity before reading the chronology.
+          </p>
+        </div>
+
+        <div class="work-grid">
+          <article class="work-card">
+            <div class="work-card__meta">
+              <span class="work-tag">Consulting actuary</span>
+              <span class="work-card__details">Risk · Analytics · Strategy</span>
+            </div>
+
+            <h3>Actuarial and quantitative practice</h3>
+            <p>
+              Summarize your consulting focus, the types of organizations you
+              support, and the decisions your work helps clients make.
+            </p>
+
+            <div class="work-card__links">
+              <a href="work.html">View selected work →</a>
+            </div>
+          </article>
+
+          <article class="work-card">
+            <div class="work-card__meta">
+              <span class="work-tag">Educator</span>
+              <span class="work-card__details">Teaching · Research · Communication</span>
+            </div>
+
+            <h3>Education and knowledge development</h3>
+            <p>
+              Describe your teaching appointments, educational approach, and
+              interest in developing open, reproducible actuarial resources.
+            </p>
+
+            <div class="work-card__links">
+              <a href="work.html#teaching">View teaching materials →</a>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="work-section" id="experience" aria-labelledby="experience-title">
+        <div class="section-heading">
+          <div>
+            <p class="kicker">Professional journey</p>
+            <h2 id="experience-title">Experience</h2>
+          </div>
+          <p>
+            Present roles in reverse chronological order, emphasizing scope,
+            outcomes, and areas of responsibility.
+          </p>
+        </div>
+
+        <div class="compact-list">
+          <article class="compact-entry">
+            <p class="compact-entry__type">20XX–Present</p>
+            <div>
+              <h3>Current role or consulting practice</h3>
+              <p class="compact-entry__description">
+                Organization · Location. Add two or three outcome-oriented
+                sentences describing responsibilities, clients, projects, or impact.
+              </p>
+            </div>
+            <span>Current</span>
+          </article>
+
+          <article class="compact-entry">
+            <p class="compact-entry__type">20XX–20XX</p>
+            <div>
+              <h3>Previous position</h3>
+              <p class="compact-entry__description">
+                Organization · Location. Focus on the work most relevant to your
+                present actuarial, analytical, or leadership profile.
+              </p>
+            </div>
+            <span>Role</span>
+          </article>
+
+          <article class="compact-entry">
+            <p class="compact-entry__type">20XX–20XX</p>
+            <div>
+              <h3>Earlier position</h3>
+              <p class="compact-entry__description">
+                Organization · Location. Keep older entries shorter unless they
+                are central to your professional narrative.
+              </p>
+            </div>
+            <span>Role</span>
+          </article>
+        </div>
+      </section>
+
+      <section class="work-section" id="education" aria-labelledby="education-title">
+        <div class="section-heading">
+          <div>
+            <p class="kicker">Academic foundation</p>
+            <h2 id="education-title">Education &amp; qualifications</h2>
+          </div>
+          <p>
+            Combine degrees, actuarial credentials, certifications, and
+            significant continuing education in one clear section.
+          </p>
+        </div>
+
+        <div class="compact-list">
+          <article class="compact-entry">
+            <p class="compact-entry__type">Degree · Year</p>
+            <div>
+              <h3>Degree or postgraduate qualification</h3>
+              <p class="compact-entry__description">
+                Institution · Location. Add specialization, thesis, distinction,
+                or other relevant information.
+              </p>
+            </div>
+            <span>Education</span>
+          </article>
+
+          <article class="compact-entry">
+            <p class="compact-entry__type">Credential · Year</p>
+            <div>
+              <h3>Actuarial designation or professional qualification</h3>
+              <p class="compact-entry__description">
+                Awarding body. Include current membership status where useful.
+              </p>
+            </div>
+            <span>Qualification</span>
+          </article>
+
+          <article class="compact-entry">
+            <p class="compact-entry__type">Certificate · Year</p>
+            <div>
+              <h3>Relevant technical or academic certification</h3>
+              <p class="compact-entry__description">
+                Issuing institution. Prioritize qualifications connected to data
+                science, machine learning, climate risk, or education.
+              </p>
+            </div>
+            <span>Certificate</span>
+          </article>
+        </div>
+      </section>
+
+      <section class="work-section" id="teaching" aria-labelledby="teaching-title">
+        <div class="section-heading">
+          <div>
+            <p class="kicker">Academic engagement</p>
+            <h2 id="teaching-title">Teaching</h2>
+          </div>
+          <p>
+            Highlight courses, institutions, curriculum development, supervision,
+            and educational innovation.
+          </p>
+        </div>
+
+        <div class="compact-list">
+          <article class="compact-entry">
+            <p class="compact-entry__type">20XX–Present</p>
+            <div>
+              <h3>Teaching appointment or course portfolio</h3>
+              <p class="compact-entry__description">
+                Institution. List the principal subjects taught and any distinctive
+                course design, technology, or assessment work.
+              </p>
+            </div>
+            <a href="work.html#teaching">Materials →</a>
+          </article>
+
+          <article class="compact-entry">
+            <p class="compact-entry__type">Selected activity</p>
+            <div>
+              <h3>Curriculum development, mentoring, or supervision</h3>
+              <p class="compact-entry__description">
+                Describe educational leadership, student supervision, workshops,
+                or open learning resources.
+              </p>
+            </div>
+            <a href="work.html#books">Books →</a>
+          </article>
+        </div>
+      </section>
+
+      <section class="work-section" id="professional" aria-labelledby="professional-title">
+        <div class="section-heading">
+          <div>
+            <p class="kicker">Professional contribution</p>
+            <h2 id="professional-title">Professional activity</h2>
+          </div>
+          <p>
+            Use this section for associations, committees, reviewing, speaking,
+            community work, and other professional service.
+          </p>
+        </div>
+
+        <div class="compact-list">
+          <article class="compact-entry">
+            <p class="compact-entry__type">Membership</p>
+            <div>
+              <h3>Professional association or actuarial body</h3>
+              <p class="compact-entry__description">
+                State your membership, committee role, or contribution.
+              </p>
+            </div>
+            <span>Active</span>
+          </article>
+
+          <article class="compact-entry">
+            <p class="compact-entry__type">Service</p>
+            <div>
+              <h3>Committee, editorial, reviewing, or volunteer activity</h3>
+              <p class="compact-entry__description">
+                Describe the organization and the nature of your contribution.
+              </p>
+            </div>
+            <span>Service</span>
+          </article>
+
+          <article class="compact-entry">
+            <p class="compact-entry__type">Speaking</p>
+            <div>
+              <h3>Selected conferences, workshops, and invited lectures</h3>
+              <p class="compact-entry__description">
+                Summarize recurring themes and direct visitors to the presentation archive.
+              </p>
+            </div>
+            <a href="work.html#presentations">Presentations →</a>
+          </article>
+        </div>
+      </section>
+
+      <section class="work-section" id="skills" aria-labelledby="skills-title">
+        <div class="section-heading">
+          <div>
+            <p class="kicker">Capabilities</p>
+            <h2 id="skills-title">Skills &amp; languages</h2>
+          </div>
+          <p>
+            Group capabilities by professional use rather than presenting one
+            long undifferentiated list.
+          </p>
+        </div>
+
+        <div class="work-grid">
+          <article class="work-card">
+            <div class="work-card__meta">
+              <span class="work-tag">Technical</span>
+              <span class="work-card__details">Modeling · Data · Development</span>
+            </div>
+
+            <h3>Quantitative and computational</h3>
+            <p>
+              Python, R, actuarial modeling, statistical analysis, machine
+              learning, simulation, reproducible research, and application development.
+            </p>
+          </article>
+
+          <article class="work-card">
+            <div class="work-card__meta">
+              <span class="work-tag">Professional</span>
+              <span class="work-card__details">Advisory · Teaching · Communication</span>
+            </div>
+
+            <h3>Consulting and communication</h3>
+            <p>
+              Add your areas of advisory expertise, stakeholder communication,
+              curriculum design, public speaking, and working languages.
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <!-- Keep the download action visually equivalent to the Work-page CTA. -->
+      <section class="work-cta" aria-labelledby="download-title">
+        <p class="kicker">Full record</p>
+        <h2 id="download-title">Download the curriculum vitae</h2>
+        <p>
+          The PDF version provides the complete chronology, qualifications,
+          appointments, publications, and professional activities.
+        </p>
+        <!-- Replace the filename below if your PDF uses another name. -->
+        <p>
+          <a href="assets/carlos-arocha-cv.pdf" target="_blank" rel="noopener">
+            Download CV (PDF) ↗
+          </a>
+        </p>
+      </section>
+
+      <a class="back-link" href="index.html">
+        <span aria-hidden="true">←</span> Back to home
+      </a>
     </main>
 
     <footer class="site-footer">
-      <span>© Carlos Arocha</span><span aria-hidden="true">•</span><a href="mailto:hello@carlosarocha.me">Contact</a>
+      <span>© Carlos Arocha</span>
+      <span aria-hidden="true">•</span>
+      <a href="mailto:hello@carlosarocha.me">Contact</a>
     </footer>
   </div>
 </body>

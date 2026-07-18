@@ -3,63 +3,320 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Work by Carlos Arocha.">
-  <title>Publications | Carlos Arocha</title>
+  <meta
+    name="description"
+    content="Selected books, actuarial applications, research, presentations, and teaching materials by Carlos Arocha."
+  >
+  <title>Work | Carlos Arocha</title>
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="styles.css"> 
 </head>
+
 <body>
   <div class="page-glow" aria-hidden="true"></div>
+
   <div class="site-shell">
     <header class="site-header" aria-label="Primary navigation">
       <a class="wordmark" href="index.html" aria-label="Carlos Arocha home">CA</a>
+
       <nav class="nav-links">
         <a href="cv.html">CV</a>
-        <a href="work.html" aria-current="page">Publications</a>
-        <a href="https://github.com/woodlander" target="_blank" rel="noopener noreferrer">GitHub<span class="external-mark" aria-hidden="true">↗</span></a>
+        <a href="work.html" aria-current="page">Work</a>
+        <a href="https://github.com/woodlander" target="_blank" rel="noopener noreferrer">
+          GitHub<span class="external-mark" aria-hidden="true">↗</span>
+        </a>
       </nav>
     </header>
 
     <main class="secondary-main">
-      <p class="kicker">Selected work</p>
-      <h1>Selected Work</h1>
-      
-      <section class="content-card">
-        
-        <article class="work-entry">
-          <p class="work-type">Interactive Quarto Book</p>
+      <section class="work-intro" aria-labelledby="page-title">
+        <p class="kicker">Selected work</p>
+        <h1 id="page-title">Books, tools, research, and teaching</h1>
+        <p>
+          I develop practical resources at the intersection of actuarial science,
+          risk, data science, machine learning, and climate-related uncertainty.
+          This collection brings together my published work, interactive applications,
+          research projects, presentations, and teaching materials.
+        </p>
+      </section>
 
-          <h2>
-            <a href="work/futureproof-p/">
-              FutureProof-P
-            </a>
-          </h2>
+      <nav class="work-nav" aria-label="Work categories">
+        <a href="#books">Books</a>
+        <a href="#applications">Applications</a>
+        <a href="#research">Articles &amp; research</a>
+        <a href="#presentations">Presentations</a>
+        <a href="#teaching">Teaching materials</a>
+      </nav>
 
-          <p class="work-author">
-            Carlos Arocha
-          </p>
+      <section class="work-section" id="books" aria-labelledby="books-title">
+        <div class="section-heading">
+          <div>
+            <p class="kicker">Long-form learning</p>
+            <h2 id="books-title">Online books</h2>
+          </div>
+          <p>Three online books designed as a unified actuarial learning series.</p>
+        </div>
 
-          <p>
-            An interactive book exploring actuarial modeling, risk,
-            uncertainty, data science, and future-oriented quantitative
-            methods.
-          </p>
+        <div class="work-grid books-grid">
+          <article class="work-card">
+            <div class="work-card__meta">
+              <span class="work-tag">Online book</span>
+              <span class="work-card__details">Basic probability</span>
+            </div>
 
-          <p>
-            <a href="work/futureproof-p/">
-              Read the book →
-            </a>
-          </p>
+            <h3><a href="work/futureproof-p/">FutureProof P</a></h3>
+            <p>
+              An online learning resource designed to prepare students for the Society of Actuaries Exam P,
+              while also providing a complete foundation for a one-semester university course in basic probability.
+              It combines mathematical theory, worked examples, computational methods, and practical applications.
+            </p>
+            <p class="work-card__details">Carlos Arocha · Online edition · Continuously updated</p>
+
+            <div class="work-card__links">
+              <a href="work/futureproof-p/">Read the book →</a>
+            </div>
           </article>
 
+          <article class="work-card">
+            <div class="work-card__meta">
+              <span class="work-tag">Online book</span>
+              <span class="work-card__details">Financial mathematics</span>
+            </div>
+
+            <h3><a href="work/futureproof-fm/">FutureProof FM</a></h3>
+            <p>
+              An online learning resource designed to prepare students for the Society of Actuaries Exam FM,
+              while also providing a complete foundation for a one-semester university course in basic financial mathematics.
+              It combines mathematical theory, worked examples, computational methods, and practical applications.
+            </p>
+            <p class="work-card__details">Carlos Arocha · Online edition · Continuously updated</p>
+
+            <div class="work-card__links">
+              <a href="work/futureproof-fm/">Read the book →</a>
+            </div>
+          </article>
+
+          <article class="work-card">
+            <div class="work-card__meta">
+              <span class="work-tag">Online book</span>
+              <span class="work-card__details">Life contingencies</span>
+            </div>
+
+            <h3><a href="work/futureproof-mlc/">FutureProof MLC</a></h3>
+            <p>
+              An online learning resource for life contingencies designed to provide a complete foundation for a one-semester university course.
+              It covers actuarial models, including survival models, insurance benefits,
+              annuities, premiums, and reserves.
+            </p>
+            <p class="work-card__details">Carlos Arocha · Online edition · Continuously updated</p>
+
+            <div class="work-card__links">
+              <a href="work/futureproof-mlc/">Read the book →</a>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="work-section" id="applications" aria-labelledby="applications-title">
+        <div class="section-heading">
+          <div>
+            <p class="kicker">Tools for practice</p>
+            <h2 id="applications-title">Actuarial applications</h2>
+          </div>
+          <p>Interactive tools that translate actuarial and statistical methods into usable workflows.</p>
+        </div>
+
+        <div class="work-grid">
+          <article class="work-card">
+            <div class="work-card__meta">
+              <span class="work-tag">Web application</span>
+              <span class="work-card__details">Python / R / Shiny / Streamlit</span>
+            </div>
+
+            <h3><a href="#">Actuarial application one</a></h3>
+            <p>
+              Describe the decision supported by the application, its intended users,
+              key inputs, and the outputs or visualizations it produces.
+            </p>
+            <p class="work-card__details">Example: reserving · pricing · capital · climate risk</p>
+
+            <div class="work-card__links">
+              <a href="#">Launch application →</a>
+              <a href="#">Documentation ↗</a>
+            </div>
+          </article>
+
+          <article class="work-card">
+            <div class="work-card__meta">
+              <span class="work-tag">Web application</span>
+              <span class="work-card__details">Python / R / Shiny / Streamlit</span>
+            </div>
+
+            <h3><a href="#">Actuarial application two</a></h3>
+            <p>
+              Explain the use case in outcome-oriented language and mention any
+              reproducible methodology, data sources, or scenario capabilities.
+            </p>
+            <p class="work-card__details">Example: simulation · forecasting · portfolio analytics</p>
+
+            <div class="work-card__links">
+              <a href="#">Launch application →</a>
+              <a href="#">View source ↗</a>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="work-section" id="research" aria-labelledby="research-title">
+        <div class="section-heading">
+          <div>
+            <p class="kicker">Evidence and inquiry</p>
+            <h2 id="research-title">Articles &amp; research projects</h2>
+          </div>
+          <p>A concise catalogue works better here than large cards, especially as the collection grows.</p>
+        </div>
+
+        <div class="compact-list">
+          <article class="compact-entry">
+            <p class="compact-entry__type">Research project · 2026</p>
+            <div>
+              <h3><a href="#">Research project title</a></h3>
+              <p class="compact-entry__description">One sentence on the research question, method, and principal contribution.</p>
+            </div>
+            <a href="#">View →</a>
+          </article>
+
+          <article class="compact-entry">
+            <p class="compact-entry__type">Article · 2025</p>
+            <div>
+              <h3><a href="#">Article title</a></h3>
+              <p class="compact-entry__description">Briefly state the topic and why it matters to actuarial or risk practitioners.</p>
+            </div>
+            <a href="#">Read →</a>
+          </article>
+
+          <article class="compact-entry">
+            <p class="compact-entry__type">Working paper · 2025</p>
+            <div>
+              <h3><a href="#">Working paper title</a></h3>
+              <p class="compact-entry__description">Mention the model, dataset, empirical setting, or collaboration.</p>
+            </div>
+            <a href="#">Paper →</a>
+          </article>
+
+          <article class="compact-entry">
+            <p class="compact-entry__type">Technical note · 2024</p>
+            <div>
+              <h3><a href="#">Technical note title</a></h3>
+              <p class="compact-entry__description">Summarize the practical question and the technique demonstrated.</p>
+            </div>
+            <a href="#">Read →</a>
+          </article>
+        </div>
+      </section>
+
+      <section class="work-section" id="presentations" aria-labelledby="presentations-title">
+        <div class="section-heading">
+          <div>
+            <p class="kicker">Talks and workshops</p>
+            <h2 id="presentations-title">Presentations</h2>
+          </div>
+          <p>Include conference talks, invited lectures, workshops, webinars, and internal professional sessions.</p>
+        </div>
+
+        <div class="compact-list">
+          <article class="compact-entry">
+            <p class="compact-entry__type">Conference talk · 2026</p>
+            <div>
+              <h3><a href="#">Presentation title</a></h3>
+              <p class="compact-entry__description">Event name, city or online format, and a short description of the session.</p>
+            </div>
+            <a href="#">Slides →</a>
+          </article>
+
+          <article class="compact-entry">
+            <p class="compact-entry__type">Workshop · 2025</p>
+            <div>
+              <h3><a href="#">Workshop title</a></h3>
+              <p class="compact-entry__description">Audience, duration, and the practical skills or models covered.</p>
+            </div>
+            <a href="#">Materials →</a>
+          </article>
+
+          <article class="compact-entry">
+            <p class="compact-entry__type">Webinar · 2025</p>
+            <div>
+              <h3><a href="#">Webinar title</a></h3>
+              <p class="compact-entry__description">Host organization and the main theme or takeaway.</p>
+            </div>
+            <a href="#">Watch →</a>
+          </article>
+        </div>
+      </section>
+
+      <section class="work-section" id="teaching" aria-labelledby="teaching-title">
+        <div class="section-heading">
+          <div>
+            <p class="kicker">Learning resources</p>
+            <h2 id="teaching-title">Teaching materials</h2>
+          </div>
+          <p>Organize reusable course notes, notebooks, exercises, datasets, and recorded demonstrations by subject.</p>
+        </div>
+
+        <div class="work-grid">
+          <article class="work-card">
+            <div class="work-card__meta">
+              <span class="work-tag">Course materials</span>
+              <span class="work-card__details">Actuarial science</span>
+            </div>
+
+            <h3><a href="#">Actuarial modeling resources</a></h3>
+            <p>
+              Notes, examples, exercises, and computational notebooks supporting
+              actuarial modeling and risk analysis.
+            </p>
+
+            <div class="work-card__links">
+              <a href="#">Explore materials →</a>
+            </div>
+          </article>
+
+          <article class="work-card">
+            <div class="work-card__meta">
+              <span class="work-tag">Course materials</span>
+              <span class="work-card__details">Data science</span>
+            </div>
+
+            <h3><a href="#">Python, data science &amp; machine learning</a></h3>
+            <p>
+              Tutorials and applied notebooks covering data preparation,
+              visualization, predictive modeling, and reproducible analysis.
+            </p>
+
+            <div class="work-card__links">
+              <a href="#">Explore materials →</a>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="work-cta" aria-labelledby="collaboration-title">
+        <p class="kicker">Collaboration</p>
+        <h2 id="collaboration-title">Interested in this work?</h2>
+        <p>
+          I welcome conversations about actuarial innovation, data science,
+          climate risk, applied research, and quantitative education.
+        </p>
+        <p><a href="mailto:hello@carlosarocha.me">Contact me →</a></p>
       </section>
 
       <a class="back-link" href="index.html"><span aria-hidden="true">←</span> Back to home</a>
-    
     </main>
 
     <footer class="site-footer">
-      <span>© Carlos Arocha</span><span aria-hidden="true">•</span><a href="mailto:hello@carlosarocha.me">Contact</a>
+      <span>© Carlos Arocha</span>
+      <span aria-hidden="true">•</span>
+      <a href="mailto:hello@carlosarocha.me">Contact</a>
     </footer>
   </div>
 </body>
