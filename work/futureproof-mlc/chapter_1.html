@@ -1,0 +1,1525 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.9.38">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>1&nbsp; Survival Models – FutureProof MLC</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./chapter_2.html" rel="next">
+<link href="./index.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-9e3e5b9121e68b3f077afb32f2c64d95.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<link rel="icon" type="image/x-icon" href="favincon-32x32.png">    
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="nav-sidebar floating quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./chapter_1.html"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Survival Models</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">FutureProof MLC</a> 
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Preface</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./chapter_1.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Survival Models</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./chapter_2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Life Insurance Models</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./chapter_3.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Life Annuities</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./chapter_4.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Premiums/Reserves</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./answers.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Answers to Supplementary Exercises</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./ilt.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Illustrative Life Table</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./biblio.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Bibliography</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./copyright.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Copyright notice</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./support.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Support the Project</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./about.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">About the author</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./report.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Report Content Errors</span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#supplementary-concepts" id="toc-supplementary-concepts" class="nav-link active" data-scroll-target="#supplementary-concepts"><span class="header-section-number">1.1</span> Supplementary Concepts</a></li>
+  <li><a href="#solved-exercises" id="toc-solved-exercises" class="nav-link" data-scroll-target="#solved-exercises"><span class="header-section-number">1.2</span> Solved Exercises</a>
+  <ul>
+  <li><a href="#basic-probabilities" id="toc-basic-probabilities" class="nav-link" data-scroll-target="#basic-probabilities">Basic probabilities</a></li>
+  <li><a href="#variance-of-t" id="toc-variance-of-t" class="nav-link" data-scroll-target="#variance-of-t">Variance of <span class="math inline">\(T\)</span></a></li>
+  <li><a href="#force-of-mortality" id="toc-force-of-mortality" class="nav-link" data-scroll-target="#force-of-mortality">Force of mortality</a></li>
+  </ul></li>
+  <li><a href="#supplementary-exercises" id="toc-supplementary-exercises" class="nav-link" data-scroll-target="#supplementary-exercises"><span class="header-section-number">1.3</span> Supplementary Exercises</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Survival Models</span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="supplementary-concepts" class="level2" data-number="1.1">
+<h2 data-number="1.1" class="anchored" data-anchor-id="supplementary-concepts"><span class="header-section-number">1.1</span> Supplementary Concepts</h2>
+<ol type="1">
+<li><p>Let <span class="math inline">\(X\)</span> be the random variable of age-at-death of a newborn. Then <span class="math inline">\(F(x)=\mathrm{Pr}[X \leq x]\)</span> is the cumulative distribution function and <span class="math inline">\(s(x)=1-F(x)\)</span> is the survival function.</p></li>
+<li><p>A valid survival function <span class="math inline">\(s(x)\)</span> must satisfy five properties:</p></li>
+</ol>
+<ul>
+<li id="ind50">
+<span class="math inline">\(s(0)=1\)</span> (normalization condition)
+</li>
+<li id="ind50">
+<span class="math inline">\(s(x)\)</span> is non-increasing in <span class="math inline">\(x\)</span> (i.e., survival cannot increase with age)
+</li>
+<li id="ind50">
+<span class="math inline">\(\lim_{x\to\infty} s(x)=0\)</span> (i.e., nobody lives forever)
+</li>
+<li id="ind50">
+<span class="math inline">\(s(x) \geq 0,\forall x \geq 0\)</span>
+</li>
+<li id="ind50">
+<span class="math inline">\(s(x)\)</span> must be right-continuous
+</li>
+</ul>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="chapter_1_files/figure-html/unnamed-chunk-1-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p id="ind50">
+Line <span style="display:inline-flex;width:1.4em;height:1.4em;border:2px solid #000; border-radius:50%;align-items:center;justify-content:center;font-weight:600;line-height:1;">1</span> represents <span class="math inline">\(s(x)=1-\dfrac{x}{110}\)</span>, a straight line anchored at <span class="math inline">\(s(0)=1\)</span> and <span class="math inline">\(s(110)=0\)</span>.
+</p>
+<p id="ind50">
+Line <span style="display:inline-flex;width:1.4em;height:1.4em;border:2px solid #000; border-radius:50%;align-items:center;justify-content:center;font-weight:600;line-height:1;">2</span> represents <span class="math inline">\(s(x)=1-\left( \dfrac{x}{110} \right)^{2.5}\)</span>, a concave curve anchored at <span class="math inline">\(s(0)=1\)</span> and <span class="math inline">\(s(110)=0\)</span>.
+</p>
+<p id="ind50">
+Line <span style="display:inline-flex;width:1.4em;height:1.4em;border:2px solid #000; border-radius:50%;align-items:center;justify-content:center;font-weight:600;line-height:1;">3</span> represents Swiss male mortality in 2024 (source:<a href="https://www.mortality.org/Home/Index" target="_blank"> Human Mortality Database</a>). Discrete observations have been turned into a continuous-looking curve.
+</p>
+<p id="ind50">
+Line <span style="display:inline-flex;width:1.4em;height:1.4em;border:2px solid #000; border-radius:50%;align-items:center;justify-content:center;font-weight:600;line-height:1;">4</span> represents Swiss female mortality in 2024 (ibid.). Discrete observations have been turned into a continuous-looking curve.
+</p>
+<ol start="3" type="1">
+<li>The conditional probability that a newborn dies between ages <span class="math inline">\(x\)</span> and <span class="math inline">\(z\)</span> given survival to age <span class="math inline">\(x\)</span> is given by</li>
+</ol>
+<p><span class="math display">\[
+\boxed{
+  \begin{gathered}
+    \\ \quad \mathrm{Pr}[\,x &lt; X \leq z\,|\,X&gt;x\,] = \frac{F(z) - F(x)}{1 - F(x)} = \frac{s(x) - s(z)}{s(x)} \quad \\
+    \\
+  \end{gathered}
+}
+\]</span></p>
+<ol start="4" type="1">
+<li>The force of mortality (also known as the hazard rate) is defined as</li>
+</ol>
+<span class="math display">\[
+\boxed{
+  \begin{gathered}
+    \\ \quad \mu_x = \frac{f(x)}{1 - F(x)} = \frac{-s'(x)}{s(x)} = -\frac{d}{dx}\log{s(x)} \quad \\
+    \\
+  \end{gathered}
+}
+\]</span>
+<p id="ind50">
+Substituting <span class="math inline">\(x\)</span> by <span class="math inline">\(y\)</span> and reordering, <span class="math inline">\(-\mu_ydy=d\log{s(y)}\)</span>. And after integration, we get
+</p>
+<span class="math display">\[
+\boxed{
+  \begin{gathered}
+    \\ \quad -\int_x^{x+n}\mu_ydy=\log{\frac{s(x+n)}{s(x)}} \quad \\
+    \\
+  \end{gathered}
+}
+\]</span>
+<p id="ind50">
+Finally, through exponentiation of both sides of the equation above, we get
+</p>
+<span class="math display">\[
+\boxed{
+  \begin{gathered}
+    \\ \quad \frac{s(x+n)}{s(x)}=\exp{\left( -\int_x^{x+n}\mu_ydy \right) } \quad \\
+    \\
+  \end{gathered}
+}
+\]</span>
+<p id="ind50">
+And analogously,
+</p>
+<p><span class="math display">\[
+\boxed{
+  \begin{gathered}
+    \\ \quad s(x) = \exp{\left( -\int_0^{x}\mu_sds \right) } \quad \\
+    \\
+  \end{gathered}
+}
+\]</span></p>
+<ol start="5" type="1">
+<li>The following table relates <span class="math inline">\(F(x)\)</span>, <span class="math inline">\(f(x)\)</span>, <span class="math inline">\(s(x)\)</span> and <span class="math inline">\(\mu_x\)</span></li>
+</ol>
+<table id="ind30">
+<tbody><tr>
+<th>
+</th>
+<th style="text-align: center;">
+<span class="math inline">\(F(x)\)</span>
+</th>
+<th style="text-align: center;">
+<span class="math inline">\(f(x)\)</span>
+</th>
+<th style="text-align: center;">
+<span class="math inline">\(s(x)\)</span>
+</th>
+<th style="text-align: center;">
+<span class="math inline">\(\mu_x\)</span>
+</th>
+</tr>
+<tr>
+<td>
+<span class="math inline">\(F(x)\)</span>
+</td>
+<th style="text-align: center;">
+<span class="math inline">\(-\)</span>
+</th>
+<th style="text-align: center;">
+<span class="math inline">\(F'(x)\)</span>
+</th>
+<th style="text-align: center;">
+<span class="math inline">\(1-F(x)\)</span>
+</th>
+<th style="text-align: center;">
+<span class="math inline">\(\dfrac{F'(x)}{1-F(x)}\)</span>
+</th>
+</tr>
+<tr>
+<td>
+<span class="math inline">\(f(x)\)</span>
+</td>
+<th style="text-align: center;">
+<span class="math inline">\(\int_0^\infty f(r)dr\)</span>
+</th>
+<th style="text-align: center;">
+<span class="math inline">\(-\)</span>
+</th>
+<th style="text-align: center;">
+<span class="math inline">\(1-\int_0^\infty f(r)dr\)</span>
+</th>
+<th style="text-align: center;">
+<span class="math inline">\(\dfrac{f(x)}{\int_x^\infty f(r)dr}\)</span>
+</th>
+</tr>
+<tr>
+<td>
+<span class="math inline">\(s(x)\)</span>
+</td>
+<th style="text-align: center;">
+<span class="math inline">\(1-s(x)\)</span>
+</th>
+<th style="text-align: center;">
+<span class="math inline">\(-s'(x)\)</span>
+</th>
+<th style="text-align: center;">
+<span class="math inline">\(-\)</span>
+</th>
+<th style="text-align: center;">
+<span class="math inline">\(\dfrac{-s'(x)}{s(x)}\)</span>
+</th>
+</tr>
+<tr>
+<td>
+<span class="math inline">\(\mu_x\)</span>
+</td>
+<th style="text-align: center;">
+<span class="math inline">\(1-\exp{\left( -\int_0^x \mu_rdr\right)}\)</span>
+</th>
+<th style="text-align: center;">
+<span class="math inline">\(\mu_x \cdot\exp{\left( -\int_0^x \mu_rdr\right)}\)</span>
+</th>
+<th style="text-align: center;">
+<span class="math inline">\(\exp{\left( -\int_0^x \mu_rdr\right)}\)</span>
+</th>
+<th style="text-align: center;">
+<span class="math inline">\(-\)</span>
+</th>
+</tr>
+</tbody></table>
+<p><br></p>
+<ol start="6" type="1">
+<li>The future lifetime of a person aged <span class="math inline">\(x\)</span> is defined by the random variable <span class="math inline">\(T(x)=X-x\)</span>, where <span class="math inline">\(X\)</span> is the random variable of age-at-death. Thus, the probability that a person aged <span class="math inline">\(x\)</span> dies before <span class="math inline">\(t\)</span> years is given by</li>
+</ol>
+<span class="math display">\[
+\boxed{
+  \begin{gathered}
+    \\ \quad \mathrm{Pr}[\,T(x) \leq t\,] = F_x(t) = 1 - s_x(t) = {_t}q_x \quad \\
+    \\
+  \end{gathered}
+}
+\]</span>
+<p id="ind50">
+where the symbol <span class="math inline">\(_tq_x\)</span> conforms with the International Actuarial Notation.
+</p>
+<p id="ind50">
+Similarly, the probability that <span class="math inline">\((x)\)</span> survives to age <span class="math inline">\(x+t\)</span> is given by
+</p>
+<span class="math display">\[
+\boxed{
+  \begin{gathered}
+    \\ \quad \mathrm{Pr}[\,T(x) &gt; t\,] = s_x(t) = \frac{s_0(x+t)}{s_o(x)} = {_t}p_x \quad \\
+    \\
+  \end{gathered}
+}
+\]</span>
+<p id="ind50">
+where the symbol <span class="math inline">\(_tp_x\)</span> conforms with the International Actuarial Notation.
+</p>
+<ol start="7" type="1">
+<li>The random variable <span class="math inline">\(K(x)\)</span> denotes the number of complete years of future lifetime at age <span class="math inline">\(x\)</span>. A practical way to think of <span class="math inline">\(K\)</span> is the number of future birthday parties that (hopefully!) <span class="math inline">\((x)\)</span> will celebrate.</li>
+</ol>
+<span class="math display">\[
+\boxed{
+  \begin{gathered}
+    \\ \quad \mathrm{Pr}[K(x) = k] = \mathrm{Pr}[k \leq T(x) &lt; k+1] = \frac{s_0(x+k)-s_0(x+k+1)}{s_0(x)} = {_{k\vert}}q_x \quad \\
+    \\
+  \end{gathered}
+}
+\]</span>
+<p id="ind50">
+where the symbol <span class="math inline">\({_{k\vert}}q_x\)</span> conforms with the International Actuarial Notation.
+</p>
+<ol start="8" type="1">
+<li>Life expectancy at age <span class="math inline">\(x\)</span> is given by</li>
+</ol>
+<p><span class="math display">\[
+\boxed{
+  \begin{gathered}
+    \\ \quad \mathrm{E}[\,T(x)\,] = \int_0^\infty t\cdot f_x(t)\,dt = \int_0^\infty t\cdot {_t}p_x \,\mu_{x+t}\,dt = \int_0^\infty {_t}p_x\,dt \quad \\
+    \\
+  \end{gathered}
+}
+\]</span></p>
+<ol start="9" type="1">
+<li>Analogously, the expected value of <span class="math inline">\(K\)</span> is given by</li>
+</ol>
+<p><span class="math display">\[
+\boxed{
+  \begin{gathered}
+    \\ \quad \mathrm{E}[\,K(x)\,] = \sum_0^\infty k\cdot \mathrm{Pr}[\,K(x)=k\,] = \sum_0^\infty k\cdot {_{k\vert}}q_x = \sum_0^\infty {_k}p_x \quad \\
+    \\
+  \end{gathered}
+}
+\]</span></p>
+<ol start="10" type="1">
+<li>Let <span class="math inline">\(l_x\)</span> be the number of survivors of exactly age <span class="math inline">\(x\)</span> from a group of <span class="math inline">\(l_0\)</span> newborns. Thus,</li>
+</ol>
+<ul>
+<li id="ind50">
+<span class="math inline">\(d_x=l_x-l_{x+1}\)</span> is the number of deaths between ages <span class="math inline">\(x\)</span> and <span class="math inline">\(x+1\)</span>;
+</li>
+<li id="ind50">
+<span class="math inline">\(q_x=\dfrac{d_x}{l_x}\)</span> is the probability of dying between ages <span class="math inline">\(x\)</span> and <span class="math inline">\(x+1\)</span>;
+</li>
+<li id="ind50">
+<span class="math inline">\(p_x=1-q_x=\dfrac{l_{x+1}}{l_x}\)</span> is the probability of surviving to age <span class="math inline">\(x+1\)</span>;
+</li>
+</ul>
+<ol start="11" type="1">
+<li>If <span class="math inline">\(l_0\)</span> and <span class="math inline">\(q_x\)</span> values are available, a mortality table can be constructed as follows:</li>
+</ol>
+<ul>
+<li id="ind50">
+<span class="math inline">\(l_1=l_0(1-q_0)=l_0-d_0\)</span>
+</li>
+<li id="ind50">
+<span class="math inline">\(l_2=l_1(1-q_1)=l_1-d_1=l_0-(d_0+d_1)\)</span>
+</li>
+<li id="ind50">
+<span class="math inline">\(\cdots\)</span>
+</li>
+<li id="ind50">
+<span class="math inline">\(l_x=l_{x-1}\,(1-q_{x-1})=l_{x-1}-d_{x-1}=l_0-\sum_{k=0}^{x-1}d_k\)</span>
+</li>
+</ul>
+<ol start="12" type="1">
+<li>The average number of years lived between ages <span class="math inline">\(x\)</span> and <span class="math inline">\(x+1\)</span> by an initial group of <span class="math inline">\(l_0\)</span> newborns is given by</li>
+</ol>
+<p><span class="math display">\[
+\boxed{
+  \begin{gathered}
+    \\ \quad L_x = \int_0^1 t\cdot {_t}p_x \,\mu_{x+t}\,dt\, +\, l_{x+1} = \int_0^1 l_{x+t}\,dt \quad \\
+    \\
+  \end{gathered}
+}
+\]</span></p>
+<ol start="13" type="1">
+<li>The central rate of mortality is given by</li>
+</ol>
+<p><span class="math display">\[
+\boxed{
+  \begin{gathered}
+    \\
+    \quad m_x = \frac{\int_0^1 l_{x+t}\,\mu_{x+t} \, dt}{\int_0^1 l_{x+t}\,dt} = \frac{d_x}{L_x} \quad \\
+    \\
+  \end{gathered}
+}
+\]</span></p>
+<ol start="14" type="1">
+<li>The table below describes some analytical mortality laws:</li>
+</ol>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 20%">
+<col style="width: 23%">
+<col style="width: 20%">
+<col style="width: 35%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: center;">Originator</th>
+<th style="text-align: center;"><span class="math inline">\(\mu_x\)</span></th>
+<th style="text-align: center;"><span class="math inline">\(s(x)\)</span></th>
+<th style="text-align: center;">Restrictions</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">De Moivre<br>(1729)</td>
+<td style="text-align: center;"><span class="math inline">\(\dfrac{1}{\omega-x}\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(1-\dfrac{x}{\omega}\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(0 \leq x &lt; \omega\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">Gompertz<br>(1825)</td>
+<td style="text-align: center;"><span class="math inline">\(Bc^x\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(\exp{\left[ -m(c^x-1) \right]}\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(B&gt;0{,}\; c&gt;1{,}\; x \geq 0\)</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">Makeham<br>(1860)</td>
+<td style="text-align: center;"><span class="math inline">\(A+Bc^x\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(\exp{\left[-Ax -m(c^x-1) \right]}\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(A \geq -B{,}\; c&gt;1{,}\; x \geq 0\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">Weibull<br>(1939)</td>
+<td style="text-align: center;"><span class="math inline">\(k\,x^n\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(\exp{\left[-u\,x^{n+1} \right]}\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(k &gt; 0{,}\; n&gt;0{,}\; x \geq 0\)</span></td>
+</tr>
+</tbody>
+</table>
+<p><span class="math inline">\(\\\)</span></p>
+<p id="ind50">
+In the table above, <span class="math inline">\(m=\dfrac{B}{\log c}\)</span> and <span class="math inline">\(u=\dfrac{k}{n+1}\)</span>.
+</p>
+<p id="ind50">
+</p><p>The function <span class="math inline">\(l_x \mu_x\)</span> is proportional to the probability density function of <span class="math inline">\(X\)</span> and it represents the density of deaths. The graph of <span class="math inline">\(l_x \mu_x\)</span> over its domain is called the <i>curve of deaths</i>.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="chapter_1_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p id="ind50">
+For the above graph, the following parameters were used:
+</p>
+<ul id="ind50">
+<li>
+<span class="math inline">\(l_0=100{,}000\)</span>
+</li><li>
+<span class="math inline">\(\omega = 110\)</span> (De Moivre)
+</li>
+<li>
+<span class="math inline">\(B = 0.00005{,}\;c=10^{0.04}\)</span> (Gompertz)
+</li>
+<li>
+<span class="math inline">\(A=0.0007{,}\;B = 0.00005{,}\;c=10^{0.04}\)</span> (Makeham)
+</li>
+<li>
+<span class="math inline">\(n=80.28{,}\;k=8.30\)</span> (Weibull)
+</li>
+</ul>
+<p id="id">
+It is also worth comparing the graph of <span class="math inline">\(\log q_x\)</span> for the analytical laws of mortality above:
+</p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="chapter_1_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<ol start="15" type="1">
+<li>In contrast to the above graph which is based on parametric functions, the graph below is obtained from actual mortality data, through the approximation <span class="math inline">\(\mu_{x+1/2}=-\log p_x\)</span>.</li>
+</ol>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="chapter_1_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p id="ind50">
+A commonly used graph is to plot the function <span class="math inline">\(\log q_x\)</span>. Given the tables below, the resulting graph is:
+</p><p>
+</p><div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="chapter_1_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<hr id="thick">
+</section>
+<section id="solved-exercises" class="level2" data-number="1.2">
+<h2 data-number="1.2" class="anchored" data-anchor-id="solved-exercises"><span class="header-section-number">1.2</span> Solved Exercises</h2>
+<blockquote class="blockquote">
+Before opening the solutions, take a moment to work through each problem—-your mastery grows most when you engage actively with the mathematics.
+</blockquote>
+<section id="basic-probabilities" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="basic-probabilities">Basic probabilities</h3>
+<p>Let <span class="math inline">\(S(x)\)</span> be defined as follows:</p>
+<p><span class="math display">\[s(x) = \left\{
+  \begin{array}{ll}
+    1-\dfrac{x}{250} &amp;  0 \leq x &lt; 40 \\
+    1-{\left( \dfrac{x}{100} \right)}^2 &amp; 40 \leq x \leq 100 \\
+  \end{array}
+\right.
+\]</span> 1. Calculate the probability that <span class="math inline">\((25)\)</span> dies within the next <span class="math inline">\(30\)</span> years.<br>
+2. Calculate the probability that <span class="math inline">\((25)\)</span> dies in her fortieth year of live.<br>
+3. Calculate the probability that <span class="math inline">\((25)\)</span> does not die between ages <span class="math inline">\(35\)</span> and <span class="math inline">\(45\)</span><br>
+4. Calculate the probability that <span class="math inline">\((25)\)</span> celebrates her eightieth birthday.</p>
+<div class="solution callout callout-style-default callout-note callout-titled" title="Solution">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-1" class="callout-1-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<ol type="1">
+<li>The probability that <span class="math inline">\((25)\)</span> dies within the next <span class="math inline">\(30\)</span> years is given by</li>
+</ol>
+<p id="ind50">
+<span class="math inline">\({_{30}}q_{25}=\dfrac{s(25)-s(55)}{s(25)}=0.225\)</span>
+</p>
+<ol start="2" type="1">
+<li>The probability <span class="math inline">\((25)\)</span> dies in her fortieth year of live is given by</li>
+</ol>
+<p id="ind50">
+<span class="math inline">\({_{14|}}q_{25}={_{14}}p_{25}\;q_{39}=\dfrac{\cancel{s(39)}}{s(25)}\cdot\dfrac{s(39)-s(40)}{\cancel{s(39)}}=0.00\bar{4}\)</span>
+</p>
+<ol start="3" type="1">
+<li>The probability that <span class="math inline">\((25)\)</span> does not die between ages <span class="math inline">\(35\)</span> and <span class="math inline">\(45\)</span> is given by</li>
+</ol>
+<p id="ind50">
+<span class="math inline">\(1-{_{10|10}}q_{25}=1-{_{10}}p_{25}\;{_{10}}q_{35}=1-\dfrac{\cancel{s35}}{s(25)}\cdot\dfrac{s(35)-s(45)}{\cancel{s(35}}=0.930556\)</span>
+</p>
+<ol start="4" type="1">
+<li>The probability that <span class="math inline">\((25)\)</span> celebrates her eightieth birthday is given by</li>
+</ol>
+<p id="ind50">
+<span class="math inline">\(\dfrac{s(80)}{s(25)}=0.4\)</span>
+</p>
+<p><span class="math inline">\(\\\)</span></p>
+</div>
+</div>
+</div>
+</section>
+<section id="variance-of-t" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="variance-of-t">Variance of <span class="math inline">\(T\)</span></h3>
+<p>Let <span class="math inline">\({_t}q_0=\dfrac{t}{110}\)</span> for <span class="math inline">\(0 \leq t  \leq 110\)</span>.</p>
+<p>Calculate <span class="math inline">\(\mathrm{Var}[T(0)]\)</span>.</p>
+<div class="solution callout callout-style-default callout-note callout-titled" title="Solution">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-2" class="callout-2-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>To simplify notation, we set <span class="math inline">\(T=T(0)\)</span>. Next, we calculate <span class="math inline">\(\mathrm{E}[T]\)</span> and <span class="math inline">\(\mathrm{E}[T^2]\)</span> from basic principles. Note that the probability density function of <span class="math inline">\(T\)</span> is given by <span class="math inline">\(f_{T(0)}(t)={_t}p_0\,q_{0+t}\)</span>.</p>
+<p>Thus,</p>
+<p><span class="math display">\[\begin{align}
+  \mathrm{E}[T] &amp;= \int_0^{110-0}t\;{_t}p_0\,q_{0+t}\,dt \\ \\
+  &amp;= \int_0^{110}t\,\left[ \dfrac{\cancel{110-0-t}}{110} \right] \left[ \dfrac{1}{\cancel{110-0-t}} \right] dt \\ \\
+  &amp;= \left. \dfrac{t^2}{2(110)} \right|_0^{110} \\ \\
+  &amp;= 55 \\ \\ \\ \\
+  \mathrm{E}[T^2] &amp;= \int_0^{110-0}t^2\;{_t}p_0\,q_{0+t}\,dt \\ \\
+  &amp;= \left. \dfrac{t^3}{3(110)} \right|_0^{110} \\ \\
+  &amp;= 4033.33 \\
+\end{align}\]</span></p>
+<p>Therefore, <span class="math inline">\(\mathrm{Var}[T]=\mathrm{E}[T^2]-{\left( \mathrm{E}[T] \right)}^2=1088.\overline{33}\)</span></p>
+<p><span class="math inline">\(\\\)</span></p>
+</div>
+</div>
+</div>
+</section>
+<section id="force-of-mortality" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="force-of-mortality">Force of mortality</h3>
+<p>Let <span class="math inline">\(l_x=1000\;\sqrt{100-x}\)</span> for <span class="math inline">\(0 \leq x \leq 100\)</span>.</p>
+<p>Calculate <span class="math inline">\(\mu_{40}\)</span>.</p>
+<div class="solution callout callout-style-default callout-note callout-titled" title="Solution">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-3" class="callout-3-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Recall that <span class="math inline">\(\mu_x=\dfrac{-\frac{d}{dx}l_{x}}{l_x}\)</span>.</p>
+<p>Then:</p>
+<p><span class="math inline">\(\mu_x=\dfrac{-\dfrac{d}{dx}1000{(100-x)}^{0.5}}{1000{(100-x)}^{0.5}}=\dfrac{- \left[ -\dfrac{1000}{2} {(100-x)}^{0.5} \right] }{1000{(100-x)}^{0.5}}=\dfrac{1}{2(100-x)}\)</span></p>
+<p>Thus, <span class="math inline">\(\mu_{40}=\dfrac{1}{120}\)</span></p>
+<p><span class="math inline">\(\\\)</span></p>
+</div>
+</div>
+</div>
+<hr id="thick">
+<!-------------------------------------------------------------->
+</section>
+</section>
+<section id="supplementary-exercises" class="level2" data-number="1.3">
+<h2 data-number="1.3" class="anchored" data-anchor-id="supplementary-exercises"><span class="header-section-number">1.3</span> Supplementary Exercises</h2>
+<p><span id="no">1</span></p>
+<p>Let <span class="math inline">\(s(x)= \dfrac{20,000\,-\,100x\,-\, x^2}{20,000}\)</span>.</p>
+<ol type="a">
+<li><p>verify that <span class="math inline">\(s(x)\)</span> satisfies the conditions of a survival function</p></li>
+<li><p>determine <span class="math inline">\(\omega\)</span></p></li>
+<li><p>calculate the probability that <span class="math inline">\((0)\)</span> survives to age <span class="math inline">\(35\)</span></p></li>
+<li><p>calculate the probability that <span class="math inline">\((15)\)</span> dies before age <span class="math inline">\(42\)</span></p></li>
+<li><p>calculate the probability that <span class="math inline">\((20)\)</span> dies between ages <span class="math inline">\(50\)</span> and <span class="math inline">\(70\)</span></p></li>
+</ol>
+<hr id="thin">
+<!----------------------------------------------------------------------------->
+<p><span id="no">2</span></p>
+<p>Let <span class="math inline">\(s(x)=1-0.01x\)</span>, <span class="math inline">\(0\leq x\leq 100\)</span>.</p>
+<p>Calculate the probability that</p>
+<ol type="a">
+<li><p><span class="math inline">\((0)\)</span> reaches age <span class="math inline">\(25\)</span></p></li>
+<li><p><span class="math inline">\((0)\)</span> dies between ages <span class="math inline">\(15\)</span> and <span class="math inline">\(42\)</span></p></li>
+<li><p><span class="math inline">\((15)\)</span> dies before age <span class="math inline">\(42\)</span></p></li>
+<li><p><span class="math inline">\((36)\)</span> survives to age <span class="math inline">\(64\)</span></p></li>
+</ol>
+<hr id="thin">
+<!----------------------------------------------------------------------------->
+<p><span id="no">3</span></p>
+<p>Let <span class="math inline">\(\varphi(x)= {-\dfrac{d}{dx}}\normalsize s(x)\)</span>.</p>
+<p>Show that</p>
+<ol type="a">
+<li><p><span class="math inline">\(\int_{0}^{\omega}\varphi(x),dx=1\)</span></p></li>
+<li><p><span class="math inline">\(\int_{x}^{x+n}\varphi(y),dy\)</span> is the probability that a newborn dies between ages <span class="math inline">\(x\)</span> and <span class="math inline">\(x+n\)</span></p></li>
+<li><p><span class="math inline">\(s(x)=1-\int_{0}^{x}\varphi (y),dy\)</span></p></li>
+<li><p>If <span class="math inline">\(\varphi(x)=\dfrac {2}{75}x^{-{\frac{1}{3}}}\)</span>, find <span class="math inline">\(s(x)\)</span> and <span class="math inline">\(\omega\)</span></p></li>
+</ol>
+<hr id="thin">
+<!----------------------------------------------------------------------------->
+<p><span id="no">4</span></p>
+<p>Let <span class="math inline">\(s(x)=exp{(\dfrac{-x^3}{12})}\)</span>, <span class="math inline">\(x \geq0\)</span>.</p>
+<p>Verify that <span class="math inline">\(s(x)\)</span> satisfies the conditions of a survival function.</p>
+<hr id="thin">
+<!----------------------------------------------------------------------------->
+<p><span id="no">5</span></p>
+<p>Let <span class="math inline">\(s(x)=e^{-2x}\)</span>, <span class="math inline">\(x \geq0\)</span>.</p>
+<p>Compute</p>
+<ol type="a">
+<li><p>The expected value of <span class="math inline">\(X\)</span></p></li>
+<li><p>The median of <span class="math inline">\(X\)</span></p></li>
+<li><p>The mode of <span class="math inline">\(X\)</span></p></li>
+<li><p>The standard deviation of <span class="math inline">\(X\)</span></p></li>
+</ol>
+<hr id="thin">
+<!----------------------------------------------------------------------------->
+<p><span id="no">6</span></p>
+<p>Let <span class="math inline">\(s(x)=(1+x)^{-4}\)</span>, <span class="math inline">\(x \geq0\)</span>.</p>
+<p>Calculate the expected number of years of future lifetime for a person aged <span class="math inline">\(41\)</span>.</p>
+<hr id="thin">
+<!----------------------------------------------------------------------------->
+<p><span id="no">7</span></p>
+<p>Let <span class="math inline">\(s(x)=1-0.008,x\)</span>, <span class="math inline">\(0\leq x\leq 125\)</span></p>
+<p>Calculate the number of years people aged <span class="math inline">\(70\)</span> are expected to live before reaching <span class="math inline">\(90\)</span>.</p>
+<hr id="thin">
+<!----------------------------------------------------------------------------->
+<p><span id="no">8</span></p>
+<p>Let <span class="math inline">\(f(x)=(20\sqrt {100-x})^{-1})\)</span>, <span class="math inline">\(0\leq x\leq100\)</span>.</p>
+<p>Calculate the probability that a person aged <span class="math inline">\(69.75\)</span> dies within the next decade.</p>
+<hr id="thin">
+<!----------------------------------------------------------------------------->
+<p><span id="no">9</span></p>
+<p>Let <span class="math inline">\(\mu_{x}=(4+x)^{-1}\)</span>, <span class="math inline">\(x \geq0\)</span>.</p>
+<p>Calculate the probability that the age at death of a newborn exceeds five years.</p>
+<hr id="thin">
+<!----------------------------------------------------------------------------->
+<p><span id="no">10</span></p>
+<p>Complete the missing entries in the table below, working rowwise.</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: center;"><span class="math inline">\(s(x)\)</span></th>
+<th style="text-align: center;"><span class="math inline">\(F(x)\)</span></th>
+<th style="text-align: center;"><span class="math inline">\(f(x)\)</span></th>
+<th style="text-align: center;"><span class="math inline">\(\mu_x\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"><span class="math inline">\((100-x)^{-1}{,}\)</span><br><span class="math inline">\(0 \leq x \leq 100\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><span class="math inline">\(e^{-x}{,}\)</span><br><span class="math inline">\(x \geq 0\)</span></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"></td>
+<td style="text-align: center;"><span class="math inline">\(1-(1+x)^{-1}{,}\)</span><br><span class="math inline">\(x \geq 0\)</span></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"><span class="math inline">\(\dfrac{100-x}{5\,000}{,}\)</span><br><span class="math inline">\(0 \leq x \leq 100\)</span></td>
+<td style="text-align: center;"></td>
+</tr>
+</tbody>
+</table>
+<p><span class="math inline">\(\\\)</span></p>
+<hr id="thin">
+<!----------------------------------------------------------------------------->
+<p><span id="no">11</span></p>
+<p>Assuming a constant force of mortality, the future lifetime of a person aged <span class="math inline">\(x\)</span> is two years.</p>
+<p>Calculate the <span class="math inline">\(75^{\text{th}}\)</span> percentile of the distribution of <span class="math inline">\(T\)</span>.</p>
+<hr id="thin">
+<!----------------------------------------------------------------------------->
+<p><span id="no">12</span></p>
+<p>Let <span class="math inline">\(\mu_{x}=3,(110-x)^{-1}+(150-x)^{-1}\)</span>, <span class="math inline">\(0 \leq x\leq 110\)</span>.</p>
+<p>Calculate <span class="math inline">\(_{70}p_{10}\)</span>.</p>
+<hr id="thin">
+<!----------------------------------------------------------------------------->
+<p><span id="no">13</span></p>
+<p>Let <span class="math inline">\(z(w)=\exp(-\int_{x}^{x+n} \mu_{y} dy)\)</span>.</p>
+<p>State in terms of <span class="math inline">\(z(w)\)</span> the probability that <span class="math inline">\((x)\)</span> dies between ages <span class="math inline">\(n\)</span> and <span class="math inline">\(m\)</span>, <span class="math inline">\(x&lt;n&lt;m\)</span>.</p>
+<hr id="thin">
+<!----------------------------------------------------------------------------->
+<p><span id="no">14</span></p>
+<p>Let <span class="math inline">\(s(x)=exp(-ex)\)</span>, <span class="math inline">\(x&gt;0\)</span>.</p>
+<p>Find the average age at death of those currently aged <span class="math inline">\(10e\)</span>.</p>
+<hr id="thin">
+<!----------------------------------------------------------------------------->
+<p><span id="no">15</span></p>
+<p>Assume the following cumulative distribution function for <span class="math inline">\(T(0)\)</span>:</p>
+<p><span class="math display">\[
+F(t)=
+\left\{
+\begin{array}{ll}
+\dfrac{t}{100-x} &amp; 0 \le t &lt; 100-x \\
+0                &amp; \text{otherwise}
+\end{array}
+\right.
+\]</span></p>
+<p>Compute:</p>
+<ol type="a">
+<li><p><span class="math inline">\(\mathrm{E[T]}\)</span></p></li>
+<li><p><span class="math inline">\(\mathrm{Var[T]}\)</span></p></li>
+<li><p><span class="math inline">\(\text{median}[T]\)</span></p></li>
+</ol>
+<hr id="thin">
+<!----------------------------------------------------------------------------->
+<p><span id="no">16</span></p>
+<p>Let <span class="math inline">\(\mu_{x}=1, \forall{x}\)</span>.</p>
+<p>Calculate <span class="math inline">\(E[T-K]\)</span>.</p>
+<hr id="thin">
+<!----------------------------------------------------------------------------->
+<p><span id="no">17</span></p>
+<p>Let <span class="math inline">\(s(x)=1-0.005x-0.0005x^{2}\)</span>, <span class="math inline">\(0 \leq x \leq 100\)</span>.</p>
+<p>Construct the <span class="math inline">\(l_{x}\)</span>, <span class="math inline">\(d_{x}\)</span>, <span class="math inline">\(q_{x}\)</span> and <span class="math inline">\(p_{x}\)</span> columns of the corresponding life table for ages <span class="math inline">\(0, 1, 2\)</span>, assuming a radix of <span class="math inline">\(100,000\)</span>.</p>
+<hr id="thin">
+<!----------------------------------------------------------------------------->
+<p><span id="no">18</span></p>
+<p>From the following values of <span class="math inline">\(q_x\)</span>, construct the <span class="math inline">\(l_x\)</span> and <span class="math inline">\(d_x\)</span> columns, assuming a radix of <span class="math inline">\(1\,000\,000\)</span>.</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: center;"><span class="math inline">\(x\)</span></th>
+<th style="text-align: center;"><span class="math inline">\(q_x\)</span></th>
+<th style="text-align: center;"><span class="math inline">\(l_x\)</span></th>
+<th style="text-align: center;"><span class="math inline">\(d_x\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;"><span class="math inline">\(0\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(0.011\)</span></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><span class="math inline">\(1\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(0.005\)</span></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><span class="math inline">\(2\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(0.003\)</span></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+</tbody>
+</table>
+<p><span class="math inline">\(\\\)</span></p>
+<!----------------------------------------------------------------------------->
+<p><span id="no">19</span></p>
+<p>From the following values of <span class="math inline">\(l_{x}\)</span>,</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: center;"><span class="math inline">\(x\)</span></th>
+<th style="text-align: center;"><span class="math inline">\(l_x\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;"><span class="math inline">\(30\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(94\,401\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><span class="math inline">\(35\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(93\,589\)</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><span class="math inline">\(55\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(82\,463\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><span class="math inline">\(64\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(67\,970\)</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><span class="math inline">\(65\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(65\,834\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><span class="math inline">\(66\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(63\,603\)</span></td>
+</tr>
+</tbody>
+</table>
+<p><span class="math inline">\(\\\)</span></p>
+<p>calculate the probability that <span class="math inline">\((35)\)</span></p>
+<ol type="a">
+<li><p>lives at least <span class="math inline">\(30\)</span> years</p></li>
+<li><p>dies within the next <span class="math inline">\(30\)</span> years</p></li>
+<li><p>dies in the thirtieth year from the current age</p></li>
+<li><p>dies between ages <span class="math inline">\(55\)</span> and <span class="math inline">\(65\)</span></p></li>
+</ol>
+<hr id="thin">
+<!----------------------------------------------------------------------------->
+<p><span id="no">20</span></p>
+<p>Let <span class="math inline">\(l_{x}=100{,}000-1000x\)</span>, <span class="math inline">\(0 \leq x \leq 100\)</span>.</p>
+<p>Calculate the expected number of complete future years of life at age <span class="math inline">\(97\)</span>.</p>
+<hr id="thin">
+<!----------------------------------------------------------------------------->
+<p><span id="no">21</span></p>
+<p>Suppose <span class="math inline">\(\int_{10}^{\infty} {_t}p_{50}\,dt=15\)</span> and <span class="math inline">\(\int_{0}^{\infty} {_t}p_{60}\,dt=20\)</span>.</p>
+<p>Calculate <span class="math inline">\(_{10}p_{50}\)</span>.</p>
+<hr id="thin">
+<!----------------------------------------------------------------------------->
+<p><span id="no">22</span></p>
+<p>Let <span class="math inline">\(s(x)=e^{-0.2x}-e^{-0.4x}\)</span>, <span class="math inline">\(x&gt;5\log 2\)</span>.</p>
+<p>Calculate the mode of the distribution of the number of deaths in a group of people currently aged <span class="math inline">\(x=5\log 2\)</span>.</p>
+<hr id="thin">
+<!----------------------------------------------------------------------------->
+<p><span id="no">23</span></p>
+<p>Let <span class="math inline">\({_t}p_x=1-0.6t+0.12\,t^2-0.008\,t^3\)</span>, <span class="math inline">\(0 \leq x \leq 5\)</span>.</p>
+<p>Calculate <span class="math inline">\(\mu_{x+3}\)</span>.</p>
+<hr id="thin">
+<!----------------------------------------------------------------------------->
+<p><span id="no">24</span></p>
+<p>Let <span class="math inline">\(l_{x}=100{,}000-15{,}000x-6000x^{2}+1000x^{3}\)</span>, <span class="math inline">\(0 \leq x \leq 5\)</span>.</p>
+<p>From a group of <span class="math inline">\(l_0\)</span> newborns, calculate the maximum number of deaths in any one-year interval.</p>
+<hr id="thin">
+<!----------------------------------------------------------------------------->
+<p><span id="no">25</span></p>
+<p>Let <span class="math inline">\(l_{1}=10,000\)</span> and <span class="math inline">\(d_{x}=x(x+1)\)</span>, <span class="math inline">\(x=1, 2, 3, \dots , 30\)</span>.</p>
+<p>Calculate <span class="math inline">\({_{30}}q_1\)</span>.</p>
+<hr id="thin">
+<!----------------------------------------------------------------------------->
+<p><span id="no">26</span></p>
+<p>Let <span class="math inline">\(L{x}=(40-x)^{2}\)</span>, <span class="math inline">\(0 \leq x \leq 40\)</span>.</p>
+<p>Calculate the central death rate at age <span class="math inline">\(35\)</span>.</p>
+<hr id="thin">
+<!----------------------------------------------------------------------------->
+<p><span id="no">27</span></p>
+<p>Let <span class="math inline">\(s(x)=1-\dfrac{x}{110}\)</span>, <span class="math inline">\(0 \leq x &lt; 110\)</span>.</p>
+<p>Calculate</p>
+<ol type="a">
+<li><p>the force of mortality at age <span class="math inline">\(25\)</span></p></li>
+<li><p>the life expectancy at age <span class="math inline">\(25\)</span></p></li>
+</ol>
+<hr id="thin">
+<!----------------------------------------------------------------------------->
+<p><span id="no">28</span></p>
+<p>The mortality pattern of <span class="math inline">\(50{,}000\)</span> newborns is such that <span class="math inline">\(l_{x}\mu_{x}\)</span> is constant, <span class="math inline">\(0 \leq x \leq \omega\)</span>.</p>
+<p>If <span class="math inline">\(\dfrac{d^{6}}{dx^{6}}=\dfrac{45}{8}\)</span> for <span class="math inline">\(x=58\)</span>, calculate the expected number of survivors at age <span class="math inline">\(42\)</span>.</p>
+<hr id="thin">
+<!----------------------------------------------------------------------------->
+<p><span id="no">29</span></p>
+<p>Let <span class="math inline">\(p_{x}=0.944\)</span>, <span class="math inline">\(p_{x+1}=0.938\)</span>, <span class="math inline">\({_{3}}p_{x+1}=0.811\)</span> and <span class="math inline">\(q_{x+3}=0.074\)</span>.</p>
+<p>Calculate the probability that <span class="math inline">\((x)\)</span> dies between ages <span class="math inline">\(x\)</span> and <span class="math inline">\(x+1\)</span>.</p>
+<hr id="thin">
+<!----------------------------------------------------------------------------->
+<p><span id="no">30</span></p>
+<p>Let <span class="math inline">\(s(x)=(1+x)^{-0.8}\)</span>, <span class="math inline">\(x \geq 0\)</span>.</p>
+<p>Calculate the <span class="math inline">\(69\)</span>th percentile of the distribution of the random variable <span class="math inline">\(T\)</span> for future lifetime, at age <span class="math inline">\(37\)</span>.</p>
+<hr id="thick">
+<!------------------------------------------------------------------------------>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./index.html" class="pagination-link" aria-label="Preface">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Preface</span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./chapter_2.html" class="pagination-link" aria-label="Life Insurance Models">
+        <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Life Insurance Models</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

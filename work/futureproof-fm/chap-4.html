@@ -1,0 +1,1241 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.9.38">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>4&nbsp; Bonds – FutureProof FM</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./chap-5.html" rel="next">
+<link href="./chap-3.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-9e3e5b9121e68b3f077afb32f2c64d95.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<link href="site_libs/tabwid-1.1.3/tabwid.css" rel="stylesheet">
+
+<script src="site_libs/tabwid-1.1.3/tabwid.js"></script>
+
+<link rel="icon" type="image/x-icon" href="favincon-32x32.png">    
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="nav-sidebar floating quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./chap-4.html"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Bonds</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">FutureProof FM</a> 
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Preface</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./chap-1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Time-Value of Money</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./chap-2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Annuities</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./chap-3.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Loans</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./chap-4.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Bonds</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./chap-5.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Asset-Liability Management</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./answers.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Answers to Supplementary Exercises</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./app_1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Basic mathematics refresher</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./app_2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">The Newton-Raphson Algorithm</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./biblio.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Bibliography</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./notation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Glossary of notation</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./copyright.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Copyright notice</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./about.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">About the author</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./support.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Support the Project</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./report.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Report Content Errors</span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#supplementary-concepts" id="toc-supplementary-concepts" class="nav-link active" data-scroll-target="#supplementary-concepts"><span class="header-section-number">4.1</span> Supplementary Concepts</a></li>
+  <li><a href="#solved-exercises" id="toc-solved-exercises" class="nav-link" data-scroll-target="#solved-exercises"><span class="header-section-number">4.2</span> Solved Exercises</a>
+  <ul>
+  <li><a href="#bond-schedules" id="toc-bond-schedules" class="nav-link" data-scroll-target="#bond-schedules">Bond schedules</a></li>
+  </ul></li>
+  <li><a href="#supplementary-exercises" id="toc-supplementary-exercises" class="nav-link" data-scroll-target="#supplementary-exercises"><span class="header-section-number">4.3</span> Supplementary Exercises</a></li>
+  <li><a href="#code-snippets" id="toc-code-snippets" class="nav-link" data-scroll-target="#code-snippets"><span class="header-section-number">4.4</span> Code snippets</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content column-body" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Bonds</span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta column-body">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<!----------------------------------------------------------------------------------->
+<!----------------------------------------------------------------------------------->
+<section id="supplementary-concepts" class="level2" data-number="4.1">
+<h2 data-number="4.1" class="anchored" data-anchor-id="supplementary-concepts"><span class="header-section-number">4.1</span> Supplementary Concepts</h2>
+<table>
+<caption>
+<b>Notation</b>
+</caption>
+<tbody><tr>
+<td style="text-align:left;">
+<span class="math inline">\(P\)</span>
+</td>
+<td style="text-align:left;">
+Price (i.e., present value of cash flows)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<span class="math inline">\(F\)</span>
+</td>
+<td style="text-align:left;">
+Face amount or par value
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<span class="math inline">\(C\)</span>
+</td>
+<td style="text-align:left;">
+Redemption amount
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<span class="math inline">\(r\)</span>
+</td>
+<td style="text-align:left;">
+coupon rate
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<span class="math inline">\(Fr\)</span>
+</td>
+<td style="text-align:left;">
+Coupon amount
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<span class="math inline">\(g=\cfrac{Fr}{C}\)</span>
+</td>
+<td style="text-align:left;">
+Adjusted coupon rate
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<span class="math inline">\(i\)</span>
+</td>
+<td style="text-align:left;">
+Yield rate (or internal rate of return)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<span class="math inline">\(n\)</span>
+</td>
+<td style="text-align:left;">
+Number of coupon payment periods
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<span class="math inline">\(P-C\)</span>
+</td>
+<td style="text-align:left;">
+Premium (if <span class="math inline">\(P&gt;C \Leftrightarrow i&lt;g)\)</span>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<span class="math inline">\(C-P\)</span>
+</td>
+<td style="text-align:left;">
+Discount (if <span class="math inline">\(C&gt;P \Leftrightarrow i&gt;g)\)</span>
+</td>
+</tr>
+</tbody></table>
+<ol type="1">
+<li><p>Bonds are loans that investors make to corporations or governments, where the borrower (issuer) promises to repay the principal (face value) of the loan at a specified future date (maturity) and also pay periodic interest payments (coupons) to the bondholder. Bonds are a fixed-income investment, meaning they offer a predictable stream of income through interest payments.</p></li>
+<li><p>The following notation will be used in this unit:</p></li>
+<li><p>The main pricing formulas are: <span class="math display">\[
+\boxed{
+  \begin{array}{rl}
+\\
+\quad P &amp;= Fr\,a_{\enclose{actuarial}{n}}+Cv^n   &amp; \text{(basic} \,\, \text{formula)} \quad\\
+\\
+\quad P &amp;= C+(Fr-Ci)\,a_{\enclose{actuarial}{n}} &amp; \text{(premium-discount formula)} \quad \\
+\\
+  \end{array}
+}
+\]</span></p></li>
+<li><p>Callable bonds are bonds in which the borrower has an option to redeem prior to its maturity date. If <span class="math inline">\(C_t=C\)</span> , <span class="math inline">\(\forall t\)</span>, then the following rules apply:</p></li>
+</ol>
+<ul>
+<li id="ind50">
+If <span class="math inline">\(i&lt;g\)</span> (i.e., the bond sells at a premium), assume that the redemption date will be the earliest possible date
+</li>
+<li id="ind50">
+If <span class="math inline">\(i&gt;g\)</span> (i.e., the bond sells at a discount), assume that the redemption date will be the latest possible date
+</li>
+</ul>
+<ol start="5" type="1">
+<li><p>Preferred stock is a fixed-income security without a redemption date. In this case, <span class="math inline">\(P=\cfrac{Fr}{i}\)</span>.</p></li>
+<li><p>Common stock is a variable-income security. In theory, its price should represent the present value of future dividends. If <span class="math inline">\(D\)</span> is a dividend that is projected to change geometrically with common ratio <span class="math inline">\(1+k\)</span>, then <span class="math inline">\(P=\cfrac{D}{i-k}\)</span></p></li>
+</ol>
+<hr id="thick&quot;">
+<!----------------------------------------------------------------------------->
+</section>
+<section id="solved-exercises" class="level2" data-number="4.2">
+<h2 data-number="4.2" class="anchored" data-anchor-id="solved-exercises"><span class="header-section-number">4.2</span> Solved Exercises</h2>
+<blockquote class="blockquote">
+Before opening the solutions, take a moment to work through each problem—-your mastery grows most when you engage actively with the mathematics.
+</blockquote>
+<section id="bond-schedules" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="bond-schedules">Bond schedules</h3>
+<p>A <span class="math inline">\(10{,000}\)</span> par value ten-year bond with a coupon rate of <span class="math inline">\(10\%\)</span> payable semiannually and redeemable at par is bought to yield <span class="math inline">\(12\%\)</span> convertible semiannually.</p>
+<p>Find</p>
+<ol type="1">
+<li>the price of the bond</li>
+<li>the accumulation of discount in the fifth coupon date</li>
+<li>the total accumulation of discount</li>
+<li>the accumulation of discount in the first five years</li>
+<li>the total interest paid</li>
+<li>the interest paid in years <span class="math inline">\(6-10\)</span></li>
+</ol>
+<div class="solution callout callout-style-default callout-note callout-titled" title="Solution">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-1" class="callout-1-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<ol type="1">
+<li>Since the coupons are paid semiannualy, we will work in semesters. Let <span class="math inline">\(P\)</span> be the price of the bond. Then</li>
+</ol>
+<p><span class="math display">\[
+\begin{aligned}
+P &amp; =C+(Fr-Ci)\, a_{\enclose{actuarial}{20}}\\
+  &amp;= 1{,}000 + \left[ 10{,}000(0.05) - 10{,}000(0.06)\right]\, a_{\enclose{actuarial}{20}}\\
+  &amp;= 8{,}853.01
+\end{aligned}
+\]</span></p>
+<ol start="2" type="1">
+<li>The accumulation of discount in the <span class="math inline">\(k^{th}\)</span> coupon date is given by <span class="math inline">\(-(B_{k-1}-B_k)\)</span>. Thus,</li>
+</ol>
+<p><span class="math display">\[
+\begin{aligned}
+-B_4+B_5 &amp; = -\left[ C+(Fr-Ci)\, a_{\enclose{actuarial}{16}} \right] + \left[ C+(Fr-Ci)\, a_{\enclose{actuarial}{15}} \right] \\
+         &amp;= (Fr-Ci)\, (a_{\enclose{actuarial}{15}} - a_{\enclose{actuarial}{16}}) \\
+         &amp;= (Fr-Ci)\, \cfrac{v^{16} - v^{15}}{i} \\
+         &amp;= [10{,}000(0.05)-10{,}000(0.06)]\, \cfrac{v^{16} - v^{15}}{i} \\
+         &amp;= 589.35
+\end{aligned}
+\]</span></p>
+<ol start="3" type="1">
+<li><p>Total accumulation of discount is given by <span class="math inline">\(C-P=10{,}000-8{,}853.01=1{,}146.99\)</span>.</p></li>
+<li><p>The accumulation of discount in the first five years is given by <span class="math inline">\(-(B_0-B_{10})\)</span>. But <span class="math inline">\(B_0=P=8{,}853.01\)</span>. Thus,</p></li>
+</ol>
+<p><span class="math display">\[
+\begin{aligned}
+B_{10} - 8{,}853.01 &amp;= C + (Fr-Ci)\, a_{\enclose{actuarial}{10}} - 8{,}853.01 \\
+                    &amp;= 10{,}000 + [10{,}000(0.05)-10{,}000(0.06)]\, a_{\enclose{actuarial}{10}} - 8{,}853.01 \\
+                    &amp;= 410.98
+\end{aligned}
+\]</span></p>
+<ol start="5" type="1">
+<li>Total interest paid is given by <span class="math inline">\(\sum \text{coupons} + \text{total acc of discount}\)</span>. Thus,</li>
+</ol>
+<p><span class="math display">\[
+\begin{aligned}
+20(10{,}000)(0.05) + 1{,}146.99 = 11{,}146.99
+\end{aligned}
+\]</span></p>
+<ol start="6" type="1">
+<li>Interest paid in years <span class="math inline">\(6-10\)</span> is given by <span class="math inline">\(\sum_{i=11}^{20} \text{coupons} + \sum_{i=11}^{20}\text{acc of discount}\,_i\)</span>. Thus,</li>
+</ol>
+<p><span class="math display">\[
+\begin{aligned}
+10(10{,}000)(0.05) + \sum_{i=11}^{20}\text{acc of discount}\,_i &amp;= 5{,}000 + [-B_{10}+B_{20}] \\
+                                                                &amp;= 5{,}000 -B_{10}+10,000 \\
+                                                                &amp;= 15{,}000 - [C + (Fr-Ci)\, a_{\enclose{actuarial}{10}}] \\
+                                                                &amp;= 5{,}736.01
+\end{aligned}
+\]</span></p>
+<p><span class="math inline">\(\\\)</span></p>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="supplementary-exercises" class="level2" data-number="4.3">
+<h2 data-number="4.3" class="anchored" data-anchor-id="supplementary-exercises"><span class="header-section-number">4.3</span> Supplementary Exercises</h2>
+<p><span id="no">1</span></p>
+<p>Find the price of a <span class="math inline">\(1\,000\)</span> par value <span class="math inline">\(10\)</span>-year bond with coupons at <span class="math inline">\(8\%\)</span> convertible semiannually, which will be redeemed at <span class="math inline">\(1\,050\)</span>.</p>
+<p>The bond is bought to yield <span class="math inline">\(10\%\)</span> convertible semiannually.</p>
+<hr id="thin">
+<!----------------------------------------------------------------------------->
+<p><span id="no">2</span></p>
+<p>A <span class="math inline">\(1\,000\)</span> par value one-year <span class="math inline">\(10\%\)</span> bond with semiannual coupons is bought to yield <span class="math inline">\(i^{(2)}=6\%\)</span>.</p>
+<p>Calculate the book value at the end of the first six months, immediately after the coupon has been paid.</p>
+<hr id="thin">
+<!----------------------------------------------------------------------------->
+<p><span id="no">3</span></p>
+<p>Find the price of a <span class="math inline">\(10\)</span>-year <span class="math inline">\(1\,000\)</span> bond bearing a <span class="math inline">\(10\%\)</span> coupon rate payable semiannually and redeemable at <span class="math inline">\(1\,050\)</span> is bought to yield <span class="math inline">\(8\%\)</span> convertible semiannually.</p>
+<hr id="thin">
+<!----------------------------------------------------------------------------->
+<p><span id="no">4</span></p>
+<p><span class="math inline">\(A\)</span> is a bond with a price of <span class="math inline">\(1\,136.778\)</span> and coupon rate of <span class="math inline">\(5\%\)</span> payable semiannually.</p>
+<p><span class="math inline">\(B\)</span> is a bond with a coupon rate of <span class="math inline">\(2.5\%\)</span> payable semiannually.</p>
+<p>Both bonds have par value of <span class="math inline">\(1\,000\)</span>, are redeemable at par, have the same period, and are bought to yield <span class="math inline">\(4\%\)</span> convertible semiannually.</p>
+<p>Find the ratio of <span class="math inline">\(A\)</span> to <span class="math inline">\(B\)</span>.</p>
+<hr id="thin">
+<!----------------------------------------------------------------------------->
+<p><span id="no">5</span></p>
+<p>A <span class="math inline">\(1\,000\)</span> par value <span class="math inline">\(12\)</span>-year bond with <span class="math inline">\(10\%\)</span> semiannual coupons is selling for <span class="math inline">\(1\,100\)</span>.</p>
+<p>Find the yield rate convertible semiannually.</p>
+<hr id="thin">
+<!----------------------------------------------------------------------------->
+<p><span id="no">6</span></p>
+<p>A <span class="math inline">\(1\,000\)</span> bond with a coupon rate of <span class="math inline">\(9\%\)</span> payable semiannually is redeemable after an unspecified number of years at <span class="math inline">\(1\,125\)</span>.</p>
+<p>The bond is bought to yield <span class="math inline">\(10\%\)</span> convertible semiannually.</p>
+<p>If the present value of the redemption amount is <span class="math inline">\(224.86\)</span>, find the purchase price.</p>
+<hr id="thin">
+<!----------------------------------------------------------------------------->
+<p><span id="no">7</span></p>
+<p>A <span class="math inline">\(1\,000\)</span> par value <span class="math inline">\(𝑛\)</span>-year bond maturing at par with <span class="math inline">\(100\)</span> annual coupons is purchased for <span class="math inline">\(1\,110\)</span>.</p>
+<p>If <span class="math inline">\(Cv^{n}=450\)</span>, find <span class="math inline">\(\frac{Fr}{i}\)</span>.</p>
+<hr id="thin">
+<!----------------------------------------------------------------------------->
+<p><span id="no">8</span></p>
+<p>A <span class="math inline">\(1\,000\)</span> par value <span class="math inline">\(n\)</span>-year bond maturing at par has a coupon rate of <span class="math inline">\(12\%\)</span> convertible semiannually.</p>
+<p>It is bought at a price to yield <span class="math inline">\(10\%\)</span> convertible semiannually.</p>
+<p>If the term of the bond is doubled, the price will increase by <span class="math inline">\(50\)</span>.</p>
+<p>Find the price of the <span class="math inline">\(n\)</span>-year bond.</p>
+<hr id="thin">
+<!----------------------------------------------------------------------------->
+<p><span id="no">9</span></p>
+<p>A company issues an inflation-adjusted bond with par value of <span class="math inline">\(1\,000\)</span> and annual coupons at the end of each year for <span class="math inline">\(20\)</span> years.</p>
+<p>The initial coupon rate is <span class="math inline">\(5\%\)</span> and each coupon will be <span class="math inline">\(10\%\)</span> greater than the preceding one.</p>
+<p>The bond is redeemed for <span class="math inline">\(1\,800\)</span> at the end of <span class="math inline">\(20\)</span> years.</p>
+<p>Find the price that produces a yield rate of <span class="math inline">\(8\%\)</span> effective.</p>
+<hr id="thin">
+<!----------------------------------------------------------------------------->
+<p><span id="no">10</span></p>
+<p>A bond with annual coupons in the amount of <span class="math inline">\(160\)</span> is purchased at a discount to yield <span class="math inline">\(15\%\)</span>.</p>
+<p>The write-up for the first year is <span class="math inline">\(44\)</span>.</p>
+<p>What was the purchase price?</p>
+<hr id="thin">
+<!----------------------------------------------------------------------------->
+<p><span id="no">11</span></p>
+<p>Consider a <span class="math inline">\(1\,000\)</span> par value two-year <span class="math inline">\(8\%\)</span> bond with semiannual coupons bought to yield <span class="math inline">\(6\%\)</span> convertible semiannually.</p>
+<p>Calculate the interest earned at the time the third coupon is paid.</p>
+<hr id="thin">
+<!----------------------------------------------------------------------------->
+<p><span id="no">12</span></p>
+<p>Consider a <span class="math inline">\(1\,000\)</span> par value two-year <span class="math inline">\(8\%\)</span> bond with semiannual coupons bought to yield <span class="math inline">\(10\%\)</span> convertible semiannually.</p>
+<p>Calculate the amount of accumulation of discount at the time the third coupon is paid.</p>
+<hr id="thin">
+<!----------------------------------------------------------------------------->
+<p><span id="no">13</span></p>
+<p>A <span class="math inline">\(1\,000\)</span> par value <span class="math inline">\(6\%\)</span> bond with semiannual coupons is callable at par five years after issue.</p>
+<p>It is sold to yield <span class="math inline">\(7\%\)</span> under the assumption that the bond will be called.</p>
+<p>The bond is not called and it matures at the end of <span class="math inline">\(10\)</span> years.</p>
+<p>The bond issuer redeems the bond at <span class="math inline">\(1\,000 + X\)</span> without altering the investor’s yield rate of <span class="math inline">\(7\%\)</span> convertible semiannually.</p>
+<p>Find <span class="math inline">\(X\)</span></p>
+<hr id="thin">
+<!----------------------------------------------------------------------------->
+<p><span id="no">14</span></p>
+<p>Consider a <span class="math inline">\(1\,000\)</span> par value bond with a coupon rate of <span class="math inline">\(4\%\)</span> per annum paid semiannually.</p>
+<p>The spot rates of interest in the market are given by</p>
+<p><span class="math inline">\(\\\)</span></p>
+<div class="cell">
+<div class="cell-output-display">
+<div class="tabwid"><style>.cl-946d5fd6{}.cl-945ec30e{font-family:'Arial';font-size:10pt;font-weight:bold;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-945ec322{font-family:'Arial';font-size:10pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-94641160{margin:0;text-align:right;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-94647ccc{width:1.574in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-94647ce0{width:0.933in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-94647cea{width:1.574in;background-color:transparent;vertical-align: middle;border-bottom: 0.75pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-94647ceb{width:0.933in;background-color:transparent;vertical-align: middle;border-bottom: 0.75pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-94647cf4{width:1.574in;background-color:transparent;vertical-align: middle;border-bottom: 0.75pt solid rgba(102, 102, 102, 1.00);border-top: 0.75pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-94647cf5{width:0.933in;background-color:transparent;vertical-align: middle;border-bottom: 0.75pt solid rgba(102, 102, 102, 1.00);border-top: 0.75pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-94647cf6{width:1.574in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0.75pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-94647cf7{width:0.933in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0.75pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}</style><table data-quarto-disable-processing="true" class="cl-946d5fd6"><thead><tr style="overflow-wrap:break-word;"><th class="cl-94647ccc"><p class="cl-94641160"><span class="cl-945ec30e">Investment Horizon</span></p></th><th class="cl-94647ce0"><p class="cl-94641160"><span class="cl-945ec30e">Spot Rate</span></p></th></tr></thead><tbody><tr style="overflow-wrap:break-word;"><td class="cl-94647cea"><p class="cl-94641160"><span class="cl-945ec322">0.5</span></p></td><td class="cl-94647ceb"><p class="cl-94641160"><span class="cl-945ec322">3.00%</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-94647cf4"><p class="cl-94641160"><span class="cl-945ec322">1.0</span></p></td><td class="cl-94647cf5"><p class="cl-94641160"><span class="cl-945ec322">3.00%</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-94647cf4"><p class="cl-94641160"><span class="cl-945ec322">1.5</span></p></td><td class="cl-94647cf5"><p class="cl-94641160"><span class="cl-945ec322">3.50%</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-94647cf4"><p class="cl-94641160"><span class="cl-945ec322">2.0</span></p></td><td class="cl-94647cf5"><p class="cl-94641160"><span class="cl-945ec322">3.50%</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-94647cf4"><p class="cl-94641160"><span class="cl-945ec322">2.5</span></p></td><td class="cl-94647cf5"><p class="cl-94641160"><span class="cl-945ec322">4.02%</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-94647cf6"><p class="cl-94641160"><span class="cl-945ec322">3.0</span></p></td><td class="cl-94647cf7"><p class="cl-94641160"><span class="cl-945ec322">4.02%</span></p></td></tr></tbody></table></div>
+</div>
+</div>
+<p><br></p>
+<p>Find the price of the bond if it matures in <span class="math inline">\(3\)</span> years.</p>
+<hr id="thin">
+<!----------------------------------------------------------------------------->
+<p><span id="no">15</span></p>
+<p>A <span class="math inline">\(1\,000\)</span> par value <span class="math inline">\(16\)</span>-year bond with <span class="math inline">\(m\)</span> coupons per annum has a price of <span class="math inline">\(910.63\)</span>.</p>
+<p>If the total write-up value in the book value of the bond in the first eight years is <span class="math inline">\(54\)</span>, and the yield rate of the bond is <span class="math inline">\(5.0945\%\)</span> effective per annum, find the redemption value of the bond.</p>
+<hr id="thin">
+<!----------------------------------------------------------------------------->
+<p><span id="no">16</span></p>
+<p>Two <span class="math inline">\(1\,000\)</span> bonds redeemable on the same date at par to yield <span class="math inline">\(4.5\%\)</span> have annual coupon rates of <span class="math inline">\(r\)</span> and <span class="math inline">\(2r\)</span>, respectively.</p>
+<p>If the total purchase price of the two bonds is <span class="math inline">\(2\,153.52\)</span>, and the difference of the bond prices is <span class="math inline">\(307.04\)</span>, find <span class="math inline">\(r\)</span>.</p>
+<hr id="thin">
+<!----------------------------------------------------------------------------->
+<p><span id="no">17</span></p>
+<p>A <span class="math inline">\(1\,000\)</span> par value <span class="math inline">\(10\)</span>-year bond with annual coupons is redeemable at <span class="math inline">\(1\,055\)</span>, and has a purchase price of <span class="math inline">\(986\)</span> at a yield rate of <span class="math inline">\(4\%\)</span> per annum.</p>
+<p>The coupons increase at a rate of <span class="math inline">\(3\%\)</span> per year.</p>
+<p>Find the amount amortized or discounted for the fifth coupon.</p>
+<hr id="thin">
+<!----------------------------------------------------------------------------->
+<p><span id="no">18</span></p>
+<p>An investor purchases a <span class="math inline">\(10\)</span>-year <span class="math inline">\(1\,000\)</span> par value bond bearing a <span class="math inline">\(10\%\)</span> coupon rate payable semiannually and redeemable at <span class="math inline">\(1\,050\)</span>, yielding <span class="math inline">\(8\%\)</span> convertible semiannually.</p>
+<p>The investor reinvests the coupons in a fund earning <span class="math inline">\(9\%\)</span> convertible semiannually.</p>
+<p>Find the overall yield convertible semiannually to the investor.</p>
+<hr id="thin">
+<!----------------------------------------------------------------------------->
+<p><span id="no">19</span></p>
+<p>A preferred stock (i.e., a bond without a redemption date) pays a <span class="math inline">\(100\)</span> dividend (i.e., coupon) at the end of the first year, with each successive annual dividend being <span class="math inline">\(5\%\)</span> greater than the preceding one.</p>
+<p>What level annual dividend would be equivalent if <span class="math inline">\(i=12\%\)</span>?</p>
+<hr id="thin">
+<!----------------------------------------------------------------------------->
+<p><span id="no">20</span></p>
+<p>A <span class="math inline">\(1\,000\)</span> par value <span class="math inline">\(12\)</span>-year bond has coupons at the annual rate of <span class="math inline">\(9\%\)</span> payable continuously.</p>
+<p>If the bond is bought to yield rate <span class="math inline">\(i\)</span> which is equivalent to <span class="math inline">\(\delta=3\%\)</span>, find the price of the bond.</p>
+<hr id="thin">
+<!----------------------------------------------------------------------------->
+<p><span id="no">21</span></p>
+<p>The interest paid during the <span class="math inline">\(20^{th}\)</span> year on a <span class="math inline">\(20\)</span>-year <span class="math inline">\(1\,000\)</span> bond with annual coupons to be redeemed at par is equal to <span class="math inline">\(70\%\)</span> of the principal adjustment during the same year.</p>
+<p>If <span class="math inline">\(r=i+0.03\)</span>, where <span class="math inline">\(r\)</span> is the coupon rate and <span class="math inline">\(i\)</span> is the yield rate, find the original price of the bond.</p>
+<hr id="thin">
+<!----------------------------------------------------------------------------->
+<p><span id="no">22</span></p>
+<p>A common stock is currently earning <span class="math inline">\(4\)</span> per share and will pay <span class="math inline">\(2\)</span> per share in dividends at the end of the current year.</p>
+<p>Assuming that earnings increase <span class="math inline">\(5\%\)</span> per year and that <span class="math inline">\(50\%\)</span> of the earnings will be paid as dividends, find the theoretical price to earn an investor an annual effective yield rate of <span class="math inline">\(10\%\)</span>.</p>
+<hr id="thin">
+<!----------------------------------------------------------------------------->
+<p><span id="no">23</span></p>
+<p>A common stock is purchased at a price equal to <span class="math inline">\(10\)</span> times current earnings.</p>
+<p>During the next six years, the stock pays no dividends, but earnings increase <span class="math inline">\(60\%\)</span>.</p>
+<p>At the end of six years, the stock is sold at a price equal to <span class="math inline">\(15\)</span> times earnings.</p>
+<p>Find the effective annual yield rate earned on this investment.</p>
+<hr id="thin">
+<!----------------------------------------------------------------------------->
+<p><span id="no">24</span></p>
+<p>A twelve-year bond with semiannual level coupons is bought at a premium to yield <span class="math inline">\(7.5\%\)</span> convertible semiannually.</p>
+<p>If the amount for amortization of premium in the fourth to the last payment is <span class="math inline">\(8.02\)</span>, find the total amount for amortization of premium in the first three years.</p>
+<hr id="thin">
+<!----------------------------------------------------------------------------->
+<p><span id="no">25</span></p>
+<p>A <span class="math inline">\(100\,000\)</span> par-value twenty-year <span class="math inline">\(14%\)</span> bond with annual coupons is bought for <span class="math inline">\(95\,626.25\)</span>.</p>
+<ol type="a">
+<li><p>Find the amount for accumulation of discount in the third coupon.</p></li>
+<li><p>Find the amount of interest for the third year.</p></li>
+</ol>
+<hr id="thin">
+<!----------------------------------------------------------------------------->
+<p><span id="no">26</span></p>
+<p>A student bought a newly-issued <span class="math inline">\(2,000\)</span> <span class="math inline">\(20\%\)</span> ten-year bond, redeemable at <span class="math inline">\(2,100\)</span> and having yearly coupons.</p>
+<p>It was bought at a premium at a price of <span class="math inline">\(2,800.03\)</span>.</p>
+<p>The student immediately took a constant amount <span class="math inline">\(k\)</span> from each coupon and deposited it in a savings account earning <span class="math inline">\(6%\)</span> effective annual interest, so as to accumulate the full amount of the premium a moment after the final deposit.</p>
+<p>At the end of the ten years, the student closed out her savings account.</p>
+<p>Find the yearly effective yield rate earned by the student for her combined ten-year investment.</p>
+<hr id="thin">
+<!----------------------------------------------------------------------------->
+<p><span id="no">27</span></p>
+<p>A <span class="math inline">\(1\,000\)</span> par value <span class="math inline">\(4\%\)</span> bond with seminannual coupons is callable at <span class="math inline">\(1\,090\)</span> on any coupon date starting five years after issue for the next five years, at <span class="math inline">\(1,045\)</span> starting <span class="math inline">\(10\)</span> years after issue for the next five years, and maturing at <span class="math inline">\(1\,000\)</span> at the end of <span class="math inline">\(15\)</span> years.</p>
+<p>What is the highest price which an investor can pay and still be certain of a yield of <span class="math inline">\(5\%\)</span> convertible semiannually?</p>
+<hr id="thin">
+<!----------------------------------------------------------------------------->
+<p><span id="no">28</span></p>
+<p>Consider a <span class="math inline">\(1\,000\)</span> face value <span class="math inline">\(15\)</span>-year bond with coupon rate of <span class="math inline">\(4\%\)</span> convertible semiannually.</p>
+<p>The bond is callable and the first call date is the date immediately after the <span class="math inline">\(15^{th}\)</span> coupon payment.</p>
+<p>Assume that the issuer will only call the bond at a date immediately after the <span class="math inline">\(n^{th}\)</span> coupon and the redemption value is</p>
+<p><span class="math display">\[
+C = \left\{
+    \begin{array}{ll}
+        1\,000, &amp; 15 \leq n \leq 20 \\
+        1\,000 + 10(n-20), &amp; 20 \leq n \leq 30 \\
+    \end{array}
+\right.
+\]</span> Find the price of the bond if the investor wants to achieve a yield of at least <span class="math inline">\(5\%\)</span> compounded semiannually.</p>
+<hr id="thin">
+<!----------------------------------------------------------------------------->
+<p><span id="no">29</span></p>
+<p>A <span class="math inline">\(1\,000\)</span> par value <span class="math inline">\(4\%\)</span> bond with seminannual coupons is callable at <span class="math inline">\(1\,090\)</span> on any coupon date starting five years after issue for the next five years, at <span class="math inline">\(1\,045\)</span> starting 10 years after issue for the next five years, and maturing at <span class="math inline">\(1\,000\)</span> at the end of <span class="math inline">\(15\)</span> years.</p>
+<p>What is the highest price which an investor can pay and still be certain of a yield of <span class="math inline">\(3\%\)</span> convertible semiannually?</p>
+<hr id="thin">
+<!----------------------------------------------------------------------------->
+<p><span id="no">30</span></p>
+<p>A <span class="math inline">\(1\,000\)</span> par value bond has <span class="math inline">\(8\%\)</span> seminannual coupons and is callable at the end of the <span class="math inline">\(10^{th}\)</span> to <span class="math inline">\(15^{th}\)</span> years at par.</p>
+<p>Find the price that yields <span class="math inline">\(6\%\)</span> convertible semiannually.</p>
+<hr id="thin">
+<!----------------------------------------------------------------------------->
+<p><span id="no">31</span></p>
+<p>A <span class="math inline">\(1\,000\)</span> par value <span class="math inline">\(6\%\)</span> bond with semiannual coupons is callable at par five years after issue.</p>
+<p>It is sold to yield <span class="math inline">\(7\%\)</span> convertible seminannually under the assumption that it will not be called.</p>
+<p>The bond is not called and it matures at the end of <span class="math inline">\(10\)</span> years.</p>
+<p>The bond issuer redeems the bond at <span class="math inline">\(1000 + X\)</span> without altering the investor’s yield rate of <span class="math inline">\(7\%\)</span> convertible semiannually.</p>
+<p>Find <span class="math inline">\(X\)</span></p>
+<hr id="thin">
+<!----------------------------------------------------------------------------->
+<p><span id="no">32</span></p>
+<p>A <span class="math inline">\(1\,000\)</span> par value <span class="math inline">\(8\%\)</span> bond with semiannual coupons is callable at par five years after issue.</p>
+<p>The bond matures at <span class="math inline">\(1\,000\)</span> at the end of ten years and is sold to yield a nominal rate of <span class="math inline">\(6\%\)</span> convertible quarterly under the assumption that the bond will not be called.</p>
+<p>Find the redemption value at the end of five years that will provide the purchaser the same yield rate.</p>
+<hr id="thin">
+<!----------------------------------------------------------------------------->
+<p><span id="no">33</span></p>
+<p>A <span class="math inline">\(1\,000\)</span> par value bond has <span class="math inline">\(8\%\)</span> semiannual coupons and is callable at the end of the <span class="math inline">\(10^{th}\)</span> to <span class="math inline">\(15^{th}\)</span> years at par.</p>
+<p>Find the price to yield <span class="math inline">\(6\%\)</span> convertible semiannually.</p>
+<hr id="thin">
+<!----------------------------------------------------------------------------->
+<p><span id="no">34</span></p>
+<p>An insurance company issues bonds of <span class="math inline">\(10\,000\)</span> par value with annual <span class="math inline">\(10\%\)</span> coupons maturing at par in five years, and yielding <span class="math inline">\(12\%\)</span> annual effective.</p>
+<p>The company’s CFO wants to replace these bonds with bonds that have annual <span class="math inline">\(11\%\)</span> coupons.</p>
+<p>How long must the time to maturity be if the yield rate is still<span class="math inline">\(12\%\)</span> annual effective?</p>
+<p>[Round answer to nearest year]</p>
+<hr id="thin">
+<!----------------------------------------------------------------------------->
+<p><span id="no">35</span></p>
+<p>A <span class="math inline">\(10-\)</span>year <span class="math inline">\(1\,000\)</span> par value bond bearing a <span class="math inline">\(10\%\)</span> coupon rate payable semiannually and redeemable at <span class="math inline">\(1\,050\)</span> is bought to yield <span class="math inline">\(8\%\)</span> convertible semiannually.</p>
+<p>Find the value of <span class="math inline">\(\frac{dP}{dg}\)</span>.</p>
+<hr id="thin">
+<!----------------------------------------------------------------------------->
+<p><span id="no">36</span></p>
+<p>Two <span class="math inline">\(1\,000\)</span> par value bonds both with <span class="math inline">\(8\%\)</span> coupon rate payable semiannually are currently selling at par.</p>
+<p>Bond <span class="math inline">\(A\)</span> matures in five years at par, while Bond <span class="math inline">\(B\)</span> matures in <span class="math inline">\(10\)</span> years at par.</p>
+<p>If prevailing market rates of interest suddenly go to <span class="math inline">\(6\%\)</span> convertible semiannually, find the basis point difference between the percentage change in the price of <span class="math inline">\(A\)</span> and the percentage change in the price of <span class="math inline">\(B\)</span>.</p>
+<hr id="thin">
+<!----------------------------------------------------------------------------->
+<p><span id="no">37</span></p>
+<p>A <span class="math inline">\(10\)</span>-year bond has annual coupons which vary <span class="math inline">\(10\)</span>, <span class="math inline">\(9\)</span>, <span class="math inline">\(8\)</span>, <span class="math inline">\(\cdots\)</span>, <span class="math inline">\(1\)</span>, and matures for <span class="math inline">\(95\)</span>.</p>
+<p>If the bond is bought to yield <span class="math inline">\(1\%\)</span> effective, find the amount of the fifth coupon used to amortize the book value.</p>
+<hr id="thin">
+<!----------------------------------------------------------------------------->
+<p><span id="no">38</span></p>
+<p>A <span class="math inline">\(1\,000\)</span> par value <span class="math inline">\(3\%\)</span> bond with semiannual coupons on which <span class="math inline">\(500\)</span> matures in nine years at <span class="math inline">\(510\)</span> and the other <span class="math inline">\(500\)</span> matures in <span class="math inline">\(10\)</span> years at <span class="math inline">\(500\)</span>.</p>
+<p>Calculate the price of the bond if the yield rate is <span class="math inline">\(4\%\)</span> convertible semiannually.</p>
+<hr id="thin">
+<!----------------------------------------------------------------------------->
+<p><span id="no">39</span></p>
+<p>A <span class="math inline">\(1\,000\)</span> bond providing annual coupons at <span class="math inline">\(9\%\)</span> is redeemable at par on 1 November, 2030.</p>
+<p>The write-down in the first year was <span class="math inline">\(5.63\)</span>, while the write-down in the eleventh year was <span class="math inline">\(19.08\)</span>.</p>
+<p>Determine the book value of the bond on 1 November, 2026.</p>
+<hr id="thin">
+<!----------------------------------------------------------------------------->
+<p><span id="no">40</span></p>
+<p>A <span class="math inline">\(1\,000\)</span> bond with semiannual coupons at <span class="math inline">\(10\%\)</span> convertible semiannually is redeemable for <span class="math inline">\(1\,100\)</span>.</p>
+<p>If the amount for the <span class="math inline">\(16^{th}\)</span> write-up is <span class="math inline">\(5\)</span>, calculate the purchase price to yield <span class="math inline">\(12\%\)</span> convertible semiannually.</p>
+<hr id="thin">
+<!----------------------------------------------------------------------------->
+<p><span id="no">41</span></p>
+<p>A <span class="math inline">\(10\,000\)</span> <span class="math inline">\(15-\)</span>year bond is priced to yield <span class="math inline">\(i^{(4)}=12\%\)</span>.</p>
+<p>It has quarterly coupons of <span class="math inline">\(200\)</span> each the first year, <span class="math inline">\(215\)</span> each the second year, <span class="math inline">\(230\)</span> each the third year, <span class="math inline">\(\cdots\)</span>, <span class="math inline">\(410\)</span> each the fifteenth year.</p>
+<p>Find the book value after <span class="math inline">\(14\)</span> years.</p>
+<hr id="thick">
+<!----------------------------------------------------------------------------->
+</section>
+<section id="code-snippets" class="level2" data-number="4.4">
+<h2 data-number="4.4" class="anchored" data-anchor-id="code-snippets"><span class="header-section-number">4.4</span> Code snippets</h2>
+<p><b>Newton-Raphson example to calculate the interest rate of a bond:</b></p>
+<p>Let <span class="math inline">\(f(j)\)</span> represent the price of a bond with <span class="math inline">\(F=1\,000\)</span>, <span class="math inline">\(C=1\,100\)</span>, <span class="math inline">\(n=24\)</span>, and <span class="math inline">\(r=0.05\)</span>.</p>
+<p>The following algorithm finds the root of <span class="math inline">\(f(j)\)</span> with <span class="math inline">\(│f(x)│ \le 10^{-8}\)</span></p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>x0      <span class="ot">&lt;-</span> <span class="fl">0.06</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>epsilon <span class="ot">&lt;-</span> <span class="fl">10e-08</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>nr <span class="ot">&lt;-</span> <span class="cf">function</span>(ini, eps){</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>  f   <span class="ot">&lt;-</span> <span class="cf">function</span>(j) <span class="dv">1100</span> <span class="sc">-</span> <span class="dv">50</span> <span class="sc">*</span> ((<span class="dv">1</span> <span class="sc">-</span> (<span class="dv">1</span> <span class="sc">+</span> j)<span class="sc">^-</span><span class="dv">24</span>) <span class="sc">/</span> j) <span class="sc">-</span> <span class="dv">1000</span> <span class="sc">*</span> (<span class="dv">1</span> <span class="sc">+</span> j)<span class="sc">^-</span><span class="dv">24</span>  <span class="co"># original function</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>  fpr <span class="ot">&lt;-</span> <span class="cf">function</span>(j) <span class="sc">-</span><span class="dv">50</span> <span class="sc">*</span> ((j <span class="sc">*</span> (<span class="dv">24</span> <span class="sc">*</span> (<span class="dv">1</span> <span class="sc">+</span> j)<span class="sc">^-</span><span class="dv">25</span>) <span class="sc">-</span> (<span class="dv">1</span> <span class="sc">+</span> (<span class="dv">1</span> <span class="sc">+</span> j)<span class="sc">^-</span><span class="dv">24</span>)) <span class="sc">/</span> j<span class="sc">^</span><span class="dv">2</span>) <span class="sc">+</span> <span class="dv">20000</span> <span class="sc">*</span> (<span class="dv">1</span> <span class="sc">+</span> j)<span class="sc">^-</span><span class="dv">25</span>   <span class="co"># first derivative</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>  xn1 <span class="ot">&lt;-</span> ini <span class="sc">-</span> (<span class="fu">f</span>(ini) <span class="sc">/</span> <span class="fu">fpr</span>(ini))</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(xn1)</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span>(<span class="fu">abs</span>(xn1 <span class="sc">-</span> ini) <span class="sc">&gt;</span> eps) <span class="fu">nr</span>(xn1, eps)</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="fu">nr</span>(x0, epsilon)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.04697952
+[1] 0.04497165
+[1] 0.04410052
+[1] 0.04367711
+[1] 0.04346146
+[1] 0.04334916
+[1] 0.04329002
+[1] 0.0432587
+[1] 0.04324206
+[1] 0.0432332
+[1] 0.04322849
+[1] 0.04322597
+[1] 0.04322463
+[1] 0.04322392
+[1] 0.04322354
+[1] 0.04322334
+[1] 0.04322323
+[1] 0.04322317</code></pre>
+</div>
+</div>
+<!--end of code --------------------------------------------------------------->
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+<nav class="page-navigation column-body">
+  <div class="nav-page nav-page-previous">
+      <a href="./chap-3.html" class="pagination-link" aria-label="Loans">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Loans</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./chap-5.html" class="pagination-link" aria-label="Asset-Liability Management">
+        <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Asset-Liability Management</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

@@ -1,0 +1,1093 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.9.38">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>2&nbsp; Annuities – FutureProof FM</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./chap-3.html" rel="next">
+<link href="./chap-1.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-9e3e5b9121e68b3f077afb32f2c64d95.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<link rel="icon" type="image/x-icon" href="favincon-32x32.png">    
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="nav-sidebar floating quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./chap-2.html"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Annuities</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">FutureProof FM</a> 
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Preface</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./chap-1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Time-Value of Money</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./chap-2.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Annuities</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./chap-3.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Loans</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./chap-4.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Bonds</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./chap-5.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Asset-Liability Management</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./answers.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Answers to Supplementary Exercises</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./app_1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Basic mathematics refresher</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./app_2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">The Newton-Raphson Algorithm</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./biblio.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Bibliography</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./notation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Glossary of notation</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./copyright.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Copyright notice</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./about.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">About the author</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./support.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Support the Project</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./report.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Report Content Errors</span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#supplementary-concepts" id="toc-supplementary-concepts" class="nav-link active" data-scroll-target="#supplementary-concepts"><span class="header-section-number">2.1</span> Supplementary Concepts</a></li>
+  <li><a href="#solved-exercises" id="toc-solved-exercises" class="nav-link" data-scroll-target="#solved-exercises"><span class="header-section-number">2.2</span> Solved Exercises</a>
+  <ul>
+  <li><a href="#special-annuities" id="toc-special-annuities" class="nav-link" data-scroll-target="#special-annuities">Special annuities</a></li>
+  <li><a href="#perpetuity" id="toc-perpetuity" class="nav-link" data-scroll-target="#perpetuity">Perpetuity</a></li>
+  <li><a href="#increasingdecreasing-annuity" id="toc-increasingdecreasing-annuity" class="nav-link" data-scroll-target="#increasingdecreasing-annuity">Increasing/decreasing annuity</a></li>
+  </ul></li>
+  <li><a href="#supplementary-exercises" id="toc-supplementary-exercises" class="nav-link" data-scroll-target="#supplementary-exercises"><span class="header-section-number">2.3</span> Supplementary Exercises</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content column-body" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Annuities</span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta column-body">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="supplementary-concepts" class="level2" data-number="2.1">
+<h2 data-number="2.1" class="anchored" data-anchor-id="supplementary-concepts"><span class="header-section-number">2.1</span> Supplementary Concepts</h2>
+<p><br></p>
+<ol type="1">
+<li><p>An annuity is a financial product or arrangement designed to pay out a series of fixed or variable cash flows over a specified period. In this course, we will consider only fixed annuities, also known as annuities-certain.</p></li>
+<li><p>If cash flows are constant throughout a specified period, geometric series can be applied in the calculation of present and future values.</p></li>
+<li><p>The following formulae refer the present value of cash flows at year-end (annuity-immediate) and cash flows at the beginning of the year (annuity-due), respectively: <span class="math display">\[
+\boxed{
+  \begin{array}{rl}
+\\
+\quad a_{\enclose{actuarial}{n}} &amp;= v+v^2+\cdots +v^n &amp;= \cfrac{1-v^n}{1-v} &amp; = \cfrac{1-v^n}{i} \quad \\
+\quad \ddot{a}_{\enclose{actuarial}{n}} &amp;= 1+v^2+\cdots +v^{n-1} &amp;= \cfrac{1-v^n}{1-v}(1+i) &amp; = \cfrac{1-v^n}{d} \quad \\
+\\
+  \end{array}
+}
+\]</span> <span class="math inline">\(\\\)</span></p></li>
+<li><p>The following formulae refer the future value of cash flows at year-end (annuity-immediate) and cash flows at the beginning of the year (annuity-due), respectively: <span class="math display">\[
+\boxed{
+  \begin{array}{rl}
+\\
+\quad s_{\enclose{actuarial}{n}} &amp;= (1+i)^{n-1} + (1+i)^{n-2} + \cdots + 1 &amp;= \cfrac{(1+i)^n - 1}{i} \quad \\
+\quad \ddot{s}_{\enclose{actuarial}{n}} &amp;= (1+i)^n + (1+i)^{n-1} + \cdots + (1+i) &amp;= \cfrac{(1+i)^n - 1}{d} \quad \\
+\\
+  \end{array}
+}
+\]</span></p></li>
+<li><p>Other useful formulae applicable when dealing with nominal rates of interest are: <span class="math display">\[
+\boxed{
+  \begin{array}{rl}
+\\
+\quad a_{\enclose{actuarial}{n}}^{(m)} &amp;= \cfrac{1-v^n}{i^{(m)}} \quad \\
+\quad \ddot{a}_{\enclose{actuarial}{n}}^{(m)} &amp;= \cfrac{1-v^n}{d^{(m)}} \quad \\
+\\
+\quad s_{\enclose{actuarial}{n}}^{(m)} &amp;= \cfrac{(1+i)^n-1}{i^{(m)}} \quad \\
+\quad \ddot{s}_{\enclose{actuarial}{n}}^{(m)} &amp;= \cfrac{(1+i)^n-1}{d^{(m)}} \quad \\
+\\
+  \end{array}
+}
+\]</span></p></li>
+<li><p>The present or future value of sequences of cash flows that follow an arithmetic series result in a combination of a geometric and arithmetic series, because the <span class="math inline">\(k^{th}\)</span> cash flow will be multiplied by either <span class="math inline">\(v^k\)</span> or <span class="math inline">\((1+i)^k\)</span>. Below, some well-known formulae for the present and future values of increasing annuities. <span class="math display">\[
+\boxed{
+  \begin{array}{rl}
+\\
+\quad (Ia)_{\enclose{actuarial}{n}} &amp;= \cfrac{\ddot{a}_{\enclose{actuarial}{n}}-nv^n}{i} \quad \\
+\\
+\quad (Is)_{\enclose{actuarial}{n}} &amp;= \cfrac{s_{\enclose{actuarial}{n}}-(n+1)}{i} \quad \\
+\\
+  \end{array}
+}
+\]</span></p></li>
+<li><p>A general formula for the present value of varying annuities is the following, where <span class="math inline">\(P\)</span> represents the initial cash flow, and <span class="math inline">\(Q\)</span> the constant adjustment to that cash flow. For the future value <span class="math inline">\(n\)</span> years hence, simply multiply <span class="math inline">\(A\)</span> by <span class="math inline">\((1+i)^n\)</span>. <span class="math display">\[
+\boxed{
+  \\
+  \begin{array}{rl}
+  \\
+\quad A &amp;= P \, a_{\enclose{actuarial}{n}} + Q \cfrac{a_{\enclose{actuarial}{n}}-nv^n}{i} \quad \\
+  \\  
+  \end{array}
+  \\
+}
+\]</span></p></li>
+</ol>
+<hr id="thick">
+<!-------------------------------------------------------------->
+</section>
+<section id="solved-exercises" class="level2" data-number="2.2">
+<h2 data-number="2.2" class="anchored" data-anchor-id="solved-exercises"><span class="header-section-number">2.2</span> Solved Exercises</h2>
+<blockquote class="blockquote">
+Before opening the solutions, take a moment to work through each problem—-your mastery grows most when you engage actively with the mathematics.
+</blockquote>
+<section id="special-annuities" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="special-annuities">Special annuities</h3>
+<p>An annuity pays <span class="math inline">\(500\)</span> at the end of each month for the first <span class="math inline">\(10\)</span> years, <span class="math inline">\(750\)</span> at the end of each month for the next five years, and <span class="math inline">\(1{,}000\)</span> at the end of the next five years.</p>
+<p>If the nominal rate of interest convertible monthly is <span class="math inline">\(9\%\)</span>, compute the annuity’s value at time <span class="math inline">\(t=10\)</span>.</p>
+<div class="solution callout callout-style-default callout-note callout-titled" title="Solution">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-1" class="callout-1-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Since the cash flows are monthly, let’s use the effective monthly rate, <span class="math inline">\(j\)</span>, and set “months” as the unit of time.</p>
+<p>Then <span class="math inline">\(j=\cfrac{i{(12)}}{12}-1 = \cfrac{0.09}{4}-1=0.0075\)</span>.</p>
+<p>Let <span class="math inline">\(B_{10}\)</span> be the book value at <span class="math inline">\(t=10\)</span>.</p>
+<p>Then:</p>
+<p><span class="math inline">\(B_{10}=500 \, s_{\enclose{actuarial}{120}} + 750 \, a_{\enclose{actuarial}{60}} + 1000 \, (1.0075)^{-60} \, a_{\enclose{actuarial}{60}} \approx 163{,}655\)</span></p>
+</div>
+</div>
+</div>
+</section>
+<section id="perpetuity" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="perpetuity">Perpetuity</h3>
+<p>A perpetuity pays <span class="math inline">\(300\)</span> at the end of each quarter for the first <span class="math inline">\(10\)</span> years.</p>
+<p>Thereafter, quarterly payments increase by <span class="math inline">\(1.5\%\)</span> each.</p>
+<p>If the nominal rate of interest convertible quarterly is <span class="math inline">\(8\%\)</span>, compute the perpetuity’s present value at time <span class="math inline">\(t=0\)</span>.</p>
+<div class="solution callout callout-style-default callout-note callout-titled" title="Solution">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-2" class="callout-2-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Since the cash flows are quarterly, let’s use the effective quarterly rate, <span class="math inline">\(j\)</span>, and set “quarters” as the unit of time.</p>
+<p>Then <span class="math inline">\(j=\cfrac{i{(4)}}{4}-1 = \cfrac{0.08}{4}-1=0.02\)</span>.</p>
+<p>Let <span class="math inline">\(PV\)</span> be the present value of the perpetuity at <span class="math inline">\(t=0\)</span>.</p>
+<p>Recall that <span class="math inline">\(a_{\enclose{actuarial}{\infty}}=\cfrac{1}{i}\)</span>.</p>
+<p>Therefore,</p>
+<p><span class="math display">\[\begin{align}
+  PV &amp;= \cfrac{300}{0.02} + 300 \times [ v^{41} \times 1.015 + v^{42} \times 1.015^2 + \cdots \,] \\ \\
+     &amp;= \cfrac{300}{0.02} + 300 \times v^{41} \times 1.015 \times [1 + v \times 1.015 + \cdots \,] \\ \\
+     &amp;= 300 \times \left[\cfrac{1}{j} + v^{41} \times 1.015 \times \left( \cfrac{1}{1 - v \times 1.015} \right) \right] \\ \\
+     &amp;  \approx 42{,}581
+  
+\end{align}\]</span></p>
+<p><span class="math inline">\(\\\)</span></p>
+</div>
+</div>
+</div>
+</section>
+<section id="increasingdecreasing-annuity" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="increasingdecreasing-annuity">Increasing/decreasing annuity</h3>
+<p>An annuity-immediate pays at the end of each year for <span class="math inline">\(20\)</span> years.</p>
+<p>The payment in year <span class="math inline">\(k\)</span> is <span class="math inline">\(100k\)</span>, <span class="math inline">\(k=1, 2, ..., 15\)</span>.</p>
+<p>Thereafter, payments decrease by <span class="math inline">\(200\)</span> each.</p>
+<p>The effective annual interest rate is <span class="math inline">\(7\%\)</span>.</p>
+<p>Compute the accumulated value at time <span class="math inline">\(t=20\)</span>.</p>
+<div class="solution callout callout-style-default callout-note callout-titled" title="Solution">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-3" class="callout-3-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Recall the general formula for the present value of arithmetic increasing or decreasing annuities.</p>
+<p><span class="math inline">\(PV=P a_{\enclose{actuarial}{n}}+Q \cfrac{a_{\enclose{actuarial}{n}}-nv^n}{i}\)</span>, where <span class="math inline">\(P\)</span> is the initial cash flow, and <span class="math inline">\(Q\)</span> is the periodic change.</p>
+<p>Let’s break this annuity into two annuities:</p>
+<p>Let <span class="math inline">\(PV_1\)</span> be the present value of the first annuity (i.e., years <span class="math inline">\(1-15\)</span>). In this case, <span class="math inline">\(P=100\)</span> and <span class="math inline">\(Q=100\)</span>.</p>
+<p>Then,</p>
+<p><span class="math inline">\(PV_1 = 100 a_{\enclose{actuarial}{15}}+100 \cfrac{a_{\enclose{actuarial}{15}}-15v^{15}}{0.07} \approx 6{,}155.40\)</span></p>
+<p>Let <span class="math inline">\(PV_2\)</span> be the present value of the second annuity (i.e., years <span class="math inline">\(16-20\)</span>). In this case, <span class="math inline">\(P=1500\)</span> and <span class="math inline">\(Q=-200\)</span>.</p>
+<p>Then,</p>
+<p><span class="math inline">\(PV_2 = (1.07)^-{15} \times \left[ 1500 \, a_{\enclose{actuarial}{5}}-200 \cfrac{a_{\enclose{actuarial}{5}}-5v^{5}}{0.07} \right] \approx 1{,}921.30\)</span></p>
+<p>However, we are asked to supply the future value, <span class="math inline">\(FV\)</span>, at <span class="math inline">\(t=20\)</span>.</p>
+<p>Then</p>
+<p><span class="math inline">\(FV = (PV_1 + PV_2) \times 1.07^{20} \approx 29{,}150.44\)</span></p>
+<p><span class="math inline">\(\\\)</span></p>
+</div>
+</div>
+</div>
+<!-------------------------------------------------------------->
+<hr id="thick">
+</section>
+</section>
+<section id="supplementary-exercises" class="level2" data-number="2.3">
+<h2 data-number="2.3" class="anchored" data-anchor-id="supplementary-exercises"><span class="header-section-number">2.3</span> Supplementary Exercises</h2>
+<p><span id="no">1</span></p>
+<p>An individual wishes to accumulate <span class="math inline">\(50\,000\)</span> in a retirement fund at the end of <span class="math inline">\(20\)</span> years.</p>
+<p>If the individual deposits <span class="math inline">\(1\,000\)</span> in the fund at the end of each of the first <span class="math inline">\(10\)</span> years and <span class="math inline">\(1\,000 + X\)</span> at the end of each of the second <span class="math inline">\(10\)</span> years, find <span class="math inline">\(X\)</span> if the fund earns <span class="math inline">\(7\%\)</span> effective.</p>
+<hr id="thin">
+<!----------------------------------------------------------------------------->
+<p><span id="no">2</span></p>
+<p>The present value of a seven-year immediate annuity of <span class="math inline">\(1\)</span> is <span class="math inline">\(5.153\)</span>. If the term were <span class="math inline">\(11\)</span>, the present value would change to <span class="math inline">\(7.036\)</span>. If the term were <span class="math inline">\(18\)</span>, the present value would change to <span class="math inline">\(9.180\)</span>.</p>
+<p>Find <span class="math inline">\(i\)</span>.</p>
+<hr id="thin">
+<!----------------------------------------------------------------------------->
+<p><span id="no">3</span></p>
+<p>Find the present value of payments of <span class="math inline">\(200\)</span> every six months starting immediately and continuing through four years from the present, and <span class="math inline">\(100\)</span> every six months thereafter through ten years from the present, if <span class="math inline">\(i^{(2)}=0.06\)</span>.</p>
+<hr id="thin">
+<!----------------------------------------------------------------------------->
+<p><span id="no">4</span></p>
+<p>A worker aged <span class="math inline">\(40\)</span> wishes to accumulate a retirement fund by depositing <span class="math inline">\(1\,000\)</span> at the beginning of each year for <span class="math inline">\(25\)</span> years. Starting at age <span class="math inline">\(65\)</span> the worker plans to make <span class="math inline">\(15\)</span> annual withdrawals at the beginning of each year.</p>
+<p>Find the amount of each withdrawal starting at age <span class="math inline">\(65\)</span>, if the effective rate of interest is <span class="math inline">\(8\%\)</span> during the first <span class="math inline">\(25\)</span> years but only <span class="math inline">\(7\%\)</span> thereafter.</p>
+<hr id="thin">
+<!----------------------------------------------------------------------------->
+<p><span id="no">5</span></p>
+<p>Find the present value of payments of <span class="math inline">\(1\,000\)</span> at the beginning of each of <span class="math inline">\(8\)</span> years, if the effective rate of discount is <span class="math inline">\(10\%\)</span>.</p>
+<hr id="thin">
+<!----------------------------------------------------------------------------->
+<p><span id="no">6</span></p>
+<p>Deposits of <span class="math inline">\(1\,000\)</span> are placed into a fund at the beginning of each year for the next <span class="math inline">\(20\)</span> years. After <span class="math inline">\(30\)</span> years annual payments commence and continue forever, with the first payment at the end of the thirtieth year.</p>
+<p>Find the amount of each payment if <span class="math inline">\(i=0.055\)</span>.</p>
+<hr id="thin">
+<!----------------------------------------------------------------------------->
+<p><span id="no">7</span></p>
+<p>A loan of <span class="math inline">\(1\,000\)</span> is to be repaid by annual amounts of <span class="math inline">\(100\)</span> to commence at the end of the <span class="math inline">\(5^{th}\)</span> year and to continue thereafter for as long as necessary.</p>
+<p>Find the time and amount of the final payment, if the final payment is to be larger than the regular payments.</p>
+<p>Assume <span class="math inline">\(i=0.045\)</span>.</p>
+<hr id="thin">
+<!----------------------------------------------------------------------------->
+<p><span id="no">8</span></p>
+<p>A fund of <span class="math inline">\(2\,000\)</span> is to be accumulated by nine annual payments of <span class="math inline">\(50\)</span> made at the end of each the year, followed by nine annual payments of <span class="math inline">\(100\)</span> made at the end of each year, plus a smaller final payment made one year after the last regular payment.</p>
+<p>If the effective rate of interest is <span class="math inline">\(4.5\%\)</span>, find the amount of the final irregular payment.</p>
+<hr id="thin">
+<!----------------------------------------------------------------------------->
+<p><span id="no">9</span></p>
+<p>Annuity <span class="math inline">\(M\)</span> pays <span class="math inline">\(4\)</span> at the end of each year for <span class="math inline">\(36\)</span> years. Annuity <span class="math inline">\(N\)</span> pays <span class="math inline">\(5\)</span> at the end of each year for <span class="math inline">\(18\)</span> years. The present value of <span class="math inline">\(M\)</span> and <span class="math inline">\(N\)</span> are equal at an effective rate of interest <span class="math inline">\(i\)</span>.</p>
+<p>An amount invested at the same rate <span class="math inline">\(i\)</span> will double in <span class="math inline">\(n\)</span> years.</p>
+<p>Find <span class="math inline">\(n\)</span>.</p>
+<hr id="thin">
+<!----------------------------------------------------------------------------->
+<p><span id="no">10</span></p>
+<p>A borrower has the following two options for repaying a loan:</p>
+<ul>
+<li>Sixty monthly payments of <span class="math inline">\(100\)</span> at the end of each month</li>
+<li>A single payment of <span class="math inline">\(6000\)</span> at the end of <span class="math inline">\(K\)</span> months</li>
+</ul>
+<p>Interest is at the nominal annual rate of <span class="math inline">\(12\%\)</span> convertible monthly.</p>
+<p>The two options have the same present value.</p>
+<p>Find <span class="math inline">\(K\)</span>.</p>
+<hr id="thin">
+<!----------------------------------------------------------------------------->
+<p><span id="no">11</span></p>
+<p>A loan of <span class="math inline">\(1\,000\)</span> is to be repaid with annual payments at the end of each year for the next <span class="math inline">\(20\)</span> years. For the first <span class="math inline">\(5\)</span> years the payments are <span class="math inline">\(k\)</span> per year; the second <span class="math inline">\(5\)</span> years, <span class="math inline">\(2k\)</span> per year; the third <span class="math inline">\(5\)</span> years, <span class="math inline">\(3k\)</span> per year; and the fourth <span class="math inline">\(5\)</span> years, <span class="math inline">\(4k\)</span> per year.</p>
+<p>Find <span class="math inline">\(k\)</span>, if <span class="math inline">\(i=0.08\)</span>.</p>
+<hr id="thin">
+<!----------------------------------------------------------------------------->
+<p><span id="no">12</span></p>
+<p>Find the accumulated value of a <span class="math inline">\(10\)</span>-year annuity-immediate of <span class="math inline">\(100\)</span> per year if the effective rate of interest is <span class="math inline">\(5\%\)</span> for the first six years and <span class="math inline">\(4\%\)</span> for the last four years.</p>
+<hr id="thin">
+<!----------------------------------------------------------------------------->
+<p><span id="no">13</span></p>
+<p>Find the accumulated value <span class="math inline">\(18\)</span> years after the first payment is made of an annuity on which there are eight payments of <span class="math inline">\(2\,000\)</span> each made at two-year intervals.</p>
+<p>The nominal rate of interest convertible semiannually is <span class="math inline">\(7\%\)</span>.</p>
+<hr id="thin">
+<!----------------------------------------------------------------------------->
+<p><span id="no">14</span></p>
+<p>A sum of <span class="math inline">\(100\)</span> is placed into a fund at the beginning of every other year for eight years.</p>
+<p>If the fund balance a the end of eight years is <span class="math inline">\(520\)</span>, find the rate of simple interest earned by the fund.</p>
+<hr id="thin">
+<!----------------------------------------------------------------------------->
+<p><span id="no">15</span></p>
+<p>Find the present value of an annuity-due of <span class="math inline">\(600\)</span> per annum payable semiannually for <span class="math inline">\(10\)</span> years if <span class="math inline">\(d^{(12)}=0.09\)</span>.</p>
+<hr id="thin">
+<!----------------------------------------------------------------------------->
+<p><span id="no">16</span></p>
+<p>The present value of a perpetuity paying <span class="math inline">\(1\,000\)</span> at the end of every three years is <span class="math inline">\(1\,373.63\)</span>. Find <span class="math inline">\(i\)</span>.</p>
+<hr id="thin">
+<!----------------------------------------------------------------------------->
+<p><span id="no">17</span></p>
+<p>There is <span class="math inline">\(40\,000\)</span> in a fund which is accumulating at <span class="math inline">\(4\%\)</span> per annum convertible continuously.</p>
+<p>If money is withdrawn continuously at the rate of <span class="math inline">\(2\,400\)</span> per annum, how long will the fund last?</p>
+<hr id="thin">
+<!----------------------------------------------------------------------------->
+<p><span id="no">18</span></p>
+<p>If <span class="math inline">\(X\)</span> is the present value of a perpetuity of <span class="math inline">\(1\)</span> per year with the first payment at the end of the second year, and <span class="math inline">\(20X\)</span> is the present value of a series of annual payments <span class="math inline">\(1, 2, 3, ...\)</span> with the first payment at the end of the third year, find <span class="math inline">\(d\)</span>.</p>
+<hr id="thin">
+<!--Kelly 4.37----------------------------------------------------------------->
+<p><span id="no">19</span></p>
+<p>Annual deposits are made into a fund at the beginning of each year for <span class="math inline">\(10\)</span> years.</p>
+<p>The first five deposits are <span class="math inline">\(1000\)</span> each, and deposits increase by <span class="math inline">\(5\%\)</span> per year thereafter.</p>
+<p>If the fund earns <span class="math inline">\(8\%\)</span> effective, find the accumulated value at the end of <span class="math inline">\(10\)</span> years.</p>
+<hr id="thin">
+<!--Kelly 4.38----------------------------------------------------------------->
+<p><span id="no">20</span></p>
+<p>Find the present value of a <span class="math inline">\(20\)</span>-year annuity with annual payments which pays <span class="math inline">\(600\)</span> immediately, and each subsequent payment is <span class="math inline">\(5\%\)</span> greater than the preceding payment.</p>
+<p>The annual effective rate of interest is <span class="math inline">\(10.25\%\)</span>.</p>
+<hr id="thin">
+<!--Kelly 4.43----------------------------------------------------------------->
+<p><span id="no">21</span></p>
+<p>A perpetuity has payments at the end of each four-year period. The first payment at the end of four years is <span class="math inline">\(1\,000\)</span></p>
+<p>Each subsequent payment is <span class="math inline">\(5\,000\)</span> more than the previous payment. It is known that <span class="math inline">\(v^{4}=0.75\)</span>.</p>
+<p>Calculate the present value of this perpetuity.</p>
+<hr id="thin">
+<!--Kelly 4.56----------------------------------------------------------------->
+<p><span id="no">22</span></p>
+<p>A family wishes to provide an annuity of <span class="math inline">\(100\)</span> at the end of each month to their daughter now entering college.</p>
+<p>The annuity will be paid for only nine months each year for four years.</p>
+<p>Find the present value one month before the first payment, if <span class="math inline">\(i=0.04\)</span>.</p>
+<hr id="thin">
+<!----------------------------------------------------------------------------->
+<p><span id="no">23</span></p>
+<p>Charlie deposits <span class="math inline">\(1\,000\)</span> into an account at the beginning of each four-year period for <span class="math inline">\(40\)</span> years.</p>
+<p>The account credits interest at an annual effective interest rate <span class="math inline">\(i\)</span>.</p>
+<p>The accumulated amount in the account at the end of <span class="math inline">\(40\)</span> years is <span class="math inline">\(X\)</span>, which is five times the accumulated value in the account at the end of <span class="math inline">\(20\)</span> years.</p>
+<p>Calculate <span class="math inline">\(X\)</span>.</p>
+<hr id="thin">
+<!----------------------------------------------------------------------------->
+<p><span id="no">24</span></p>
+<p>A factory buys a robot for <span class="math inline">\(30\,000\)</span> by paying <span class="math inline">\(5\,000\)</span> down and <span class="math inline">\(5\,000\)</span> at the end of each year.</p>
+<p>If the annual effective rate of interest is <span class="math inline">\(10\%\)</span>, what final payment, one year after the last full payment, will be necessary?</p>
+<hr id="thin">
+<!----------------------------------------------------------------------------->
+<p><span id="no">25</span></p>
+<p>One thousand are deposited into Fund <span class="math inline">\(A\)</span>, which earns an annual effective rate of <span class="math inline">\(6\%\)</span>. At the end of each year, the interest earned plus an additional <span class="math inline">\(100\)</span> is withdrawn from the fund. At the end of the tenth year, the fund is depleted.</p>
+<p>The annual withdrawals of interest and principal are deposited into Fund <span class="math inline">\(B\)</span>, which earns an annual effective rate of <span class="math inline">\(9\%\)</span>.</p>
+<p>Determine the accumulated value of Fund <span class="math inline">\(B\)</span> at the end of year <span class="math inline">\(10\)</span>.</p>
+<hr id="thin">
+<!----------------------------------------------------------------------------->
+<p><span id="no">26</span></p>
+<p>A certain stock is expected to pay a dividend of <span class="math inline">\(4\)</span> at the end of each quarter for an indefinite period.</p>
+<p>If an investor wishes to realize an annual effective yield of <span class="math inline">\(12\%\)</span>, how much should she pay for the stock?</p>
+<hr id="thin">
+<!----------------------------------------------------------------------------->
+<p><span id="no">27</span></p>
+<p>To accumulate <span class="math inline">\(8\,000\)</span> at the end of <span class="math inline">\(3n\)</span> years, deposits of <span class="math inline">\(98\)</span> are made at the end of each of the first <span class="math inline">\(n\)</span> years, and <span class="math inline">\(196\)</span> at the end of each of the next <span class="math inline">\(2n\)</span> years.</p>
+<p>The annual effective rate of interest is <span class="math inline">\(i\)</span>.</p>
+<p>You are given that <span class="math inline">\((1+i)^{n}=2\)</span>.</p>
+<p>Determine <span class="math inline">\(i\)</span>.</p>
+<hr id="thin">
+<!----------------------------------------------------------------------------->
+<p><span id="no">28</span></p>
+<p>An actuarial student is presented with two offers:</p>
+<ul>
+<li>Buy a car for <span class="math inline">\(9\,800\)</span> and after three years trade it in for <span class="math inline">\(2\,000\)</span></li>
+<li>Rent a car for <span class="math inline">\(250\)</span> a month payable at the end of each month for three years.</li>
+</ul>
+<p>If all additional expenses are identical for both alternatives, and the effective annual interest rate is <span class="math inline">\(8\%\)</span>, how much will the student save by renting the car?</p>
+<hr id="thin">
+<!----------------------------------------------------------------------------->
+<p><span id="no">29</span></p>
+<p>An insurance company has an obligation to pay medical costs for a claimant.</p>
+<p>Average annual claims costs today are <span class="math inline">\(5\,000\)</span>, and medical inflation is expected to be <span class="math inline">\(7\%\)</span> per year.</p>
+<p>The claimant is expected to live an additional <span class="math inline">\(20\)</span> years.</p>
+<p>Claim payments are made at yearly intervals, with the first claim payment to be made one year from today.</p>
+<p>Find the present value of the obligation if the annual interest rate is <span class="math inline">\(5\%\)</span>.</p>
+<hr id="thin">
+<!----------------------------------------------------------------------------->
+<p><span id="no">30</span>.</p>
+<p>A couple pays <span class="math inline">\(3\,000\)</span> at the end of each month on their home mortgage.</p>
+<p>Find the equivalent semiannual payments at <span class="math inline">\(10\%\)</span> per annum compounded semiannually.</p>
+<hr id="thin">
+<!----------------------------------------------------------------------------->
+<p><span id="no">31</span>.</p>
+<p>Find the discounted vaue of <span class="math inline">\(11\)</span> payments made at the end of each year at an effective annual rate <span class="math inline">\(i=7\%\)</span>, if the successive payments are <span class="math inline">\(100\)</span>, <span class="math inline">\(200\)</span>, <span class="math inline">\(300\)</span>, <span class="math inline">\(400\)</span>, <span class="math inline">\(500\)</span>, <span class="math inline">\(600\)</span>, <span class="math inline">\(500\)</span>, <span class="math inline">\(400\)</span>, <span class="math inline">\(300\)</span>, <span class="math inline">\(200\)</span>, and <span class="math inline">\(100\)</span>.</p>
+<hr id="thin">
+<!----------------------------------------------------------------------------->
+<p><span id="no">32</span></p>
+<p>Find the discounted value one year before the first payment of a series of <span class="math inline">\(20\)</span> annual payments, the first of which is <span class="math inline">\(5\,000\)</span>.</p>
+<p>The rate of inflation is <span class="math inline">\(6\%\)</span> annual effective, and the rate of interest is <span class="math inline">\(8\%\)</span> annual effective.</p>
+<hr id="thin">
+<!----------------------------------------------------------------------------->
+<p><span id="no">33</span></p>
+<p>Charlie has deposited <span class="math inline">\(1000\)</span> at the end of each year into a retirement savings plan for the last <span class="math inline">\(10\)</span> years.</p>
+<p>His deposits earned interest at the following annual effective rates: <span class="math inline">\(8\%\)</span> for the first three years; <span class="math inline">\(10.25\%\)</span> for the next four years; and <span class="math inline">\(9\%\)</span> for the last three years.</p>
+<p>What is the total interest earned for the <span class="math inline">\(10\)</span> years?</p>
+<hr id="thin">
+<!----------------------------------------------------------------------------->
+<p><span id="no">34</span></p>
+<p>An actuarial student buys a computer by paying <span class="math inline">\(150\)</span> down and <span class="math inline">\(18.25\)</span> a month for three years.</p>
+<p>If the annual effective rate of interest is <span class="math inline">\(18\%\)</span>, what was the total amount of interest paid?</p>
+<hr id="thin">
+<!----------------------------------------------------------------------------->
+<p><span id="no">35</span></p>
+<p>To settle a debt with interest at <span class="math inline">\(12\%\)</span> compounded semiannually, a bank customer agrees to make <span class="math inline">\(15\)</span> payments of <span class="math inline">\(400\)</span> at the end of each half-year, and a final payment of <span class="math inline">\(292.39\)</span> six months later.</p>
+<p>Find the amount of debt.</p>
+<hr id="thin">
+<!----------------------------------------------------------------------------->
+<p><span id="no">36</span></p>
+<p>A car is sold for <span class="math inline">\(8\,000\)</span> down and six semiannual payments of <span class="math inline">\(3\,000\)</span>, the first due at the end of two years.</p>
+<p>Find the price of the car if money is worth <span class="math inline">\(6\%\)</span> compounded daily.</p>
+<hr id="thin">
+<!----------------------------------------------------------------------------->
+<p><span id="no">37</span></p>
+<p>A <span class="math inline">\(40\,000\)</span> mortgage is to be paid off by monthly payments at an annual effective rate of interest of <span class="math inline">\(12\%\)</span>.</p>
+<p>The borrower can either repay the mortgage in <span class="math inline">\(20\)</span> or <span class="math inline">\(30\)</span> years.</p>
+<p>Find the amount if interest saved by the borrower if she repays the mortgage in <span class="math inline">\(20\)</span> years instead of <span class="math inline">\(30\)</span> years.</p>
+<hr id="thin">
+<!----------------------------------------------------------------------------->
+<p><span id="no">38</span></p>
+<p>A one-year deferred continuous varying annuity is payable for <span class="math inline">\(13\)</span> years.</p>
+<p>The rate of payments at time <span class="math inline">\(t\)</span> is <span class="math inline">\(t^2-1\)</span> per annum, and the force of interest at time <span class="math inline">\(t\)</span> is <span class="math inline">\((1+t)^{-1}\)</span>.</p>
+<p>Find the present value of the annuity.</p>
+<hr id="thin">
+<!----------------------------------------------------------------------------->
+<p><span id="no">39</span></p>
+<p>A perpetuity is payable continuously at the annual rate of <span class="math inline">\(100\,(1+t)\)</span> at time <span class="math inline">\(t\)</span>.</p>
+<p>If <span class="math inline">\(\delta=0.05\)</span>, fund the present value of the perpetuity.</p>
+<hr id="thin">
+<!----------------------------------------------------------------------------->
+<p><span id="no">40</span></p>
+<p>An annuity immediate has semiannual payments of <span class="math inline">\(800, 750, 700, \dots, 350\)</span> at <span class="math inline">\(i^{(2)}=0.16\)</span>.</p>
+<p>Find the present value of the annuity.</p>
+<hr id="thin">
+<!----------------------------------------------------------------------------->
+<p><span id="no">41</span></p>
+<p>An annuity pays <span class="math inline">\(250\)</span> at the beginning of every three months for <span class="math inline">\(12\)</span> years.</p>
+<p>Calculate the present value of the annuity if <span class="math inline">\(i^{(3)}=0.12\)</span>.</p>
+<hr id="thick">
+<!--end of code --------------------------------------------------------------->
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+<nav class="page-navigation column-body">
+  <div class="nav-page nav-page-previous">
+      <a href="./chap-1.html" class="pagination-link" aria-label="Time-Value of Money">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Time-Value of Money</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./chap-3.html" class="pagination-link" aria-label="Loans">
+        <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Loans</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

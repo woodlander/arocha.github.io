@@ -1,0 +1,979 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.9.38">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Answers to Supplementary Exercises – FutureProof FM</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./app_1.html" rel="next">
+<link href="./chap-5.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-9e3e5b9121e68b3f077afb32f2c64d95.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<link rel="icon" type="image/x-icon" href="favincon-32x32.png">    
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="nav-sidebar floating quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./answers.html">Answers to Supplementary Exercises</a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">FutureProof FM</a> 
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Preface</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./chap-1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Time-Value of Money</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./chap-2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Annuities</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./chap-3.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Loans</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./chap-4.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Bonds</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./chap-5.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Asset-Liability Management</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./answers.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Answers to Supplementary Exercises</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./app_1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Basic mathematics refresher</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./app_2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">The Newton-Raphson Algorithm</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./biblio.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Bibliography</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./notation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Glossary of notation</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./copyright.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Copyright notice</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./about.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">About the author</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./support.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Support the Project</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./report.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Report Content Errors</span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+        
+    </div>
+<!-- main -->
+<main class="content column-page-right" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Answers to Supplementary Exercises</h1>
+</div>
+
+
+
+<div class="quarto-title-meta column-page-right">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<!----------------------------------------------------------------------------------->
+<!----------------------------------------------------------------------------------->
+<div class="solution callout callout-style-default callout-note callout-titled" title="Chapter 1 - Time Value of Money">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Chapter 1 - Time Value of Money
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-1" class="callout-1-contents callout-collapse collapse">
+<section id="answers-to-time-value-of-money" class="level4 unnumbered callout-body-container callout-body">
+<h4 class="unnumbered anchored" data-anchor-id="answers-to-time-value-of-money">Answers to Time Value of Money</h4>
+<ol type="1">
+<li><p><span class="math inline">\(\quad 9\)</span></p></li>
+<li><p><span class="math inline">\(\quad 3{,}000\)</span></p></li>
+<li><p><span class="math inline">\(\quad 1{,}191\)</span></p></li>
+<li><p><span class="math inline">\(\quad 320\)</span></p></li>
+<li><p><span class="math inline">\(\quad 3.\overline{33}\)</span></p></li>
+<li><p><span class="math inline">\(\quad 583\)</span></p></li>
+<li><p><span class="math inline">\(\quad\)</span> (a) <span class="math inline">\(35.294\%\)</span><br>
+<span class="math inline">\(\quad\)</span>(b) <span class="math inline">\(35{,}035{,}000\)</span></p></li>
+<li><p><span class="math inline">\(\quad\)</span> (a) <span class="math inline">\(314.25\)</span><br>
+<span class="math inline">\(\quad\)</span>(b) <span class="math inline">\(2{,}713.27\)</span></p></li>
+<li><p><span class="math inline">\(\quad 16\)</span></p></li>
+<li><p><span class="math inline">\(\quad 3{,}456\)</span></p></li>
+<li><p><span class="math inline">\(\quad 950\)</span></p></li>
+<li><p><span class="math inline">\(\quad 8{,}756\)</span></p></li>
+<li><p><span class="math inline">\(\quad 1{,}978\)</span></p></li>
+<li><p><span class="math inline">\(\quad 13.187\%\)</span></p></li>
+<li><p><span class="math inline">\(\quad 47{,}619\)</span></p></li>
+<li><p><span class="math inline">\(\quad 1{,}052\)</span></p></li>
+<li><p><span class="math inline">\(\quad 1{,}147\)</span></p></li>
+<li><p><span class="math inline">\(\quad 8\)</span></p></li>
+<li><p><span class="math inline">\(\quad 20\)</span></p></li>
+<li><p><span class="math inline">\(\quad 0.95238\)</span></p></li>
+<li><p><span class="math inline">\(\quad 1{,}568\)</span></p></li>
+<li><p><span class="math inline">\(\quad 0.01005\)</span></p></li>
+<li><p><span class="math inline">\(\quad 3{,}170\)</span></p></li>
+<li><p><span class="math inline">\(\quad 832\)</span></p></li>
+<li><p><span class="math inline">\(\quad 0.11036\)</span></p></li>
+<li><p><span class="math inline">\(\quad 5.83\)</span></p></li>
+<li><p><span class="math inline">\(\quad 6.9\)</span> years</p></li>
+<li><p><span class="math inline">\(\quad 6.378\%\)</span> by linear interpolation between <span class="math inline">\(0.03\)</span> and <span class="math inline">\(0.05\)</span>.</p></li>
+<li><p><span class="math inline">\(\quad 2{,}800\)</span></p></li>
+<li><p><span class="math inline">\(\quad 7.607\%\)</span></p></li>
+<li><p><span class="math inline">\(\quad 17{,}936\)</span></p></li>
+<li><p><span class="math inline">\(\quad 700\)</span></p></li>
+<li><p><span class="math inline">\(\quad 81\)</span></p></li>
+<li><p><span class="math inline">\(\quad 3{,}932\)</span></p></li>
+<li><p><span class="math inline">\(\quad 4{,}226\)</span></p></li>
+<li><p><span class="math inline">\(\quad 12.91\%\)</span></p></li>
+</ol>
+</section>
+</div>
+</div>
+<div class="solution callout callout-style-default callout-note callout-titled" title="Chapter 2 - Annuities">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Chapter 2 - Annuities
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-2" class="callout-2-contents callout-collapse collapse">
+<section id="answers-to-annuities" class="level4 unnumbered callout-body-container callout-body">
+<h4 class="unnumbered anchored" data-anchor-id="answers-to-annuities">Answers to Annuities</h4>
+<ol type="1">
+<li><p><span class="math inline">\(\quad 652\)</span></p></li>
+<li><p><span class="math inline">\(\quad 8.298\%\)</span></p></li>
+<li><p><span class="math inline">\(\quad 2{,}389\)</span></p></li>
+<li><p><span class="math inline">\(\quad 9{,}173\)</span></p></li>
+<li><p><span class="math inline">\(\quad 5{,}695\)</span></p></li>
+<li><p><span class="math inline">\(\quad 3{,}276\)</span></p></li>
+<li><p><span class="math inline">\(\quad 146.07\)</span></p></li>
+<li><p><span class="math inline">\(\quad 32.41\)</span></p></li>
+<li><p><span class="math inline">\(\quad 9\)</span></p></li>
+<li><p><span class="math inline">\(\quad 29\)</span></p></li>
+<li><p><span class="math inline">\(\quad 50\)</span></p></li>
+<li><p><span class="math inline">\(\quad 1{,}220\)</span></p></li>
+<li><p><span class="math inline">\(\quad 35{,}824\)</span></p></li>
+<li><p><span class="math inline">\(\quad 6\%\)</span></p></li>
+<li><p><span class="math inline">\(\quad 4{,}040\)</span></p></li>
+<li><p><span class="math inline">\(\quad 20\%\)</span></p></li>
+<li><p><span class="math inline">\(\quad 27.46\)</span></p></li>
+<li><p><span class="math inline">\(\quad 4.76\%\)</span></p></li>
+<li><p><span class="math inline">\(\quad 16{,}607\)</span></p></li>
+<li><p><span class="math inline">\(\quad 7{,}851\)</span></p></li>
+<li><p><span class="math inline">\(\quad 48{,}000\)</span></p></li>
+<li><p><span class="math inline">\(\quad 3{,}343\)</span></p></li>
+<li><p><span class="math inline">\(\quad 61{,}947\)</span></p></li>
+<li><p><span class="math inline">\(\quad 1{,}410\)</span></p></li>
+<li><p><span class="math inline">\(\quad 2{,}085\)</span></p></li>
+<li><p><span class="math inline">\(\quad 139\)</span></p></li>
+<li><p><span class="math inline">\(\quad 0.1225\)</span></p></li>
+<li><p><span class="math inline">\(\quad 201\)</span></p></li>
+<li><p><span class="math inline">\(\quad 122{,}634\)</span></p></li>
+<li><p><span class="math inline">\(\quad 18{,}371\)</span></p></li>
+<li><p><span class="math inline">\(\quad 2{,}431\)</span></p></li>
+<li><p><span class="math inline">\(\quad 77{,}979\)</span></p></li>
+<li><p><span class="math inline">\(\quad 5{,}522\)</span></p></li>
+<li><p><span class="math inline">\(\quad 142.72\)</span></p></li>
+<li><p><span class="math inline">\(\quad 4{,}000\)</span></p></li>
+<li><p><span class="math inline">\(\quad 22{,}831\)</span></p></li>
+<li><p><span class="math inline">\(\quad 39{,}729\)</span></p></li>
+<li><p><span class="math inline">\(\quad 84.50\)</span></p></li>
+<li><p><span class="math inline">\(\quad 42{,}000\)</span></p></li>
+<li><p><span class="math inline">\(\quad 4{,}069.22\)</span></p></li>
+<li><p><span class="math inline">\(\quad 6{,}523\)</span></p></li>
+</ol>
+</section>
+</div>
+</div>
+<div class="solution callout callout-style-default callout-note callout-titled" title="Chapter 3 - Loans">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Chapter 3 - Loans
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-3" class="callout-3-contents callout-collapse collapse">
+<section id="answers-to-loans" class="level4 unnumbered callout-body-container callout-body">
+<h4 class="unnumbered anchored" data-anchor-id="answers-to-loans">Answers to Loans</h4>
+<ol type="1">
+<li><p><span class="math inline">\(\quad 635\)</span></p></li>
+<li><p><span class="math inline">\(\quad 4{,}198\)</span></p></li>
+<li><p><span class="math inline">\(\quad 16{,}514\)</span></p></li>
+<li><p><span class="math inline">\(\quad 642\)</span></p></li>
+<li><p><span class="math inline">\(\quad 13\)</span></p></li>
+<li><p><span class="math inline">\(\quad 72\)</span></p></li>
+<li><p><span class="math inline">\(\quad 676\)</span></p></li>
+<li><p><span class="math inline">\(\quad 76{,}105\)</span></p></li>
+<li><p><span class="math inline">\(\quad 14{,}709\)</span></p></li>
+<li><p><span class="math inline">\(\quad 846\)</span></p></li>
+<li><p><span class="math inline">\(\quad 796\)</span></p></li>
+<li><p><span class="math inline">\(\quad 1{,}557\)</span></p></li>
+<li><p><span class="math inline">\(\quad 1{,}132\)</span></p></li>
+<li><p><span class="math inline">\(\quad 10{,}814\)</span></p></li>
+<li><p><span class="math inline">\(\quad 171{,}429\)</span></p></li>
+<li><p><span class="math inline">\(\quad 3{,}413\)</span></p></li>
+<li><p><span class="math inline">\(\quad 36{,}454\)</span></p></li>
+<li><p><span class="math inline">\(\quad 2{,}221\)</span></p></li>
+<li><p><span class="math inline">\(\quad 1{,}029\)</span></p></li>
+<li><p><span class="math inline">\(\quad 934\)</span></p></li>
+<li><p><span class="math inline">\(\quad 32{,}456\)</span></p></li>
+<li><p><span class="math inline">\(\quad 482\)</span></p></li>
+<li><p><span class="math inline">\(\quad 253\)</span> and the loan <u>should</u> not be refinanced</p></li>
+<li><p><span class="math inline">\(\quad 367\)</span></p></li>
+<li><p><span class="math inline">\(\quad 2{,}400\)</span></p></li>
+<li><p><span class="math inline">\(\quad 15{,}649.67\)</span></p></li>
+<li><p><span class="math inline">\(\quad 23{,}554.38\)</span></p></li>
+<li><p><span class="math inline">\(\quad 7{,}246\)</span></p></li>
+<li><p><span class="math inline">\(\quad 704.96\)</span></p></li>
+<li><p><span class="math inline">\(\quad 168{,}653\)</span></p></li>
+<li><p><span class="math inline">\(\quad 5{,}900\)</span></p></li>
+<li><p><span class="math inline">\(\quad 229.87\)</span></p></li>
+<li><p><span class="math inline">\(\quad 7\%\)</span></p></li>
+<li><p><span class="math inline">\(\quad 6{,}183.69\)</span></p></li>
+<li><p><span class="math inline">\(\quad 36{,}920.75\)</span></p></li>
+<li><p><span class="math inline">\(\quad 4.19\)</span></p></li>
+<li><p><span class="math inline">\(\quad 13\)</span></p></li>
+<li><p><span class="math inline">\(\quad 30{,}975.11\)</span></p></li>
+<li><p><span class="math inline">\(\quad 7{,}964.25\)</span></p></li>
+<li><p><span class="math inline">\(\quad 8{,}263.99\)</span></p></li>
+<li><p><span class="math inline">\(\quad 442.36\)</span></p></li>
+</ol>
+</section>
+</div>
+</div>
+<div class="solution callout callout-style-default callout-note callout-titled" title="Chapter 4 - Bonds">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Chapter 4 - Bonds
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-4" class="callout-4-contents callout-collapse collapse">
+<section id="answers-to-bonds" class="level4 unnumbered callout-body-container callout-body">
+<h4 class="unnumbered anchored" data-anchor-id="answers-to-bonds">Answers to Bonds</h4>
+<ol type="1">
+<li><p><span class="math inline">\(\quad 894\)</span></p></li>
+<li><p><span class="math inline">\(\quad 1{,}019\)</span></p></li>
+<li><p><span class="math inline">\(\quad 1{,}159\)</span></p></li>
+<li><p><span class="math inline">\(\quad 1.43\)</span></p></li>
+<li><p><span class="math inline">\(\quad 0.04322317\)</span></p></li>
+<li><p><span class="math inline">\(\quad 945\)</span></p></li>
+<li><p><span class="math inline">\(\quad 1{,}200\)</span></p></li>
+<li><p><span class="math inline">\(\quad 1{,}100\)</span></p></li>
+<li><p><span class="math inline">\(\quad 1{,}495\)</span></p></li>
+<li><p><span class="math inline">\(\quad 1{,}360\)</span></p></li>
+<li><p><span class="math inline">\(\quad 30.65\)</span></p></li>
+<li><p><span class="math inline">\(\quad 9.07\)</span></p></li>
+<li><p><span class="math inline">\(\quad 58.66\)</span></p></li>
+<li><p><span class="math inline">\(\quad 1{,}000\)</span></p></li>
+<li><p><span class="math inline">\(\quad 1{,}045\)</span></p></li>
+<li><p><span class="math inline">\(\quad 3.6\%\)</span></p></li>
+<li><p><span class="math inline">\(\quad 7.48\)</span></p></li>
+<li><p><span class="math inline">\(\quad 8.322\%\)</span></p></li>
+<li><p><span class="math inline">\(\quad 171\)</span></p></li>
+<li><p><span class="math inline">\(\quad 1{,}605\)</span></p></li>
+<li><p><span class="math inline">\(\quad 1{,}487\)</span></p></li>
+<li><p><span class="math inline">\(\quad 40\)</span></p></li>
+<li><p><span class="math inline">\(\quad 15.709\%\)</span></p></li>
+<li><p><span class="math inline">\(\quad 25.32\)</span></p></li>
+<li><p><span class="math inline">\(\quad\)</span> (a) <span class="math inline">\(66.70\)</span>, (b) <span class="math inline">\(14{,}067\)</span></p></li>
+<li><p><span class="math inline">\(\quad 12.389\%\)</span></p></li>
+<li><p><span class="math inline">\(\quad 895.35\)</span></p></li>
+<li><p><span class="math inline">\(\quad 922.05\)</span></p></li>
+<li><p><span class="math inline">\(\quad 1{,}119.25\)</span></p></li>
+<li><p><span class="math inline">\(\quad 846.28\)</span></p></li>
+<li><p><span class="math inline">\(\quad 58.65\)</span></p></li>
+<li><p><span class="math inline">\(\quad 1{,}086\)</span></p></li>
+<li><p><span class="math inline">\(\quad 1{,}024.88\)</span></p></li>
+<li><p><span class="math inline">\(\quad 18\)</span> years</p></li>
+<li><p><span class="math inline">\(\quad 14{,}269.84\)</span></p></li>
+<li><p><span class="math inline">\(\quad 635\)</span> basis points</p></li>
+<li><p><span class="math inline">\(\quad 4.90\)</span></p></li>
+<li><p><span class="math inline">\(\quad 928.64\)</span></p></li>
+<li><p><span class="math inline">\(\quad 881.53\)</span></p></li>
+<li><p><span class="math inline">\(\quad 868.11\)</span></p></li>
+</ol>
+</section>
+</div>
+</div>
+<div class="solution callout callout-style-default callout-note callout-titled" title="Chapter 5 - ALM">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Chapter 5 - ALM
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-5" class="callout-5-contents callout-collapse collapse">
+<section id="answers-to-alm" class="level4 unnumbered callout-body-container callout-body">
+<h4 class="unnumbered anchored" data-anchor-id="answers-to-alm">Answers to ALM</h4>
+<ol type="1">
+<li><p><span class="math inline">\(\quad 26\)</span></p></li>
+<li><p><span class="math inline">\(\quad 6\%\)</span></p></li>
+<li><p><span class="math inline">\(\quad 5\%\)</span></p></li>
+<li><p><span class="math inline">\(\quad 10.619\%\)</span></p></li>
+<li><p><span class="math inline">\(\quad 18.785\%\)</span></p></li>
+<li><p><span class="math inline">\(\quad 9.778\%\)</span></p></li>
+<li><p><span class="math inline">\(\quad 9{,}430\)</span></p></li>
+<li><p><span class="math inline">\(\quad 9.545\%\)</span></p></li>
+<li><p><span class="math inline">\(\quad 10.506\%\)</span></p></li>
+<li><p><span class="math inline">\(\quad 2{,}524.07\)</span></p></li>
+<li><p><span class="math inline">\(\quad 50\)</span></p></li>
+<li><p><span class="math inline">\(\quad 7.247\)</span></p></li>
+<li><p><span class="math inline">\(\quad 4.871\)</span></p></li>
+<li><p><span class="math inline">\(\quad 13.5\)</span></p></li>
+<li><p><span class="math inline">\(\quad 27\)</span></p></li>
+<li><p><span class="math inline">\(\quad 2.706\)</span></p></li>
+<li><p><span class="math inline">\(\quad 16.77\)</span></p></li>
+<li><p><span class="math inline">\(\quad 10\)</span></p></li>
+<li><p><span class="math inline">\(\quad 9.3\)</span></p></li>
+<li><p><span class="math inline">\(\quad 5.496\)</span></p></li>
+<li><p><span class="math inline">\(\quad 312.5\)</span></p></li>
+<li><p><span class="math inline">\(\quad 1{,}250\)</span></p></li>
+<li><p><span class="math inline">\(\quad 0.979\)</span></p></li>
+<li><p><span class="math inline">\(\quad 92.952\)</span></p></li>
+<li><p><span class="math inline">\(\quad 0\)</span></p></li>
+<li><p><span class="math inline">\(\quad -35.6\%\)</span></p></li>
+<li><p><span class="math inline">\(\quad +20\%\)</span></p></li>
+<li><p><span class="math inline">\(\quad A=280.5\)</span>, <span class="math inline">\(B=78.2\)</span>.</p></li>
+<li><p><span class="math inline">\(\quad 6{,}415\)</span></p></li>
+<li><p><span class="math inline">\(\quad M=32{,}805\)</span>, <span class="math inline">\(N=40{,}500\)</span>.</p></li>
+<li><p><span class="math inline">\(\quad 4{,}450\)</span>.</p></li>
+<li><p><span class="math inline">\(\quad 47{,}826\)</span> in <span class="math inline">\(4\)</span>-year bonds and <span class="math inline">\(9{,}457\)</span> in the <span class="math inline">\(10\)</span>-year bonds.</p></li>
+<li><p><span class="math inline">\(\quad 75.36\)</span> and the program does satisfy Redington immunization.</p></li>
+<li><p><span class="math inline">\(\quad 28{,}072\)</span></p></li>
+<li><p><span class="math inline">\(\quad\)</span> (a) <span class="math inline">\(\text{vp}_{A}=2{,}192.48=\text{vp}_{L}\)</span> and <span class="math inline">\(\text{MacDur}_{A}=3.246=\text{MacDur}_{L}\)</span>, thus conditions are met.</p></li>
+<li><p><span class="math inline">\(\quad\)</span> (a) <span class="math inline">\(\text{ModCon}_{A}=12.17\)</span> and <span class="math inline">\(\text{MacCon}_{L}=12.16\)</span>, thus conditions are met.</p></li>
+<li><p><span class="math inline">\(\quad\)</span> (a) <span class="math inline">\(10.16\)</span>, <span class="math inline">\(0.595\)</span> and <span class="math inline">\(2.20\)</span></p></li>
+</ol>
+<!-- 39. $\quad 26.45\%$
+
+40. $\quad 129{,}470$
+
+41. $\quad 179.37$ -->
+</section>
+</div>
+</div>
+
+
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+<nav class="page-navigation column-page-right">
+  <div class="nav-page nav-page-previous">
+      <a href="./chap-5.html" class="pagination-link" aria-label="Asset-Liability Management">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Asset-Liability Management</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./app_1.html" class="pagination-link" aria-label="Basic mathematics refresher">
+        <span class="nav-page-text">Basic mathematics refresher</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

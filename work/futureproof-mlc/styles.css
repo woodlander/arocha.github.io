@@ -1,0 +1,162 @@
+/* Ultra-subtle paper background */
+body {
+  background: #fdfcf9; /* very soft warm white */
+  background-image:
+      radial-gradient(#f2f0ec 0.4px, transparent 0.4px),
+      radial-gradient(#f2f0ec 0.4px, transparent 0.4px);
+  background-size: 12px 12px, 12px 12px;  /* larger spacing for subtlety */
+  background-position: 0 0, 6px 6px;      /* staggered offset */
+  background-attachment: fixed;
+}
+
+.output {
+  color: green;
+  background-color: black;
+}
+
+p.caption {
+  color: #777;
+  margin-top: 10px;
+}
+
+p code {
+  white-space: inherit;
+}
+
+pre {
+  word-break: normal;
+  word-wrap: normal;
+}
+
+pre code {
+  white-space: inherit;
+}
+
+.space {
+  margin-top: 12px;
+}
+
+a {
+  color: #FF5900;
+}
+
+a:hover {
+  color: #FF5900;
+}
+
+#content {
+  padding: 0px 12px 0px 12px;
+  /*max-height: 0;*/
+  overflow: hidden;
+  transition: max-height 0.2s ease-out;
+  background-color: #eeeeee;
+  margin-bottom: 24px
+}
+
+.collapsible {
+  margin-top: 10px;
+  background-color: lightgray;
+  color: black;
+  cursor: pointer;
+  width: 100%;
+  border: none;
+  text-align: left;
+  outline: none;
+  font-size: 15px;
+}
+
+.collapsible:hover {
+  background-color: #FF5900;
+  color: white;
+}
+
+.collapsible:after {
+  content: '\002B';
+  color: black;
+  font-weight: bold;
+  float: right;
+  margin-left: 5px;
+}
+
+.active:after {
+  content: "\2212";
+  color: white;
+}
+
+.orange {
+  color: #FF5900;
+}
+
+.narrow-table table {
+  width: auto;
+  margin-left: auto;
+  margin-right: auto;
+  font-size: 90%;
+}
+
+.center {text-align: center;}
+
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  width: 100%;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #f8f9fa;
+}
+
+#ind50 {
+  margin-left: 50px;
+}
+
+#ind60 {
+  margin-left: 30px;
+}
+
+hr {
+  height: 4px;
+  background-color: #FF5900;
+}
+
+#no {
+  color: #FF5900;
+  font-siZe: 150%;
+  font-weight: bold;
+}
+
+#thin {
+  margin-top: 35px;
+  height: 1px;
+  background-color: #FF5900;
+}
+
+#thick {
+  margin-top: 35px;
+  height: 4px;
+  background-color: #FF5900;
+}
+
+.navbar .nav-link { color: #FF5900 !important; }
+
+/* Custom color for collapsible solution callout */
+.callout.callout-note.solution {
+  border-left: 4px solid #FF5900 !important;
+}
+
+.callout.callout-note.solution .callout-header {
+  background-color: #FFE1CC !important;  /* optional soft orange */
+  
+}
+
+.callout.callout-note.solution .callout-icon-container {
+  color: #FF5900 !important;
+}
