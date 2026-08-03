@@ -10,8 +10,8 @@
   --color-heading: #333333;
   --color-muted: #777777;
   --color-footer: #8a8a8a;
-  --color-accent: #168c9e;
---color-accent-hover: #20aec2;
+  --color-accent: rgba(102, 170, 221, 0.8);
+  --color-accent-hover: #20aec2;
   --color-line: #ece7e3;
   --color-surface: #faf8f6;
   --color-portrait-placeholder: #e8e8e8;

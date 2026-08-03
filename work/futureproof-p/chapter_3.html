@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.9.38">
+<meta name="generator" content="quarto-1.10.18">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -12,10 +12,13 @@
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
 */
-code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
-div.columns{display: flex; gap: min(4vw, 1.5em);}
-div.column{flex: auto; overflow-x: auto;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
 div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
 ul.task-list li input[type="checkbox"] {
@@ -41,10 +44,10 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-9e3e5b9121e68b3f077afb32f2c64d95.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-631496449bf32ff9b0bb69a6bfd9195d.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -75,7 +78,7 @@ ul.task-list li input[type="checkbox"] {
 <link rel="icon" type="image/x-icon" href="favincon-32x32.png">    
 
   <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js" type="text/javascript"></script>
 
 <script type="text/javascript">
 const typesetMath = (el) => {
@@ -743,8 +746,15 @@ Before opening the solutions, take a moment to work through each problem—-your
 </td>
 </tr><tr>
 </tr></tbody></table></li>
-<li><p><span class="math inline">\(\operatorname{E}[X]=-2 \left(\dfrac{1}{4}-1 \left(\dfrac{1}{4}+1 \left(\dfrac{1}{4}+2 \left(\dfrac{1}{4} \right)=0\)</span></p>
-<p><span class="math inline">\(\operatorname{E}[Y]&amp;=1 \left(\dfrac{1}{2}+4 \left(\dfrac{1}{2} \right)&amp;=\dfrac{5}{2}\)</span></p></li>
+<li><p>The covariance and correlation of <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> are calculated as follows:</p>
+<p><span class="math inline">\(\mathrm{E}[X]=(-2)\left(\dfrac{1}{4}\right)+(-1)\left(\dfrac{1}{4}\right)+1\left(\dfrac{1}{4}\right)+2\left(\dfrac{1}{4}\right)=0\)</span></p>
+<p><span class="math inline">\(\mathrm{E}[Y]=1\left(\dfrac{1}{2}\right)+4\left(\dfrac{1}{2}\right)=\dfrac{5}{2}\)</span></p>
+<p><span class="math inline">\(\mathrm{E}[XY]=\mathrm{E}[X^3]=0\)</span></p>
+<p>Therefore, <span class="math inline">\(\mathrm{Cov}[X,Y]=\mathrm{E}[XY]-\mathrm{E}[X]\cdot\mathrm{E}[Y]=0\)</span></p>
+<p>Also,<br>
+<span class="math inline">\(\mathrm{Var}[Y]=\dfrac{5}{2}\)</span> and <span class="math inline">\(\mathrm{Var}[Y]=\dfrac{9}{4}\)</span>, so <span class="math inline">\(\rho_{XY}=0\)</span>.</p></li>
+<li><p>Nevertheless, <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> are not independent. For example,<br>
+<span class="math inline">\(\Pr[X=1 {,} Y=1]=\dfrac{1}{4}\)</span>, whereas <span class="math inline">\(\Pr[X=1] \cdot \Pr[Y=1] = \dfrac{1}{4} \cdot \dfrac{1}{2} = \dfrac{1}{8}\)</span>. Thus, this example appropriately illustrateis that zero correlation does not imply independence.</p></li>
 </ol>
 </div>
 </div>
@@ -777,35 +787,35 @@ Before opening the solutions, take a moment to work through each problem—-your
 <span class="math inline">\(X=0\)</span>
 </td>
 <td style="text-align: center;">
-<span class="math inline">\(\large \frac{1}{6}\)</span>
+<span class="math inline">\(\dfrac{1}{6}\)</span>
 </td>
 <td style="text-align: center;">
-<span class="math inline">\(\large \frac{1}{4}\)</span>
+<span class="math inline">\(\dfrac{1}{4}\)</span>
 </td>
 <td style="text-align: center;">
-<span class="math inline">\(\large \frac{1}{8}\)</span>
+<span class="math inline">\(\dfrac{1}{8}\)</span>
 </td>
 </tr>
 <tr>
 <td>
-<span class="math inline">\(X=0\)</span>
+<span class="math inline">\(X=1\)</span>
 </td>
 <td style="text-align: center;">
-<span class="math inline">\(\large \frac{1}{8}\)</span>
+<span class="math inline">\(\dfrac{1}{8}\)</span>
 </td>
 <td style="text-align: center;">
-<span class="math inline">\(\large \frac{1}{6}\)</span>
+<span class="math inline">\(\dfrac{1}{6}\)</span>
 </td>
 <td style="text-align: center;">
-<span class="math inline">\(\large \frac{1}{6}\)</span>
+<span class="math inline">\(\dfrac{1}{6}\)</span>
 </td>
 </tr>
 </tbody></table>
 <p><br></p>
 <ol type="a">
-<li><p>Find <span class="math inline">\(Pr[X=0, Y \leq 1]\)</span></p></li>
+<li><p>Find <span class="math inline">\(\Pr[X=0, Y \leq 1]\)</span></p></li>
 <li><p>Find the marginal PMFs of <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span></p></li>
-<li><p>Find <span class="math inline">\(Pr[Y=1|X=0]\)</span></p></li>
+<li><p>Find <span class="math inline">\(\Pr[Y=1|X=0]\)</span></p></li>
 <li><p>Are <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> independent?</p></li>
 </ol>
 <hr id="thin">
@@ -826,7 +836,7 @@ Before opening the solutions, take a moment to work through each problem—-your
 <p>Find <span class="math inline">\(\mathrm{E}[X]\)</span>.</p>
 <hr id="thin">
 <!----------------------------------------------------------------------------->
-<p><span id="no">83</span></p>
+<p><span id="no">4</span></p>
 <p>The joint probability mass function of the random variables <span class="math inline">\(X\)</span>, <span class="math inline">\(Y\)</span>, <span class="math inline">\(Z\)</span> is</p>
 <p><span class="math display">\[
 p(1, 2, 3) = p (2, 1, 1) = p(2, 2, 1)=p(2, 3, 2)=\frac{1}{4}
@@ -837,7 +847,7 @@ p(1, 2, 3) = p (2, 1, 1) = p(2, 2, 1)=p(2, 3, 2)=\frac{1}{4}
 </ol>
 <hr id="thin">
 <!----------------------------------------------------------------------------->
-<p><span id="no">4</span></p>
+<p><span id="no">5</span></p>
 <p>Let <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> be continuous random variables with the following joint density function (where <span class="math inline">\(c\)</span> is a constant):</p>
 <p><span class="math display">\[
 f(x,y) = \left\{
@@ -850,7 +860,7 @@ f(x,y) = \left\{
 <p>Find <span class="math inline">\(\mathrm{Pr}[X+Y&gt;3\,]\)</span></p>
 <hr id="thin">
 <!----------------------------------------------------------------------------->
-<p><span id="no">5</span></p>
+<p><span id="no">6</span></p>
 <p>An insurance company is reviewing earthquake damage claims under an industrial property insurance policy.</p>
 <p>Let <span class="math inline">\(X\)</span> be the portion of a claim representing damage to the main building, and let <span class="math inline">\(Y\)</span> be the portion of the same claim representing damage to the rest of the property.</p>
 <p>The joint density function of <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> is</p>
@@ -865,7 +875,7 @@ f(x,y) = \left\{
 <p>Determine the probability that the portion of a claim representing damage to the main building is less than <span class="math inline">\(0.2\)</span>.</p>
 <hr id="thin">
 <!----------------------------------------------------------------------------->
-<p><span id="no">6</span></p>
+<p><span id="no">7</span></p>
 <p>A fair coin is tossed three times. Let <span class="math inline">\(X\)</span> equal <span class="math inline">\(0\)</span> or <span class="math inline">\(1\)</span> accordingly as a head or a tail occurs on the first toss, and let <span class="math inline">\(Y\)</span> equal the total number of heads that occurs.</p>
 <ol type="a">
 <li><p>Find <span class="math inline">\(\mathrm{Pr}[X=0, Y=2\,]\)</span></p></li>
@@ -874,7 +884,7 @@ f(x,y) = \left\{
 </ol>
 <hr id="thin">
 <!----------------------------------------------------------------------------->
-<p><span id="no">7</span></p>
+<p><span id="no">8</span></p>
 <p>A fair coin is tossed three times. Let <span class="math inline">\(X\)</span> equal <span class="math inline">\(0\)</span> or <span class="math inline">\(1\)</span> accordingly as a head or a tail occurs on the first toss, and let <span class="math inline">\(Y\)</span> equal the total number of heads that occurs.</p>
 <ol type="a">
 <li><p>Find <span class="math inline">\(\mathrm{Var}[X+Y\,]\)</span></p></li>
@@ -882,13 +892,13 @@ f(x,y) = \left\{
 </ol>
 <hr id="thin">
 <!----------------------------------------------------------------------------->
-<p><span id="no">8</span></p>
+<p><span id="no">9</span></p>
 <p>A sample with replacement of size <span class="math inline">\(2\)</span> is randomly selected from the numbers <span class="math inline">\(1\)</span> to <span class="math inline">\(5\)</span>.</p>
 <p>Let <span class="math inline">\(X=0\)</span> if the first number is even and <span class="math inline">\(X=1\)</span> otherwise; let <span class="math inline">\(Y=1\)</span> if the second number is odd and <span class="math inline">\(Y=0\)</span> otherwise.</p>
 <p>Calculate <span class="math inline">\(\mathrm{Pr}[X=0, Y=1\,]\)</span>.</p>
 <hr id="thin">
 <!----------------------------------------------------------------------------->
-<p><span id="no">9</span></p>
+<p><span id="no">10</span></p>
 <p>A car dealership sells <span class="math inline">\(0\)</span>, <span class="math inline">\(1\)</span>, or <span class="math inline">\(2\)</span> luxury cars on any day.</p>
 <p>When selling a car, the dealer also tries to persuade the customer to buy an extended warranty for the car.</p>
 <p>Let <span class="math inline">\(X\)</span> denote the number of luxury cars sold in a given day, and let <span class="math inline">\(Y\)</span> denote the number of extended warranties sold.</p>
@@ -904,7 +914,7 @@ f(x,y) = \left\{
 <p>Find <span class="math inline">\(Var[X]\)</span>.</p>
 <hr id="thin">
 <!----------------------------------------------------------------------------->
-<p><span id="no">10</span> Let <span class="math inline">\(X\)</span> be a random variable with the following distribution, and let <span class="math inline">\(Y=X^2\)</span>.</p>
+<p><span id="no">11</span> Let <span class="math inline">\(X\)</span> be a random variable with the following distribution, and let <span class="math inline">\(Y=X^2\)</span>.</p>
 <table>
 <tbody><tr>
 <td>
@@ -944,78 +954,81 @@ f(x,y) = \left\{
 <p>Find <span class="math inline">\(\rho[X,Y\,]\)</span>.</p>
 <hr id="thin">
 <!----------------------------------------------------------------------------->
-<p><span id="no">11</span></p>
-<p>The profit for a new product is given by <span class="math inline">\(Z=3X−Y−5\)</span>. <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> are independent random variables with <span class="math inline">\(\mathrm{Var}[X]=1\)</span> and <span class="math inline">\(\mathrm{Var}[Y]=2\)</span>.</p>
-<p>Find <span class="math inline">\(Var[Z]\)</span>.</p>
-<hr id="thin">
-<!----------------------------------------------------------------------------->
 <p><span id="no">12</span></p>
-<p>There are <span class="math inline">\(300\)</span> students in an actuarial faculty, and each student has probability of <span class="math inline">\(0.55\)</span> of passing exam P in the first attempt, independent of any other student.</p>
-<p>Let <span class="math inline">\(X\)</span> be the number of students who pass exam P.</p>
-<p>Using the normal approximation, what is the probability mass of an interval of two standard deviations of <span class="math inline">\(X\)</span> about the mean?</p>
+<p>The profit for a new product is given by <span class="math inline">\(Z=3X−Y−5\)</span>. <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> are independent random variables with <span class="math inline">\(\mathrm{Var}[X]=1\)</span> and <span class="math inline">\(\mathrm{Var}[Y]=2\)</span>.</p>
+<p>Find <span class="math inline">\(\mathrm{Var}[Z]\)</span>.</p>
 <hr id="thin">
 <!----------------------------------------------------------------------------->
 <p><span id="no">13</span></p>
+<p>There are <span class="math inline">\(300\)</span> students in an actuarial faculty, and each student has probability of <span class="math inline">\(0.55\)</span> of passing exam P in the first attempt, independent of any other student.</p>
+<p>Let <span class="math inline">\(X\)</span> be the number of students who pass exam P.</p>
+<p>Using the normal approximation with countinuity correction, what is the probability mass of an interval of two standard deviations of <span class="math inline">\(X\)</span> about the mean?</p>
+<hr id="thin">
+<!----------------------------------------------------------------------------->
+<p><span id="no">14</span></p>
 <p>When a professor asks a question, Charlie gives the correct answer <span class="math inline">\(25\%\)</span> of the time, independent of other questions.</p>
 <p>In each class, Charlie may be asked <span class="math inline">\(0\)</span>, <span class="math inline">\(1\)</span>, or <span class="math inline">\(2\)</span> questions with equal probability.</p>
 <p>Let <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> be the number of questions Charlie is asked, and the number of wrong answers from Charlie in a given class, respectively.</p>
 <p>Find <span class="math inline">\(\mathrm{Pr}[X=2, Y=0\,]\)</span>.</p>
 <hr id="thin">
 <!----------------------------------------------------------------------------->
-<p><span id="no">14</span></p>
-<p>Consider a transmitter that sends encrypted text messages.</p>
-<p>Let <span class="math inline">\(X\)</span> be the travel time (in milliseconds) of a given signal and <span class="math inline">\(Y\)</span> the length of the text (in bytes).</p>
-<p>Assume that <span class="math inline">\(Y\)</span> can take only two values, namely <span class="math inline">\(100\)</span> and <span class="math inline">\(10\,000\)</span>, and that the following conditional distributions are given</p>
+<p><span id="no">15</span></p>
+<p>Consider a Bluetooth device that sends encrypted data.</p>
+<p>Let <span class="math inline">\(X\)</span> be the travel time (in milliseconds) of a given signal and <span class="math inline">\(Y\)</span> the length of the data (in bytes).</p>
+<p>Assume that <span class="math inline">\(Y\)</span> can take only two values, namely <span class="math inline">\(100\)</span> and <span class="math inline">\(10{,}000\)</span>, with probabilities <span class="math inline">\(\dfrac{5}{6}\)</span> and <span class="math inline">\(\dfrac{1}{6}\)</span>, respectively.</p>
+<p>Furthermore assume the following conditional distributions:</p>
 <p><span class="math display">\[
 p_{X|Y}(x\,|\,100) = \left\{
     \begin{array}{ll}
         0.50,       &amp; x=0.01 \\
         0.3\bar{3}, &amp; x=0.10 \\
-        0.6\bar{6}, &amp; x=1.00 \\
+        0.1\bar{6}, &amp; x=1.00 \\
+        0,          &amp; \text{otherwise}
     \end{array}
 \right.
 \]</span> <span class="math display">\[
-p_{X|Y}(x\,|\,10\,000) = \left\{
+p_{X|Y}(x\,|\,10{,}000) = \left\{
     \begin{array}{ll}
         0.50,       &amp; x=1   \\
         0.3\bar{3}, &amp; x=10  \\
-        0.6\bar{6}, &amp; x=100 \\
+        0.1\bar{6}, &amp; x=100 \\
+        0,          &amp; \text{otherwise}
     \end{array}
 \right.
 \]</span></p>
 <p>Find <span class="math inline">\(p_{X}(0.01)\)</span>.</p>
 <hr id="thin">
 <!----------------------------------------------------------------------------->
-<p><span id="no">15</span></p>
+<p><span id="no">16</span></p>
 <p>Let <span class="math inline">\(X_{i}\)</span>, <span class="math inline">\(i=1, 2, 3\)</span>, be independent Poisson random variables with respective means <span class="math inline">\(\lambda_{i}=i^3\)</span>, <span class="math inline">\(i=1, 2, 3\)</span>.</p>
-<p>Let <span class="math inline">\(X=X_{1}+X_{2}+X_{3}\)</span>.</p>
+<p>Let <span class="math inline">\(X=X_{1}+X_{2}\)</span> and <span class="math inline">\(Y=X_{2}+X_{3}\)</span>.</p>
 <p>Find <span class="math inline">\(\mathrm{Cov}[X, Y\,]\)</span>.</p>
 <hr id="thin">
 <!----------------------------------------------------------------------------->
-<p><span id="no">16</span></p>
+<p><span id="no">17</span></p>
 <p>The number of students who enroll in a probability course is a Poisson random variable with mean <span class="math inline">\(100\)</span>.</p>
 <p>The professor in charge of the course has decided that if the number enrolling is <span class="math inline">\(120\)</span> or more, he will teach the course in two separate sections, whereas if fewer than <span class="math inline">\(120\)</span> enroll, he will teach all of the students together in a single section.</p>
 <p>What is the probability that the professor will have to teach two sections?</p>
 <hr id="thin">
 <!----------------------------------------------------------------------------->
-<p><span id="no">17</span></p>
+<p><span id="no">18</span></p>
 <p>A fair die is rolled repeatedly.</p>
 <p>Let <span class="math inline">\(X\)</span> be the number of rolls needed to obtain a <span class="math inline">\(5\)</span>, and <span class="math inline">\(Y\)</span> the number of rolls needed to obtain a <span class="math inline">\(6\)</span>.</p>
 <p>Calculate <span class="math inline">\(\mathrm{E}[X\,|\,Y=2\,]\)</span>.</p>
 <hr id="thin">
 <!----------------------------------------------------------------------------->
-<p><span id="no">18</span></p>
+<p><span id="no">19</span></p>
 <p>On a given day, your score in a videogame takes values from the range <span class="math inline">\(101\)</span> to <span class="math inline">\(110\)</span>, with probability <span class="math inline">\(0.1\)</span>, independent of other days.</p>
-<p>Determined to improve your score, you decide to play in three different days, and declare as your score the minimum <span class="math inline">\(X\)</span> of the scores <span class="math inline">\(X_{1}\)</span>, <span class="math inline">\(X_{2}\)</span>, and <span class="math inline">\(X_{3}\)</span> on the different days.</p>
+<p>Determined to improve your score, you decide to play on three different days, and declare as your score the minimum <span class="math inline">\(X\)</span> of the scores <span class="math inline">\(X_{1}\)</span>, <span class="math inline">\(X_{2}\)</span>, and <span class="math inline">\(X_{3}\)</span> on the different days.</p>
 <p>Calculate <span class="math inline">\(\mathrm{E}[X]\)</span>.</p>
 <hr id="thin">
 <!----------------------------------------------------------------------------->
-<p><span id="no">19</span></p>
-<p>In certain city, annual insurance losses due to theft, flooding, and fire are assumed to be independent, exponentially-distributed random variables with respective means <span class="math inline">\(100\)</span>, <span class="math inline">\(150\)</span>, and <span class="math inline">\(240\)</span>.</p>
+<p><span id="no">20</span></p>
+<p>In a certain city, annual insurance losses due to theft, flooding, and fire are assumed to be independent, exponentially-distributed random variables with respective means <span class="math inline">\(100\)</span>, <span class="math inline">\(150\)</span>, and <span class="math inline">\(240\)</span>.</p>
 <p>Determine the probability that the maximum of these losses exceeds <span class="math inline">\(300\)</span>.</p>
 <hr id="thin">
 <!----------------------------------------------------------------------------->
-<p><span id="no">20</span></p>
+<p><span id="no">21</span></p>
 <p>A diagnostic test for the presence of a disease has two possible outcomes: <span class="math inline">\(1\)</span> for disease present and <span class="math inline">\(0\)</span> for disease not present.</p>
 <p>Let <span class="math inline">\(X\)</span> denote the disease state of a patient, and let <span class="math inline">\(Y\)</span> denote the outcome of the diagnostic test.</p>
 <p>The joint probability of <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> is given by:</p>
@@ -1028,20 +1041,20 @@ p_{X|Y}(x\,|\,10\,000) = \left\{
 <p>Calculate <span class="math inline">\(\mathrm{Var}[Y\,|\,X = 1\,]\)</span>.</p>
 <hr id="thin">
 <!----------------------------------------------------------------------------->
-<p><span id="no">21</span></p>
+<p><span id="no">22</span></p>
 <p>Let <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> be continuous random variables with joint density</p>
 <p><span class="math display">\[
 f(x,y) = \left\{
     \begin{array}{ll}
         24xy, &amp; 0&lt;x&lt;1\,,\,\, 0&lt;y&lt;1-x \\
-        0,    &amp; x=0.10 \\
+        0, &amp; \mathrm{otherwise}
     \end{array}
 \right.
 \]</span></p>
 <p>Calculate <span class="math inline">\(\mathrm{Pr}[Y&lt;X \, | \, X = \frac{1}{3}\,]\)</span></p>
 <hr id="thin">
 <!----------------------------------------------------------------------------->
-<p><span id="no">22</span></p>
+<p><span id="no">23</span></p>
 <p>Once a liability claim is reported to an insurance company, the company makes an initial estimate, <span class="math inline">\(X\)</span>, of the amount it will pay to the claimant of the liability loss.</p>
 <p>When the claim is finally settled, the company pays an amount <span class="math inline">\(Y\)</span> to the claimant.</p>
 <p>The company’s actuary has determined that <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> have the joint density function</p>
@@ -1056,13 +1069,13 @@ f(x,y) = \left\{
 <p>Given that the initial claim estimated by the company is <span class="math inline">\(2\)</span>, determine the probability that the final settlement amount is between <span class="math inline">\(1\)</span> and <span class="math inline">\(3\)</span>.</p>
 <hr id="thin">
 <!----------------------------------------------------------------------------->
-<p><span id="no">23</span></p>
+<p><span id="no">24</span></p>
 <p>Automobile losses reported to an insurance company are independent and uniformly distributed between <span class="math inline">\(0\)</span> and <span class="math inline">\(20\, 000\)</span>.</p>
 <p>The company covers each such loss subject to a deductible of <span class="math inline">\(5\, 000\)</span>.</p>
 <p>Calculate the probability that the total payout on <span class="math inline">\(200\)</span> reported losses is between <span class="math inline">\(1\,000\,000\)</span> and <span class="math inline">\(1\,200\,000\)</span>.</p>
 <hr id="thin">
 <!----------------------------------------------------------------------------->
-<p><span id="no">24</span></p>
+<p><span id="no">25</span></p>
 <p>A machine consists of two components, whose lifetimes have the joint density function</p>
 <p><span class="math display">\[
 f(x,y) = \left\{
@@ -1076,50 +1089,52 @@ f(x,y) = \left\{
 <p>Calculate the expected operational time of the machine.</p>
 <hr id="thin">
 <!----------------------------------------------------------------------------->
-<p><span id="no">25</span></p>
-<p>Annual insurance losses (in millions) due to storm, fire, and theft are assumed to be independent, exponentially distributed random variables with respective means <span class="math inline">\(1.0\)</span>, <span class="math inline">\(1.5\)</span>, and <span class="math inline">\(2.4\)</span>.</p>
-<p>Find the probability that the maximum of these losses exceeds <span class="math inline">\(3\)</span>.</p>
+<p><span id="no">26</span></p>
+<p>Three independent annual catastrophic insurance losses <span class="math inline">\(X_1\)</span>, <span class="math inline">\(X_2\)</span>, and <span class="math inline">\(X_3\)</span> are identically distributed exponential random variables with mean two million.</p>
+<p>Let <span class="math inline">\(M\)</span> be the median of the three losses.</p>
+<p>Calculate the probability that <span class="math inline">\(M\)</span> exceeds three million.</p>
 <hr id="thin">
 <!----------------------------------------------------------------------------->
-<p><span id="no">26</span></p>
+<p><span id="no">27</span></p>
 <p>Two medical plan options will be offered to a company’s employees next year.</p>
 <p>An actuary uses the following density function to model the joint distribution of the proportion <span class="math inline">\(X\)</span> of employees who will choose option 1 and the proportion <span class="math inline">\(Y\)</span> who will choose option 2:</p>
 <p><span class="math display">\[
 f(x,y) = \left\{
     \begin{array}{ll}
-        0.50, &amp; 0&lt;x&lt;0.5\,,\,\, 0&lt;y&lt;0.5 \\
-        1.25, &amp; 0&lt;x&lt;0.5\,,\,\, 0&lt;y&lt;1 \\
-        1,50, &amp; 0&lt;x&lt;1\,,\,\,   0&lt;y&lt;0.5 \\
-        0.75, &amp; 0&lt;x&lt;1\,,\,\,   0&lt;y&lt;1 \\
+        0.50, &amp; 0&lt;x&lt;0.5\,,\,\,  0&lt;y&lt;0.5 \\
+        1.25, &amp; 0&lt;x&lt;0.5\,,\,\,  0.5&lt;y&lt;1 \\
+        1.50, &amp; 0.5&lt;x&lt;1\,,\,\,  0&lt;y&lt;0.5 \\
+        0.75, &amp; 0.5&lt;x&lt;1\,,\,\,  0.5&lt;y&lt;1 \\
+        0, &amp; \mathrm{otherwise}
     \end{array}
 \right.
 \]</span></p>
 <p>Calculate <span class="math inline">\(\mathrm{Var}[Y\,|\,X=0.75\,]\)</span></p>
 <hr id="thin">
 <!----------------------------------------------------------------------------->
-<p><span id="no">27</span></p>
+<p><span id="no">28</span></p>
 <p>Claims filed under auto insurance policies follow a normal distribution with mean <span class="math inline">\(19\,400\)</span> and standard deviation <span class="math inline">\(5\,000\)</span>.</p>
 <p>What is the probability that the average of 25 randomly selected claims exceeds <span class="math inline">\(20\,000\)</span>?</p>
 <hr id="thin">
 <!----------------------------------------------------------------------------->
-<p><span id="no">28</span></p>
+<p><span id="no">29</span></p>
 <p>An insurance company issues <span class="math inline">\(1\,250\)</span> insurance policies.</p>
 <p>The number of claims filed by a policyholder during one year is a Poisson random variable with mean <span class="math inline">\(2\)</span>.</p>
 <p>Assume the numbers of claims filed by distinct policyholders are independent of one another.</p>
 <p>What is the approximate probability that there is a total of between <span class="math inline">\(2\,450\)</span> and <span class="math inline">\(2\,600\)</span> claims during a one-year period?</p>
 <hr id="thin">
 <!----------------------------------------------------------------------------->
-<p><span id="no">29</span></p>
+<p><span id="no">30</span></p>
 <p>A company manufactures electronic components with a lifetime in months that is normally distributed with mean <span class="math inline">\(3\)</span> and variance <span class="math inline">\(1\)</span>.</p>
 <p>A client buys a number of these components with the intention of replacing them successively as they fail.</p>
-<p>The components have independent lifetimes. What is the smallest number of components to be bought so that the succession of components are operational for at least <span class="math inline">\(40\)</span> months with probability at least <span class="math inline">\(0.9772\)</span>?</p>
+<p>The components have independent lifetimes. What is the smallest number of components to be bought so that the sequence of components reamin operational for at least <span class="math inline">\(40\)</span> months with probability at least <span class="math inline">\(0.9772\)</span>?</p>
 <hr id="thin">
 <!----------------------------------------------------------------------------->
-<p><span id="no">30</span></p>
-<p>Let <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> be the number of hours that a randomly selected student watches movies and sporting events, respectively, during a three-month</p>
-<p>The following is known about <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span>: <span class="math inline">\(\mathrm{E}[X]=50\)</span>, <span class="math inline">\(\mathrm{E}[Y]=30\)</span>, <span class="math inline">\(\mathrm{Cov}[X, Y]=10\)</span>.</p>
+<p><span id="no">31</span></p>
+<p>Let <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> be the number of hours that a randomly selected student watches movies and sporting events, respectively, during a three-month period.</p>
+<p>The following is known about <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span>: <span class="math inline">\(\mathrm{E}[X]=50\)</span>, <span class="math inline">\(\mathrm{E}[Y]=20\)</span>, <span class="math inline">\(\mathrm{Var}[X]=50\)</span>, <span class="math inline">\(\mathrm{Var}[Y]=30\)</span>, and <span class="math inline">\(\mathrm{Cov}[X, Y]=10\)</span>.</p>
 <p>One hundred students are randomly selected and observed for these three months.</p>
-<p>Let <span class="math inline">\(T\)</span> be the total number of hours that these one hundred students watch movies or sporting events during this three-month period.</p>
+<p>Let <span class="math inline">\(T\)</span> be the combined number of hours that these <span class="math inline">\(100\)</span> students spend watching movies and sporting events during the three-month period; that is <span class="math inline">\(T=\sum_{i=1}^{100}\left(X_i+Y_i\right)\)</span></p>
 <p>Approximate the value of <span class="math inline">\(\mathrm{Pr}[T&lt;7100]\)</span>.</p>
 <!----------------------------------------------------------------------------->
 
